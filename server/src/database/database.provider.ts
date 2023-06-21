@@ -1,11 +1,11 @@
 import { Sequelize } from 'sequelize-typescript';
 import { ModelList } from './entities';
 
-const uri = process.env.DB_URI;
 export const databaseProviders = [
   {
     provide: 'SEQUELIZE',
     useFactory: async () => {
+      const uri = process.env.DB_URI;
       const sequelize = new Sequelize(uri, {
         pool: {
           max: 5,
@@ -17,7 +17,7 @@ export const databaseProviders = [
         logging: false,
       });
       sequelize.addModels(ModelList);
-      await sequelize.sync();
+      await sequelize.sync({ force: true });
       return sequelize;
     },
   },
