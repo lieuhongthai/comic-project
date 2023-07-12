@@ -11,8 +11,10 @@ import {
 } from 'sequelize-typescript';
 import { Role } from './role.entity';
 import { Permission } from './permission.entity';
+import { Group } from './group.entity';
+import { UserGroup } from './userGroup.entity';
 
-@Table
+@Table({ tableName: 'users' })
 export class User extends Model<User> {
   @PrimaryKey
   @AutoIncrement
@@ -48,4 +50,7 @@ export class User extends Model<User> {
   setRoles: (args: []) => Promise<Role[]>;
   getRoles: () => Promise<Role[]>;
   countRoles: () => Promise<number>;
+
+  @BelongsToMany(() => Group, () => UserGroup, 'userId', 'groupId')
+  groups: Group[];
 }

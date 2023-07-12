@@ -10,7 +10,7 @@ import {
 } from 'sequelize-typescript';
 import { Message } from './message.entity';
 
-@Table
+@Table({ tableName: 'message_recipients' })
 export class MessageRecipient extends Model<MessageRecipient> {
   @PrimaryKey
   @AutoIncrement
