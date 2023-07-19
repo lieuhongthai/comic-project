@@ -1,5 +1,5 @@
-export const ROLE_REPOSITORY = 'ROLE_REPOSITORY';
-export const userRepository = 'USER_REPOSITORY';
-export const permissionRepository = 'PERMISSION_REPOSITORY';
-export const groupRepository = 'GROUP_REPOSITORY';
-export const userGroupRepository = 'USER_GROUP_REPOSITORY';
+export const roleEntity = 'ROLE_ENTITY';
+export const userEntity = 'USER_ENTITY';
+export const permissionEntity = 'PERMISSION_ENTITY';
+export const groupEntity = 'GROUP_ENTITY';
+export const userGroupEntity = 'USER_GROUP_ENTITY';

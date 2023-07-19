@@ -1,9 +1,9 @@
 import {
-  ROLE_REPOSITORY,
-  groupRepository,
-  permissionRepository,
-  userGroupRepository,
-  userRepository,
+  roleEntity,
+  groupEntity,
+  permissionEntity,
+  userGroupEntity,
+  userEntity,
 } from 'src/core/constants';
 import { Role } from './role.entity';
 import { User } from './user.entity';
@@ -17,21 +17,21 @@ type DatabaseModelsType = {
 };
 export const databaseModels: DatabaseModelsType[] = [
   {
-    provide: ROLE_REPOSITORY,
+    provide: roleEntity,
     useValue: Role,
   },
   {
-    provide: userRepository,
+    provide: userEntity,
     useValue: User,
   },
-  { provide: permissionRepository, useValue: Permission },
+  { provide: permissionEntity, useValue: Permission },
 
   {
-    provide: groupRepository,
+    provide: groupEntity,
     useValue: Group,
   },
   {
-    provide: userGroupRepository,
+    provide: userGroupEntity,
     useValue: UserGroup,
   },
 ];
