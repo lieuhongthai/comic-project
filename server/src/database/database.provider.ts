@@ -18,6 +18,10 @@ export const databaseProviders = [
       });
       sequelize.addModels(ModelList);
       await sequelize.sync({ force: true });
+
+      await sequelize.authenticate().then(() => {
+        //
+      });
       return sequelize;
     },
   },

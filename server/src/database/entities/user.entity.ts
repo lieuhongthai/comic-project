@@ -47,7 +47,9 @@ export class User extends Model<User> {
 
   @BelongsToMany(() => Role, () => Permission, 'userId', 'roleId')
   roles: Role[];
-  setRoles: (args: []) => Promise<Role[]>;
+  setRoles: (args: any[]) => Promise<Role[]>;
+  addRoles: (args: Role[]) => Promise<Role[]>;
+  createRole: (arg: any) => Promise<any>;
   getRoles: () => Promise<Role[]>;
   countRoles: () => Promise<number>;
 
