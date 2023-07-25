@@ -18,12 +18,12 @@ export class UserRepository {
 
   async createdOne(user: CreateUserType, roleId?: number) {
     //
-    const createdUser = await User.create(user);
+    const createdUser = await User.create({ ...user });
     if (roleId) {
       const role = await this.roleRepository.getById(roleId);
       await createdUser.addRoles([role]);
     }
-    createdUser.createRole(1);
+    await createdUser.setRoles([1]);
 
     return createdUser;
   }

@@ -8,6 +8,7 @@ import {
   BelongsToMany,
   AllowNull,
   Default,
+  Unique,
 } from 'sequelize-typescript';
 import { Role } from './role.entity';
 import { Permission } from './permission.entity';
@@ -18,10 +19,11 @@ import { UserGroup } from './userGroup.entity';
 export class User extends Model<User> {
   @PrimaryKey
   @AutoIncrement
-  @Column({ type: DataTypes.INTEGER({}) })
+  @Column({ type: DataTypes.INTEGER() })
   id: number;
 
   @AllowNull(false)
+  @Unique
   @Column({ type: DataTypes.STRING(50) })
   username: string;
 

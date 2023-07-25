@@ -1,6 +1,5 @@
 import { DataTypes } from 'sequelize';
 import {
-  AutoIncrement,
   BelongsToMany,
   Column,
   Model,
@@ -13,7 +12,6 @@ import { Permission } from './permission.entity';
 @Table({ tableName: 'roles' })
 export class Role extends Model<Role> {
   @PrimaryKey
-  @AutoIncrement
   @Column({ type: DataTypes.SMALLINT({ scale: 2 }) })
   id: number;
 

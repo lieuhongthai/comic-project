@@ -1,13 +1,22 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable, Logger } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserRepository } from 'src/database/repositories/user/user.repository';
+import { LoggerService } from 'src/logger/logger.service';
+import { Log4jsLogger } from '@nestx-log4js/core';
 
 @Injectable()
 export class UserService {
   // Inject repository
   @Inject(UserRepository)
   private userRepository: UserRepository;
+
+  constructor(
+    private loggerService: LoggerService,
+    private logger: Log4jsLogger,
+  ) {
+    this.loggerService.setContext(UserService.name);
+  }
 
   create(createUserDto: CreateUserDto) {
     const user = this.userRepository.createdOne(createUserDto);
@@ -16,9 +25,7 @@ export class UserService {
 
   async findAll() {
     const users = await this.userRepository.findAll();
-
-    console.log(12005, users);
-
+    this.logger.log('11111111111111111111', UserService.name);
     return users;
   }
 

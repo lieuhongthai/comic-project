@@ -6,8 +6,8 @@ export class AppService implements OnModuleInit {
   @Inject(RoleRepository)
   private roleRepository: RoleRepository;
 
-  onModuleInit() {
-    this.roleRepository.dumpData();
+  async onModuleInit() {
+    await this.roleRepository.dumpData();
     console.log(`The module has been initialized.`);
   }
 
