@@ -4,7 +4,6 @@ import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from '@nestjs/config';
 import { UserModule } from './user/user.module';
 import { LoggerModule } from './logger/logger.module';
-import { Log4js } from 'log4js';
 
 // ** Config custom
 import configuration from './configs/configuration';
@@ -18,9 +17,6 @@ import { LOG4JS_DEFAULT_CONFIG } from './logger/layout.logger';
     UserModule,
     LoggerModule,
     Log4jsModule.forRoot({ config: LOG4JS_DEFAULT_CONFIG }),
-    // Log4jsModule.forRootAsync({
-    // useFactory: (config) => config.getLog4jsOptions(),
-    // }),
   ],
   providers: [AppService],
 })
