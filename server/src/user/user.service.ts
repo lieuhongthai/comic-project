@@ -1,4 +1,4 @@
-import { Inject, Injectable, Logger } from '@nestjs/common';
+import { GoneException, Inject, Injectable, Logger } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserRepository } from 'src/database/repositories/user/user.repository';
@@ -26,6 +26,8 @@ export class UserService {
   async findAll() {
     const users = await this.userRepository.findAll();
     this.logger.log('11111111111111111111', UserService.name);
+
+    throw new GoneException();
     return users;
   }
 
