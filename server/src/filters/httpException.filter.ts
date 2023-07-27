@@ -3,15 +3,13 @@ import {
   Catch,
   ArgumentsHost,
   HttpException,
-  Inject,
 } from '@nestjs/common';
 import { Log4jsLogger } from '@nestx-log4js/core';
 import { Request, Response } from 'express';
+import { HttpExceptionResponseType } from 'src/types/httpExceptionResponseType';
 
 @Catch(HttpException)
 export class HttpExceptionFilter implements ExceptionFilter {
-  //   @Inject(Log4jsLogger)
-  //   private logger: Log4jsLogger;
   constructor(private logger: Log4jsLogger) {}
 
   catch(exception: HttpException, host: ArgumentsHost) {
@@ -19,11 +17,14 @@ export class HttpExceptionFilter implements ExceptionFilter {
     const response = ctx.getResponse<Response>();
     const request = ctx.getRequest<Request>();
     const status = exception.getStatus();
+    const message = exception.message;
+    const pipeMessage = exception.getResponse() as HttpExceptionResponseType;
+
     this.logger.error(
-      `${status}: path: ${
-        request.url
-      } --- param: ${request.query?.toString()} --- query: ${request.params?.toString()} --- body: ${request.body?.toString()} --- message: ${
-        exception?.message
+      `${status}: path: ${request.url} --- param: ${
+        JSON.stringify(request.query) === '{}' ? null : request.query.toString()
+      } --- query: ${request.params?.toString()} --- body: ${request.body?.toString()} --- message: ${
+        pipeMessage.message || message
       }`,
       HttpExceptionFilter.name,
     );
@@ -31,7 +32,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
     response.status(status).json({
       statusCode: status,
       timestamp: new Date().toISOString(),
-      path: request.url,
+      message: pipeMessage.message || message,
     });
   }
 }

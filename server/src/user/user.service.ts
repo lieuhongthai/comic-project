@@ -1,8 +1,14 @@
-import { GoneException, Inject, Injectable, Logger } from '@nestjs/common';
+import {
+  GoneException,
+  HttpException,
+  Inject,
+  Injectable,
+  Logger,
+} from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserRepository } from 'src/database/repositories/user/user.repository';
-import { LoggerService } from 'src/logger/logger.service';
+import { LoggerService } from 'src/loggers/logger.service';
 import { Log4jsLogger } from '@nestx-log4js/core';
 
 @Injectable()
@@ -27,7 +33,7 @@ export class UserService {
     const users = await this.userRepository.findAll();
     this.logger.log('11111111111111111111', UserService.name);
 
-    throw new GoneException();
+    // throw new HttpException('message', 401);
     return users;
   }
 

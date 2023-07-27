@@ -6,6 +6,7 @@ export class CreateUserDto {
 
   @IsString()
   email: string;
+
   @IsNumber()
   numberPhone: number;
 

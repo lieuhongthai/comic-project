@@ -14,8 +14,8 @@ async function bootstrap() {
   const port = configuration.get('port');
 
   app.setGlobalPrefix('/api');
-  app.useGlobalFilters(new HttpExceptionFilter(app.get(Log4jsLogger)));
   app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalFilters(new HttpExceptionFilter(app.get(Log4jsLogger)));
 
   await app.listen(port);
 }
