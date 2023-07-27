@@ -20,11 +20,11 @@ import { HttpExceptionFilter } from './filters/httpException.filter';
 
 @Module({
   imports: [
-    DatabaseModule,
     ConfigModule.forRoot({ load: [configuration], isGlobal: true }),
+    Log4jsModule.forRoot({ config: LOG4JS_DEFAULT_CONFIG }),
+    DatabaseModule,
     UserModule,
     LoggerModule,
-    Log4jsModule.forRoot({ config: LOG4JS_DEFAULT_CONFIG }),
   ],
   providers: [
     AppService,
