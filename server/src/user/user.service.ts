@@ -1,10 +1,4 @@
-import {
-  GoneException,
-  HttpException,
-  Inject,
-  Injectable,
-  Logger,
-} from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserRepository } from 'src/database/repositories/user/user.repository';
@@ -27,6 +21,12 @@ export class UserService {
   create(createUserDto: CreateUserDto) {
     const user = this.userRepository.createdOne(createUserDto);
     return user;
+  }
+
+  createUser(data: any) {
+    console.log(12005, 'createUser', data);
+
+    return data;
   }
 
   async findAll() {

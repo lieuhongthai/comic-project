@@ -4,6 +4,7 @@ import { ConfigService } from '@nestjs/config';
 import { ValidationPipe } from '@nestjs/common';
 import { HttpExceptionFilter } from './filters/httpException.filter';
 import { Log4jsLogger } from '@nestx-log4js/core';
+import * as compression from 'compression';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
@@ -14,9 +15,12 @@ async function bootstrap() {
   const port = configuration.get('port');
 
   app.setGlobalPrefix('/api');
+
+  app.use(compression());
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalFilters(new HttpExceptionFilter(app.get(Log4jsLogger)));
 
   await app.listen(port);
+  console.log(`Application is running on: ${await app.getUrl()}`);
 }
 bootstrap();
