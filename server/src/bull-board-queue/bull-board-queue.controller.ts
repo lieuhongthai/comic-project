@@ -5,7 +5,7 @@ import { getBullBoardQueues } from './bull-board-queue.service';
 import { createBullBoard } from '@bull-board/api';
 import { BaseAdapter } from '@bull-board/api/dist/src/queueAdapters/base';
 
-@Controller('/queues/admin')
+@Controller('admin/queues-bull-board')
 export class BullBoardQueueController {
   @All('*')
   admin(
@@ -13,8 +13,9 @@ export class BullBoardQueueController {
     @Response() res: express.Response,
     @Next() next: express.NextFunction,
   ) {
+    // ** Setup queues bull board
     const serverAdapter = new ExpressAdapter();
-    serverAdapter.setBasePath('/api/queues/admin');
+    serverAdapter.setBasePath('/admin/queues-bull-board');
     const queues = getBullBoardQueues();
     const router = serverAdapter.getRouter() as express.Express;
     const { addQueue } = createBullBoard({
@@ -24,7 +25,8 @@ export class BullBoardQueueController {
     queues.forEach((queue: BaseAdapter) => {
       addQueue(queue);
     });
-    const entryPointPath = '/api/queues/admin/';
+
+    const entryPointPath = '/admin/queues-bull-board/';
     req.url = req.url.replace(entryPointPath, '/');
     router(req, res, next);
   }

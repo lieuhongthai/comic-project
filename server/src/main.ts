@@ -10,11 +10,12 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     logger: ['error', 'warn', 'debug', 'verbose'],
   });
+
   const configuration: ConfigService = app.get(ConfigService);
 
   const port = configuration.get('port');
 
-  app.setGlobalPrefix('/api');
+  app.setGlobalPrefix('api', { exclude: ['/admin/queues-bull-board'] });
 
   app.use(compression());
   app.useGlobalPipes(new ValidationPipe());

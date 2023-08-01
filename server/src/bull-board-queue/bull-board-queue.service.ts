@@ -10,7 +10,7 @@ export const queuePool: Set<Queue> = new Set();
 
 export const getBullBoardQueues = (): BaseAdapter[] => {
   const bullBoardQueues: any = [...queuePool].reduce(
-    (acc: BaseAdapter[], val) => {
+    (acc: BaseAdapter[], val: any) => {
       acc.push(new BullMQAdapter(val));
       return acc;
     },
