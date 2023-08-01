@@ -19,6 +19,7 @@ import { APP_FILTER, APP_PIPE } from '@nestjs/core';
 import { HttpExceptionFilter } from './filters/httpException.filter';
 import { BullModule } from '@nestjs/bull';
 import { BullBoardQueueModule } from './bull-board-queue/bull-board-queue.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -40,6 +41,7 @@ import { BullBoardQueueModule } from './bull-board-queue/bull-board-queue.module
     UserModule,
     LoggerModule,
     BullBoardQueueModule,
+    AuthModule,
   ],
   providers: [
     AppService,
