@@ -32,6 +32,12 @@
 $ yarn install
 ```
 
+After installed package, display husky is not installed then Run npx husky install
+
+```bash
+$ npx husky install
+```
+
 ## Running the app
 
 ```bash

@@ -8,7 +8,7 @@ import { User } from 'src/database/entities/user.entity';
 export class RepositoriesService {
   @Inject(userEntity)
   private userEntity: typeof User;
-  create(createRepositoryDto: CreateRepositoryDto) {
+  create(_createRepositoryDto: CreateRepositoryDto) {
     return 'This action adds a new repository';
   }
 
@@ -20,7 +20,7 @@ export class RepositoriesService {
     return `This action returns a #${id} repository`;
   }
 
-  update(id: number, updateRepositoryDto: UpdateRepositoryDto) {
+  update(id: number, _updateRepositoryDto: UpdateRepositoryDto) {
     return `This action updates a #${id} repository`;
   }
 

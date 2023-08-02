@@ -1,0 +1,13 @@
+# folders
+**/node_modules/*
+dist/
+coverage/
+build/
+public/
+.reports/
+
+# files
+.eslintrc.js
+minify.js
+react-app-env.d.ts
+craco.config.js
