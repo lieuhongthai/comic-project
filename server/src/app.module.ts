@@ -20,10 +20,23 @@ import { HttpExceptionFilter } from './filters/httpException.filter';
 import { BullModule } from '@nestjs/bull';
 import { BullBoardQueueModule } from './bull-board-queue/bull-board-queue.module';
 import { AuthModule } from './auth/auth.module';
+import * as Joi from 'joi';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ load: [configuration], isGlobal: true }),
+    ConfigModule.forRoot({
+      load: [configuration],
+      isGlobal: true,
+      validationSchema: Joi.object({
+        NODE_ENV: Joi.string()
+          .valid('development', 'production', 'test', 'provision', 'staging')
+          .default('development'),
+        PORT: Joi.number().default(8080),
+      }),
+      validationOptions: {
+        abortEarly: false,
+      },
+    }),
     Log4jsModule.forRoot({ config: LOG4JS_DEFAULT_CONFIG }),
     // ** Start Queue Bull
     BullModule.forRootAsync({

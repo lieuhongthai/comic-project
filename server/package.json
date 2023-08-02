@@ -38,6 +38,7 @@
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.6",
     "csvtojson": "^2.0.10",
+    "joi": "^17.9.2",
     "multer": "^1.4.5-lts.1",
     "nestjs-bull-board": "^1.2.1",
     "pg": "^8.11.0",
