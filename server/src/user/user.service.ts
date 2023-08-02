@@ -18,7 +18,7 @@ export class UserService {
     this.loggerService.setContext(UserService.name);
   }
 
-  create(createUserDto: CreateUserDto) {
+  create(createUserDto: any) {
     const user = this.userRepository.createdOne(createUserDto);
     return user;
   }

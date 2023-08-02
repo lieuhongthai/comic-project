@@ -4,6 +4,8 @@ export interface CreateUserType {
   username: string;
   email: string;
   numberPhone: number;
+  password: string;
+  rePassword?: string;
   firstName?: string;
   lastName?: string;
   fullName?: string;

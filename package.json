@@ -6,9 +6,8 @@
   "author": "GEO\\lieu.hong.thai <lieu.hong.thai@geonet.co.jp>",
   "license": "MIT",
   "scripts": {
-    "prepare": "test -d node_modules/husky && husky install || echo \"husky is not installed\"",
     "lint": "eslint \"server/{src,apps,libs,test}/**/*.ts\" --fix",
-    "pre-commit": "npx husky add .husky/pre-commit 'npm run lint'"
+    "docker:dev": "docker compose --env-file ./.env.dev -f docker-compose.dev.yml up"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.7",
