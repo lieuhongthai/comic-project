@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+
+// ** Config Imports
+import 'src/configs/i18n'
+
+// ** Fake-DB Import
+import 'src/@fake-db'
+
+// ** Prismjs Styles
+import 'prismjs'
+import 'prismjs/themes/prism-tomorrow.css'
+import 'prismjs/components/prism-jsx'
+import 'prismjs/components/prism-tsx'
+
+// ** React Perfect Scrollbar Style
+import 'react-perfect-scrollbar/dist/css/styles.css'
+
+import 'src/iconify-bundle/icons-bundle-react'
+import { RouterProvider } from 'react-router-dom'
+import { routers } from './routers'
+
+// ** Global css styles
+// import 'src/styles/globals.css'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return <RouterProvider router={routers} fallbackElement={<p>Initial Load...</p>} />
 }
 
-export default App;
+export default App
