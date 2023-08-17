@@ -38,7 +38,7 @@ const AuthProvider = ({ children }: Props) => {
   // ** Hooks
   const location = useLocation()
   const pathname = location.pathname
-  const { returnUrl } = location.state
+  const returnUrl: string = location.state?.returnUrl || ''
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -74,6 +74,8 @@ const AuthProvider = ({ children }: Props) => {
     initAuth()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  console.log(12005, returnUrl)
 
   const handleLogin = (params: LoginParams, errorCallback?: ErrCallbackType) => {
     axios

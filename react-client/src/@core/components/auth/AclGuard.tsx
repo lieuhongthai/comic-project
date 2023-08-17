@@ -2,7 +2,7 @@
 import { ReactNode, useState } from 'react'
 
 // ** React Router Imports
-import { useLocation } from 'react-router-dom'
+import { useLocation, useRouteLoaderData } from 'react-router-dom'
 
 // ** Types
 import type { ACLObj, AppAbility } from 'src/configs/acl'
@@ -36,6 +36,11 @@ const AclGuard = (props: AclGuardProps) => {
   const auth = useAuth()
   const location = useLocation()
   const pathname = location.pathname
+
+  const loaderGuestGuard = useRouteLoaderData('guestGuard')
+
+  if (loaderGuestGuard) return <BlankLayout>{children}</BlankLayout>
+
   // If guestGuard is true and user is not logged in or its an error page, render the page without checking access
   if (guestGuard || pathname === '/404' || pathname === '/500' || pathname === '/') {
     return <>{children}</>

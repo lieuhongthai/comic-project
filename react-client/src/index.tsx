@@ -21,9 +21,6 @@ import { createEmotionCache } from 'src/@core/utils/create-emotion-cache'
 // ** Config Imports
 import themeConfig from 'src/configs/themeConfig'
 
-// ** Contexts
-import { AuthProvider } from 'src/context/AuthContext'
-
 const emotionCache: EmotionCache = createEmotionCache()
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
@@ -40,9 +37,7 @@ root.render(
           <meta name='keywords' content='Material Design, MUI, Admin Template, React Admin Template' />
           <meta name='viewport' content='initial-scale=1, width=device-width' />
         </Head>
-        <AuthProvider>
-          <App />
-        </AuthProvider>
+        <App />
       </CacheProvider>
     </Provider>
   </React.StrictMode>

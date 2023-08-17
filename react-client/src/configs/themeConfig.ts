@@ -9,15 +9,7 @@
 import { Direction } from '@mui/material'
 
 // ** Types
-import {
-  Skin,
-  Mode,
-  AppBar,
-  Footer,
-  ContentWidth,
-  VerticalNavToggle,
-  HorizontalMenuToggle
-} from 'src/@core/layouts/types'
+import { Skin, Mode, AppBar, Footer, ContentWidth, VerticalNavToggle, HorizontalMenuToggle } from 'src/@core/layouts/types'
 
 type ThemeConfig = {
   skin: Skin

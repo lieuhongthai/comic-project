@@ -480,7 +480,7 @@ const AutocompleteComponent = ({ hidden, settings }: Props) => {
                         })
                   }
                 }}
-                renderInput={(params: AutocompleteRenderInputParams) => {
+                renderInput={(params: any) => {
                   return (
                     <TextField
                       {...params}

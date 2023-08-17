@@ -1,19 +1,6 @@
-import { Outlet, createBrowserRouter } from 'react-router-dom'
-
-// export default () => {
-//   const routers = []
-
-//   return
-// }
-
-function Test() {
-  return (
-    <div>
-      <Outlet />
-    </div>
-  )
-}
-
+import { createBrowserRouter } from 'react-router-dom'
+import AuthLayout from 'src/layouts/AuthLayout'
+import LoginPage from 'src/pages/login'
 function Test2() {
   return <div>aaaaaaaaaaaaaaaaaaaaaaaaa</div>
 }
@@ -26,11 +13,29 @@ export const routers = createBrowserRouter([
       return { userD: 1 }
     },
 
-    Component: Test,
+    element: <AuthLayout />,
     children: [
       {
         index: true,
         Component: Test2
+      },
+      {
+        id: 'guestGuard',
+
+        path: 'login',
+        loader() {
+          return { guestGuard: true }
+        },
+        element: <LoginPage />
+      },
+
+      {
+        id: 'register',
+        path: 'register',
+        loader() {
+          return { guestGuard: true }
+        },
+        element: <LoginPage />
       }
     ]
   }
