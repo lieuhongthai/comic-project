@@ -4,7 +4,7 @@ import React from 'react'
 import 'src/configs/i18n'
 
 // ** Fake-DB Import
-// import 'src/@fake-db'
+import 'src/@fake-db'
 
 // // ** Prismjs Styles
 // import 'prismjs'

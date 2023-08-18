@@ -66,12 +66,7 @@ const UserLayout = ({ children, contentHeightFixed }: Props) => {
         },
         appBar: {
           content: props => (
-            <VerticalAppBarContent
-              hidden={hidden}
-              settings={settings}
-              saveSettings={saveSettings}
-              toggleNavVisibility={props.toggleNavVisibility}
-            />
+            <VerticalAppBarContent hidden={hidden} settings={settings} saveSettings={saveSettings} toggleNavVisibility={props.toggleNavVisibility} />
           )
         }
       }}

@@ -9,6 +9,9 @@ import { NavGroup, NavLink } from 'src/@core/layouts/types'
  * @param activeItem
  */
 export const handleURLQueries = (router: any, path: string | undefined): boolean => {
+  // console.log('handleURLQueries', router)
+  return false
+
   if (Object.keys(router.query).length && path) {
     const arr = Object.keys(router.query)
 

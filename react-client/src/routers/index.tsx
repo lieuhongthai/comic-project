@@ -21,21 +21,20 @@ export const routers = createBrowserRouter([
       },
       {
         id: 'guestGuard',
-
-        path: 'login',
         loader() {
           return { guestGuard: true }
         },
+        path: 'login',
         element: <LoginPage />
       },
-
       {
-        id: 'register',
-        path: 'register',
+        path: 'home/',
+        id: 'adminGuard',
         loader() {
-          return { guestGuard: true }
+          return true
         },
-        element: <LoginPage />
+        Component: Test2,
+        children: [{ index: true, Component: Test2 }]
       }
     ]
   }

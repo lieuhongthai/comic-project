@@ -21,10 +21,6 @@ const AuthGuard = (props: AuthGuardProps) => {
 
   useEffect(
     () => {
-      // if (!router.isReady) {
-      //   return
-      // }
-
       if (auth.user === null && !window.localStorage.getItem('userData')) {
         if (pathname !== '/') {
           navigate('/login', { replace: true, state: { returnUrl: pathname } })

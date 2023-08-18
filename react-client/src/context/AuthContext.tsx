@@ -12,6 +12,7 @@ import authConfig from 'src/configs/auth'
 
 // ** Types
 import { AuthValuesType, RegisterParams, LoginParams, ErrCallbackType, UserDataType } from './types'
+import { useCookies } from 'react-cookie'
 
 // ** Defaults
 const defaultProvider: AuthValuesType = {
@@ -40,6 +41,8 @@ const AuthProvider = ({ children }: Props) => {
   const pathname = location.pathname
   const returnUrl: string = location.state?.returnUrl || ''
   const navigate = useNavigate()
+
+  const [cookies] = useCookies(['__auth_'])
 
   useEffect(() => {
     const initAuth = async (): Promise<void> => {
@@ -70,12 +73,9 @@ const AuthProvider = ({ children }: Props) => {
         setLoading(false)
       }
     }
-
     initAuth()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  console.log(12005, returnUrl)
 
   const handleLogin = (params: LoginParams, errorCallback?: ErrCallbackType) => {
     axios

@@ -111,21 +111,15 @@ const Navigation = (props: Props) => {
 
   const shadowBgColor = () => {
     if (mode === 'light') {
-      return `linear-gradient(${theme.palette.customColors.lightBg} 5%,${hexToRGBA(
+      return `linear-gradient(${theme.palette.customColors.lightBg} 5%,${hexToRGBA(theme.palette.customColors.lightBg, 0.85)} 30%,${hexToRGBA(
         theme.palette.customColors.lightBg,
-        0.85
-      )} 30%,${hexToRGBA(theme.palette.customColors.lightBg, 0.5)} 65%,${hexToRGBA(
-        theme.palette.customColors.lightBg,
-        0.3
-      )} 75%,transparent)`
+        0.5
+      )} 65%,${hexToRGBA(theme.palette.customColors.lightBg, 0.3)} 75%,transparent)`
     } else {
-      return `linear-gradient(${theme.palette.customColors.darkBg} 5%,${hexToRGBA(
+      return `linear-gradient(${theme.palette.customColors.darkBg} 5%,${hexToRGBA(theme.palette.customColors.darkBg, 0.85)} 30%,${hexToRGBA(
         theme.palette.customColors.darkBg,
-        0.85
-      )} 30%,${hexToRGBA(theme.palette.customColors.darkBg, 0.5)} 65%,${hexToRGBA(
-        theme.palette.customColors.darkBg,
-        0.3
-      )} 75%,transparent)`
+        0.5
+      )} 65%,${hexToRGBA(theme.palette.customColors.darkBg, 0.3)} 75%,transparent)`
     }
   }
 
@@ -152,9 +146,7 @@ const Navigation = (props: Props) => {
                 containerRef: (ref: any) => handleInfiniteScroll(ref)
               })}
         >
-          {beforeNavMenuContent && beforeVerticalNavMenuContentPosition === 'static'
-            ? beforeNavMenuContent(props)
-            : null}
+          {beforeNavMenuContent && beforeVerticalNavMenuContentPosition === 'static' ? beforeNavMenuContent(props) : null}
           {userNavMenuContent ? (
             userNavMenuContent(props)
           ) : (

@@ -64,16 +64,7 @@ const ContentWrapper = styled('main')(({ theme }) => ({
 
 const HorizontalLayout = (props: LayoutProps) => {
   // ** Props
-  const {
-    hidden,
-    children,
-    settings,
-    scrollToTop,
-    footerProps,
-    saveSettings,
-    contentHeightFixed,
-    horizontalLayoutProps
-  } = props
+  const { hidden, children, settings, scrollToTop, footerProps, saveSettings, contentHeightFixed, horizontalLayoutProps } = props
 
   // ** Vars
   const { skin, appBar, navHidden, appBarBlur, contentWidth } = settings
@@ -149,16 +140,13 @@ const HorizontalLayout = (props: LayoutProps) => {
                 sx={{
                   mx: 'auto',
                   ...(contentWidth === 'boxed' && { '@media (min-width:1440px)': { maxWidth: 1440 } }),
-                  minHeight: theme =>
-                    `${(theme.mixins.toolbar.minHeight as number) - (skin === 'bordered' ? 1 : 0)}px !important`
+                  minHeight: theme => `${(theme.mixins.toolbar.minHeight as number) - (skin === 'bordered' ? 1 : 0)}px !important`
                 }}
               >
                 {(userNavMenuContent && userNavMenuContent(props)) || (
                   <Navigation
                     {...props}
-                    horizontalNavItems={
-                      (horizontalLayoutProps as NonNullable<LayoutProps['horizontalLayoutProps']>).navMenu?.navItems
-                    }
+                    horizontalNavItems={(horizontalLayoutProps as NonNullable<LayoutProps['horizontalLayoutProps']>).navMenu?.navItems}
                   />
                 )}
               </Toolbar>

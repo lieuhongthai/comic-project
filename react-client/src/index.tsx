@@ -5,7 +5,7 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 
 // ** Helmet Imports
-import { Helmet as Head } from 'react-helmet'
+import { HelmetProvider } from 'react-helmet-async'
 
 // ** Store Imports
 import { store } from 'src/store'
@@ -18,28 +18,25 @@ import type { EmotionCache } from '@emotion/cache'
 // ** Utils Imports
 import { createEmotionCache } from 'src/@core/utils/create-emotion-cache'
 
-// ** Config Imports
-import themeConfig from 'src/configs/themeConfig'
+// ** Cookie Imports
+import { CookiesProvider } from 'react-cookie'
 
 const emotionCache: EmotionCache = createEmotionCache()
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
+const helmetContext = {}
+
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <CacheProvider value={emotionCache}>
-        <Head>
-          <title>{`${themeConfig.templateName} - Material Design React Admin Template`}</title>
-          <meta
-            name='description'
-            content={`${themeConfig.templateName} – Material Design React Admin Dashboard Template – is the most developer friendly & highly customizable Admin Dashboard Template based on MUI v5.`}
-          />
-          <meta name='keywords' content='Material Design, MUI, Admin Template, React Admin Template' />
-          <meta name='viewport' content='initial-scale=1, width=device-width' />
-        </Head>
-        <App />
-      </CacheProvider>
-    </Provider>
+    <HelmetProvider context={helmetContext}>
+      <CookiesProvider>
+        <Provider store={store}>
+          <CacheProvider value={emotionCache}>
+            <App />
+          </CacheProvider>
+        </Provider>
+      </CookiesProvider>
+    </HelmetProvider>
   </React.StrictMode>
 )
 

@@ -30,7 +30,6 @@ import { NavGroup, LayoutProps } from 'src/@core/layouts/types'
 import VerticalNavItems from './VerticalNavItems'
 import UserIcon from 'src/layouts/components/UserIcon'
 import Translations from 'src/layouts/components/Translations'
-import CanViewNavGroup from 'src/layouts/components/acl/CanViewNavGroup'
 import { useLocation } from 'react-router-dom'
 
 interface Props {
@@ -221,7 +220,7 @@ const VerticalNavGroup = (props: Props) => {
   }
 
   return (
-    <CanViewNavGroup navGroup={item}>
+    <>
       <Fragment>
         <ListItem
           disablePadding
@@ -323,7 +322,7 @@ const VerticalNavGroup = (props: Props) => {
           </Collapse>
         </ListItem>
       </Fragment>
-    </CanViewNavGroup>
+    </>
   )
 }
 
