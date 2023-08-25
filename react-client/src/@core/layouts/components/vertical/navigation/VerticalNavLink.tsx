@@ -2,7 +2,7 @@
 import { ElementType } from 'react'
 
 // ** React Router Imports
-import { useLocation, Link } from 'react-router-dom'
+import { useLocation, Link, Navigate, useNavigate } from 'react-router-dom'
 
 // ** MUI Imports
 import Chip from '@mui/material/Chip'
@@ -40,9 +40,7 @@ interface Props {
 }
 
 // ** Styled Components
-const MenuNavLink = styled(ListItemButton)<
-  ListItemButtonProps & { component?: ElementType; href: string; to: string; target?: '_blank' | undefined }
->(({ theme }) => ({
+const MenuNavLink = styled(ListItemButton)<ListItemButtonProps & { component?: ElementType }>(({ theme }) => ({
   width: '100%',
   borderRadius: 8,
   transition: 'padding-left .25s ease-in-out',
@@ -86,6 +84,7 @@ const VerticalNavLink = ({
   // ** Hooks
   const theme = useTheme()
   const location = useLocation()
+  const navigate = useNavigate()
 
   const pathname = location.pathname
 
@@ -136,17 +135,17 @@ const VerticalNavLink = ({
         }}
       >
         <MenuNavLink
-          component={Link}
+          // component={Navigate}
           {...(item.disabled && { tabIndex: -1 })}
           className={isNavLinkActive() ? 'active' : ''}
-          href={item.path === undefined ? '/' : `${item.path}`}
-          to={item.path === undefined ? '/' : `${item.path}`}
+          // href={item.path === undefined ? '/' : `${item.path}`}
+          // to={item.path === undefined ? '/' : `${item.path}`}
           {...(item.openInNewTab ? { target: '_blank' } : null)}
           onClick={e => {
             if (item.path === undefined) {
               e.preventDefault()
               e.stopPropagation()
-            }
+            } else navigate(item.path === undefined ? '/' : `apps/email`)
             if (navVisible) {
               toggleNavVisibility()
             }

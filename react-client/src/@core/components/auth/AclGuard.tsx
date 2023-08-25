@@ -11,6 +11,7 @@ import BlankLayout from 'src/@core/layouts/BlankLayout'
 // ** Hooks
 import { useAuth } from 'src/hooks/useAuth'
 import UserLayout from 'src/layouts/UserLayout'
+import CustomLayout from 'src/layouts/CustomLayout'
 
 interface AclGuardProps {
   children: ReactNode
@@ -36,7 +37,7 @@ const AclGuard = (props: AclGuardProps) => {
     return <>{children}</>
   }
 
-  if (adminGuard) return <UserLayout>{children}</UserLayout>
+  if (adminGuard) return <CustomLayout>{children}</CustomLayout>
 
   // Render Not Authorized component if the current user has limited access
   return (
