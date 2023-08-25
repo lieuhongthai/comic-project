@@ -36,17 +36,7 @@ const AclGuard = (props: AclGuardProps) => {
     return <>{children}</>
   }
 
-  if (adminGuard)
-    return (
-      <>
-        <UserLayout>{children}</UserLayout>
-      </>
-    )
-
-  // Check the access of current user and render pages
-  // if (ability && ability.can(aclAbilities.action, aclAbilities.subject)) {
-  //   return <AbilityContext.Provider value={ability}>{children}</AbilityContext.Provider>
-  // }
+  if (adminGuard) return <UserLayout>{children}</UserLayout>
 
   // Render Not Authorized component if the current user has limited access
   return (

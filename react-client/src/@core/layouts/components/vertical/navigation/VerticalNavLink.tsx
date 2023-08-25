@@ -40,28 +40,28 @@ interface Props {
 }
 
 // ** Styled Components
-const MenuNavLink = styled(ListItemButton)<ListItemButtonProps & { component?: ElementType; href: string; target?: '_blank' | undefined }>(
-  ({ theme }) => ({
-    width: '100%',
-    borderRadius: 8,
-    transition: 'padding-left .25s ease-in-out',
-    '&.active': {
-      '&, &:hover': {
-        backgroundColor: theme.palette.primary.light,
-        '&.Mui-focusVisible': {
-          backgroundColor: theme.palette.primary.main
-        }
-      },
-      '& .MuiTypography-root': {
-        fontWeight: 500,
-        color: `${theme.palette.common.white} !important`
-      },
-      '& .MuiListItemIcon-root': {
-        color: `${theme.palette.common.white} !important`
+const MenuNavLink = styled(ListItemButton)<
+  ListItemButtonProps & { component?: ElementType; href: string; to: string; target?: '_blank' | undefined }
+>(({ theme }) => ({
+  width: '100%',
+  borderRadius: 8,
+  transition: 'padding-left .25s ease-in-out',
+  '&.active': {
+    '&, &:hover': {
+      backgroundColor: theme.palette.primary.light,
+      '&.Mui-focusVisible': {
+        backgroundColor: theme.palette.primary.main
       }
+    },
+    '& .MuiTypography-root': {
+      fontWeight: 500,
+      color: `${theme.palette.common.white} !important`
+    },
+    '& .MuiListItemIcon-root': {
+      color: `${theme.palette.common.white} !important`
     }
-  })
-)
+  }
+}))
 
 const MenuItemTextMetaWrapper = styled(Box)<BoxProps>({
   width: '100%',
@@ -140,6 +140,7 @@ const VerticalNavLink = ({
           {...(item.disabled && { tabIndex: -1 })}
           className={isNavLinkActive() ? 'active' : ''}
           href={item.path === undefined ? '/' : `${item.path}`}
+          to={item.path === undefined ? '/' : `${item.path}`}
           {...(item.openInNewTab ? { target: '_blank' } : null)}
           onClick={e => {
             if (item.path === undefined) {

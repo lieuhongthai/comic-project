@@ -125,6 +125,8 @@ const Navigation = (props: Props) => {
 
   const ScrollWrapper = hidden ? Box : PerfectScrollbar
 
+  console.log(12005, 'Re-render: Navigation', navHover, groupActive, currentActiveGroup)
+
   return (
     <Drawer {...props} navHover={navHover} setNavHover={setNavHover}>
       <VerticalNavHeader {...props} navHover={navHover} />

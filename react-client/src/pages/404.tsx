@@ -12,7 +12,7 @@ import BlankLayout from 'src/@core/layouts/BlankLayout'
 
 // ** Demo Imports
 import FooterIllustrations from 'src/views/pages/misc/FooterIllustrations'
-import { Link } from 'react-router-dom'
+import { Link, useRouteError } from 'react-router-dom'
 
 // ** Styled Components
 const BoxWrapper = styled(Box)<BoxProps>(({ theme }) => ({
@@ -35,6 +35,9 @@ const Img = styled('img')(({ theme }) => ({
 }))
 
 const Error404 = () => {
+  const error = useRouteError()
+  console.log(12005, 'isRouteErrorResponse: ', error)
+
   return (
     <Box className='content-center'>
       <Box sx={{ p: 5, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
@@ -56,7 +59,5 @@ const Error404 = () => {
     </Box>
   )
 }
-
-Error404.getLayout = (page: ReactNode) => <BlankLayout>{page}</BlankLayout>
 
 export default Error404

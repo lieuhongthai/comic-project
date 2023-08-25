@@ -50,7 +50,6 @@ export type SettingsContextValue = {
 
 interface SettingsProviderProps {
   children: ReactNode
-  pageSettings?: PageSpecificSettings | void
 }
 
 const initialSettings: Settings = {
@@ -70,68 +69,15 @@ const initialSettings: Settings = {
   appBar: themeConfig.layout === 'horizontal' && themeConfig.appBar === 'hidden' ? 'fixed' : themeConfig.appBar
 }
 
-const staticSettings = {
-  appBar: initialSettings.appBar,
-  footer: initialSettings.footer,
-  layout: initialSettings.layout,
-  navHidden: initialSettings.navHidden,
-  lastLayout: initialSettings.lastLayout,
-  toastPosition: initialSettings.toastPosition
-}
-
-const restoreSettings = (): Settings | null => {
-  let settings = null
-
-  try {
-    const storedData: string | null = window.localStorage.getItem('settings')
-
-    if (storedData) {
-      settings = { ...JSON.parse(storedData), ...staticSettings }
-    } else {
-      settings = initialSettings
-    }
-  } catch (err) {
-    console.error(err)
-  }
-
-  return settings
-}
-
-// set settings in localStorage
-const storeSettings = (settings: Settings) => {
-  const initSettings = Object.assign({}, settings)
-
-  delete initSettings.appBar
-  delete initSettings.footer
-  delete initSettings.layout
-  delete initSettings.navHidden
-  delete initSettings.lastLayout
-  delete initSettings.toastPosition
-  window.localStorage.setItem('settings', JSON.stringify(initSettings))
-}
-
 // ** Create Context
 export const SettingsContext = createContext<SettingsContextValue>({
   saveSettings: () => null,
   settings: initialSettings
 })
 
-export const SettingsProvider = ({ children, pageSettings }: SettingsProviderProps) => {
+export const SettingsProvider = ({ children }: SettingsProviderProps) => {
   // ** State
   const [settings, setSettings] = useState<Settings>({ ...initialSettings })
-
-  useEffect(() => {
-    const restoredSettings = restoreSettings()
-
-    if (restoredSettings) {
-      setSettings({ ...restoredSettings })
-    }
-    if (pageSettings) {
-      setSettings({ ...settings, ...pageSettings })
-    }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pageSettings])
 
   useEffect(() => {
     if (settings.layout === 'horizontal' && settings.mode === 'semi-dark') {
@@ -142,10 +88,9 @@ export const SettingsProvider = ({ children, pageSettings }: SettingsProviderPro
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [settings.layout])
+  }, [])
 
   const saveSettings = (updatedSettings: Settings) => {
-    storeSettings(updatedSettings)
     setSettings(updatedSettings)
   }
 
