@@ -1,12 +1,33 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { useEffect } from 'react'
+import { createBrowserRouter, useLocation } from 'react-router-dom'
 import BlankLayout from 'src/@core/layouts/BlankLayout'
-import AuthLayout from 'src/layouts/AuthLayout'
 import Error404 from 'src/pages/404'
 import LoginPage from 'src/pages/login'
-function Test2() {
+
+// ** Loader Import
+import NProgress from 'nprogress'
+import CustomLayout from 'src/layouts/CustomLayout'
+
+export function Test2() {
   return <div>aaaaaaaaaaaaaaaaaaaaaaaaa</div>
 }
 
+export function NprogressLoading() {
+  const location = useLocation()
+  useEffect(() => {
+    NProgress.start()
+
+    console.log(12005, 1)
+
+    return () => {
+      console.log(12005, 2)
+
+      NProgress.done()
+    }
+  }, [location.pathname])
+
+  return <></>
+}
 export const routers = createBrowserRouter([
   {
     id: 'root',
@@ -15,34 +36,43 @@ export const routers = createBrowserRouter([
       return { userD: 1 }
     },
 
-    element: <AuthLayout />,
+    element: <CustomLayout />,
     children: [
       {
         index: true,
-        Component: Test2
+        element: <>aaaaaaaaaaaaaaaaaaaaaaaaaaa</>
       },
       {
-        id: 'guestGuard',
-        loader() {
-          return { guestGuard: true }
-        },
-        path: 'login',
-        element: <LoginPage />
-      },
-      {
-        path: 'home/',
+        path: 'apps/',
         id: 'adminGuard',
         loader() {
           return true
         },
-        Component: Test2,
-        children: [{ index: true, Component: Test2 }]
+        children: [
+          { index: true, element: <>111111111111111111</> },
+          {
+            path: 'email/',
+            element: <>2222222222222222222222222</>
+          }
+        ]
       }
     ],
 
     errorElement: (
       <BlankLayout>
         <Error404 />
+      </BlankLayout>
+    )
+  },
+  {
+    id: 'guestGuard',
+    loader() {
+      return { guestGuard: true }
+    },
+    path: '/login',
+    element: (
+      <BlankLayout>
+        <LoginPage />
       </BlankLayout>
     )
   }
