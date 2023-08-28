@@ -1,4 +1,4 @@
 {
   "i18n-ally.localesPaths": ["public/locales"],
-  "cSpell.words": ["Swipeable"]
+  "cSpell.words": ["deepmerge", "Swipeable"]
 }

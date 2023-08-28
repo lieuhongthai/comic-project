@@ -182,6 +182,8 @@ const TableColumns = () => {
         //     onChange: (event: ChangeEvent<HTMLInputElement>) => handleSearch(event.target.value)
         //   }
         // }}
+        pageSizeOptions={[20]}
+        paginationMode={'client'}
       />
     </Card>
   )

@@ -47,7 +47,7 @@ const AuthProvider = ({ children }: Props) => {
   useEffect(() => {
     const initAuth = async (): Promise<void> => {
       const storedToken = window.localStorage.getItem(authConfig.storageTokenKeyName)!
-      if (storedToken) {
+      if (cookies.__auth_) {
         setLoading(true)
         await axios
           .get(authConfig.meEndpoint, {

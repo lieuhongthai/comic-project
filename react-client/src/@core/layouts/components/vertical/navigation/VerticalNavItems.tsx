@@ -42,4 +42,4 @@ const VerticalNavItems = (props: Props) => {
   return <>{RenderMenuItems}</>
 }
 
-export default memo(VerticalNavItems, (pre, next) => pre.navHover === next.navHover)
+export default memo(VerticalNavItems, (pre, next) => !(pre.navHover !== next.navHover || pre.navVisible !== next.navVisible))

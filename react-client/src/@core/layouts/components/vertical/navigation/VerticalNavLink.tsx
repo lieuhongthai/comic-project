@@ -2,7 +2,7 @@
 import { ElementType } from 'react'
 
 // ** React Router Imports
-import { useLocation, Link, Navigate, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 // ** MUI Imports
 import Chip from '@mui/material/Chip'
@@ -135,17 +135,14 @@ const VerticalNavLink = ({
         }}
       >
         <MenuNavLink
-          // component={Navigate}
           {...(item.disabled && { tabIndex: -1 })}
           className={isNavLinkActive() ? 'active' : ''}
-          // href={item.path === undefined ? '/' : `${item.path}`}
-          // to={item.path === undefined ? '/' : `${item.path}`}
           {...(item.openInNewTab ? { target: '_blank' } : null)}
           onClick={e => {
             if (item.path === undefined) {
               e.preventDefault()
               e.stopPropagation()
-            } else navigate(item.path === undefined ? '/' : `apps/email`)
+            } else if (item.path !== pathname) navigate(item.path === undefined ? '/' : `apps/email`)
             if (navVisible) {
               toggleNavVisibility()
             }

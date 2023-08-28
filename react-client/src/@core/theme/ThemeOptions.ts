@@ -35,6 +35,7 @@ const themeOptions = (settings: Settings): ThemeOptions => {
         fontFamily:
           userFontFamily ||
           [
+            'Oswald',
             'Inter',
             'sans-serif',
             '-apple-system',

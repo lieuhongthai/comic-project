@@ -1,5 +1,5 @@
 // ** React Imports
-import { ReactNode } from 'react'
+import { ReactNode, useEffect } from 'react'
 
 // ** MUI Imports
 import { Theme } from '@mui/material/styles'
@@ -23,11 +23,28 @@ import HorizontalAppBarContent from './components/horizontal/AppBarContent'
 
 // ** Hook Import
 import { useSettings } from 'src/@core/hooks/useSettings'
+import { AuthProvider } from 'src/context/AuthContext'
 
-interface Props {
+// ** React router dom
+import { Outlet, useLocation } from 'react-router-dom'
+
+// ** Component Imports
+import WindowWrapper from 'src/@core/components/window-wrapper'
+import GuestGuard from 'src/@core/components/auth/GuestGuard'
+import AuthGuard from 'src/@core/components/auth/AuthGuard'
+
+// ** Spinner Import
+import Spinner from 'src/@core/components/spinner'
+
+// ** Loader Import
+import NProgress from 'nprogress'
+
+type GuardProps = {
+  authGuard: boolean
+  guestGuard: boolean
   children: ReactNode
 }
-const CustomLayout = ({ children }: Props) => {
+const CustomLayout = () => {
   // ** Hooks
   const { settings, saveSettings } = useSettings()
 
@@ -47,6 +64,23 @@ const CustomLayout = ({ children }: Props) => {
 
   if (hidden && settings.layout === 'horizontal') {
     settings.layout = 'vertical'
+  }
+
+  const location = useLocation()
+
+  useEffect(() => {
+    NProgress.start()
+    NProgress.done()
+  }, [location.pathname])
+
+  const Guard = ({ children, authGuard, guestGuard }: GuardProps) => {
+    if (guestGuard) {
+      return <GuestGuard fallback={<Spinner />}>{children}</GuestGuard>
+    } else if (!guestGuard && !authGuard) {
+      return <>{children}</>
+    } else {
+      return <AuthGuard fallback={<Spinner />}>{children}</AuthGuard>
+    }
   }
 
   return (
@@ -81,7 +115,13 @@ const CustomLayout = ({ children }: Props) => {
         }
       })}
     >
-      {children}
+      <AuthProvider>
+        <WindowWrapper>
+          <Guard authGuard={false} guestGuard={false}>
+            <Outlet />
+          </Guard>
+        </WindowWrapper>
+      </AuthProvider>
     </Layout>
   )
 }
