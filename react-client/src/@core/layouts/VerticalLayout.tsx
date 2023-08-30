@@ -1,5 +1,5 @@
 // ** React Imports
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 
 // ** MUI Imports
 import Fab from '@mui/material/Fab'
@@ -60,7 +60,7 @@ const VerticalLayout = (props: LayoutProps) => {
   const [navVisible, setNavVisible] = useState<boolean>(false)
 
   // ** Toggle Functions
-  const toggleNavVisibility = () => setNavVisible(!navVisible)
+  const toggleNavVisibility = useCallback(() => setNavVisible(!navVisible), [navVisible])
 
   return (
     <>

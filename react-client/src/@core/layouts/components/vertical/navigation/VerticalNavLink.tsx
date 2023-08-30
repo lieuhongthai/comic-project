@@ -146,7 +146,6 @@ const VerticalNavLink = ({
             if (navVisible) {
               toggleNavVisibility()
             }
-            console.log(12005, 'item: ', item)
           }}
           sx={{
             py: 2.25,

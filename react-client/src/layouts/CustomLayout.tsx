@@ -66,12 +66,12 @@ const CustomLayout = () => {
     settings.layout = 'vertical'
   }
 
-  const location = useLocation()
+  // const location = useLocation()
 
-  useEffect(() => {
-    NProgress.start()
-    NProgress.done()
-  }, [location.pathname])
+  // useEffect(() => {
+  //   NProgress.start()
+  //   NProgress.done()
+  // }, [location.pathname])
 
   const Guard = ({ children, authGuard, guestGuard }: GuardProps) => {
     if (guestGuard) {

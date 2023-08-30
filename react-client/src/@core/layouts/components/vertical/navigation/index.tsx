@@ -1,5 +1,5 @@
 // ** React Import
-import { useRef, useState } from 'react'
+import { memo, useRef, useState } from 'react'
 
 // ** MUI Import
 import List from '@mui/material/List'
@@ -162,4 +162,17 @@ const Navigation = (props: Props) => {
   )
 }
 
-export default Navigation
+export default memo(Navigation, (pre, next) => {
+  console.log(
+    12005,
+    { pre, next },
+    !(pre.hidden !== next.hidden || pre.navVisible !== next.navVisible || pre.toggleNavVisibility !== next.toggleNavVisibility)
+  )
+
+  return !(
+    pre.hidden !== next.hidden ||
+    pre.navVisible !== next.navVisible ||
+    pre.toggleNavVisibility !== next.toggleNavVisibility ||
+    pre.settings.navCollapsed !== next.settings.navCollapsed
+  )
+})
