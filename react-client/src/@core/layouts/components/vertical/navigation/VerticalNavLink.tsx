@@ -2,7 +2,7 @@
 import { ElementType } from 'react'
 
 // ** React Router Imports
-import { useLocation, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 // ** MUI Imports
 import Chip from '@mui/material/Chip'
@@ -40,7 +40,7 @@ interface Props {
 }
 
 // ** Styled Components
-const MenuNavLink = styled(ListItemButton)<ListItemButtonProps & { component?: ElementType }>(({ theme }) => ({
+const MenuNavLink = styled(ListItemButton)<ListItemButtonProps & { component?: ElementType; to: string | undefined | null }>(({ theme }) => ({
   width: '100%',
   borderRadius: 8,
   transition: 'padding-left .25s ease-in-out',
@@ -83,10 +83,8 @@ const VerticalNavLink = ({
 }: Props) => {
   // ** Hooks
   const theme = useTheme()
-  const location = useLocation()
-  const navigate = useNavigate()
 
-  const pathname = location.pathname
+  const pathname = window.location.pathname
 
   // ** Vars
   const { mode, navCollapsed } = settings
@@ -135,14 +133,16 @@ const VerticalNavLink = ({
         }}
       >
         <MenuNavLink
+          component={Link}
           {...(item.disabled && { tabIndex: -1 })}
           className={isNavLinkActive() ? 'active' : ''}
+          to={item.path === undefined ? '/' : item.path}
           {...(item.openInNewTab ? { target: '_blank' } : null)}
           onClick={e => {
             if (item.path === undefined) {
               e.preventDefault()
               e.stopPropagation()
-            } else if (item.path !== pathname) navigate(item.path === undefined ? '/' : item.path)
+            } // else if (item.path !== pathname) navigate(item.path === undefined ? '/' : item.path)
             if (navVisible) {
               toggleNavVisibility()
             }

@@ -162,17 +162,13 @@ const Navigation = (props: Props) => {
   )
 }
 
-export default memo(Navigation, (pre, next) => {
-  console.log(
-    12005,
-    { pre, next },
-    !(pre.hidden !== next.hidden || pre.navVisible !== next.navVisible || pre.toggleNavVisibility !== next.toggleNavVisibility)
-  )
-
-  return !(
-    pre.hidden !== next.hidden ||
-    pre.navVisible !== next.navVisible ||
-    pre.toggleNavVisibility !== next.toggleNavVisibility ||
-    pre.settings.navCollapsed !== next.settings.navCollapsed
-  )
-})
+export default memo(
+  Navigation,
+  (pre, next) =>
+    !(
+      pre.hidden !== next.hidden ||
+      pre.navVisible !== next.navVisible ||
+      pre.toggleNavVisibility !== next.toggleNavVisibility ||
+      pre.settings.navCollapsed !== next.settings.navCollapsed
+    )
+)
