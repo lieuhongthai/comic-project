@@ -40,9 +40,9 @@ type ThemeConfig = {
 
 const themeConfig: ThemeConfig = {
   // ** Layout Configs
-  templateName: 'GEO HOLDINGS CORPORATION' /* App Name */,
+  templateName: 'GEO' /* App Name HOLDINGS CORPORATION */,
   layout: 'vertical' /* vertical | horizontal */,
-  mode: 'light' as Mode /* light | dark | semi-dark /*! Note: semi-dark value will only work for Vertical Layout */,
+  mode: 'dark' as Mode /* light | dark | semi-dark /*! Note: semi-dark value will only work for Vertical Layout */,
   direction: 'ltr' /* ltr | rtl */,
   skin: 'bordered' /* default | bordered */,
   contentWidth: 'full' /* full | boxed */,
@@ -63,7 +63,7 @@ const themeConfig: ThemeConfig = {
 
   // ** AppBar Configs
   appBar: 'fixed' /* fixed | static | hidden /*! Note: hidden value will only work for Vertical Layout */,
-  appBarBlur: true /* true | false */,
+  appBarBlur: false /* true | false */,
 
   // ** Other Configs
   responsiveFontSizes: true /* true | false */,

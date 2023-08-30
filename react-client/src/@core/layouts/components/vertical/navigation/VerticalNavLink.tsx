@@ -142,10 +142,11 @@ const VerticalNavLink = ({
             if (item.path === undefined) {
               e.preventDefault()
               e.stopPropagation()
-            } else if (item.path !== pathname) navigate(item.path === undefined ? '/' : `apps/email`)
+            } else if (item.path !== pathname) navigate(item.path === undefined ? '/' : item.path)
             if (navVisible) {
               toggleNavVisibility()
             }
+            console.log(12005, 'item: ', item)
           }}
           sx={{
             py: 2.25,

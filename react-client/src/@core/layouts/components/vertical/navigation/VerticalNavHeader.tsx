@@ -16,9 +16,7 @@ import { Link } from 'react-router-dom'
 
 interface Props {
   navHover: boolean
-  collapsedNavWidth: number
   hidden: LayoutProps['hidden']
-  navigationBorderWidth: number
   toggleNavVisibility: () => void
   settings: LayoutProps['settings']
   saveSettings: LayoutProps['saveSettings']
@@ -56,9 +54,7 @@ const VerticalNavHeader = (props: Props) => {
     navHover,
     settings,
     saveSettings,
-    collapsedNavWidth,
     toggleNavVisibility,
-    navigationBorderWidth,
     menuLockedIcon: userMenuLockedIcon,
     navMenuBranding: userNavMenuBranding,
     menuUnlockedIcon: userMenuUnlockedIcon
@@ -89,7 +85,7 @@ const VerticalNavHeader = (props: Props) => {
       if (userNavMenuBranding) {
         return 0
       } else {
-        return 1.5 //(collapsedNavWidth - navigationBorderWidth - 40) / 8
+        return 1.5
       }
     } else {
       return 5.5

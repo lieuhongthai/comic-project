@@ -7,6 +7,8 @@ import LoginPage from 'src/pages/login'
 // ** Loader Import
 import NProgress from 'nprogress'
 import CustomLayout from 'src/layouts/CustomLayout'
+import UserList from 'src/pages/apps/user'
+import AppCalendar from 'src/pages/apps/calendar'
 
 export function Test2() {
   return <div>aaaaaaaaaaaaaaaaaaaaaaaaa</div>
@@ -51,8 +53,16 @@ export const routers = createBrowserRouter([
         children: [
           { index: true, element: <>111111111111111111</> },
           {
-            path: 'email/',
+            path: 'email',
             element: <>2222222222222222222222222</>
+          },
+          {
+            path: 'calendar',
+            element: <AppCalendar /> //<AppCalendar />
+          },
+          {
+            path: 'user/list',
+            element: <UserList />
           }
         ]
       }

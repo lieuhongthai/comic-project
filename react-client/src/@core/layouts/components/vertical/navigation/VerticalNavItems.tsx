@@ -28,6 +28,7 @@ const resolveNavItemComponent = (item: NavGroup | NavLink | NavSectionTitle) => 
 const VerticalNavItems = (props: Props) => {
   // ** Props
   const { verticalNavItems } = props
+  console.log(12005, 'Re-render: VerticalNavItems')
 
   // ** State
   const [groupActive, setGroupActive] = useState<string[]>([])
@@ -42,4 +43,5 @@ const VerticalNavItems = (props: Props) => {
   return <>{RenderMenuItems}</>
 }
 
+// export default memo(VerticalNavItems, (pre, next) => !(pre.navHover !== next.navHover || pre.navVisible !== next.navVisible))
 export default memo(VerticalNavItems, (pre, next) => !(pre.navHover !== next.navHover || pre.navVisible !== next.navVisible))
