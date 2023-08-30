@@ -33,6 +33,9 @@ import themeConfig from 'src/configs/themeConfig'
 // ** Helmet Imports
 import { Helmet } from 'react-helmet-async'
 
+// ** Spinner Import
+import Spinner from 'src/@core/components/spinner'
+
 function App() {
   return (
     <>
@@ -50,7 +53,7 @@ function App() {
           {({ settings }) => {
             return (
               <ThemeComponent settings={settings}>
-                <RouterProvider router={routers} />
+                <RouterProvider router={routers} fallbackElement={<Spinner />} />
                 <ReactHotToast>
                   <Toaster position={settings.toastPosition} toastOptions={{ className: 'react-hot-toast' }} />
                 </ReactHotToast>
