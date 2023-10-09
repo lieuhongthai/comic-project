@@ -6,7 +6,7 @@ import { ThemeOptions } from '@mui/material'
 import UserThemeOptions from 'src/layouts/UserThemeOptions'
 
 // ** Type Import
-import { Settings } from 'src/@core/context/settingsContext'
+import { initialSettings } from 'src/@core/context/settingsContext'
 
 // ** Theme Override Imports
 import palette from './palette'
@@ -14,9 +14,9 @@ import spacing from './spacing'
 import shadows from './shadows'
 import breakpoints from './breakpoints'
 
-const themeOptions = (settings: Settings): ThemeOptions => {
+const themeOptions = (): ThemeOptions => {
   // ** Vars
-  const { skin, mode, direction, themeColor } = settings
+  const { skin, mode, direction, themeColor } = initialSettings
 
   // ** Create New object before removing user component overrides and typography objects from userThemeOptions
   const userThemeConfig: any = Object.assign({}, UserThemeOptions())

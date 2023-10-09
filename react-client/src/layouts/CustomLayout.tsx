@@ -1,5 +1,4 @@
 // ** React Imports
-import { ReactNode, useEffect } from 'react'
 
 // ** MUI Imports
 import { Theme } from '@mui/material/styles'
@@ -11,7 +10,6 @@ import Layout from 'src/@core/layouts/Layout'
 
 // ** Navigation Imports
 import VerticalNavItems from 'src/navigation/vertical'
-import HorizontalNavItems from 'src/navigation/horizontal'
 
 // ** Component Import
 // Uncomment the below line (according to the layout type) when using server-side menu
@@ -19,34 +17,34 @@ import HorizontalNavItems from 'src/navigation/horizontal'
 // import ServerSideHorizontalNavItems from './components/horizontal/ServerSideNavItems'
 
 import VerticalAppBarContent from './components/vertical/AppBarContent'
-import HorizontalAppBarContent from './components/horizontal/AppBarContent'
 
 // ** Hook Import
-import { useSettings } from 'src/@core/hooks/useSettings'
+// import { useSettings } from 'src/@core/hooks/useSettings'
 import { AuthProvider } from 'src/context/AuthContext'
 
 // ** React router dom
-import { Outlet, useLocation } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
+import { useState } from 'react'
 
 // ** Component Imports
-import WindowWrapper from 'src/@core/components/window-wrapper'
-import GuestGuard from 'src/@core/components/auth/GuestGuard'
-import AuthGuard from 'src/@core/components/auth/AuthGuard'
 
 // ** Spinner Import
-import Spinner from 'src/@core/components/spinner'
 
 // ** Loader Import
-import NProgress from 'nprogress'
 
-type GuardProps = {
-  authGuard: boolean
-  guestGuard: boolean
-  children: ReactNode
-}
+// ** MUI Imports
+
+// ** ThemeConfig Import
+
+// ** Types Import
+import { Settings, initialSettings } from 'src/@core/context/settingsContext'
+
 const CustomLayout = () => {
   // ** Hooks
-  const { settings, saveSettings } = useSettings()
+  // const { settings, saveSettings } = useSettings()
+
+  // ** Statte
+  const [settings, saveSettings] = useState<Settings>({ ...initialSettings })
 
   // ** Vars for server side navigation
   // const { menuItems: verticalMenuItems } = ServerSideVerticalNavItems()
@@ -60,6 +58,7 @@ const CustomLayout = () => {
    *  to know more about what values can be passed to this hook.
    *  ! Do not change this value unless you know what you are doing. It can break the template.
    */
+
   const hidden = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'))
 
   if (hidden && settings.layout === 'horizontal') {
@@ -72,16 +71,6 @@ const CustomLayout = () => {
   //   NProgress.start()
   //   NProgress.done()
   // }, [location.pathname])
-
-  const Guard = ({ children, authGuard, guestGuard }: GuardProps) => {
-    if (guestGuard) {
-      return <GuestGuard fallback={<Spinner />}>{children}</GuestGuard>
-    } else if (!guestGuard && !authGuard) {
-      return <>{children}</>
-    } else {
-      return <AuthGuard fallback={<Spinner />}>{children}</AuthGuard>
-    }
-  }
 
   return (
     <Layout
@@ -102,11 +91,7 @@ const CustomLayout = () => {
       }}
     >
       <AuthProvider>
-        <WindowWrapper>
-          <Guard authGuard={false} guestGuard={false}>
-            <Outlet />
-          </Guard>
-        </WindowWrapper>
+        <Outlet />
       </AuthProvider>
     </Layout>
   )

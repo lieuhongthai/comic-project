@@ -52,7 +52,7 @@ interface SettingsProviderProps {
   children: ReactNode
 }
 
-const initialSettings: Settings = {
+export const initialSettings: Settings = {
   themeColor: 'primary',
   mode: themeConfig.mode,
   skin: themeConfig.skin,

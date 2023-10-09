@@ -21,12 +21,9 @@ import Icon from 'src/@core/components/icon'
 
 // ** Hooks
 import useBgColor from 'src/@core/hooks/useBgColor'
-import { useSettings } from 'src/@core/hooks/useSettings'
+import { initialSettings } from 'src/@core/context/settingsContext'
 
-const Transition = forwardRef(function Transition(
-  props: FadeProps & { children?: ReactElement<any, any> },
-  ref: Ref<unknown>
-) {
+const Transition = forwardRef(function Transition(props: FadeProps & { children?: ReactElement<any, any> }, ref: Ref<unknown>) {
   return <Fade ref={ref} {...props} />
 })
 
@@ -38,10 +35,9 @@ const DialogAuthentication = () => {
 
   // ** Hooks
   const bgColors = useBgColor()
-  const { settings } = useSettings()
 
   // ** Var
-  const { direction } = settings
+  const { direction } = initialSettings
 
   const handleClose = () => {
     setShow(false)
@@ -74,15 +70,7 @@ const DialogAuthentication = () => {
           Show
         </Button>
       </CardContent>
-      <Dialog
-        fullWidth
-        open={show}
-        maxWidth='md'
-        scroll='body'
-        onClose={handleClose}
-        onBackdropClick={handleClose}
-        TransitionComponent={Transition}
-      >
+      <Dialog fullWidth open={show} maxWidth='md' scroll='body' onClose={handleClose} onBackdropClick={handleClose} TransitionComponent={Transition}>
         <DialogContent sx={{ px: { xs: 8, sm: 15 }, py: { xs: 8, sm: 12.5 }, position: 'relative' }}>
           <IconButton size='small' onClick={handleClose} sx={{ position: 'absolute', right: '1rem', top: '1rem' }}>
             <Icon icon='mdi:close' />
@@ -94,9 +82,7 @@ const DialogAuthentication = () => {
                 <Typography variant='h5' sx={{ mb: 3, lineHeight: '2rem' }}>
                   Select Authentication Method
                 </Typography>
-                <Typography variant='body2'>
-                  You also need to select a method by which the proxy authenticates to the directory serve.
-                </Typography>
+                <Typography variant='body2'>You also need to select a method by which the proxy authenticates to the directory serve.</Typography>
               </Box>
             </Grid>
             <Grid item xs={12}>
@@ -109,11 +95,8 @@ const DialogAuthentication = () => {
                   borderRadius: 1,
                   cursor: 'pointer',
                   ...(authType === 'app' ? { ...bgColors.primaryLight } : { backgroundColor: 'action.hover' }),
-                  border: theme =>
-                    `1px solid ${authType === 'app' ? theme.palette.primary.main : theme.palette.secondary.main}`,
-                  ...(authType === 'app'
-                    ? { ...bgColors.primaryLight }
-                    : { backgroundColor: bgColors.secondaryLight.backgroundColor })
+                  border: theme => `1px solid ${authType === 'app' ? theme.palette.primary.main : theme.palette.secondary.main}`,
+                  ...(authType === 'app' ? { ...bgColors.primaryLight } : { backgroundColor: bgColors.secondaryLight.backgroundColor })
                 }}
               >
                 <Box sx={{ mb: 2, display: 'flex', alignItems: 'center', '& svg': { mr: 5.25 } }}>
@@ -139,11 +122,8 @@ const DialogAuthentication = () => {
                   borderRadius: 1,
                   cursor: 'pointer',
                   ...(authType === 'sms' ? { ...bgColors.primaryLight } : { backgroundColor: 'action.hover' }),
-                  border: theme =>
-                    `1px solid ${authType === 'sms' ? theme.palette.primary.main : theme.palette.secondary.main}`,
-                  ...(authType === 'sms'
-                    ? { ...bgColors.primaryLight }
-                    : { backgroundColor: bgColors.secondaryLight.backgroundColor })
+                  border: theme => `1px solid ${authType === 'sms' ? theme.palette.primary.main : theme.palette.secondary.main}`,
+                  ...(authType === 'sms' ? { ...bgColors.primaryLight } : { backgroundColor: bgColors.secondaryLight.backgroundColor })
                 }}
               >
                 <Box sx={{ mb: 2, display: 'flex', alignItems: 'center', '& svg': { mr: 5.25 } }}>
@@ -193,11 +173,7 @@ const DialogAuthentication = () => {
         onBackdropClick={handleAuthDialogClose}
       >
         <DialogContent sx={{ px: { xs: 8, sm: 15 }, py: { xs: 8, sm: 12.5 }, position: 'relative' }}>
-          <IconButton
-            size='small'
-            onClick={handleAuthDialogClose}
-            sx={{ position: 'absolute', right: '1rem', top: '1rem' }}
-          >
+          <IconButton size='small' onClick={handleAuthDialogClose} sx={{ position: 'absolute', right: '1rem', top: '1rem' }}>
             <Icon icon='mdi:close' />
           </IconButton>
 
@@ -206,9 +182,7 @@ const DialogAuthentication = () => {
               {authType === 'sms' ? (
                 <div>
                   <Typography variant='h6'>Verify Your Mobile Number for SMS</Typography>
-                  <Typography variant='body2'>
-                    Enter your mobile phone number with country code and we will send you a verification code.
-                  </Typography>
+                  <Typography variant='body2'>Enter your mobile phone number with country code and we will send you a verification code.</Typography>
                   <TextField fullWidth sx={{ my: 4 }} label='Mobile Number' placeholder='+1 123 456 7890' />
                   <Grid container spacing={6}>
                     <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'flex-end' }}>
@@ -228,8 +202,8 @@ const DialogAuthentication = () => {
                   </Typography>
                   <Typography variant='h6'>Authenticator Apps</Typography>
                   <Typography variant='body2' sx={{ mb: 4 }}>
-                    Using an authenticator app like Google Authenticator, Microsoft Authenticator, Authy, or 1Password,
-                    scan the QR code. It will generate a 6 digit code for you to enter below.
+                    Using an authenticator app like Google Authenticator, Microsoft Authenticator, Authy, or 1Password, scan the QR code. It will
+                    generate a 6 digit code for you to enter below.
                   </Typography>
 
                   <Box sx={{ my: 12, display: 'flex', justifyContent: 'center' }}>
@@ -237,18 +211,11 @@ const DialogAuthentication = () => {
                   </Box>
 
                   <Alert severity='warning' icon={false} sx={{ mb: 4, '& .MuiAlert-message': { overflow: 'hidden' } }}>
-                    <AlertTitle sx={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                      ASDLKNASDA9AHS678dGhASD78AB
-                    </AlertTitle>
+                    <AlertTitle sx={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>ASDLKNASDA9AHS678dGhASD78AB</AlertTitle>
                     If you having trouble using the QR code, select manual entry on your app
                   </Alert>
 
-                  <TextField
-                    fullWidth
-                    sx={{ mb: 4 }}
-                    label='Enter Authentication Code'
-                    placeholder='Enter Authentication Code'
-                  />
+                  <TextField fullWidth sx={{ mb: 4 }} label='Enter Authentication Code' placeholder='Enter Authentication Code' />
                   <Grid container spacing={6}>
                     <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                       <Button variant='outlined' color='secondary' onClick={handleAuthDialogClose} sx={{ mr: 4 }}>

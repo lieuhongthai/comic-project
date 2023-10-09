@@ -1,17 +1,14 @@
 // ** React Imports
-import { useState, useEffect, MouseEvent, useCallback } from 'react'
+import { useState, useEffect, MouseEvent, useCallback, useMemo } from 'react'
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Menu from '@mui/material/Menu'
 import Grid from '@mui/material/Grid'
 import Divider from '@mui/material/Divider'
-import { DataGrid } from '@mui/x-data-grid'
-import { styled } from '@mui/material/styles'
+import { styled, useTheme } from '@mui/material/styles'
 import MenuItem from '@mui/material/MenuItem'
 import IconButton from '@mui/material/IconButton'
-import Typography from '@mui/material/Typography'
 import CardHeader from '@mui/material/CardHeader'
 import InputLabel from '@mui/material/InputLabel'
 import FormControl from '@mui/material/FormControl'
@@ -25,7 +22,6 @@ import Icon from 'src/@core/components/icon'
 import { useDispatch, useSelector } from 'react-redux'
 
 // ** Custom Components Imports
-import CustomChip from 'src/@core/components/mui/chip'
 import CustomAvatar from 'src/@core/components/mui/avatar'
 
 // ** Utils Import
@@ -45,6 +41,7 @@ import { UsersType } from 'src/types/apps/userTypes'
 import TableHeader from 'src/views/apps/user/TableHeader'
 import AddUserDrawer from 'src/views/apps/user/AddUserDrawer'
 import { Link } from 'react-router-dom'
+import { MaterialReactTable, type MRT_ColumnDef } from 'material-react-table'
 
 interface UserRoleType {
   [key: string]: { icon: string; color: string }
@@ -52,6 +49,17 @@ interface UserRoleType {
 
 interface UserStatusType {
   [key: string]: ThemeColor
+}
+
+type UserType = {
+  fullName: string
+  email: string
+
+  role: string
+
+  currentPlan: string
+  status: string
+  actions: any
 }
 
 // ** Vars
@@ -155,97 +163,6 @@ const RowOptions = ({ id }: { id: number | string }) => {
   )
 }
 
-const columns = [
-  {
-    flex: 0.2,
-    minWidth: 230,
-    field: 'fullName',
-    headerName: 'User',
-    renderCell: ({ row }: CellType) => {
-      const { fullName, username } = row
-
-      return (
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          {renderClient(row)}
-          <Box sx={{ display: 'flex', alignItems: 'flex-start', flexDirection: 'column' }}>
-            <StyledLink to='/apps/user/view/overview/'>{fullName}</StyledLink>
-            <Typography noWrap variant='caption'>
-              {`@${username}`}
-            </Typography>
-          </Box>
-        </Box>
-      )
-    }
-  },
-  {
-    flex: 0.2,
-    minWidth: 250,
-    field: 'email',
-    headerName: 'Email',
-    renderCell: ({ row }: CellType) => {
-      return (
-        <Typography noWrap variant='body2'>
-          {row.email}
-        </Typography>
-      )
-    }
-  },
-  {
-    flex: 0.15,
-    field: 'role',
-    minWidth: 150,
-    headerName: 'Role',
-    renderCell: ({ row }: CellType) => {
-      return (
-        <Box sx={{ display: 'flex', alignItems: 'center', '& svg': { mr: 3, color: userRoleObj[row.role].color } }}>
-          <Icon icon={userRoleObj[row.role].icon} fontSize={20} />
-          <Typography noWrap sx={{ color: 'text.secondary', textTransform: 'capitalize' }}>
-            {row.role}
-          </Typography>
-        </Box>
-      )
-    }
-  },
-  {
-    flex: 0.15,
-    minWidth: 120,
-    headerName: 'Plan',
-    field: 'currentPlan',
-    renderCell: ({ row }: CellType) => {
-      return (
-        <Typography variant='subtitle1' noWrap sx={{ textTransform: 'capitalize' }}>
-          {row.currentPlan}
-        </Typography>
-      )
-    }
-  },
-  {
-    flex: 0.1,
-    minWidth: 110,
-    field: 'status',
-    headerName: 'Status',
-    renderCell: ({ row }: CellType) => {
-      return (
-        <CustomChip
-          skin='light'
-          size='small'
-          label={row.status}
-          color={userStatusObj[row.status]}
-          sx={{ textTransform: 'capitalize', '& .MuiChip-label': { lineHeight: '18px' } }}
-        />
-      )
-    }
-  },
-  {
-    flex: 0.1,
-    minWidth: 90,
-    sortable: false,
-    field: 'actions',
-    headerName: 'Actions',
-    renderCell: ({ row }: CellType) => <RowOptions id={row.id} />
-  }
-]
-
 const UserList = () => {
   // ** State
   const [role, setRole] = useState<string>('')
@@ -253,6 +170,41 @@ const UserList = () => {
   const [value, setValue] = useState<string>('')
   const [status, setStatus] = useState<string>('')
   const [addUserOpen, setAddUserOpen] = useState<boolean>(false)
+
+  // ** Hook
+  const theme = useTheme()
+
+  const userColumns = useMemo<MRT_ColumnDef<UserType>[]>(
+    () => [
+      {
+        accessorKey: 'fullName',
+        header: 'Full Name'
+      },
+      {
+        accessorKey: 'email',
+        header: 'Email'
+      },
+
+      {
+        accessorKey: 'role',
+        header: 'Role'
+      },
+
+      {
+        accessorKey: 'currentPlan',
+        header: 'Plan'
+      },
+      {
+        accessorKey: 'status',
+        header: 'Status'
+      },
+      {
+        accessorKey: 'actions',
+        header: 'Actions'
+      }
+    ],
+    []
+  )
 
   // ** Hooks
   const dispatch = useDispatch<AppDispatch>()
@@ -371,7 +323,36 @@ const UserList = () => {
           </CardContent>
           <Divider />
           <TableHeader value={value} handleFilter={handleFilter} toggle={toggleAddUserDrawer} />
-          <DataGrid autoHeight rows={store.data} columns={columns} checkboxSelection sx={{ '& .MuiDataGrid-columnHeaders': { borderRadius: 0 } }} />
+          <MaterialReactTable
+            columns={userColumns}
+            data={store.data}
+            enableColumnActions={false}
+            enableColumnFilters={false}
+            enablePagination={false}
+            enableSorting={false}
+            enableBottomToolbar={false}
+            enableTopToolbar={false}
+            muiTableBodyRowProps={{ hover: false }}
+            muiTableProps={{
+              sx: {
+                border: '1px solid rgba(81, 81, 81, 1)'
+              }
+            }}
+            muiTableHeadCellProps={{
+              align: 'center',
+              sx: {
+                // border: '1px solid rgba(81, 81, 81, 1)'
+                background: theme.palette.primary.main
+              },
+              size: 'small',
+              padding: 'none'
+            }}
+            muiTableBodyCellProps={{
+              sx: {
+                border: '1px solid rgba(81, 81, 81, 1)'
+              }
+            }}
+          />
         </Card>
       </Grid>
 

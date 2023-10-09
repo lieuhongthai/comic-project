@@ -2,12 +2,11 @@
 import { Theme } from '@mui/material/styles'
 
 // ** Hook Import
-import { useSettings } from 'src/@core/hooks/useSettings'
+import { initialSettings } from 'src/@core/context/settingsContext'
 
 const Accordion = (theme: Theme) => {
   // Hook & Var
-  const { settings } = useSettings()
-  const { skin } = settings
+  const { skin } = initialSettings
 
   return {
     MuiAccordion: {

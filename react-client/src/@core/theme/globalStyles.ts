@@ -3,11 +3,11 @@ import { Theme } from '@mui/material/styles'
 
 // ** Hook Import
 import { useSettings } from 'src/@core/hooks/useSettings'
+import { initialSettings } from '../context/settingsContext'
 
 const GlobalStyles = (theme: Theme) => {
   // ** Hook & Var
-  const { settings } = useSettings()
-  const { mode } = settings
+  const { mode } = initialSettings
 
   const perfectScrollbarThumbBgColor = () => {
     if (mode === 'light') {
@@ -16,6 +16,8 @@ const GlobalStyles = (theme: Theme) => {
       return '#57596C !important'
     }
   }
+
+  console.log(12005, theme.palette.mode)
 
   return {
     '.demo-space-x > *': {

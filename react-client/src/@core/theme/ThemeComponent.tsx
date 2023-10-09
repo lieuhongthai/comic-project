@@ -9,7 +9,7 @@ import GlobalStyles from '@mui/material/GlobalStyles'
 import { ThemeProvider, createTheme, responsiveFontSizes } from '@mui/material/styles'
 
 // ** Type Imports
-import { Settings } from 'src/@core/context/settingsContext'
+import { Settings, initialSettings } from 'src/@core/context/settingsContext'
 
 // ** Theme Config
 import themeConfig from 'src/configs/themeConfig'
@@ -29,16 +29,15 @@ import UserThemeOptions from 'src/layouts/UserThemeOptions'
 import GlobalStyling from './globalStyles'
 
 interface Props {
-  settings: Settings
   children: ReactNode
 }
 
 const ThemeComponent = (props: Props) => {
   // ** Props
-  const { settings, children } = props
+  const { children } = props
 
   // ** Merged ThemeOptions of Core and User
-  const coreThemeConfig = themeOptions(settings)
+  const coreThemeConfig = themeOptions()
 
   // ** Pass ThemeOptions to CreateTheme Function to create partial theme without component overrides
   let theme = createTheme(coreThemeConfig)
@@ -51,7 +50,7 @@ const ThemeComponent = (props: Props) => {
 
   // ** Continue theme creation and pass merged component overrides to CreateTheme function
   theme = createTheme(theme, {
-    components: { ...mergeComponentOverrides(theme, settings) },
+    components: { ...mergeComponentOverrides(theme, initialSettings) },
     typography: { ...mergeTypography(theme) }
   })
 

@@ -3,7 +3,6 @@ import { styled } from '@mui/material/styles'
 import Box, { BoxProps } from '@mui/material/Box'
 
 // ** Hooks
-import { useSettings } from 'src/@core/hooks/useSettings' // ** Hooks Imports
 import useBgColor, { UseBgColorType } from 'src/@core/hooks/useBgColor'
 
 // ** Util Import
@@ -11,10 +10,12 @@ import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
 
 // ** Styles
 import 'react-datepicker/dist/react-datepicker.css'
+import { initialSettings } from 'src/@core/context/settingsContext'
 
 const DatePickerWrapper = styled(Box)<BoxProps>(({ theme }) => {
   // ** Hook
-  const { settings } = useSettings()
+  const { skin } = initialSettings
+
   const bgColors: UseBgColorType = useBgColor()
 
   return {
@@ -29,8 +30,8 @@ const DatePickerWrapper = styled(Box)<BoxProps>(({ theme }) => {
       borderRadius: theme.shape.borderRadius,
       fontFamily: theme.typography.fontFamily,
       backgroundColor: theme.palette.background.paper,
-      boxShadow: theme.shadows[settings.skin === 'bordered' ? 0 : 7],
-      border: settings.skin === 'bordered' ? `1px solid ${theme.palette.divider}` : 'none',
+      boxShadow: theme.shadows[skin === 'bordered' ? 0 : 7],
+      border: skin === 'bordered' ? `1px solid ${theme.palette.divider}` : 'none',
       '& .react-datepicker__header': {
         padding: 0,
         border: 'none',
@@ -124,13 +125,12 @@ const DatePickerWrapper = styled(Box)<BoxProps>(({ theme }) => {
         '&:focus, &:active': {
           outline: 0
         },
-        '&.react-datepicker__day--outside-month, &.react-datepicker__day--disabled:not(.react-datepicker__day--selected)':
-          {
-            color: theme.palette.text.disabled,
-            '&:hover': {
-              backgroundColor: 'transparent'
-            }
-          },
+        '&.react-datepicker__day--outside-month, &.react-datepicker__day--disabled:not(.react-datepicker__day--selected)': {
+          color: theme.palette.text.disabled,
+          '&:hover': {
+            backgroundColor: 'transparent'
+          }
+        },
         '&.react-datepicker__day--highlighted, &.react-datepicker__day--highlighted:hover': {
           color: theme.palette.success.main,
           backgroundColor: `${bgColors.successLight.backgroundColor} !important`,

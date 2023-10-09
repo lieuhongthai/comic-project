@@ -3,12 +3,11 @@ import { styled } from '@mui/material/styles'
 import Box, { BoxProps } from '@mui/material/Box'
 
 // ** Hook Import
-import { useSettings } from 'src/@core/hooks/useSettings'
+import { initialSettings } from 'src/@core/context/settingsContext'
 
 const ReactHotToast = styled(Box)<BoxProps>(({ theme }) => {
   // ** Hook & Var
-  const { settings } = useSettings()
-  const { layout, navHidden } = settings
+  const { layout, navHidden } = initialSettings
 
   return {
     '& > div': {
@@ -25,10 +24,7 @@ const ReactHotToast = styled(Box)<BoxProps>(({ theme }) => {
       letterSpacing: '0.14px',
       color: theme.palette.text.primary,
       background: theme.palette.background.paper,
-      boxShadow:
-        theme.palette.mode === 'light'
-          ? '0px 4px 10px -4px rgba(76, 78, 100, 0.6)'
-          : '0px 8px 16px -4px rgba(20, 21, 33, 0.65)',
+      boxShadow: theme.palette.mode === 'light' ? '0px 4px 10px -4px rgba(76, 78, 100, 0.6)' : '0px 8px 16px -4px rgba(20, 21, 33, 0.65)',
       '&>:first-of-type:not([role])>:first-of-type': {
         width: 14,
         height: 14

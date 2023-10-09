@@ -18,7 +18,7 @@ import Icon from 'src/@core/components/icon'
 import { OptionType, OptionsMenuType, OptionMenuItemType } from './types'
 
 // ** Hook Import
-import { useSettings } from 'src/@core/hooks/useSettings'
+import { initialSettings } from 'src/@core/context/settingsContext'
 
 const MenuItemWrapper = ({ children, option }: { children: ReactNode; option: OptionMenuItemType }) => {
   if (option.href) {
@@ -53,8 +53,7 @@ const OptionsMenu = (props: OptionsMenuType) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 
   // ** Hook & Var
-  const { settings } = useSettings()
-  const { direction } = settings
+  const { direction } = initialSettings
 
   const handleClick = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)

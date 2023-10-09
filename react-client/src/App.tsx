@@ -6,7 +6,7 @@ import 'src/configs/i18n'
 // ** Fake-DB Import
 import 'src/@fake-db'
 
-import { SettingsConsumer, SettingsProvider } from 'src/@core/context/settingsContext'
+import { SettingsProvider, initialSettings } from 'src/@core/context/settingsContext'
 
 // ** React Perfect Scrollbar Style
 import 'react-perfect-scrollbar/dist/css/styles.css'
@@ -14,12 +14,9 @@ import 'react-perfect-scrollbar/dist/css/styles.css'
 import 'src/iconify-bundle/icons-bundle-react'
 
 import { RouterProvider } from 'react-router-dom'
-import { routers } from './routers'
 
 // ** Component Imports
 import ThemeComponent from 'src/@core/theme/ThemeComponent'
-
-// ** Spinner Import
 
 // ** Styled Components
 import ReactHotToast from 'src/@core/styles/libs/react-hot-toast'
@@ -36,6 +33,8 @@ import { Helmet } from 'react-helmet-async'
 // ** Spinner Import
 import Spinner from 'src/@core/components/spinner'
 
+import { routers } from './routers'
+
 function App() {
   return (
     <>
@@ -48,20 +47,12 @@ function App() {
         <meta name='keywords' content='Material Design, MUI, Admin Template, React Admin Template' />
         <meta name='viewport' content='initial-scale=1, width=device-width' />
       </Helmet>
-      <SettingsProvider>
-        <SettingsConsumer>
-          {({ settings }) => {
-            return (
-              <ThemeComponent settings={settings}>
-                <RouterProvider router={routers} fallbackElement={<Spinner />} />
-                <ReactHotToast>
-                  <Toaster position={settings.toastPosition} toastOptions={{ className: 'react-hot-toast' }} />
-                </ReactHotToast>
-              </ThemeComponent>
-            )
-          }}
-        </SettingsConsumer>
-      </SettingsProvider>
+      <ThemeComponent>
+        <RouterProvider router={routers} fallbackElement={<Spinner />} />
+        <ReactHotToast>
+          <Toaster position={initialSettings.toastPosition} toastOptions={{ className: 'react-hot-toast' }} />
+        </ReactHotToast>
+      </ThemeComponent>
     </>
   )
 }

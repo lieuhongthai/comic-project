@@ -20,14 +20,12 @@ import DialogContent from '@mui/material/DialogContent'
 // ** Icon Imports
 import Icon from 'src/@core/components/icon'
 
-// ** Hook Imports
-import { useSettings } from 'src/@core/hooks/useSettings'
-
 // ** Tab Content Imports
 import DialogTabDetails from 'src/views/pages/dialog-examples/create-app-tabs/DialogTabDetails'
 import DialogTabBilling from 'src/views/pages/dialog-examples/create-app-tabs/DialogTabBilling'
 import DialogTabDatabase from 'src/views/pages/dialog-examples/create-app-tabs/DialogTabDatabase'
 import DialogTabFramework from 'src/views/pages/dialog-examples/create-app-tabs/DialogTabFramework'
+import { initialSettings } from 'src/@core/context/settingsContext'
 
 interface TabLabelProps {
   title: string
@@ -36,10 +34,7 @@ interface TabLabelProps {
   icon: ReactElement
 }
 
-const Transition = forwardRef(function Transition(
-  props: FadeProps & { children?: ReactElement<any, any> },
-  ref: Ref<unknown>
-) {
+const Transition = forwardRef(function Transition(props: FadeProps & { children?: ReactElement<any, any> }, ref: Ref<unknown>) {
   return <Fade ref={ref} {...props} />
 })
 
@@ -76,11 +71,8 @@ const DialogCreateApp = () => {
   const [show, setShow] = useState<boolean>(false)
   const [activeTab, setActiveTab] = useState<string>('detailsTab')
 
-  // ** Hook
-  const { settings } = useSettings()
-
   // ** Var
-  const { direction } = settings
+  const { mode, direction } = initialSettings
 
   const handleClose = () => {
     setShow(false)
@@ -137,15 +129,7 @@ const DialogCreateApp = () => {
           Show
         </Button>
       </CardContent>
-      <Dialog
-        fullWidth
-        open={show}
-        scroll='body'
-        maxWidth='md'
-        onClose={handleClose}
-        onBackdropClick={handleClose}
-        TransitionComponent={Transition}
-      >
+      <Dialog fullWidth open={show} scroll='body' maxWidth='md' onClose={handleClose} onBackdropClick={handleClose} TransitionComponent={Transition}>
         <DialogContent
           sx={{
             position: 'relative',
@@ -233,14 +217,7 @@ const DialogCreateApp = () => {
                 <Tab
                   disableRipple
                   value='submitTab'
-                  label={
-                    <TabLabel
-                      title='Submit'
-                      subtitle='Submit'
-                      icon={<Icon icon='mdi:check' />}
-                      active={activeTab === 'submitTab'}
-                    />
-                  }
+                  label={<TabLabel title='Submit' subtitle='Submit' icon={<Icon icon='mdi:check' />} active={activeTab === 'submitTab'} />}
                 />
               </TabList>
               <TabPanel value='detailsTab' sx={{ flexGrow: 1 }}>
@@ -265,7 +242,7 @@ const DialogCreateApp = () => {
                   <Typography variant='body2'>Submit to kickstart your project.</Typography>
 
                   <Box sx={{ mt: 5, display: 'flex', justifyContent: 'center' }}>
-                    <img alt='submit-img' src={`/images/pages/create-app-dialog-illustration-${settings.mode}.png`} />
+                    <img alt='submit-img' src={`/images/pages/create-app-dialog-illustration-${mode}.png`} />
                   </Box>
                 </Box>
                 {renderTabFooter()}
