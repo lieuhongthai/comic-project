@@ -17,7 +17,7 @@ export type Settings = {
   footer?: Footer
   navHidden?: boolean // navigation menu
   appBarBlur: boolean
-  direction: Direction
+  direction?: Direction
   navCollapsed: boolean
   themeColor: ThemeColor
   contentWidth: ContentWidth
@@ -59,7 +59,6 @@ export const initialSettings: Settings = {
   footer: themeConfig.footer,
   layout: themeConfig.layout,
   lastLayout: themeConfig.layout,
-  direction: themeConfig.direction,
   navHidden: themeConfig.navHidden,
   appBarBlur: themeConfig.appBarBlur,
   navCollapsed: themeConfig.navCollapsed,

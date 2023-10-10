@@ -2,7 +2,6 @@
 import { Theme } from '@mui/material/styles'
 
 // ** Hook Import
-import { useSettings } from 'src/@core/hooks/useSettings'
 import { initialSettings } from '../context/settingsContext'
 
 const GlobalStyles = (theme: Theme) => {

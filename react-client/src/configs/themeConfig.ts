@@ -18,7 +18,7 @@ type ThemeConfig = {
   footer: Footer
   navHidden: boolean
   appBarBlur: boolean
-  direction: Direction
+  direction?: Direction
   templateName: string
   navCollapsed: boolean
   disableRipple: boolean
@@ -26,7 +26,6 @@ type ThemeConfig = {
   navSubItemIcon: string
   menuTextTruncate: boolean
   contentWidth: ContentWidth
-  disableCustomizer: boolean
   responsiveFontSizes: boolean
   collapsedNavigationSize: number
   horizontalMenuAnimation: boolean
@@ -41,7 +40,7 @@ type ThemeConfig = {
 const themeConfig: ThemeConfig = {
   // ** Layout Configs
   templateName: 'GEO' /* App Name HOLDINGS CORPORATION */,
-  layout: 'vertical' /* vertical | horizontal */,
+  layout: 'vertical' /* vertical | horizontal App Current Only layout vertical*/,
   mode: 'dark' as Mode /* light | dark | semi-dark /*! Note: semi-dark value will only work for Vertical Layout */,
   direction: 'ltr' /* ltr | rtl */,
   skin: 'bordered' /* default | bordered */,
@@ -58,17 +57,16 @@ const themeConfig: ThemeConfig = {
   collapsedNavigationSize: 68 /* Number in px(Pixels) /*! Note: This is for Vertical navigation menu only */,
   afterVerticalNavMenuContentPosition: 'fixed' /* fixed | static */,
   beforeVerticalNavMenuContentPosition: 'fixed' /* fixed | static */,
-  horizontalMenuToggle: 'hover' /* click | hover /*! Note: This is for Horizontal navigation menu only */,
+  horizontalMenuToggle: 'hover' /* click | hover */,
   horizontalMenuAnimation: true /* true | false */,
 
   // ** AppBar Configs
-  appBar: 'fixed' /* fixed | static | hidden /*! Note: hidden value will only work for Vertical Layout */,
+  appBar: 'static' /* fixed | static | hidden /*! Note: hidden value will only work for Vertical Layout */,
   appBarBlur: false /* true | false */,
 
   // ** Other Configs
   responsiveFontSizes: true /* true | false */,
   disableRipple: false /* true | false */,
-  disableCustomizer: false /* true | false */,
   toastPosition: 'top-right' /* top-left | top-center | top-right | bottom-left | bottom-center | bottom-right */
 }
 

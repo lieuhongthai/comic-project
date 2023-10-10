@@ -8,19 +8,7 @@ import { AuthRepository } from './repositories/auth/auth.repository';
 
 @Module({
   imports: [ConfigModule],
-  providers: [
-    ...databaseProviders,
-    ...databaseModels,
-    UserRepository,
-    RoleRepository,
-    AuthRepository,
-  ],
-  exports: [
-    ...databaseProviders,
-    ...databaseModels,
-    UserRepository,
-    RoleRepository,
-    AuthRepository,
-  ],
+  providers: [...databaseProviders, ...databaseModels, UserRepository, RoleRepository, AuthRepository],
+  exports: [...databaseProviders, ...databaseModels, UserRepository, RoleRepository, AuthRepository],
 })
 export class DatabaseModule {}

@@ -1,13 +1,11 @@
 // ** MUI Imports
 import Box from '@mui/material/Box'
 import Link from '@mui/material/Link'
-import { Theme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import useMediaQuery from '@mui/material/useMediaQuery'
 
 const FooterContent = () => {
   // ** Var
-  const hidden = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'))
+  // const hidden = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'))
 
   return (
     <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -17,11 +15,11 @@ const FooterContent = () => {
           ❤️
         </Box>
         {` by `}
-        <Link target='_blank' href='https://pixinvent.com/'>
-          Pixinvent
+        <Link target='_blank' href='https://geo-ssv.vn/company/vnm/'>
+          GEO System solution Vietnam
         </Link>
       </Typography>
-      {hidden ? null : (
+      {/* {hidden ? null : (
         <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', '& :not(:last-child)': { mr: 4 } }}>
           <Link target='_blank' href='https://themeforest.net/licenses/standard'>
             License
@@ -39,7 +37,7 @@ const FooterContent = () => {
             Support
           </Link>
         </Box>
-      )}
+      )} */}
     </Box>
   )
 }

@@ -99,7 +99,7 @@ const AppCalendar = () => {
         <Calendar
           store={store}
           dispatch={dispatch}
-          direction={direction}
+          direction={'ltr'}
           updateEvent={updateEvent}
           calendarApi={calendarApi}
           calendarsColor={calendarsColor}
