@@ -30,6 +30,15 @@ export function NprogressLoading() {
 
   return <></>
 }
+
+export function Component() {
+  return (
+    <div>
+      <h2>About</h2>
+    </div>
+  )
+}
+
 export const routers = createBrowserRouter([
   {
     id: 'root',
@@ -58,7 +67,19 @@ export const routers = createBrowserRouter([
           },
           {
             path: 'calendar',
-            element: <AppCalendar /> //<AppCalendar />
+            async loader() {
+              await new Promise(r => setTimeout(r, 11500))
+
+              return true
+            },
+            async lazy() {
+              await new Promise(r => setTimeout(r, 500))
+              let { default: AppCalendar } = await import('../pages/apps/calendar')
+
+              return {
+                Component: AppCalendar
+              }
+            }
           },
           {
             path: 'user/list',

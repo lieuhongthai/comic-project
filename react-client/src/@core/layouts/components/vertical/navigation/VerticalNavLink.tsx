@@ -1,8 +1,8 @@
 // ** React Imports
-import { ElementType } from 'react'
+import { ElementType, useState } from 'react'
 
 // ** React Router Imports
-import { Link } from 'react-router-dom'
+import { Link, useNavigation } from 'react-router-dom'
 
 // ** MUI Imports
 import Chip from '@mui/material/Chip'
@@ -37,6 +37,8 @@ interface Props {
   navigationBorderWidth: number
   toggleNavVisibility: () => void
   isSubToSub?: NavGroup | undefined
+  pathCurrent: string
+  setPathCurrent: any
 }
 
 // ** Styled Components
@@ -75,15 +77,17 @@ const VerticalNavLink = ({
   parent,
   navHover,
   settings,
+  setPathCurrent,
   navVisible,
   isSubToSub,
   collapsedNavWidth,
   toggleNavVisibility,
   navigationBorderWidth
 }: Props) => {
+  // ** State
   // ** Hooks
   const theme = useTheme()
-
+  const navigation = useNavigation()
   const pathname = window.location.pathname
 
   // ** Vars
@@ -113,7 +117,17 @@ const VerticalNavLink = ({
   }
 
   const isNavLinkActive = () => {
-    if (pathname === item.path || handleURLQueries({}, item.path)) {
+    if (navigation.state !== 'idle' || navigation.location) console.log(12005, { navigation })
+    // console.log(12005, 'pathCurrent: ', pathCurrent)
+
+    // if (item.path === pathCurrent) return true
+    // return false
+
+    if (
+      (navigation.state !== 'idle' && navigation.location.pathname === item.path) ||
+      (navigation.state === 'idle' && pathname === item.path) ||
+      handleURLQueries({}, item.path)
+    ) {
       return true
     } else {
       return false
@@ -143,6 +157,9 @@ const VerticalNavLink = ({
               e.preventDefault()
               e.stopPropagation()
             } // else if (item.path !== pathname) navigate(item.path === undefined ? '/' : item.path)
+            else {
+              setPathCurrent(item.path)
+            }
             if (navVisible) {
               toggleNavVisibility()
             }

@@ -64,6 +64,7 @@ const Navigation = (props: Props) => {
 
   // ** States
   const [navHover, setNavHover] = useState<boolean>(false)
+  const [pathCurrent, setPathCurrent] = useState<string>('')
 
   // ** Ref
   const shadowRef = useRef(null)
@@ -123,7 +124,7 @@ const Navigation = (props: Props) => {
 
   const ScrollWrapper = hidden ? Box : PerfectScrollbar
 
-  console.log(12005, 'Re-render: Navigation', navHover, userNavMenuContent && userNavMenuContent(props))
+  // console.log(12005, 'Re-render: Navigation', navHover, userNavMenuContent && userNavMenuContent(props))
 
   return (
     <Drawer {...props} navHover={navHover} setNavHover={setNavHover}>
@@ -151,7 +152,7 @@ const Navigation = (props: Props) => {
             userNavMenuContent(props)
           ) : (
             <List className='nav-items' sx={{ pt: 0, '& > :first-child': { mt: '0' } }}>
-              <VerticalNavItems navHover={navHover} {...props} />
+              <VerticalNavItems {...{ navHover, pathCurrent, setPathCurrent }} {...props} />
             </List>
           )}
           {afterNavMenuContent && afterVerticalNavMenuContentPosition === 'static' ? afterNavMenuContent(props) : null}

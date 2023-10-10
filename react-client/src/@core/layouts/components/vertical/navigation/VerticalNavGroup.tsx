@@ -30,7 +30,7 @@ import { NavGroup, LayoutProps } from 'src/@core/layouts/types'
 import VerticalNavItems from './VerticalNavItems'
 import UserIcon from 'src/layouts/components/UserIcon'
 import Translations from 'src/layouts/components/Translations'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigation } from 'react-router-dom'
 
 interface Props {
   item: NavGroup
@@ -77,6 +77,8 @@ const VerticalNavGroup = (props: Props) => {
   const theme = useTheme()
   const location = useLocation()
   const currentURL = location.pathname
+  const navigation = useNavigation()
+  const nextURL = navigation?.location?.pathname
   const { direction, mode, navCollapsed, verticalNavToggleType } = settings
 
   // ** Accordion menu group open toggle
@@ -136,7 +138,7 @@ const VerticalNavGroup = (props: Props) => {
   }
 
   useEffect(() => {
-    if (hasActiveChild(item, currentURL)) {
+    if (hasActiveChild(item, nextURL || currentURL)) {
       if (!groupActive.includes(item.title)) groupActive.push(item.title)
     } else {
       const index = groupActive.indexOf(item.title)
@@ -150,7 +152,7 @@ const VerticalNavGroup = (props: Props) => {
       setGroupActive([])
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.pathname])
+  }, [currentURL, nextURL])
 
   useEffect(() => {
     if (navCollapsed && !navHover) {
@@ -282,7 +284,7 @@ const VerticalNavGroup = (props: Props) => {
                   alignItems: 'center',
                   '& svg': {
                     ...conditionalArrowIconColor(),
-                    transition: 'transform .25s ease-in-out',
+                    transition: 'transform 0.25s ease-in-out',
                     ...(groupActive.includes(item.title) && {
                       transform: direction === 'ltr' ? 'rotate(90deg)' : 'rotate(-90deg)'
                     })

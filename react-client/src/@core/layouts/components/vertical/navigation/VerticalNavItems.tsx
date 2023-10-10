@@ -5,7 +5,7 @@ import { NavLink, NavGroup, LayoutProps, NavSectionTitle } from 'src/@core/layou
 import VerticalNavLink from './VerticalNavLink'
 import VerticalNavGroup from './VerticalNavGroup'
 import VerticalNavSectionTitle from './VerticalNavSectionTitle'
-import { memo, useState } from 'react'
+import { useState } from 'react'
 
 interface Props {
   parent?: NavGroup

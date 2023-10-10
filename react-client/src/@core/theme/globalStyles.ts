@@ -17,8 +17,6 @@ const GlobalStyles = (theme: Theme) => {
     }
   }
 
-  console.log(12005, theme.palette.mode)
-
   return {
     '.demo-space-x > *': {
       marginTop: '1rem !important',
