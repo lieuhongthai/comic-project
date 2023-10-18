@@ -1,8 +1,8 @@
 // ** Mock Adapter
-import mock from 'src/@fake-db/mock'
+import mock from 'src/@fake-db/mock';
 
 // ** Type import
-import { VerticalNavItemsType } from 'src/@core/layouts/types'
+import { VerticalNavItemsType } from 'src/@core/layouts/types';
 
 const navigation: VerticalNavItemsType = [
   {
@@ -352,7 +352,6 @@ const navigation: VerticalNavItemsType = [
     icon: 'mdi:google-circles-extended'
   },
   {
-    
     title: 'Cards',
     icon: 'mdi:credit-card-outline',
     children: [
@@ -463,7 +462,7 @@ const navigation: VerticalNavItemsType = [
       {
         title: 'More',
         path: '/components/more'
-      },
+      }
     ]
   },
   {
@@ -524,7 +523,7 @@ const navigation: VerticalNavItemsType = [
       {
         title: 'Input Mask',
         path: '/forms/form-elements/input-mask'
-      },
+      }
     ]
   },
   {
@@ -621,8 +620,8 @@ const navigation: VerticalNavItemsType = [
       }
     ]
   }
-]
+];
 
 mock.onGet('/api/vertical-nav/data').reply(() => {
-  return [200, navigation]
-})
+  return [200, navigation];
+});

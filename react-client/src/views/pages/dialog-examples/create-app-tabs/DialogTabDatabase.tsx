@@ -1,24 +1,24 @@
 // ** React Imports
-import { useState, ChangeEvent } from 'react'
+import { useState, ChangeEvent } from 'react';
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Radio from '@mui/material/Radio'
-import TextField from '@mui/material/TextField'
-import Typography from '@mui/material/Typography'
+import Box from '@mui/material/Box';
+import Radio from '@mui/material/Radio';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Custom Avatar Component
-import CustomAvatar from 'src/@core/components/mui/avatar'
+import CustomAvatar from 'src/@core/components/mui/avatar';
 
 const TabDatabase = () => {
-  const [value, setValue] = useState<string>('firebase')
+  const [value, setValue] = useState<string>('firebase');
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value)
-  }
+    setValue(event.target.value);
+  };
 
   return (
     <div>
@@ -61,10 +61,7 @@ const TabDatabase = () => {
           </Box>
           <Radio value='aws' onChange={handleChange} checked={value === 'aws'} />
         </Box>
-        <Box
-          onClick={() => setValue('sql')}
-          sx={{ cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
-        >
+        <Box onClick={() => setValue('sql')} sx={{ cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <CustomAvatar skin='light' color='info' variant='rounded' sx={{ mr: 3, width: 48, height: 48 }}>
               <Icon icon='mdi:database-outline' />
@@ -80,7 +77,7 @@ const TabDatabase = () => {
         </Box>
       </Box>
     </div>
-  )
-}
+  );
+};
 
-export default TabDatabase
+export default TabDatabase;

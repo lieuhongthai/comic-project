@@ -1,17 +1,17 @@
 // ** React Imports
-import { MouseEvent, useState } from 'react'
+import { MouseEvent, useState } from 'react';
 
 // ** MUI Imports
-import ToggleButton from '@mui/material/ToggleButton'
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 const ButtonToggleColors = () => {
   // ** State
-  const [alignment, setAlignment] = useState<string | null>('web')
+  const [alignment, setAlignment] = useState<string | null>('web');
 
   const handleAlignment = (event: MouseEvent<HTMLElement>, newAlignment: string | null) => {
-    setAlignment(newAlignment)
-  }
+    setAlignment(newAlignment);
+  };
 
   return (
     <div className='demo-space-x'>
@@ -51,7 +51,7 @@ const ButtonToggleColors = () => {
         <ToggleButton value='ios'>iOS</ToggleButton>
       </ToggleButtonGroup>
     </div>
-  )
-}
+  );
+};
 
-export default ButtonToggleColors
+export default ButtonToggleColors;

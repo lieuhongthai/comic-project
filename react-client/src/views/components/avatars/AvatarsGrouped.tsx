@@ -1,6 +1,6 @@
 // ** MUI Imports
-import Avatar from '@mui/material/Avatar'
-import AvatarGroup from '@mui/material/AvatarGroup'
+import Avatar from '@mui/material/Avatar';
+import AvatarGroup from '@mui/material/AvatarGroup';
 
 const AvatarsGrouped = () => {
   return (
@@ -27,7 +27,7 @@ const AvatarsGrouped = () => {
         <Avatar src='/images/avatars/7.png' alt='Jeffery Warner' />
       </AvatarGroup>
     </div>
-  )
-}
+  );
+};
 
-export default AvatarsGrouped
+export default AvatarsGrouped;

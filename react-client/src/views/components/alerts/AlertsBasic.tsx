@@ -1,5 +1,5 @@
 // ** MUI Imports
-import Alert from '@mui/material/Alert'
+import Alert from '@mui/material/Alert';
 
 const AlertsBasic = () => {
   return (
@@ -9,7 +9,7 @@ const AlertsBasic = () => {
       <Alert severity='info'>This is an info alert — check it out!</Alert>
       <Alert severity='success'>This is an success alert — check it out!</Alert>
     </div>
-  )
-}
+  );
+};
 
-export default AlertsBasic
+export default AlertsBasic;

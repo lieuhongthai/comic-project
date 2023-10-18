@@ -1,11 +1,11 @@
 // ** Redux Imports
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 // ** Axios Imports
-import axios from 'axios'
+import axios from 'axios';
 
 // ** Types
-import { CalendarFiltersType, AddEventType, EventType } from 'src/types/apps/calendarTypes'
+import { CalendarFiltersType, AddEventType, EventType } from 'src/types/apps/calendarTypes';
 
 // ** Fetch Events
 export const fetchEvents = createAsyncThunk('appCalendar/fetchEvents', async (calendars: CalendarFiltersType[]) => {
@@ -13,10 +13,10 @@ export const fetchEvents = createAsyncThunk('appCalendar/fetchEvents', async (ca
     params: {
       calendars
     }
-  })
+  });
 
-  return response.data
-})
+  return response.data;
+});
 
 // ** Add Event
 export const addEvent = createAsyncThunk('appCalendar/addEvent', async (event: AddEventType, { dispatch }) => {
@@ -24,11 +24,11 @@ export const addEvent = createAsyncThunk('appCalendar/addEvent', async (event: A
     data: {
       event
     }
-  })
-  await dispatch(fetchEvents(['Personal', 'Business', 'Family', 'Holiday', 'ETC']))
+  });
+  await dispatch(fetchEvents(['Personal', 'Business', 'Family', 'Holiday', 'ETC']));
 
-  return response.data.event
-})
+  return response.data.event;
+});
 
 // ** Update Event
 export const updateEvent = createAsyncThunk('appCalendar/updateEvent', async (event: EventType, { dispatch }) => {
@@ -36,21 +36,21 @@ export const updateEvent = createAsyncThunk('appCalendar/updateEvent', async (ev
     data: {
       event
     }
-  })
-  await dispatch(fetchEvents(['Personal', 'Business', 'Family', 'Holiday', 'ETC']))
+  });
+  await dispatch(fetchEvents(['Personal', 'Business', 'Family', 'Holiday', 'ETC']));
 
-  return response.data.event
-})
+  return response.data.event;
+});
 
 // ** Delete Event
 export const deleteEvent = createAsyncThunk('appCalendar/deleteEvent', async (id: number | string, { dispatch }) => {
   const response = await axios.delete('/apps/calendar/remove-event', {
     params: { id }
-  })
-  await dispatch(fetchEvents(['Personal', 'Business', 'Family', 'Holiday', 'ETC']))
+  });
+  await dispatch(fetchEvents(['Personal', 'Business', 'Family', 'Holiday', 'ETC']));
 
-  return response.data
-})
+  return response.data;
+});
 
 export const appCalendarSlice = createSlice({
   name: 'appCalendar',
@@ -61,34 +61,34 @@ export const appCalendarSlice = createSlice({
   },
   reducers: {
     handleSelectEvent: (state, action) => {
-      state.selectedEvent = action.payload
+      state.selectedEvent = action.payload;
     },
     handleCalendarsUpdate: (state, action) => {
-      const filterIndex = state.selectedCalendars.findIndex(i => i === action.payload)
+      const filterIndex = state.selectedCalendars.findIndex(i => i === action.payload);
       if (state.selectedCalendars.includes(action.payload)) {
-        state.selectedCalendars.splice(filterIndex, 1)
+        state.selectedCalendars.splice(filterIndex, 1);
       } else {
-        state.selectedCalendars.push(action.payload)
+        state.selectedCalendars.push(action.payload);
       }
       if (state.selectedCalendars.length === 0) {
-        state.events.length = 0
+        state.events.length = 0;
       }
     },
     handleAllCalendars: (state, action) => {
-      const value = action.payload
+      const value = action.payload;
       if (value === true) {
-        state.selectedCalendars = ['Personal', 'Business', 'Family', 'Holiday', 'ETC']
+        state.selectedCalendars = ['Personal', 'Business', 'Family', 'Holiday', 'ETC'];
       } else {
-        state.selectedCalendars = []
+        state.selectedCalendars = [];
       }
     }
   },
   extraReducers: builder => {
     builder.addCase(fetchEvents.fulfilled, (state, action) => {
-      state.events = action.payload
-    })
+      state.events = action.payload;
+    });
   }
-})
-export const { handleSelectEvent, handleCalendarsUpdate, handleAllCalendars } = appCalendarSlice.actions
+});
+export const { handleSelectEvent, handleCalendarsUpdate, handleAllCalendars } = appCalendarSlice.actions;
 
-export default appCalendarSlice.reducer
+export default appCalendarSlice.reducer;

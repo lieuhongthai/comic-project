@@ -1,23 +1,23 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import Avatar from '@mui/material/Avatar'
-import Typography from '@mui/material/Typography'
-import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Avatar from '@mui/material/Avatar';
+import Typography from '@mui/material/Typography';
+import CardHeader from '@mui/material/CardHeader';
+import CardContent from '@mui/material/CardContent';
 
 // ** Custom Components
-import CustomChip from 'src/@core/components/mui/chip'
-import OptionsMenu from 'src/@core/components/option-menu'
+import CustomChip from 'src/@core/components/mui/chip';
+import OptionsMenu from 'src/@core/components/option-menu';
 
 interface DataType {
-  src: string
-  title: string
-  imgAlt: string
-  subtitle: string
-  chipText: string
-  imgWidth: number
-  imgHeight: number
+  src: string;
+  title: string;
+  imgAlt: string;
+  subtitle: string;
+  chipText: string;
+  imgWidth: number;
+  imgHeight: number;
 }
 
 const data: DataType[] = [
@@ -66,19 +66,14 @@ const data: DataType[] = [
     imgAlt: 'ecommerce-website',
     src: '/images/cards/ecommerce-website.png'
   }
-]
+];
 
 const CardProjectStatistics = () => {
   return (
     <Card>
       <CardHeader
         title='Project Statistics'
-        action={
-          <OptionsMenu
-            options={['Refresh', 'Edit', 'Share']}
-            iconButtonProps={{ size: 'small', className: 'card-more-options' }}
-          />
-        }
+        action={<OptionsMenu options={['Refresh', 'Edit', 'Share']} iconButtonProps={{ size: 'small', className: 'card-more-options' }} />}
       />
       <CardContent>
         <Box sx={{ mb: 5, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -142,11 +137,11 @@ const CardProjectStatistics = () => {
                 />
               </Box>
             </Box>
-          )
+          );
         })}
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardProjectStatistics
+export default CardProjectStatistics;

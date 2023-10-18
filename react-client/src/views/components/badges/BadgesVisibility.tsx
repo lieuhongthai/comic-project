@@ -1,17 +1,17 @@
 // ** React Imports
-import { useState, Fragment } from 'react'
+import { useState, Fragment } from 'react';
 
 // ** MUI Imports
-import Badge from '@mui/material/Badge'
-import Switch from '@mui/material/Switch'
-import Button from '@mui/material/Button'
-import Avatar from '@mui/material/Avatar'
-import { styled } from '@mui/material/styles'
-import ButtonGroup from '@mui/material/ButtonGroup'
-import FormControlLabel from '@mui/material/FormControlLabel'
+import Badge from '@mui/material/Badge';
+import Switch from '@mui/material/Switch';
+import Button from '@mui/material/Button';
+import Avatar from '@mui/material/Avatar';
+import { styled } from '@mui/material/styles';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // Styled component for a wrapper
 const Wrapper = styled('div')(({ theme }) => ({
@@ -20,16 +20,16 @@ const Wrapper = styled('div')(({ theme }) => ({
   '& > *': {
     marginRight: `${theme.spacing(6)} !important`
   }
-}))
+}));
 
 const BadgesVisibility = () => {
   // ** States
-  const [count, setCount] = useState<number>(1)
-  const [invisible, setInvisible] = useState<boolean>(false)
+  const [count, setCount] = useState<number>(1);
+  const [invisible, setInvisible] = useState<boolean>(false);
 
   const handleBadgeVisibility = () => {
-    setInvisible(!invisible)
-  }
+    setInvisible(!invisible);
+  };
 
   return (
     <Fragment>
@@ -51,13 +51,10 @@ const BadgesVisibility = () => {
         <Badge variant='dot' color='primary' invisible={invisible}>
           <Avatar src='/images/avatars/1.png' alt='User Avatar' />
         </Badge>
-        <FormControlLabel
-          label='Show Badge'
-          control={<Switch color='primary' checked={!invisible} onChange={handleBadgeVisibility} />}
-        />
+        <FormControlLabel label='Show Badge' control={<Switch color='primary' checked={!invisible} onChange={handleBadgeVisibility} />} />
       </Wrapper>
     </Fragment>
-  )
-}
+  );
+};
 
-export default BadgesVisibility
+export default BadgesVisibility;

@@ -1,8 +1,8 @@
 // ** Mock Adapter
-import mock from 'src/@fake-db/mock'
+import mock from 'src/@fake-db/mock';
 
 // ** Types
-import { PermissionRowType } from 'src/types/apps/permissionTypes'
+import { PermissionRowType } from 'src/types/apps/permissionTypes';
 
 const data: { permissions: PermissionRowType[] } = {
   permissions: [
@@ -61,20 +61,20 @@ const data: { permissions: PermissionRowType[] } = {
       assignedTo: ['administrator', 'support']
     }
   ]
-}
+};
 
 // ------------------------------------------------
 // GET: Return Permissions List
 // ------------------------------------------------
 mock.onGet('/apps/permissions/data').reply(config => {
-  const { q = '' } = config.params
-  const queryLowered = q.toLowerCase()
+  const { q = '' } = config.params;
+  const queryLowered = q.toLowerCase();
   const filteredData = data.permissions.filter(
     permissions =>
       permissions.name.toLowerCase().includes(queryLowered) ||
       permissions.createdDate.toLowerCase().includes(queryLowered) ||
       permissions.assignedTo.some(i => i.toLowerCase().startsWith(queryLowered))
-  )
+  );
 
   return [
     200,
@@ -84,5 +84,5 @@ mock.onGet('/apps/permissions/data').reply(config => {
       permissions: filteredData,
       total: filteredData.length
     }
-  ]
-})
+  ];
+});

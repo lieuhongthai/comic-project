@@ -1,46 +1,46 @@
 // ** React Imports
-import { SyntheticEvent } from 'react'
+import { SyntheticEvent } from 'react';
 
 // ** MUI Components
-import Box from '@mui/material/Box'
-import Grid from '@mui/material/Grid'
-import Card from '@mui/material/Card'
-import Divider from '@mui/material/Divider'
-import Tooltip from '@mui/material/Tooltip'
-import CardHeader from '@mui/material/CardHeader'
-import Typography from '@mui/material/Typography'
-import AvatarGroup from '@mui/material/AvatarGroup'
-import CardContent from '@mui/material/CardContent'
-import LinearProgress from '@mui/material/LinearProgress'
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Card from '@mui/material/Card';
+import Divider from '@mui/material/Divider';
+import Tooltip from '@mui/material/Tooltip';
+import CardHeader from '@mui/material/CardHeader';
+import Typography from '@mui/material/Typography';
+import AvatarGroup from '@mui/material/AvatarGroup';
+import CardContent from '@mui/material/CardContent';
+import LinearProgress from '@mui/material/LinearProgress';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Types
-import { ProjectsTabType } from 'src/@fake-db/types'
+import { ProjectsTabType } from 'src/@fake-db/types';
 
 // ** Utils Import
-import { getInitials } from 'src/@core/utils/get-initials'
+import { getInitials } from 'src/@core/utils/get-initials';
 
 // ** Custom Components Imports
-import CustomChip from 'src/@core/components/mui/chip'
-import CustomAvatar from 'src/@core/components/mui/avatar'
-import OptionsMenu from 'src/@core/components/option-menu'
-import { Link } from 'react-router-dom'
+import CustomChip from 'src/@core/components/mui/chip';
+import CustomAvatar from 'src/@core/components/mui/avatar';
+import OptionsMenu from 'src/@core/components/option-menu';
+import { Link } from 'react-router-dom';
 
 const ProjectAvatar = ({ project }: { project: ProjectsTabType }) => {
-  const { title, avatar, avatarColor = 'primary' } = project
+  const { title, avatar, avatarColor = 'primary' } = project;
 
   if (avatar.length) {
-    return <CustomAvatar src={avatar} sx={{ width: 38, height: 38 }} />
+    return <CustomAvatar src={avatar} sx={{ width: 38, height: 38 }} />;
   } else {
     return (
       <CustomAvatar skin='light' color={avatarColor} sx={{ width: 38, height: 38 }}>
         {getInitials(title)}
       </CustomAvatar>
-    )
+    );
   }
-}
+};
 
 const Projects = ({ data }: { data: ProjectsTabType[] }) => {
   return (
@@ -159,7 +159,7 @@ const Projects = ({ data }: { data: ProjectsTabType[] }) => {
                               <Tooltip key={index} title={person.name}>
                                 <CustomAvatar src={person.avatar} alt={person.name} sx={{ height: 32, width: 32 }} />
                               </Tooltip>
-                            )
+                            );
                           })}
                       </AvatarGroup>
                       <Typography variant='body2' sx={{ color: 'text.disabled' }}>
@@ -184,10 +184,10 @@ const Projects = ({ data }: { data: ProjectsTabType[] }) => {
                 </CardContent>
               </Card>
             </Grid>
-          )
+          );
         })}
     </Grid>
-  )
-}
+  );
+};
 
-export default Projects
+export default Projects;

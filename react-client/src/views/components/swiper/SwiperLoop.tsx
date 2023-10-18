@@ -1,16 +1,16 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import { Direction } from '@mui/material'
+import Box from '@mui/material/Box';
+import { Direction } from '@mui/material';
 
 // ** Third Party Components
-import { useKeenSlider } from 'keen-slider/react'
+import { useKeenSlider } from 'keen-slider/react';
 
 const SwiperLoop = ({ direction }: { direction: Direction }) => {
   // ** Hook
   const [ref] = useKeenSlider<HTMLDivElement>({
     loop: true,
     rtl: direction === 'rtl'
-  })
+  });
 
   return (
     <Box ref={ref} className='keen-slider'>
@@ -27,7 +27,7 @@ const SwiperLoop = ({ direction }: { direction: Direction }) => {
         <img src='/images/banners/banner-10.jpg' alt='swiper 10' />
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default SwiperLoop
+export default SwiperLoop;

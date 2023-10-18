@@ -1,49 +1,49 @@
 // ** React Imports
-import { SyntheticEvent, useState } from 'react'
+import { SyntheticEvent, useState } from 'react';
 
 // ** MUI Import
-import Box from '@mui/material/Box'
-import Tab from '@mui/material/Tab'
-import Card from '@mui/material/Card'
-import TabList from '@mui/lab/TabList'
-import Table from '@mui/material/Table'
-import TabPanel from '@mui/lab/TabPanel'
-import Avatar from '@mui/material/Avatar'
-import TabContext from '@mui/lab/TabContext'
-import TableRow from '@mui/material/TableRow'
-import TableBody from '@mui/material/TableBody'
-import TableCell from '@mui/material/TableCell'
-import TableHead from '@mui/material/TableHead'
-import CardHeader from '@mui/material/CardHeader'
-import TableContainer from '@mui/material/TableContainer'
+import Box from '@mui/material/Box';
+import Tab from '@mui/material/Tab';
+import Card from '@mui/material/Card';
+import TabList from '@mui/lab/TabList';
+import Table from '@mui/material/Table';
+import TabPanel from '@mui/lab/TabPanel';
+import Avatar from '@mui/material/Avatar';
+import TabContext from '@mui/lab/TabContext';
+import TableRow from '@mui/material/TableRow';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableHead from '@mui/material/TableHead';
+import CardHeader from '@mui/material/CardHeader';
+import TableContainer from '@mui/material/TableContainer';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Custom Components Imports
-import OptionsMenu from 'src/@core/components/option-menu'
+import OptionsMenu from 'src/@core/components/option-menu';
 
 // ** Util Import
-import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
+import { hexToRGBA } from 'src/@core/utils/hex-to-rgba';
 
 interface TabAvatarType {
-  imgWidth: number
-  category: string
-  imgHeight: number
+  imgWidth: number;
+  category: string;
+  imgHeight: number;
 }
 interface TabContentType {
-  price: string
-  total: string
-  imgAlt: string
-  imgSrc: string
-  product: string
-  quantity: number
+  price: string;
+  total: string;
+  imgAlt: string;
+  imgSrc: string;
+  product: string;
+  quantity: number;
 }
 interface TabContentDataType {
-  watch: TabContentType[]
-  mobile: TabContentType[]
-  desktop: TabContentType[]
-  console: TabContentType[]
+  watch: TabContentType[];
+  mobile: TabContentType[];
+  desktop: TabContentType[];
+  console: TabContentType[];
 }
 
 const tabAvatars: TabAvatarType[] = [
@@ -67,7 +67,7 @@ const tabAvatars: TabAvatarType[] = [
     imgHeight: 50,
     category: 'watch'
   }
-]
+];
 
 const tabContentData: TabContentDataType = {
   mobile: [
@@ -206,7 +206,7 @@ const tabContentData: TabContentDataType = {
       imgSrc: '/images/cards/gramin-verve.png'
     }
   ]
-}
+};
 
 const RenderTabContent = ({ data }: { data: TabContentType[] }) => {
   return (
@@ -250,16 +250,16 @@ const RenderTabContent = ({ data }: { data: TabContentType[] }) => {
         </TableBody>
       </Table>
     </TableContainer>
-  )
-}
+  );
+};
 
 const CardTopReferralSources = () => {
   // ** State
-  const [value, setValue] = useState<string>('mobile')
+  const [value, setValue] = useState<string>('mobile');
 
   const handleChange = (event: SyntheticEvent, newValue: string) => {
-    setValue(newValue)
-  }
+    setValue(newValue);
+  };
 
   const RenderTabAvatar = ({ data }: { data: TabAvatarType }) => (
     <Avatar
@@ -271,11 +271,10 @@ const CardTopReferralSources = () => {
         height: 92,
         backgroundColor: 'transparent',
         '& img': { width: data.imgWidth, height: data.imgHeight },
-        border: theme =>
-          value === data.category ? `2px solid ${theme.palette.primary.main}` : `2px dashed ${theme.palette.divider}`
+        border: theme => (value === data.category ? `2px solid ${theme.palette.primary.main}` : `2px dashed ${theme.palette.divider}`)
       }}
     />
-  )
+  );
 
   return (
     <Card>
@@ -283,10 +282,7 @@ const CardTopReferralSources = () => {
         title='Top Referral Sources'
         subheader='82% Activity Growth'
         action={
-          <OptionsMenu
-            options={['Last 28 Days', 'Last Month', 'Last Year']}
-            iconButtonProps={{ size: 'small', className: 'card-more-options' }}
-          />
+          <OptionsMenu options={['Last 28 Days', 'Last Month', 'Last Year']} iconButtonProps={{ size: 'small', className: 'card-more-options' }} />
         }
       />
       <TabContext value={value}>
@@ -317,8 +313,7 @@ const CardTopReferralSources = () => {
                   width: 100,
                   height: 92,
                   backgroundColor: 'transparent',
-                  border: theme =>
-                    value === 'add' ? `2px solid ${theme.palette.primary.main}` : `2px dashed ${theme.palette.divider}`
+                  border: theme => (value === 'add' ? `2px solid ${theme.palette.primary.main}` : `2px dashed ${theme.palette.divider}`)
                 }}
               >
                 <Box
@@ -354,7 +349,7 @@ const CardTopReferralSources = () => {
         </TabPanel>
       </TabContext>
     </Card>
-  )
-}
+  );
+};
 
-export default CardTopReferralSources
+export default CardTopReferralSources;

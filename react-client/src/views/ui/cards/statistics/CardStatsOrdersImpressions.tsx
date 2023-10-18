@@ -1,13 +1,13 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import Divider from '@mui/material/Divider'
-import Typography from '@mui/material/Typography'
-import CardContent from '@mui/material/CardContent'
-import CircularProgress from '@mui/material/CircularProgress'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Divider from '@mui/material/Divider';
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
+import CircularProgress from '@mui/material/CircularProgress';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 const CardStatsOrdersImpressions = () => {
   return (
@@ -108,7 +108,7 @@ const CardStatsOrdersImpressions = () => {
         </Box>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardStatsOrdersImpressions
+export default CardStatsOrdersImpressions;

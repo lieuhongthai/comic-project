@@ -1,6 +1,6 @@
 // ** MUI Imports
-import Badge from '@mui/material/Badge'
-import Avatar from '@mui/material/Avatar'
+import Badge from '@mui/material/Badge';
+import Avatar from '@mui/material/Avatar';
 
 const BadgesBasic = () => {
   return (
@@ -24,7 +24,7 @@ const BadgesBasic = () => {
         <Avatar src='/images/avatars/1.png' alt='User Avatar' />
       </Badge>
     </div>
-  )
-}
+  );
+};
 
-export default BadgesBasic
+export default BadgesBasic;

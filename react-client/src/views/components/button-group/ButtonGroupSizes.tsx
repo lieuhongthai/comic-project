@@ -1,6 +1,6 @@
 // ** MUI Imports
-import Button from '@mui/material/Button'
-import ButtonGroup from '@mui/material/ButtonGroup'
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
 
 const ButtonGroupSizes = () => {
   return (
@@ -27,7 +27,7 @@ const ButtonGroupSizes = () => {
         </ButtonGroup>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ButtonGroupSizes
+export default ButtonGroupSizes;

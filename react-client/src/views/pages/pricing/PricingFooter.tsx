@@ -1,22 +1,22 @@
 // ** React Imports
-import { SyntheticEvent, useState } from 'react'
+import { SyntheticEvent, useState } from 'react';
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import { styled } from '@mui/material/styles'
-import Typography from '@mui/material/Typography'
-import AccordionSummary from '@mui/material/AccordionSummary'
-import AccordionDetails from '@mui/material/AccordionDetails'
-import MuiAccordion, { AccordionProps } from '@mui/material/Accordion'
+import Box from '@mui/material/Box';
+import { styled } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import MuiAccordion, { AccordionProps } from '@mui/material/Accordion';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Types
-import { PricingDataType, PricingFaqType } from 'src/@core/components/plan-details/types'
+import { PricingDataType, PricingFaqType } from 'src/@core/components/plan-details/types';
 
 interface Props {
-  data: PricingDataType | null
+  data: PricingDataType | null;
 }
 
 const Accordion = styled(MuiAccordion)<AccordionProps>(({ theme }) => ({
@@ -27,18 +27,18 @@ const Accordion = styled(MuiAccordion)<AccordionProps>(({ theme }) => ({
   borderBottom: `1px solid ${theme.palette.divider}`,
   '&:first-of-type': { borderTop: `1px solid ${theme.palette.divider}` },
   '&.Mui-expanded + .MuiAccordion-root': { borderTop: `1px solid ${theme.palette.divider}` }
-}))
+}));
 
 const PricingFooter = (props: Props) => {
   // ** Props
-  const { data } = props
+  const { data } = props;
 
   // ** Props
-  const [expanded, setExpanded] = useState<string | false>(false)
+  const [expanded, setExpanded] = useState<string | false>(false);
 
   const handleChange = (panel: string) => (event: SyntheticEvent, isExpanded: boolean) => {
-    setExpanded(isExpanded ? panel : false)
-  }
+    setExpanded(isExpanded ? panel : false);
+  };
 
   const renderAccordion = () => {
     return data?.faq.map((item: PricingFaqType) => {
@@ -55,9 +55,9 @@ const PricingFooter = (props: Props) => {
             <Typography>{item.answer}</Typography>
           </AccordionDetails>
         </Accordion>
-      )
-    })
-  }
+      );
+    });
+  };
 
   return (
     <>
@@ -71,7 +71,7 @@ const PricingFooter = (props: Props) => {
         <div>{renderAccordion()}</div>
       </Box>
     </>
-  )
-}
+  );
+};
 
-export default PricingFooter
+export default PricingFooter;

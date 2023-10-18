@@ -1,10 +1,10 @@
 // ** React Imports
-import { useState } from 'react'
+import { useState } from 'react';
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Rating from '@mui/material/Rating'
-import Typography from '@mui/material/Typography'
+import Box from '@mui/material/Box';
+import Rating from '@mui/material/Rating';
+import Typography from '@mui/material/Typography';
 
 const labels: { [index: string]: string } = {
   0.5: 'Useless',
@@ -17,12 +17,12 @@ const labels: { [index: string]: string } = {
   4: 'Good+',
   4.5: 'Excellent',
   5: 'Excellent+'
-}
+};
 
 const RatingsHoverFeedback = () => {
   // ** States
-  const [hover, setHover] = useState<number>(-1)
-  const [value, setValue] = useState<number | null>(2)
+  const [hover, setHover] = useState<number>(-1);
+  const [value, setValue] = useState<number | null>(2);
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -36,7 +36,7 @@ const RatingsHoverFeedback = () => {
       />
       {value !== null && <Typography>{labels[hover !== -1 ? hover : value]}</Typography>}
     </Box>
-  )
-}
+  );
+};
 
-export default RatingsHoverFeedback
+export default RatingsHoverFeedback;

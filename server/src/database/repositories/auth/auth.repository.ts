@@ -25,8 +25,7 @@ export class AuthRepository {
       },
       defaults: { ...user },
     });
-    if (!isCreate)
-      throw new ConflictException('Email or number phone already existed! ');
+    if (!isCreate) throw new ConflictException('Email or number phone already existed! ');
     if (roleId) {
       const role = await this.roleRepository.getById(roleId);
       await createdUser.addRoles([role]);

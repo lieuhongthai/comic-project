@@ -650,4 +650,4 @@ export const rows = [
     experience: '2 Years',
     status: 1
   }
-]
+];

@@ -1,40 +1,40 @@
 // ** React Imports
-import { ComponentType, Fragment, ReactElement, useState } from 'react'
+import { ComponentType, Fragment, ReactElement, useState } from 'react';
 
 // ** MUI Imports
-import Button from '@mui/material/Button'
-import Snackbar from '@mui/material/Snackbar'
-import Grow, { GrowProps } from '@mui/material/Grow'
-import Fade, { FadeProps } from '@mui/material/Fade'
-import Slide, { SlideProps } from '@mui/material/Slide'
+import Button from '@mui/material/Button';
+import Snackbar from '@mui/material/Snackbar';
+import Grow, { GrowProps } from '@mui/material/Grow';
+import Fade, { FadeProps } from '@mui/material/Fade';
+import Slide, { SlideProps } from '@mui/material/Slide';
 
 const GrowTransition = (props: GrowProps) => {
-  return <Grow {...props} />
-}
+  return <Grow {...props} />;
+};
 
 const SlideTransition = (props: SlideProps) => {
-  return <Slide {...props} direction='up' />
-}
+  return <Slide {...props} direction='up' />;
+};
 
 const SnackbarTransition = () => {
   // ** State
   const [state, setState] = useState<{
-    open: boolean
+    open: boolean;
     Transition: ComponentType<
       FadeProps & {
-        children?: ReactElement<any>
+        children?: ReactElement<any>;
       }
-    >
+    >;
   }>({
     open: false,
     Transition: Fade
-  })
+  });
 
   const handleClick =
     (
       Transition: ComponentType<
         FadeProps & {
-          children?: ReactElement<any>
+          children?: ReactElement<any>;
         }
       >
     ) =>
@@ -42,15 +42,15 @@ const SnackbarTransition = () => {
       setState({
         open: true,
         Transition
-      })
-    }
+      });
+    };
 
   const handleClose = () => {
     setState({
       ...state,
       open: false
-    })
-  }
+    });
+  };
 
   return (
     <Fragment>
@@ -74,7 +74,7 @@ const SnackbarTransition = () => {
         TransitionComponent={state.Transition}
       />
     </Fragment>
-  )
-}
+  );
+};
 
-export default SnackbarTransition
+export default SnackbarTransition;

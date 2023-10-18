@@ -32,7 +32,7 @@ const BadgesBasic = () => {
 export default BadgesBasic
 `}</code>
   </pre>
-)
+);
 
 export const BadgesMaxValueJSXCode = (
   <pre className='language-jsx'>
@@ -67,7 +67,7 @@ const BadgesMaxValue = () => {
 export default BadgesMaxValue
 `}</code>
   </pre>
-)
+);
 
 export const BadgesAlignmentJSXCode = (
   <pre className='language-jsx'>
@@ -97,7 +97,7 @@ const BadgesAlignment = () => {
 export default BadgesAlignment
 `}</code>
   </pre>
-)
+);
 
 export const BadgesLightJSXCode = (
   <pre className='language-jsx'>
@@ -143,7 +143,7 @@ const BadgesLight = () => {
 export default BadgesLight
 `}</code>
   </pre>
-)
+);
 
 export const BadgesVisibilityJSXCode = (
   <pre className='language-jsx'>
@@ -212,7 +212,7 @@ const BadgesVisibility = () => {
 export default BadgesVisibility
 `}</code>
   </pre>
-)
+);
 
 export const BadgesOverlapJSXCode = (
   <pre className='language-jsx'>
@@ -250,7 +250,7 @@ const BadgesOverlap = () => {
 export default BadgesOverlap
 `}</code>
   </pre>
-)
+);
 
 export const BadgesDotJSXCode = (
   <pre className='language-jsx'>
@@ -278,7 +278,7 @@ const BadgesDot = () => {
 export default BadgesDot
 `}</code>
   </pre>
-)
+);
 
 export const BadgesAlignmentTSXCode = (
   <pre className='language-jsx'>
@@ -308,7 +308,7 @@ const BadgesAlignment = () => {
 export default BadgesAlignment
 `}</code>
   </pre>
-)
+);
 
 export const BadgesBasicTSXCode = (
   <pre className='language-jsx'>
@@ -344,7 +344,7 @@ const BadgesBasic = () => {
 export default BadgesBasic
 `}</code>
   </pre>
-)
+);
 
 export const BadgesMaxValueTSXCode = (
   <pre className='language-jsx'>
@@ -379,7 +379,7 @@ const BadgesMaxValue = () => {
 export default BadgesMaxValue
 `}</code>
   </pre>
-)
+);
 
 export const BadgesDotTSXCode = (
   <pre className='language-jsx'>
@@ -407,7 +407,7 @@ const BadgesDot = () => {
 export default BadgesDot
 `}</code>
   </pre>
-)
+);
 
 export const BadgesOverlapTSXCode = (
   <pre className='language-jsx'>
@@ -445,7 +445,7 @@ const BadgesOverlap = () => {
 export default BadgesOverlap
 `}</code>
   </pre>
-)
+);
 
 export const BadgesVisibilityTSXCode = (
   <pre className='language-jsx'>
@@ -514,7 +514,7 @@ const BadgesVisibility = () => {
 export default BadgesVisibility
 `}</code>
   </pre>
-)
+);
 
 export const BadgesLightTSXCode = (
   <pre className='language-jsx'>
@@ -560,4 +560,4 @@ const BadgesLight = () => {
 export default BadgesLight
 `}</code>
   </pre>
-)
+);

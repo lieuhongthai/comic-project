@@ -6,42 +6,42 @@
  */
 
 // ** MUI Imports
-import { Direction } from '@mui/material'
+import { Direction } from '@mui/material';
 
 // ** Types
-import { Skin, Mode, AppBar, Footer, ContentWidth, VerticalNavToggle, HorizontalMenuToggle } from 'src/@core/layouts/types'
+import { Skin, Mode, AppBar, Footer, ContentWidth, VerticalNavToggle, HorizontalMenuToggle } from 'src/@core/layouts/types';
 
 type ThemeConfig = {
-  skin: Skin
-  mode: Mode
-  appBar: AppBar
-  footer: Footer
-  navHidden: boolean
-  appBarBlur: boolean
-  direction?: Direction
-  templateName: string
-  navCollapsed: boolean
-  disableRipple: boolean
-  navigationSize: number
-  navSubItemIcon: string
-  menuTextTruncate: boolean
-  contentWidth: ContentWidth
-  responsiveFontSizes: boolean
-  collapsedNavigationSize: number
-  horizontalMenuAnimation: boolean
-  layout: 'vertical' | 'horizontal'
-  verticalNavToggleType: VerticalNavToggle
-  horizontalMenuToggle: HorizontalMenuToggle
-  afterVerticalNavMenuContentPosition: 'fixed' | 'static'
-  beforeVerticalNavMenuContentPosition: 'fixed' | 'static'
-  toastPosition: 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right'
-}
+  skin: Skin;
+  mode: Mode;
+  appBar: AppBar;
+  footer: Footer;
+  navHidden: boolean;
+  appBarBlur: boolean;
+  direction?: Direction;
+  templateName: string;
+  navCollapsed: boolean;
+  disableRipple: boolean;
+  navigationSize: number;
+  navSubItemIcon: string;
+  menuTextTruncate: boolean;
+  contentWidth: ContentWidth;
+  responsiveFontSizes: boolean;
+  collapsedNavigationSize: number;
+  horizontalMenuAnimation: boolean;
+  layout: 'vertical' | 'horizontal';
+  verticalNavToggleType: VerticalNavToggle;
+  horizontalMenuToggle: HorizontalMenuToggle;
+  afterVerticalNavMenuContentPosition: 'fixed' | 'static';
+  beforeVerticalNavMenuContentPosition: 'fixed' | 'static';
+  toastPosition: 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
+};
 
 const themeConfig: ThemeConfig = {
   // ** Layout Configs
   templateName: 'GEO' /* App Name HOLDINGS CORPORATION */,
   layout: 'vertical' /* vertical | horizontal App Current Only layout vertical*/,
-  mode: 'dark' as Mode /* light | dark | semi-dark /*! Note: semi-dark value will only work for Vertical Layout */,
+  mode: 'semi-dark' as Mode /* light | dark | semi-dark /*! Note: semi-dark value will only work for Vertical Layout */,
   direction: 'ltr' /* ltr | rtl */,
   skin: 'bordered' /* default | bordered */,
   contentWidth: 'full' /* full | boxed */,
@@ -68,6 +68,6 @@ const themeConfig: ThemeConfig = {
   responsiveFontSizes: true /* true | false */,
   disableRipple: false /* true | false */,
   toastPosition: 'top-right' /* top-left | top-center | top-right | bottom-left | bottom-center | bottom-right */
-}
+};
 
-export default themeConfig
+export default themeConfig;

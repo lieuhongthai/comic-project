@@ -1,8 +1,8 @@
 // ** Mock Adapter
-import mock from 'src/@fake-db/mock'
+import mock from 'src/@fake-db/mock';
 
 // ** Type Imports
-import { CardStatsType } from 'src/@fake-db/types'
+import { CardStatsType } from 'src/@fake-db/types';
 
 const cardStatsData: CardStatsType = {
   statsHorizontal: [
@@ -125,8 +125,8 @@ const cardStatsData: CardStatsType = {
       src: '/images/cards/card-stats-img-4.png'
     }
   ]
-}
+};
 
 mock.onGet('/cards/statistics').reply(() => {
-  return [200, cardStatsData]
-})
+  return [200, cardStatsData];
+});

@@ -1,8 +1,8 @@
 // ** MUI Imports
-import Button from '@mui/material/Button'
+import Button from '@mui/material/Button';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 const ButtonsWithIconAndLabel = () => {
   return (
@@ -14,7 +14,7 @@ const ButtonsWithIconAndLabel = () => {
         Delete
       </Button>
     </div>
-  )
-}
+  );
+};
 
-export default ButtonsWithIconAndLabel
+export default ButtonsWithIconAndLabel;

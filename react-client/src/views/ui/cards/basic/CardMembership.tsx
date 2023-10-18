@@ -1,22 +1,22 @@
 // ** MUI Imports
-import Card from '@mui/material/Card'
-import Grid from '@mui/material/Grid'
-import Button from '@mui/material/Button'
-import Divider from '@mui/material/Divider'
-import { styled } from '@mui/material/styles'
-import Typography from '@mui/material/Typography'
-import Box, { BoxProps } from '@mui/material/Box'
-import CardContent from '@mui/material/CardContent'
+import Card from '@mui/material/Card';
+import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
+import { styled } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import Box, { BoxProps } from '@mui/material/Box';
+import CardContent from '@mui/material/CardContent';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // Styled Box component
 const StyledBox = styled(Box)<BoxProps>(({ theme }) => ({
   [theme.breakpoints.up('sm')]: {
     borderRight: `1px solid ${theme.palette.divider}`
   }
-}))
+}));
 
 const CardMembership = () => {
   return (
@@ -28,10 +28,9 @@ const CardMembership = () => {
               Lifetime Membership
             </Typography>
             <Typography variant='body2'>
-              Here, I focus on a range of items and features that we use in life without giving them a second thought
-              such as Coca Cola, body muscles and holding ones own breath. Though, most of these notes are not
-              fundamentally necessary, they are such that you can use them for a good laugh, at a drinks party or for
-              picking up women or men.
+              Here, I focus on a range of items and features that we use in life without giving them a second thought such as Coca Cola, body muscles
+              and holding ones own breath. Though, most of these notes are not fundamentally necessary, they are such that you can use them for a good
+              laugh, at a drinks party or for picking up women or men.
             </Typography>
             <Divider sx={{ my: theme => `${theme.spacing(7)} !important` }} />
             <Grid container spacing={4}>
@@ -75,9 +74,7 @@ const CardMembership = () => {
                   <Icon icon='mdi:star-outline' fontSize={20} />
                   <Typography variant='body2'>Access all Features</Typography>
                 </Box>
-                <Box
-                  sx={{ py: 1.25, display: 'flex', alignItems: 'center', '& svg': { color: 'primary.main', mr: 2.5 } }}
-                >
+                <Box sx={{ py: 1.25, display: 'flex', alignItems: 'center', '& svg': { color: 'primary.main', mr: 2.5 } }}>
                   <Icon icon='mdi:trending-up' fontSize={20} />
                   <Typography variant='body2'>Lifetime Free Update</Typography>
                 </Box>
@@ -85,12 +82,7 @@ const CardMembership = () => {
             </Grid>
           </CardContent>
         </Grid>
-        <Grid
-          item
-          sm={5}
-          xs={12}
-          sx={{ pt: ['0 !important', '1.5rem !important'], pl: ['1.5rem !important', '0 !important'] }}
-        >
+        <Grid item sm={5} xs={12} sx={{ pt: ['0 !important', '1.5rem !important'], pl: ['1.5rem !important', '0 !important'] }}>
           <CardContent
             sx={{
               height: '100%',
@@ -119,7 +111,7 @@ const CardMembership = () => {
         </Grid>
       </Grid>
     </Card>
-  )
-}
+  );
+};
 
-export default CardMembership
+export default CardMembership;

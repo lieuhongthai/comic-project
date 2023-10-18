@@ -1,46 +1,46 @@
 // ** React Imports
-import { SyntheticEvent, useState, useEffect, Fragment } from 'react'
+import { SyntheticEvent, useState, useEffect, Fragment } from 'react';
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Chip from '@mui/material/Chip'
-import Fade from '@mui/material/Fade'
-import List from '@mui/material/List'
-import Paper from '@mui/material/Paper'
-import Typography from '@mui/material/Typography'
-import ListItemIcon from '@mui/material/ListItemIcon'
-import { styled, useTheme } from '@mui/material/styles'
-import ClickAwayListener from '@mui/material/ClickAwayListener'
-import MuiListItem, { ListItemProps } from '@mui/material/ListItem'
+import Box from '@mui/material/Box';
+import Chip from '@mui/material/Chip';
+import Fade from '@mui/material/Fade';
+import List from '@mui/material/List';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import { styled, useTheme } from '@mui/material/styles';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
+import MuiListItem, { ListItemProps } from '@mui/material/ListItem';
 
 // ** Third Party Imports
-import clsx from 'clsx'
-import { usePopper } from 'react-popper'
+import clsx from 'clsx';
+import { usePopper } from 'react-popper';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Theme Config Import
-import themeConfig from 'src/configs/themeConfig'
+import themeConfig from 'src/configs/themeConfig';
 
 // ** Types
-import { NavGroup } from 'src/@core/layouts/types'
-import { Settings } from 'src/@core/context/settingsContext'
+import { NavGroup } from 'src/@core/layouts/types';
+import { Settings } from 'src/@core/context/settingsContext';
 
 // ** Custom Components Imports
-import HorizontalNavItems from './HorizontalNavItems'
-import UserIcon from 'src/layouts/components/UserIcon'
-import Translations from 'src/layouts/components/Translations'
+import HorizontalNavItems from './HorizontalNavItems';
+import UserIcon from 'src/layouts/components/UserIcon';
+import Translations from 'src/layouts/components/Translations';
 
 // ** Utils
-import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
-import { hasActiveChild } from 'src/@core/layouts/utils'
-import { useLocation } from 'react-router-dom'
+import { hexToRGBA } from 'src/@core/utils/hex-to-rgba';
+import { hasActiveChild } from 'src/@core/layouts/utils';
+import { useLocation } from 'react-router-dom';
 
 interface Props {
-  item: NavGroup
-  settings: Settings
-  hasParent?: boolean
+  item: NavGroup;
+  settings: Settings;
+  hasParent?: boolean;
 }
 
 // ** Styled Components
@@ -51,7 +51,7 @@ const ListItem = styled(MuiListItem)<ListItemProps>(({ theme }) => ({
   '&:hover': {
     background: theme.palette.action.hover
   }
-}))
+}));
 
 const NavigationMenu = styled(Paper)(({ theme }) => ({
   overflowY: 'auto',
@@ -78,28 +78,28 @@ const NavigationMenu = styled(Paper)(({ theme }) => ({
     borderRadius: 0,
     backgroundColor: theme.palette.action.hover
   }
-}))
+}));
 
 const HorizontalNavGroup = (props: Props) => {
   // ** Props
-  const { item, hasParent, settings } = props
+  const { item, hasParent, settings } = props;
 
   // ** Hooks & Vars
-  const theme = useTheme()
-  const location = useLocation()
-  const currentURL = location.pathname
-  const { skin, direction } = settings
-  const { navSubItemIcon, menuTextTruncate, horizontalMenuToggle, horizontalMenuAnimation } = themeConfig
+  const theme = useTheme();
+  const location = useLocation();
+  const currentURL = location.pathname;
+  const { skin, direction } = settings;
+  const { navSubItemIcon, menuTextTruncate, horizontalMenuToggle, horizontalMenuAnimation } = themeConfig;
 
-  const popperOffsetHorizontal = direction === 'rtl' ? 16 : -16
-  const popperPlacement = direction === 'rtl' ? 'bottom-end' : 'bottom-start'
-  const popperPlacementSubMenu = direction === 'rtl' ? 'left-start' : 'right-start'
+  const popperOffsetHorizontal = direction === 'rtl' ? 16 : -16;
+  const popperPlacement = direction === 'rtl' ? 'bottom-end' : 'bottom-start';
+  const popperPlacementSubMenu = direction === 'rtl' ? 'left-start' : 'right-start';
 
   // ** States
-  const [menuOpen, setMenuOpen] = useState<boolean>(false)
-  const [popperElement, setPopperElement] = useState(null)
-  const [anchorEl, setAnchorEl] = useState<Element | null>(null)
-  const [referenceElement, setReferenceElement] = useState(null)
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [popperElement, setPopperElement] = useState(null);
+  const [anchorEl, setAnchorEl] = useState<Element | null>(null);
+  const [referenceElement, setReferenceElement] = useState(null);
 
   const { styles, attributes, update } = usePopper(referenceElement, popperElement, {
     placement: hasParent ? popperPlacementSubMenu : popperPlacement,
@@ -119,60 +119,59 @@ const HorizontalNavGroup = (props: Props) => {
         }
       }
     ]
-  })
+  });
 
   const handleGroupOpen = (event: SyntheticEvent) => {
-    setAnchorEl(event.currentTarget)
-    setMenuOpen(true)
+    setAnchorEl(event.currentTarget);
+    setMenuOpen(true);
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    update ? update() : null
-  }
+    update ? update() : null;
+  };
 
   const handleGroupClose = () => {
-    setAnchorEl(null)
-    setMenuOpen(false)
-  }
+    setAnchorEl(null);
+    setMenuOpen(false);
+  };
 
   const handleMenuToggleOnClick = (event: SyntheticEvent) => {
     if (anchorEl) {
-      handleGroupClose()
+      handleGroupClose();
     } else {
-      handleGroupOpen(event)
+      handleGroupOpen(event);
     }
-  }
+  };
 
   useEffect(() => {
-    handleGroupClose()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.pathname])
+    handleGroupClose();
+  }, [location.pathname]);
 
-  const icon = item.icon ? item.icon : navSubItemIcon
-  const toggleIcon = direction === 'rtl' ? 'mdi:chevron-left' : 'mdi:chevron-right'
+  const icon = item.icon ? item.icon : navSubItemIcon;
+  const toggleIcon = direction === 'rtl' ? 'mdi:chevron-left' : 'mdi:chevron-right';
 
-  const WrapperCondition = horizontalMenuToggle === 'click'
-  const MainWrapper = WrapperCondition ? ClickAwayListener : 'div'
-  const ChildWrapper = WrapperCondition ? 'div' : Fragment
-  const AnimationWrapper = horizontalMenuAnimation ? Fade : Fragment
+  const WrapperCondition = horizontalMenuToggle === 'click';
+  const MainWrapper = WrapperCondition ? ClickAwayListener : 'div';
+  const ChildWrapper = WrapperCondition ? 'div' : Fragment;
+  const AnimationWrapper = horizontalMenuAnimation ? Fade : Fragment;
 
   const childMenuGroupStyles = () => {
     if (attributes && attributes.popper) {
       if (direction === 'ltr') {
         if (attributes.popper['data-popper-placement'] === 'right-start') {
-          return 'left'
+          return 'left';
         }
         if (attributes.popper['data-popper-placement'] === 'left-start') {
-          return 'right'
+          return 'right';
         }
       } else {
         if (attributes.popper['data-popper-placement'] === 'right-start') {
-          return 'right'
+          return 'right';
         }
         if (attributes.popper['data-popper-placement'] === 'left-start') {
-          return 'left'
+          return 'left';
         }
       }
     }
-  }
+  };
 
   return (
     <>
@@ -265,7 +264,7 @@ const HorizontalNavGroup = (props: Props) => {
         </ChildWrapper>
       </MainWrapper>
     </>
-  )
-}
+  );
+};
 
-export default HorizontalNavGroup
+export default HorizontalNavGroup;

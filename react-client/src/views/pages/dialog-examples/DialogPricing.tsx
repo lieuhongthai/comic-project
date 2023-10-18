@@ -1,51 +1,48 @@
 // ** React Imports
-import { Ref, useState, forwardRef, ReactElement, ChangeEvent } from 'react'
+import { Ref, useState, forwardRef, ReactElement, ChangeEvent } from 'react';
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import Switch from '@mui/material/Switch'
-import Dialog from '@mui/material/Dialog'
-import Button from '@mui/material/Button'
-import IconButton from '@mui/material/IconButton'
-import Typography from '@mui/material/Typography'
-import InputLabel from '@mui/material/InputLabel'
-import CardContent from '@mui/material/CardContent'
-import Fade, { FadeProps } from '@mui/material/Fade'
-import DialogContent from '@mui/material/DialogContent'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Switch from '@mui/material/Switch';
+import Dialog from '@mui/material/Dialog';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import InputLabel from '@mui/material/InputLabel';
+import CardContent from '@mui/material/CardContent';
+import Fade, { FadeProps } from '@mui/material/Fade';
+import DialogContent from '@mui/material/DialogContent';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Types
-import { PricingPlanType } from 'src/@core/components/plan-details/types'
+import { PricingPlanType } from 'src/@core/components/plan-details/types';
 
 // ** Component Import
-import PricingPlans from 'src/views/pages/pricing/PricingPlans'
+import PricingPlans from 'src/views/pages/pricing/PricingPlans';
 
 interface Props {
-  data: PricingPlanType[]
+  data: PricingPlanType[];
 }
 
-const Transition = forwardRef(function Transition(
-  props: FadeProps & { children?: ReactElement<any, any> },
-  ref: Ref<unknown>
-) {
-  return <Fade ref={ref} {...props} />
-})
+const Transition = forwardRef(function Transition(props: FadeProps & { children?: ReactElement<any, any> }, ref: Ref<unknown>) {
+  return <Fade ref={ref} {...props} />;
+});
 
 const DialogPricing = ({ data }: Props) => {
   // ** States
-  const [show, setShow] = useState<boolean>(false)
-  const [plan, setPlan] = useState<'monthly' | 'annually'>('annually')
+  const [show, setShow] = useState<boolean>(false);
+  const [plan, setPlan] = useState<'monthly' | 'annually'>('annually');
 
   const handleChange = (e: ChangeEvent<{ checked: boolean }>) => {
     if (e.target.checked) {
-      setPlan('annually')
+      setPlan('annually');
     } else {
-      setPlan('monthly')
+      setPlan('monthly');
     }
-  }
+  };
 
   return (
     <Card>
@@ -69,11 +66,7 @@ const DialogPricing = ({ data }: Props) => {
         onBackdropClick={() => setShow(false)}
       >
         <DialogContent sx={{ px: { xs: 8, sm: 15 }, py: { xs: 8, sm: 12.5 }, position: 'relative' }}>
-          <IconButton
-            size='small'
-            onClick={() => setShow(false)}
-            sx={{ position: 'absolute', right: '1rem', top: '1rem' }}
-          >
+          <IconButton size='small' onClick={() => setShow(false)} sx={{ position: 'absolute', right: '1rem', top: '1rem' }}>
             <Icon icon='mdi:close' />
           </IconButton>
           <Box sx={{ mb: 4, textAlign: 'center' }}>
@@ -81,22 +74,15 @@ const DialogPricing = ({ data }: Props) => {
               Subscription Plan
             </Typography>
             <Typography variant='body2'>
-              All plans include 40+ advanced tools and features to boost your product. Choose the best plan to fit your
-              needs.
+              All plans include 40+ advanced tools and features to boost your product. Choose the best plan to fit your needs.
             </Typography>
           </Box>
           <Box sx={{ mb: 7, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <InputLabel
-              htmlFor='modal-pricing-switch'
-              sx={{ fontWeight: 500, cursor: 'pointer', fontSize: '0.875rem' }}
-            >
+            <InputLabel htmlFor='modal-pricing-switch' sx={{ fontWeight: 500, cursor: 'pointer', fontSize: '0.875rem' }}>
               Monthly
             </InputLabel>
             <Switch color='secondary' onChange={handleChange} id='modal-pricing-switch' checked={plan === 'annually'} />
-            <InputLabel
-              htmlFor='modal-pricing-switch'
-              sx={{ fontWeight: 500, cursor: 'pointer', fontSize: '0.875rem' }}
-            >
+            <InputLabel htmlFor='modal-pricing-switch' sx={{ fontWeight: 500, cursor: 'pointer', fontSize: '0.875rem' }}>
               Annually
             </InputLabel>
           </Box>
@@ -112,7 +98,7 @@ const DialogPricing = ({ data }: Props) => {
         </DialogContent>
       </Dialog>
     </Card>
-  )
-}
+  );
+};
 
-export default DialogPricing
+export default DialogPricing;

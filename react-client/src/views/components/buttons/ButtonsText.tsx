@@ -1,5 +1,5 @@
 // ** MUI Imports
-import Button from '@mui/material/Button'
+import Button from '@mui/material/Button';
 
 const ButtonsText = () => {
   return (
@@ -15,7 +15,7 @@ const ButtonsText = () => {
         Link
       </Button>
     </div>
-  )
-}
+  );
+};
 
-export default ButtonsText
+export default ButtonsText;

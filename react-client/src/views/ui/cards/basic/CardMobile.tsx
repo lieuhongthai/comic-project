@@ -1,21 +1,21 @@
 // ** React Imports
-import { MouseEvent, useState } from 'react'
+import { MouseEvent, useState } from 'react';
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import Menu from '@mui/material/Menu'
-import Button from '@mui/material/Button'
-import MenuItem from '@mui/material/MenuItem'
-import { styled } from '@mui/material/styles'
-import Typography from '@mui/material/Typography'
-import IconButton from '@mui/material/IconButton'
-import CardContent from '@mui/material/CardContent'
-import CardActions from '@mui/material/CardActions'
-import Grid, { GridProps } from '@mui/material/Grid'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Menu from '@mui/material/Menu';
+import Button from '@mui/material/Button';
+import MenuItem from '@mui/material/MenuItem';
+import { styled } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import Grid, { GridProps } from '@mui/material/Grid';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // Styled Grid component
 const StyledGrid = styled(Grid)<GridProps>(({ theme }) => ({
@@ -28,20 +28,20 @@ const StyledGrid = styled(Grid)<GridProps>(({ theme }) => ({
   [theme.breakpoints.up('md')]: {
     borderRight: `1px solid ${theme.palette.divider}`
   }
-}))
+}));
 
 const CardMobile = () => {
   // ** State
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
-  const open = Boolean(anchorEl)
+  const isOpen = Boolean(anchorEl);
 
   const handleClick = (event: MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget)
-  }
+    setAnchorEl(event.currentTarget);
+  };
   const handleClose = () => {
-    setAnchorEl(null)
-  }
+    setAnchorEl(null);
+  };
 
   return (
     <Card>
@@ -86,12 +86,12 @@ const CardMobile = () => {
                 aria-haspopup='true'
                 onClick={handleClick}
                 aria-controls='long-menu'
-                aria-expanded={open ? 'true' : undefined}
+                aria-expanded={isOpen ? 'true' : undefined}
               >
                 <Icon icon='mdi:share-variant' fontSize={20} />
               </IconButton>
               <Menu
-                open={open}
+                open={isOpen}
                 id='long-menu'
                 anchorEl={anchorEl}
                 onClose={handleClose}
@@ -117,7 +117,7 @@ const CardMobile = () => {
         </Grid>
       </Grid>
     </Card>
-  )
-}
+  );
+};
 
-export default CardMobile
+export default CardMobile;

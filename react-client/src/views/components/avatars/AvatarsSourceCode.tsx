@@ -35,7 +35,7 @@ const AvatarsGrouped = () => {
 export default AvatarsGrouped
 `}</code>
   </pre>
-)
+);
 
 export const AvatarsGroupedPullUpJSXCode = (
   <pre className='language-jsx'>
@@ -58,7 +58,7 @@ const AvatarsGroupedPullUp = () => {
 export default AvatarsGroupedPullUp
 `}</code>
   </pre>
-)
+);
 
 export const AvatarsGroupedPullUpWithTooltipJSXCode = (
   <pre className='language-jsx'>
@@ -92,7 +92,7 @@ const AvatarsGroupedPullUpWithTooltip = () => {
 export default AvatarsGroupedPullUpWithTooltip
 `}</code>
   </pre>
-)
+);
 
 export const AvatarsIconJSXCode = (
   <pre className='language-jsx'>
@@ -125,7 +125,7 @@ const AvatarsIcon = () => {
 export default AvatarsIcon
 `}</code>
   </pre>
-)
+);
 
 export const AvatarsImageJSXCode = (
   <pre className='language-jsx'>
@@ -146,7 +146,7 @@ const AvatarsImage = () => {
 export default AvatarsImage
 `}</code>
   </pre>
-)
+);
 
 export const AvatarsSizesJSXCode = (
   <pre className='language-jsx'>
@@ -167,7 +167,7 @@ const AvatarsSizes = () => {
 export default AvatarsSizes
 `}</code>
   </pre>
-)
+);
 
 export const AvatarsLetterJSXCode = (
   <pre className='language-jsx'>
@@ -196,7 +196,7 @@ const AvatarsLetter = () => {
 export default AvatarsLetter
 `}</code>
   </pre>
-)
+);
 
 export const AvatarsVariantsJSXCode = (
   <pre className='language-jsx'>
@@ -231,7 +231,7 @@ const AvatarsVariants = () => {
 export default AvatarsVariants
 `}</code>
   </pre>
-)
+);
 
 export const AvatarsWithBadgeJSXCode = (
   <pre className='language-jsx'>
@@ -286,7 +286,7 @@ const AvatarsWithBadge = () => {
 export default AvatarsWithBadge
 `}</code>
   </pre>
-)
+);
 
 export const AvatarsGroupedTSXCode = (
   <pre className='language-jsx'>
@@ -325,7 +325,7 @@ const AvatarsGrouped = () => {
 export default AvatarsGrouped
 `}</code>
   </pre>
-)
+);
 
 export const AvatarsGroupedPullUpTSXCode = (
   <pre className='language-jsx'>
@@ -348,7 +348,7 @@ const AvatarsGroupedPullUp = () => {
 export default AvatarsGroupedPullUp
 `}</code>
   </pre>
-)
+);
 
 export const AvatarsGroupedPullUpWithTooltipTSXCode = (
   <pre className='language-jsx'>
@@ -382,7 +382,7 @@ const AvatarsGroupedPullUpWithTooltip = () => {
 export default AvatarsGroupedPullUpWithTooltip
 `}</code>
   </pre>
-)
+);
 
 export const AvatarsLetterTSXCode = (
   <pre className='language-jsx'>
@@ -411,7 +411,7 @@ const AvatarsLetter = () => {
 export default AvatarsLetter
 `}</code>
   </pre>
-)
+);
 
 export const AvatarsIconTSXCode = (
   <pre className='language-jsx'>
@@ -444,7 +444,7 @@ const AvatarsIcon = () => {
 export default AvatarsIcon
 `}</code>
   </pre>
-)
+);
 
 export const AvatarsWithBadgeTSXCode = (
   <pre className='language-jsx'>
@@ -499,7 +499,7 @@ const AvatarsWithBadge = () => {
 export default AvatarsWithBadge
 `}</code>
   </pre>
-)
+);
 
 export const AvatarsImageTSXCode = (
   <pre className='language-jsx'>
@@ -520,7 +520,7 @@ const AvatarsImage = () => {
 export default AvatarsImage
 `}</code>
   </pre>
-)
+);
 
 export const AvatarsSizesTSXCode = (
   <pre className='language-jsx'>
@@ -541,7 +541,7 @@ const AvatarsSizes = () => {
 export default AvatarsSizes
 `}</code>
   </pre>
-)
+);
 
 export const AvatarsVariantsTSXCode = (
   <pre className='language-jsx'>
@@ -576,4 +576,4 @@ const AvatarsVariants = () => {
 export default AvatarsVariants
 `}</code>
   </pre>
-)
+);

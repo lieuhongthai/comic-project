@@ -1,62 +1,62 @@
 // ** React Imports
-import { Ref, useState, forwardRef, ReactElement } from 'react'
+import { Ref, useState, forwardRef, ReactElement } from 'react';
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import Grid from '@mui/material/Grid'
-import Alert from '@mui/material/Alert'
-import Dialog from '@mui/material/Dialog'
-import Button from '@mui/material/Button'
-import TextField from '@mui/material/TextField'
-import AlertTitle from '@mui/material/AlertTitle'
-import IconButton from '@mui/material/IconButton'
-import Typography from '@mui/material/Typography'
-import CardContent from '@mui/material/CardContent'
-import Fade, { FadeProps } from '@mui/material/Fade'
-import DialogContent from '@mui/material/DialogContent'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Grid from '@mui/material/Grid';
+import Alert from '@mui/material/Alert';
+import Dialog from '@mui/material/Dialog';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import AlertTitle from '@mui/material/AlertTitle';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
+import Fade, { FadeProps } from '@mui/material/Fade';
+import DialogContent from '@mui/material/DialogContent';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Hooks
-import useBgColor from 'src/@core/hooks/useBgColor'
-import { initialSettings } from 'src/@core/context/settingsContext'
+import useBgColor from 'src/@core/hooks/useBgColor';
+import { initialSettings } from 'src/@core/context/settingsContext';
 
 const Transition = forwardRef(function Transition(props: FadeProps & { children?: ReactElement<any, any> }, ref: Ref<unknown>) {
-  return <Fade ref={ref} {...props} />
-})
+  return <Fade ref={ref} {...props} />;
+});
 
 const DialogAuthentication = () => {
   // ** States
-  const [show, setShow] = useState<boolean>(false)
-  const [authType, setAuthType] = useState<'app' | 'sms'>('app')
-  const [showAuthDialog, setShowAuthDialog] = useState<boolean>(false)
+  const [show, setShow] = useState<boolean>(false);
+  const [authType, setAuthType] = useState<'app' | 'sms'>('app');
+  const [showAuthDialog, setShowAuthDialog] = useState<boolean>(false);
 
   // ** Hooks
-  const bgColors = useBgColor()
+  const bgColors = useBgColor();
 
   // ** Var
-  const { direction } = initialSettings
+  const { direction } = initialSettings;
 
   const handleClose = () => {
-    setShow(false)
-    setAuthType('app')
-  }
+    setShow(false);
+    setAuthType('app');
+  };
 
   const handleAuthDialogClose = () => {
     if (show) {
-      setShow(false)
+      setShow(false);
     }
-    setShowAuthDialog(false)
+    setShowAuthDialog(false);
     if (authType !== 'app') {
       setTimeout(() => {
-        setAuthType('app')
-      }, 250)
+        setAuthType('app');
+      }, 250);
     }
-  }
+  };
 
-  const arrowIcon = direction === 'ltr' ? 'mdi:chevron-right' : 'mdi:chevron-left'
+  const arrowIcon = direction === 'ltr' ? 'mdi:chevron-right' : 'mdi:chevron-left';
 
   return (
     <Card>
@@ -152,8 +152,8 @@ const DialogAuthentication = () => {
                 variant='contained'
                 endIcon={<Icon icon={arrowIcon} />}
                 onClick={() => {
-                  setShow(false)
-                  setShowAuthDialog(true)
+                  setShow(false);
+                  setShowAuthDialog(true);
                 }}
               >
                 Continue
@@ -233,7 +233,7 @@ const DialogAuthentication = () => {
         </DialogContent>
       </Dialog>
     </Card>
-  )
-}
+  );
+};
 
-export default DialogAuthentication
+export default DialogAuthentication;

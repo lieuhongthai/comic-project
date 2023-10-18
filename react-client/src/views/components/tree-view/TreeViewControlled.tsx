@@ -1,31 +1,31 @@
 // ** React Imports
-import { SyntheticEvent, useState } from 'react'
+import { SyntheticEvent, useState } from 'react';
 
 // ** MUI Imports
-import TreeView from '@mui/lab/TreeView'
-import TreeItem from '@mui/lab/TreeItem'
+import TreeView from '@mui/lab/TreeView';
+import TreeItem from '@mui/lab/TreeItem';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 interface Props {
-  direction: 'ltr' | 'rtl'
+  direction: 'ltr' | 'rtl';
 }
 
 const TreeViewControlled = ({ direction }: Props) => {
   // ** States
-  const [expanded, setExpanded] = useState<string[]>([])
-  const [selected, setSelected] = useState<string[]>([])
+  const [expanded, setExpanded] = useState<string[]>([]);
+  const [selected, setSelected] = useState<string[]>([]);
 
   const handleToggle = (event: SyntheticEvent, nodeIds: string[]) => {
-    setExpanded(nodeIds)
-  }
+    setExpanded(nodeIds);
+  };
 
   const handleSelect = (event: SyntheticEvent, nodeIds: string[]) => {
-    setSelected(nodeIds)
-  }
+    setSelected(nodeIds);
+  };
 
-  const ExpandIcon = direction === 'rtl' ? 'mdi:chevron-left' : 'mdi:chevron-right'
+  const ExpandIcon = direction === 'rtl' ? 'mdi:chevron-left' : 'mdi:chevron-right';
 
   return (
     <TreeView
@@ -52,7 +52,7 @@ const TreeViewControlled = ({ direction }: Props) => {
         </TreeItem>
       </TreeItem>
     </TreeView>
-  )
-}
+  );
+};
 
-export default TreeViewControlled
+export default TreeViewControlled;

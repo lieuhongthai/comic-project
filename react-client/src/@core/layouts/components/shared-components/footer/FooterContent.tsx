@@ -1,7 +1,7 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Link from '@mui/material/Link'
-import Typography from '@mui/material/Typography'
+import Box from '@mui/material/Box';
+import Link from '@mui/material/Link';
+import Typography from '@mui/material/Typography';
 
 const FooterContent = () => {
   // ** Var
@@ -39,7 +39,7 @@ const FooterContent = () => {
         </Box>
       )} */}
     </Box>
-  )
-}
+  );
+};
 
-export default FooterContent
+export default FooterContent;

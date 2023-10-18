@@ -1,8 +1,8 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Badge from '@mui/material/Badge'
-import Avatar from '@mui/material/Avatar'
-import { styled } from '@mui/material/styles'
+import Box from '@mui/material/Box';
+import Badge from '@mui/material/Badge';
+import Avatar from '@mui/material/Avatar';
+import { styled } from '@mui/material/styles';
 
 // Styled component for badge content area
 const BadgeContentSpan = styled('span')(({ theme }) => ({
@@ -11,7 +11,7 @@ const BadgeContentSpan = styled('span')(({ theme }) => ({
   borderRadius: '50%',
   backgroundColor: theme.palette.success.main,
   boxShadow: `0 0 0 2px ${theme.palette.background.paper}`
-}))
+}));
 
 const AvatarsWithBadge = () => {
   return (
@@ -43,7 +43,7 @@ const AvatarsWithBadge = () => {
         <Avatar alt='Olivia Sparks' src='/images/avatars/4.png' />
       </Badge>
     </Box>
-  )
-}
+  );
+};
 
-export default AvatarsWithBadge
+export default AvatarsWithBadge;

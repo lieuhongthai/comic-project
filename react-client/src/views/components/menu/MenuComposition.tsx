@@ -1,58 +1,58 @@
 // ** React Imports
-import { KeyboardEvent, useEffect, useRef, useState, MouseEvent, TouchEvent } from 'react'
+import { KeyboardEvent, useEffect, useRef, useState, MouseEvent, TouchEvent } from 'react';
 
 // ** MUI Imports
-import Grow from '@mui/material/Grow'
-import Paper from '@mui/material/Paper'
-import Button from '@mui/material/Button'
-import Popper from '@mui/material/Popper'
-import MenuList from '@mui/material/MenuList'
-import MenuItem from '@mui/material/MenuItem'
-import ClickAwayListener from '@mui/material/ClickAwayListener'
+import Grow from '@mui/material/Grow';
+import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button';
+import Popper from '@mui/material/Popper';
+import MenuList from '@mui/material/MenuList';
+import MenuItem from '@mui/material/MenuItem';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
 
 // ** Hook Import
-import { initialSettings } from 'src/@core/context/settingsContext'
+import { initialSettings } from 'src/@core/context/settingsContext';
 
 const MenuComposition = () => {
   // ** States
-  const [open, setOpen] = useState<boolean>(false)
+  const [open, setOpen] = useState<boolean>(false);
 
   // ** Hook & Var
-  const { skin } = initialSettings
+  const { skin } = initialSettings;
 
   // ** Ref
-  const anchorRef = useRef<HTMLButtonElement | null>(null)
+  const anchorRef = useRef<HTMLButtonElement | null>(null);
 
   const handleToggle = () => {
-    setOpen(prevOpen => !prevOpen)
-  }
+    setOpen(prevOpen => !prevOpen);
+  };
 
   const handleClose = (event: MouseEvent | TouchEvent): void => {
     if (anchorRef.current && anchorRef.current.contains(event.target as HTMLElement)) {
-      return
+      return;
     }
-    setOpen(false)
-  }
+    setOpen(false);
+  };
 
   const handleListKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'Tab') {
-      event.preventDefault()
-      setOpen(false)
+      event.preventDefault();
+      setOpen(false);
     } else if (event.key === 'Escape') {
-      setOpen(false)
+      setOpen(false);
     }
-  }
+  };
 
   // return focus to the button when we transitioned from !open -> open
-  const prevOpen = useRef(open)
+  const prevOpen = useRef(open);
 
   useEffect(() => {
     if (prevOpen.current === true && open === false) {
-      anchorRef.current!.focus()
+      anchorRef.current!.focus();
     }
 
-    prevOpen.current = open
-  }, [open])
+    prevOpen.current = open;
+  }, [open]);
 
   return (
     <div>
@@ -102,7 +102,7 @@ const MenuComposition = () => {
         )}
       </Popper>
     </div>
-  )
-}
+  );
+};
 
-export default MenuComposition
+export default MenuComposition;

@@ -1,58 +1,58 @@
 // ** React Imports
-import { useEffect, useCallback, useRef, useState, ChangeEvent } from 'react'
+import { useEffect, useCallback, useRef, useState, ChangeEvent } from 'react';
 
 // ** React Router Imports
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Grid from '@mui/material/Grid'
-import List from '@mui/material/List'
-import MuiDialog from '@mui/material/Dialog'
-import ListItem from '@mui/material/ListItem'
-import TextField from '@mui/material/TextField'
-import Typography from '@mui/material/Typography'
-import IconButton from '@mui/material/IconButton'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import { styled, useTheme } from '@mui/material/styles'
-import ListItemButton from '@mui/material/ListItemButton'
-import InputAdornment from '@mui/material/InputAdornment'
-import MuiAutocomplete, { AutocompleteRenderInputParams } from '@mui/material/Autocomplete'
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import List from '@mui/material/List';
+import MuiDialog from '@mui/material/Dialog';
+import ListItem from '@mui/material/ListItem';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { styled, useTheme } from '@mui/material/styles';
+import ListItemButton from '@mui/material/ListItemButton';
+import InputAdornment from '@mui/material/InputAdornment';
+import MuiAutocomplete from '@mui/material/Autocomplete';
 
 // ** Third Party Imports
-import axios from 'axios'
+import axios from 'axios';
 
 // ** Types Imports
-import { AppBarSearchType } from 'src/@fake-db/types'
-import { Settings } from 'src/@core/context/settingsContext'
+import { AppBarSearchType } from 'src/@fake-db/types';
+import { Settings } from 'src/@core/context/settingsContext';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Configs Imports
-import themeConfig from 'src/configs/themeConfig'
+import themeConfig from 'src/configs/themeConfig';
 
 interface Props {
-  hidden: boolean
-  settings: Settings
+  hidden: boolean;
+  settings: Settings;
 }
 
 interface DefaultSuggestionsProps {
-  setOpenDialog: (val: boolean) => void
+  setOpenDialog: (val: boolean) => void;
 }
 
 interface NoResultProps {
-  value: string
-  setOpenDialog: (val: boolean) => void
+  value: string;
+  setOpenDialog: (val: boolean) => void;
 }
 
 interface DefaultSuggestionsType {
-  category: string
+  category: string;
   suggestions: {
-    link: string
-    icon: string
-    suggestion: string
-  }[]
+    link: string;
+    icon: string;
+    suggestion: string;
+  }[];
 }
 
 const defaultSuggestionsData: DefaultSuggestionsType[] = [
@@ -156,7 +156,7 @@ const defaultSuggestionsData: DefaultSuggestionsType[] = [
       }
     ]
   }
-]
+];
 
 const categoryTitle: { [k: string]: string } = {
   dashboards: 'Dashboards',
@@ -164,7 +164,7 @@ const categoryTitle: { [k: string]: string } = {
   userInterface: 'User Interface',
   formsTables: 'Forms & Tables',
   chartsMisc: 'Charts & Misc'
-}
+};
 
 // ** Styled Autocomplete component
 const Autocomplete = styled(MuiAutocomplete)(({ theme }) => ({
@@ -227,7 +227,7 @@ const Autocomplete = styled(MuiAutocomplete)(({ theme }) => ({
       padding: theme.spacing(10)
     }
   }
-}))
+}));
 
 // ** Styled Dialog component
 const Dialog = styled(MuiDialog)({
@@ -241,7 +241,7 @@ const Dialog = styled(MuiDialog)({
       maxHeight: 550
     }
   }
-})
+});
 
 const NoResult = ({ value, setOpenDialog }: NoResultProps) => {
   return (
@@ -319,8 +319,8 @@ const NoResult = ({ value, setOpenDialog }: NoResultProps) => {
         </ListItem>
       </List>
     </Box>
-  )
-}
+  );
+};
 
 const DefaultSuggestions = ({ setOpenDialog }: DefaultSuggestionsProps) => {
   return (
@@ -357,22 +357,22 @@ const DefaultSuggestions = ({ setOpenDialog }: DefaultSuggestionsProps) => {
         </Grid>
       ))}
     </Grid>
-  )
-}
+  );
+};
 
 const AutocompleteComponent = ({ hidden, settings }: Props) => {
   // ** States
-  const [isMounted, setIsMounted] = useState<boolean>(false)
-  const [searchValue, setSearchValue] = useState<string>('')
-  const [openDialog, setOpenDialog] = useState<boolean>(false)
-  const [options, setOptions] = useState<AppBarSearchType[]>([])
+  const [isMounted, setIsMounted] = useState<boolean>(false);
+  const [searchValue, setSearchValue] = useState<string>('');
+  const [openDialog, setOpenDialog] = useState<boolean>(false);
+  const [options, setOptions] = useState<AppBarSearchType[]>([]);
 
   // ** Hooks & Vars
-  const theme = useTheme()
-  const navigate = useNavigate()
-  const { layout } = settings
-  const wrapper = useRef<HTMLDivElement>(null)
-  const fullScreenDialog = useMediaQuery(theme.breakpoints.down('sm'))
+  const theme = useTheme();
+  const navigate = useNavigate();
+  const { layout } = settings;
+  const wrapper = useRef<HTMLDivElement>(null);
+  const fullScreenDialog = useMediaQuery(theme.breakpoints.down('sm'));
 
   // Get all data using API
   useEffect(() => {
@@ -382,68 +382,68 @@ const AutocompleteComponent = ({ hidden, settings }: Props) => {
       })
       .then(response => {
         if (response.data && response.data.length) {
-          setOptions(response.data)
+          setOptions(response.data);
         } else {
-          setOptions([])
+          setOptions([]);
         }
-      })
-  }, [searchValue])
+      });
+  }, [searchValue]);
 
   useEffect(() => {
     if (!openDialog) {
-      setSearchValue('')
+      setSearchValue('');
     }
-  }, [openDialog])
+  }, [openDialog]);
 
   useEffect(() => {
-    setIsMounted(true)
+    setIsMounted(true);
 
-    return () => setIsMounted(false)
-  }, [])
+    return () => setIsMounted(false);
+  }, []);
 
   // Handle click event on a list item in search result
   const handleOptionClick = (obj: AppBarSearchType) => {
-    setSearchValue('')
-    setOpenDialog(false)
+    setSearchValue('');
+    setOpenDialog(false);
     if (obj.url) {
-      navigate(obj.url)
+      navigate(obj.url);
     }
-  }
+  };
 
   // Handle ESC & shortcut keys keydown events
   const handleKeydown = useCallback(
     (event: KeyboardEvent) => {
       // ** Shortcut keys to open searchbox (Ctrl + /)
       if (!openDialog && event.ctrlKey && event.which === 191) {
-        setOpenDialog(true)
+        setOpenDialog(true);
       }
     },
     [openDialog]
-  )
+  );
 
   // Handle shortcut keys keyup events
   const handleKeyUp = useCallback(
     (event: KeyboardEvent) => {
       // ** ESC key to close searchbox
       if (openDialog && event.keyCode === 27) {
-        setOpenDialog(false)
+        setOpenDialog(false);
       }
     },
     [openDialog]
-  )
+  );
 
   useEffect(() => {
-    document.addEventListener('keydown', handleKeydown)
-    document.addEventListener('keyup', handleKeyUp)
+    document.addEventListener('keydown', handleKeydown);
+    document.addEventListener('keyup', handleKeyUp);
 
     return () => {
-      document.removeEventListener('keydown', handleKeydown)
-      document.removeEventListener('keyup', handleKeyUp)
-    }
-  }, [handleKeyUp, handleKeydown])
+      document.removeEventListener('keydown', handleKeydown);
+      document.removeEventListener('keyup', handleKeyUp);
+    };
+  }, [handleKeyUp, handleKeydown]);
 
   if (!isMounted) {
-    return null
+    return null;
   } else {
     return (
       <Box ref={wrapper} onClick={() => !openDialog && setOpenDialog(true)} sx={{ display: 'flex', cursor: 'pointer', alignItems: 'center' }}>
@@ -489,9 +489,9 @@ const AutocompleteComponent = ({ hidden, settings }: Props) => {
                       inputRef={input => {
                         if (input) {
                           if (openDialog) {
-                            input.focus()
+                            input.focus();
                           } else {
-                            input.blur()
+                            input.blur();
                           }
                         }
                       }}
@@ -517,7 +517,7 @@ const AutocompleteComponent = ({ hidden, settings }: Props) => {
                         )
                       }}
                     />
-                  )
+                  );
                 }}
                 renderOption={(props, option: AppBarSearchType | unknown) => {
                   return searchValue.length ? (
@@ -549,7 +549,7 @@ const AutocompleteComponent = ({ hidden, settings }: Props) => {
                         </Typography>
                       </ListItemButton>
                     </ListItem>
-                  ) : null
+                  ) : null;
                 }}
               />
             </Box>
@@ -571,8 +571,8 @@ const AutocompleteComponent = ({ hidden, settings }: Props) => {
           </Dialog>
         )}
       </Box>
-    )
+    );
   }
-}
+};
 
-export default AutocompleteComponent
+export default AutocompleteComponent;

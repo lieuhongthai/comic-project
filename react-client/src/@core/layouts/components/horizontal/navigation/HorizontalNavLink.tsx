@@ -1,38 +1,38 @@
 // ** React Imports
-import { ElementType, Fragment } from 'react'
+import { ElementType, Fragment } from 'react';
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Chip from '@mui/material/Chip'
-import List from '@mui/material/List'
-import { styled } from '@mui/material/styles'
-import Typography from '@mui/material/Typography'
-import ListItemIcon from '@mui/material/ListItemIcon'
-import MuiListItem, { ListItemProps } from '@mui/material/ListItem'
+import Box from '@mui/material/Box';
+import Chip from '@mui/material/Chip';
+import List from '@mui/material/List';
+import { styled } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import MuiListItem, { ListItemProps } from '@mui/material/ListItem';
 
 // ** Third Party Imports
-import clsx from 'clsx'
+import clsx from 'clsx';
 
 // ** Theme Config Import
-import themeConfig from 'src/configs/themeConfig'
+import themeConfig from 'src/configs/themeConfig';
 
 // ** Types
-import { NavLink } from 'src/@core/layouts/types'
-import { Settings } from 'src/@core/context/settingsContext'
+import { NavLink } from 'src/@core/layouts/types';
+import { Settings } from 'src/@core/context/settingsContext';
 
 // ** Custom Components Imports
-import UserIcon from 'src/layouts/components/UserIcon'
-import Translations from 'src/layouts/components/Translations'
+import UserIcon from 'src/layouts/components/UserIcon';
+import Translations from 'src/layouts/components/Translations';
 
 // ** Util Imports
-import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
-import { handleURLQueries } from 'src/@core/layouts/utils'
-import { Link, useLocation } from 'react-router-dom'
+import { hexToRGBA } from 'src/@core/utils/hex-to-rgba';
+import { handleURLQueries } from 'src/@core/layouts/utils';
+import { Link, useLocation } from 'react-router-dom';
 
 interface Props {
-  item: NavLink
-  settings: Settings
-  hasParent: boolean
+  item: NavLink;
+  settings: Settings;
+  hasParent: boolean;
 }
 
 const ListItem = styled(MuiListItem)<ListItemProps & { component?: ElementType; href: string; target?: '_blank' | undefined }>(({ theme }) => ({
@@ -53,28 +53,28 @@ const ListItem = styled(MuiListItem)<ListItemProps & { component?: ElementType; 
     outline: 0,
     backgroundColor: theme.palette.action.focus
   }
-}))
+}));
 
 const HorizontalNavLink = (props: Props) => {
   // ** Props
-  const { item, settings, hasParent } = props
+  const { item, settings, hasParent } = props;
 
   // ** Hook & Vars
-  const location = useLocation()
-  const pathname = location.pathname
-  const { navSubItemIcon, menuTextTruncate } = themeConfig
+  const location = useLocation();
+  const pathname = location.pathname;
+  const { navSubItemIcon, menuTextTruncate } = themeConfig;
 
-  const icon = item.icon ? item.icon : navSubItemIcon
+  const icon = item.icon ? item.icon : navSubItemIcon;
 
-  const Wrapper = !hasParent ? List : Fragment
+  const Wrapper = !hasParent ? List : Fragment;
 
   const isNavLinkActive = () => {
     if (pathname === item.path || handleURLQueries({}, item.path)) {
-      return true
+      return true;
     } else {
-      return false
+      return false;
     }
-  }
+  };
 
   return (
     <Wrapper {...(!hasParent ? { component: 'div', sx: { py: settings.skin === 'bordered' ? 2.625 : 2.75 } } : {})}>
@@ -87,8 +87,8 @@ const HorizontalNavLink = (props: Props) => {
         href={item.path === undefined ? '/' : `${item.path}`}
         onClick={e => {
           if (item.path === undefined) {
-            e.preventDefault()
-            e.stopPropagation()
+            e.preventDefault();
+            e.stopPropagation();
           }
         }}
         sx={{
@@ -139,7 +139,7 @@ const HorizontalNavLink = (props: Props) => {
         </Box>
       </ListItem>
     </Wrapper>
-  )
-}
+  );
+};
 
-export default HorizontalNavLink
+export default HorizontalNavLink;

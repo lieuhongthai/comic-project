@@ -1,8 +1,8 @@
 // ** Mock Adapter
-import mock from 'src/@fake-db/mock'
+import mock from 'src/@fake-db/mock';
 
 // ** Type import
-import { HorizontalNavItemsType } from 'src/@core/layouts/types'
+import { HorizontalNavItemsType } from 'src/@core/layouts/types';
 
 const navigation: HorizontalNavItemsType = [
   {
@@ -133,7 +133,6 @@ const navigation: HorizontalNavItemsType = [
         icon: 'mdi:google-circles-extended'
       },
       {
-        
         title: 'Cards',
         icon: 'mdi:credit-card-outline',
         children: [
@@ -242,7 +241,7 @@ const navigation: HorizontalNavItemsType = [
           {
             title: 'More',
             path: '/components/more'
-          },
+          }
         ]
       }
     ]
@@ -536,7 +535,7 @@ const navigation: HorizontalNavItemsType = [
           {
             title: 'Input Mask',
             path: '/forms/form-elements/input-mask'
-          },
+          }
         ]
       },
       {
@@ -639,8 +638,8 @@ const navigation: HorizontalNavItemsType = [
       }
     ]
   }
-]
+];
 
 mock.onGet('/api/horizontal-nav/data').reply(() => {
-  return [200, navigation]
-})
+  return [200, navigation];
+});

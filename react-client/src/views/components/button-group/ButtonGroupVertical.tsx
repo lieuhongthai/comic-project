@@ -1,6 +1,6 @@
 // ** MUI Imports
-import Button from '@mui/material/Button'
-import ButtonGroup from '@mui/material/ButtonGroup'
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
 
 const ButtonGroupVertical = () => {
   return (
@@ -21,7 +21,7 @@ const ButtonGroupVertical = () => {
         <Button>Three</Button>
       </ButtonGroup>
     </div>
-  )
-}
+  );
+};
 
-export default ButtonGroupVertical
+export default ButtonGroupVertical;

@@ -1,5 +1,5 @@
 // ** Custom Components Imports
-import CustomChip from 'src/@core/components/mui/chip'
+import CustomChip from 'src/@core/components/mui/chip';
 
 const ChipsCustomized = () => {
   return (
@@ -11,7 +11,7 @@ const ChipsCustomized = () => {
       <CustomChip label='Warning' skin='light' color='warning' />
       <CustomChip label='Info' skin='light' color='info' />
     </div>
-  )
-}
+  );
+};
 
-export default ChipsCustomized
+export default ChipsCustomized;

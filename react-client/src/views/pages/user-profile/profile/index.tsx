@@ -1,14 +1,14 @@
 // ** MUI Components
-import Grid from '@mui/material/Grid'
+import Grid from '@mui/material/Grid';
 
 // ** Demo Components
-import AboutOverivew from 'src/views/pages/user-profile/profile/AboutOverivew'
-import ProjectsTable from 'src/views/pages/user-profile/profile/ProjectsTable'
-import ActivityTimeline from 'src/views/pages/user-profile/profile/ActivityTimeline'
-import ConnectionsTeams from 'src/views/pages/user-profile/profile/ConnectionsTeams'
+import AboutOverivew from 'src/views/pages/user-profile/profile/AboutOverivew';
+import ProjectsTable from 'src/views/pages/user-profile/profile/ProjectsTable';
+import ActivityTimeline from 'src/views/pages/user-profile/profile/ActivityTimeline';
+import ConnectionsTeams from 'src/views/pages/user-profile/profile/ConnectionsTeams';
 
 // ** Types
-import { ProfileTabType } from 'src/@fake-db/types'
+import { ProfileTabType } from 'src/@fake-db/types';
 
 const ProfileTab = ({ data }: { data: ProfileTabType }) => {
   return data && Object.values(data).length ? (
@@ -28,7 +28,7 @@ const ProfileTab = ({ data }: { data: ProfileTabType }) => {
         </Grid>
       </Grid>
     </Grid>
-  ) : null
-}
+  ) : null;
+};
 
-export default ProfileTab
+export default ProfileTab;

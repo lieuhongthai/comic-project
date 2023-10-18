@@ -1,9 +1,9 @@
 // ** React Imports
-import { Fragment } from 'react'
+import { Fragment } from 'react';
 
 // ** MUI Imports
-import Chip from '@mui/material/Chip'
-import Typography from '@mui/material/Typography'
+import Chip from '@mui/material/Chip';
+import Typography from '@mui/material/Typography';
 
 const ChipsColors = () => {
   return (
@@ -27,7 +27,7 @@ const ChipsColors = () => {
         <Chip label='Info' color='info' variant='outlined' />
       </div>
     </Fragment>
-  )
-}
+  );
+};
 
-export default ChipsColors
+export default ChipsColors;

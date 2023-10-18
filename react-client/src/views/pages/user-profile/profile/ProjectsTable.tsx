@@ -1,38 +1,38 @@
 // ** React Imports
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 
 // ** MUI Components
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import { DataGrid } from '@mui/x-data-grid'
-import TextField from '@mui/material/TextField'
-import Typography from '@mui/material/Typography'
-import CardHeader from '@mui/material/CardHeader'
-import AvatarGroup from '@mui/material/AvatarGroup'
-import LinearProgress from '@mui/material/LinearProgress'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import { DataGrid } from '@mui/x-data-grid';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import CardHeader from '@mui/material/CardHeader';
+import AvatarGroup from '@mui/material/AvatarGroup';
+import LinearProgress from '@mui/material/LinearProgress';
 
 // ** Third Party Imports
-import axios from 'axios'
+import axios from 'axios';
 
 // ** Types Imports
-import { ThemeColor } from 'src/@core/layouts/types'
-import { ProjectTableRowType } from 'src/@fake-db/types'
+import { ThemeColor } from 'src/@core/layouts/types';
+import { ProjectTableRowType } from 'src/@fake-db/types';
 
 // ** Custom Components Imports
-import OptionsMenu from 'src/@core/components/option-menu'
-import CustomAvatar from 'src/@core/components/mui/avatar'
+import OptionsMenu from 'src/@core/components/option-menu';
+import CustomAvatar from 'src/@core/components/mui/avatar';
 
 // ** Utils Import
-import { getInitials } from 'src/@core/utils/get-initials'
+import { getInitials } from 'src/@core/utils/get-initials';
 
 interface CellType {
-  row: ProjectTableRowType
+  row: ProjectTableRowType;
 }
 
 // ** renders name column
 const renderName = (row: ProjectTableRowType) => {
   if (row.avatar) {
-    return <CustomAvatar src={row.avatar} sx={{ mr: 2, width: 35, height: 35 }} />
+    return <CustomAvatar src={row.avatar} sx={{ mr: 2, width: 35, height: 35 }} />;
   } else {
     return (
       <CustomAvatar
@@ -42,9 +42,9 @@ const renderName = (row: ProjectTableRowType) => {
       >
         {getInitials(row.name || 'John Doe')}
       </CustomAvatar>
-    )
+    );
   }
-}
+};
 
 const columns = [
   {
@@ -53,7 +53,7 @@ const columns = [
     minWidth: 220,
     headerName: 'Name',
     renderCell: ({ row }: CellType) => {
-      const { name, date } = row
+      const { name, date } = row;
 
       return (
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -67,7 +67,7 @@ const columns = [
             </Typography>
           </Box>
         </Box>
-      )
+      );
     }
   },
   {
@@ -129,23 +129,22 @@ const columns = [
       />
     )
   }
-]
+];
 
 const ProfileTable = () => {
   // ** State
-  const [data, setData] = useState([])
-  const [value, setValue] = useState<string>('')
-  const [pageSize, setPageSize] = useState<number>(7)
+  const [data, setData] = useState([]);
+  const [value, setValue] = useState<string>('');
 
   useEffect(() => {
     axios.get('/pages/profile-table', { params: { q: value } }).then(response => {
-      setData(response.data)
-    })
-  }, [value])
+      setData(response.data);
+    });
+  }, [value]);
 
   const handleFilter = (val: string) => {
-    setValue(val)
-  }
+    setValue(val);
+  };
 
   return data ? (
     <Card>
@@ -166,13 +165,14 @@ const ProfileTable = () => {
         rows={data}
         columns={columns}
         checkboxSelection
+
         // pageSize={pageSize}
         // disableSelectionOnClick
         // rowsPerPageOptions={[5, 7, 10]}
         // onPageSizeChange={size => setPageSize(size)}
       />
     </Card>
-  ) : null
-}
+  ) : null;
+};
 
-export default ProfileTable
+export default ProfileTable;

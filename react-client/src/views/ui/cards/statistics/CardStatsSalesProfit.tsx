@@ -1,39 +1,39 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import Grid from '@mui/material/Grid'
-import Divider from '@mui/material/Divider'
-import { useTheme } from '@mui/material/styles'
-import Typography from '@mui/material/Typography'
-import CardContent from '@mui/material/CardContent'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Grid from '@mui/material/Grid';
+import Divider from '@mui/material/Divider';
+import { useTheme } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Third Party Imports
-import { ApexOptions } from 'apexcharts'
+import { ApexOptions } from 'apexcharts';
 
 // ** Custom Components Imports
-import ReactApexcharts from 'react-apexcharts'
+import ReactApexcharts from 'react-apexcharts';
 
 // ** Util Import
-import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
+import { hexToRGBA } from 'src/@core/utils/hex-to-rgba';
 
 const seriesSales = [
   {
     data: [0, 15, 0, 17, 5, 30]
   }
-]
+];
 
-const seriesProfit = [
+const seriesProfits = [
   {
     data: [5, 25, 0, 30, 15, 30]
   }
-]
+];
 
 const CardStatsSalesProfit = () => {
   // ** Hook
-  const theme = useTheme()
+  const theme = useTheme();
 
   const optionsSales: ApexOptions = {
     chart: {
@@ -79,7 +79,7 @@ const CardStatsSalesProfit = () => {
     yaxis: {
       labels: { show: false }
     }
-  }
+  };
 
   const optionsProfit: ApexOptions = {
     chart: {
@@ -125,7 +125,7 @@ const CardStatsSalesProfit = () => {
     yaxis: {
       labels: { show: false }
     }
-  }
+  };
 
   return (
     <Card>
@@ -154,7 +154,7 @@ const CardStatsSalesProfit = () => {
       <CardContent sx={{ py: theme => `${theme.spacing(3)} !important` }}>
         <Grid container spacing={5}>
           <Grid item xs={6}>
-            <ReactApexcharts type='line' height={90} series={seriesProfit} options={optionsProfit} />
+            <ReactApexcharts type='line' height={90} series={seriesProfits} options={optionsProfit} />
           </Grid>
           <Grid item xs={6} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center' }}>
@@ -173,7 +173,7 @@ const CardStatsSalesProfit = () => {
         </Grid>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardStatsSalesProfit
+export default CardStatsSalesProfit;

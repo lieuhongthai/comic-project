@@ -1,8 +1,8 @@
 // ** Mock Adapter
-import mock from 'src/@fake-db/mock'
+import mock from 'src/@fake-db/mock';
 
 // ** Types Imports
-import { DataGridRowType } from 'src/@fake-db/types'
+import { DataGridRowType } from 'src/@fake-db/types';
 
 const data: DataGridRowType[] = [
   {
@@ -656,16 +656,16 @@ const data: DataGridRowType[] = [
     experience: '3 Years',
     status: 1
   }
-]
+];
 
 mock.onGet('/api/table/data').reply(config => {
-  const { q = '', column = '', sort = '' } = config.params
-  const queryLowered = q.toLowerCase()
+  const { q = '', column = '', sort = '' } = config.params;
+  const queryLowered = q.toLowerCase();
 
   // @ts-ignore
-  const dataAsc = data.sort((a, b) => (a[column] < b[column] ? -1 : 1))
+  const dataAsc = data.sort((a, b) => (a[column] < b[column] ? -1 : 1));
 
-  const dataToFilter = sort === 'asc' ? dataAsc : dataAsc.reverse()
+  const dataToFilter = sort === 'asc' ? dataAsc : dataAsc.reverse();
 
   const filteredData = dataToFilter.filter(
     (item: DataGridRowType) =>
@@ -677,7 +677,7 @@ mock.onGet('/api/table/data').reply(config => {
       item.salary.toString().toLowerCase().includes(queryLowered) ||
       item.city.toLowerCase().includes(queryLowered) ||
       item.start_date.toLowerCase().includes(queryLowered)
-  )
+  );
 
   return [
     200,
@@ -686,5 +686,5 @@ mock.onGet('/api/table/data').reply(config => {
       total: filteredData.length,
       data: filteredData
     }
-  ]
-})
+  ];
+});

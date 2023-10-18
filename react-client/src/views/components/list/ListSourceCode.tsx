@@ -61,7 +61,7 @@ const ListDense = () => {
 export default ListDense
 `}</code>
   </pre>
-)
+);
 
 export const ListItemSelectedJSXCode = (
   <pre className='language-jsx'>
@@ -137,7 +137,7 @@ const ListItemSelected = () => {
 export default ListItemSelected
 `}</code>
   </pre>
-)
+);
 
 export const ListProgressJSXCode = (
   <pre className='language-jsx'>
@@ -244,7 +244,7 @@ const ListProgress = () => {
 export default ListProgress
 `}</code>
   </pre>
-)
+);
 
 export const ListUsersJSXCode = (
   <pre className='language-jsx'>
@@ -389,7 +389,7 @@ const ListUsers = () => {
 export default ListUsers
 `}</code>
   </pre>
-)
+);
 
 export const ListNestedJSXCode = (
   <pre className='language-jsx'>
@@ -475,7 +475,7 @@ const ListNested = () => {
 export default ListNested
 `}</code>
   </pre>
-)
+);
 
 export const ListWithCheckboxJSXCode = (
   <pre className='language-jsx'>
@@ -570,7 +570,7 @@ const ListWithCheckbox = () => {
 export default ListWithCheckbox
 `}</code>
   </pre>
-)
+);
 
 export const ListWithSwitchJSXCode = (
   <pre className='language-jsx'>
@@ -671,7 +671,7 @@ const ListWithSwitch = () => {
 export default ListWithSwitch
 `}</code>
   </pre>
-)
+);
 
 export const ListStickySubheaderJSXCode = (
   <pre className='language-jsx'>
@@ -704,7 +704,7 @@ const ListWithSwitch = () => {
 export default ListWithSwitch
 `}</code>
   </pre>
-)
+);
 
 export const ListSimpleJSXCode = (
   <pre className='language-jsx'>
@@ -769,7 +769,7 @@ const ListSimple = () => {
 export default ListSimple
 `}</code>
   </pre>
-)
+);
 
 export const ListSecondaryJSXCode = (
   <pre className='language-jsx'>
@@ -828,7 +828,7 @@ const ListSecondary = () => {
 export default ListSecondary
 `}</code>
   </pre>
-)
+);
 
 export const ListDenseTSXCode = (
   <pre className='language-jsx'>
@@ -893,7 +893,7 @@ const ListDense = () => {
 export default ListDense
 `}</code>
   </pre>
-)
+);
 
 export const ListItemSelectedTSXCode = (
   <pre className='language-jsx'>
@@ -969,7 +969,7 @@ const ListItemSelected = () => {
 export default ListItemSelected
 `}</code>
   </pre>
-)
+);
 
 export const ListProgressTSXCode = (
   <pre className='language-jsx'>
@@ -1076,7 +1076,7 @@ const ListProgress = () => {
 export default ListProgress
 `}</code>
   </pre>
-)
+);
 
 export const ListNestedTSXCode = (
   <pre className='language-jsx'>
@@ -1162,7 +1162,7 @@ const ListNested = () => {
 export default ListNested
 `}</code>
   </pre>
-)
+);
 
 export const ListSecondaryTSXCode = (
   <pre className='language-jsx'>
@@ -1221,7 +1221,7 @@ const ListSecondary = () => {
 export default ListSecondary
 `}</code>
   </pre>
-)
+);
 
 export const ListStickySubheaderTSXCode = (
   <pre className='language-jsx'>
@@ -1254,7 +1254,7 @@ const ListWithSwitch = () => {
 export default ListWithSwitch
 `}</code>
   </pre>
-)
+);
 
 export const ListUsersTSXCode = (
   <pre className='language-jsx'>
@@ -1399,7 +1399,7 @@ const ListUsers = () => {
 export default ListUsers
 `}</code>
   </pre>
-)
+);
 
 export const ListWithCheckboxTSXCode = (
   <pre className='language-jsx'>
@@ -1496,7 +1496,7 @@ const ListWithCheckbox = () => {
 export default ListWithCheckbox
 `}</code>
   </pre>
-)
+);
 
 export const ListWithSwitchTSXCode = (
   <pre className='language-jsx'>
@@ -1599,7 +1599,7 @@ const ListWithSwitch = () => {
 export default ListWithSwitch
 `}</code>
   </pre>
-)
+);
 
 export const ListSimpleTSXCode = (
   <pre className='language-jsx'>
@@ -1664,4 +1664,4 @@ const ListSimple = () => {
 export default ListSimple
 `}</code>
   </pre>
-)
+);

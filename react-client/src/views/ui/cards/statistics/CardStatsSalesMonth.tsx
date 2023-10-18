@@ -1,23 +1,23 @@
 // ** MUI Imports
-import Card from '@mui/material/Card'
-import { useTheme } from '@mui/material/styles'
-import Typography from '@mui/material/Typography'
-import CardContent from '@mui/material/CardContent'
+import Card from '@mui/material/Card';
+import { useTheme } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
 
 // ** Third Party Imports
-import { ApexOptions } from 'apexcharts'
+import { ApexOptions } from 'apexcharts';
 
 // ** Custom Components Imports
-import ReactApexcharts from 'react-apexcharts'
+import ReactApexcharts from 'react-apexcharts';
 
 // ** Util Import
-import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
+import { hexToRGBA } from 'src/@core/utils/hex-to-rgba';
 
-const series = [{ data: [12, 12, 18, 18, 13, 13, 5, 5, 17, 17, 25, 25] }]
+const series = [{ data: [12, 12, 18, 18, 13, 13, 5, 5, 17, 17, 25, 25] }];
 
 const CardStatsSalesMonth = () => {
   // ** Hook
-  const theme = useTheme()
+  const theme = useTheme();
 
   const options: ApexOptions = {
     chart: {
@@ -62,7 +62,7 @@ const CardStatsSalesMonth = () => {
       min: 0,
       labels: { show: false }
     }
-  }
+  };
 
   return (
     <Card>
@@ -76,7 +76,7 @@ const CardStatsSalesMonth = () => {
         <ReactApexcharts type='line' height={115} options={options} series={series} />
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardStatsSalesMonth
+export default CardStatsSalesMonth;

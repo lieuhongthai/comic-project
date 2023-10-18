@@ -1,28 +1,28 @@
 // ** MUI Imports
-import AppBar from '@mui/material/AppBar'
-import Toolbar from '@mui/material/Toolbar'
-import Typography from '@mui/material/Typography'
-import { styled, useTheme } from '@mui/material/styles'
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import { styled, useTheme } from '@mui/material/styles';
 
 // ** Configs
-import themeConfig from 'src/configs/themeConfig'
+import themeConfig from 'src/configs/themeConfig';
 
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 // ** Hook
-import { initialSettings } from 'src/@core/context/settingsContext'
+import { initialSettings } from 'src/@core/context/settingsContext';
 
 const StyledLink = styled(Link)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   textDecoration: 'none',
   marginRight: theme.spacing(8)
-}))
+}));
 
 const BlankLayoutAppBar = () => {
   // ** Hooks & Vars
-  const theme = useTheme()
-  const { skin } = initialSettings
+  const theme = useTheme();
+  const { skin } = initialSettings;
 
   return (
     <AppBar
@@ -104,7 +104,7 @@ const BlankLayoutAppBar = () => {
         </StyledLink>
       </Toolbar>
     </AppBar>
-  )
-}
+  );
+};
 
-export default BlankLayoutAppBar
+export default BlankLayoutAppBar;

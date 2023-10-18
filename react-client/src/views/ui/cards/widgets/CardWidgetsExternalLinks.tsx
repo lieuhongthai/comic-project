@@ -1,44 +1,44 @@
 // ** React Import
-import { ReactNode } from 'react'
+import { ReactNode } from 'react';
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import Table from '@mui/material/Table'
-import TableRow from '@mui/material/TableRow'
-import TableBody from '@mui/material/TableBody'
-import TableCell from '@mui/material/TableCell'
-import { useTheme } from '@mui/material/styles'
-import CardHeader from '@mui/material/CardHeader'
-import Typography from '@mui/material/Typography'
-import CardContent from '@mui/material/CardContent'
-import TableContainer from '@mui/material/TableContainer'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Table from '@mui/material/Table';
+import TableRow from '@mui/material/TableRow';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import { useTheme } from '@mui/material/styles';
+import CardHeader from '@mui/material/CardHeader';
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
+import TableContainer from '@mui/material/TableContainer';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Third Party Imports
-import { ApexOptions } from 'apexcharts'
+import { ApexOptions } from 'apexcharts';
 
 // ** Type Import
-import { ThemeColor } from 'src/@core/layouts/types'
+import { ThemeColor } from 'src/@core/layouts/types';
 
 // ** Custom Components Imports
-import OptionsMenu from 'src/@core/components/option-menu'
-import ReactApexcharts from 'react-apexcharts'
+import OptionsMenu from 'src/@core/components/option-menu';
+import ReactApexcharts from 'react-apexcharts';
 
 // ** Util Import
-import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
+import { hexToRGBA } from 'src/@core/utils/hex-to-rgba';
 
 interface DataType {
-  title: string
-  amount: string
-  icon: ReactNode
-  color: ThemeColor
-  trendAmount: number
+  title: string;
+  amount: string;
+  icon: ReactNode;
+  color: ThemeColor;
+  trendAmount: number;
 }
 
-const data: DataType[] = [
+const dataList: DataType[] = [
   {
     amount: '$845k',
     trendAmount: 82,
@@ -61,7 +61,7 @@ const data: DataType[] = [
       </Box>
     )
   }
-]
+];
 
 const series = [
   {
@@ -72,11 +72,11 @@ const series = [
     name: 'Facebook Ads',
     data: [110, 235, 125, 230, 215, 115, 200]
   }
-]
+];
 
 const CardWidgetsExternalLinks = () => {
   // ** Hook
-  const theme = useTheme()
+  const theme = useTheme();
 
   const options: ApexOptions = {
     chart: {
@@ -87,9 +87,10 @@ const CardWidgetsExternalLinks = () => {
     plotOptions: {
       bar: {
         borderRadius: 10,
-        columnWidth: '40%',
-        endingShape: 'rounded',
-        startingShape: 'rounded'
+        columnWidth: '40%'
+
+        // endingShape: 'rounded',
+        // startingShape: 'rounded'
       }
     },
     xaxis: {
@@ -168,7 +169,7 @@ const CardWidgetsExternalLinks = () => {
         }
       }
     ]
-  }
+  };
 
   return (
     <Card>
@@ -182,7 +183,7 @@ const CardWidgetsExternalLinks = () => {
       <TableContainer sx={{ mb: 3.75 }}>
         <Table>
           <TableBody>
-            {data.map((item, index) => (
+            {dataList.map((item, index) => (
               <TableRow key={index} sx={{ '& .MuiTableCell-root': { borderBottomWidth: 0, py: `${theme.spacing(1.125)} !important` } }}>
                 <TableCell>
                   <Box
@@ -213,7 +214,7 @@ const CardWidgetsExternalLinks = () => {
         </Table>
       </TableContainer>
     </Card>
-  )
-}
+  );
+};
 
-export default CardWidgetsExternalLinks
+export default CardWidgetsExternalLinks;

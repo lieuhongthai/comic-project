@@ -1,24 +1,24 @@
 // ** React Imports
-import { useState, ChangeEvent } from 'react'
+import { useState, ChangeEvent } from 'react';
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Radio from '@mui/material/Radio'
-import TextField from '@mui/material/TextField'
-import Typography from '@mui/material/Typography'
+import Box from '@mui/material/Box';
+import Radio from '@mui/material/Radio';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Custom Avatar Component
-import CustomAvatar from 'src/@core/components/mui/avatar'
+import CustomAvatar from 'src/@core/components/mui/avatar';
 
 const TabDetails = () => {
-  const [value, setValue] = useState<string>('ecommerce')
+  const [value, setValue] = useState<string>('ecommerce');
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value)
-  }
+    setValue(event.target.value);
+  };
 
   return (
     <div>
@@ -61,10 +61,7 @@ const TabDetails = () => {
           </Box>
           <Radio value='ecommerce' onChange={handleChange} checked={value === 'ecommerce'} />
         </Box>
-        <Box
-          onClick={() => setValue('learning')}
-          sx={{ cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
-        >
+        <Box onClick={() => setValue('learning')} sx={{ cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <CustomAvatar skin='light' color='error' variant='rounded' sx={{ mr: 3, width: 48, height: 48 }}>
               <Icon icon='mdi:license' />
@@ -80,7 +77,7 @@ const TabDetails = () => {
         </Box>
       </Box>
     </div>
-  )
-}
+  );
+};
 
-export default TabDetails
+export default TabDetails;

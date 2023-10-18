@@ -1,12 +1,12 @@
 // ** MUI Imports
-import Button from '@mui/material/Button'
-import { styled } from '@mui/material/styles'
-import Typography from '@mui/material/Typography'
-import Box, { BoxProps } from '@mui/material/Box'
-import Grid, { GridProps } from '@mui/material/Grid'
+import Button from '@mui/material/Button';
+import { styled } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import Box, { BoxProps } from '@mui/material/Box';
+import Grid, { GridProps } from '@mui/material/Grid';
 
 // ** Util Import
-import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
+import { hexToRGBA } from 'src/@core/utils/hex-to-rgba';
 
 // ** Styled Components
 const BoxWrapper = styled(Box)<BoxProps>(({ theme }) => ({
@@ -22,7 +22,7 @@ const BoxWrapper = styled(Box)<BoxProps>(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     padding: theme.spacing(10, 5)
   }
-}))
+}));
 
 const GridStyled = styled(Grid)<GridProps>(({ theme }) => ({
   display: 'flex',
@@ -30,7 +30,7 @@ const GridStyled = styled(Grid)<GridProps>(({ theme }) => ({
   [theme.breakpoints.down('md')]: {
     order: -1
   }
-}))
+}));
 
 const Img = styled('img')(({ theme }) => ({
   bottom: 0,
@@ -44,7 +44,7 @@ const Img = styled('img')(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     width: 180
   }
-}))
+}));
 
 const PricingCTA = () => {
   return (
@@ -54,9 +54,7 @@ const PricingCTA = () => {
           <Typography variant='h5' sx={{ mb: 2.5, color: 'primary.main' }}>
             Still not convinced? Start with a 14-day FREE trial!
           </Typography>
-          <Typography sx={{ mb: 10, color: 'text.secondary' }}>
-            You will get full access to with all the features for 14 days.
-          </Typography>
+          <Typography sx={{ mb: 10, color: 'text.secondary' }}>You will get full access to with all the features for 14 days.</Typography>
           <Button variant='contained'>Start 14-day FREE trial</Button>
         </Grid>
         <GridStyled item xs={12} md={4}>
@@ -64,7 +62,7 @@ const PricingCTA = () => {
         </GridStyled>
       </Grid>
     </BoxWrapper>
-  )
-}
+  );
+};
 
-export default PricingCTA
+export default PricingCTA;

@@ -1,9 +1,9 @@
 // ** MUI Components
-import useMediaQuery from '@mui/material/useMediaQuery'
-import { styled, useTheme } from '@mui/material/styles'
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { styled, useTheme } from '@mui/material/styles';
 
 interface FooterIllustrationsProp {
-  image?: string
+  image?: string;
 }
 
 // Styled Components
@@ -15,25 +15,25 @@ const MaskImg = styled('img')(({ theme }) => ({
   [theme.breakpoints.down('lg')]: {
     bottom: '10%'
   }
-}))
+}));
 
 const FooterIllustrationsV1 = (props: FooterIllustrationsProp) => {
   // ** Props
-  const { image } = props
+  const { image } = props;
 
   // ** Hook
-  const theme = useTheme()
+  const theme = useTheme();
 
   // ** Vars
-  const hidden = useMediaQuery(theme.breakpoints.down('md'))
+  const hidden = useMediaQuery(theme.breakpoints.down('md'));
 
-  const src = image || `/images/pages/auth-v1-login-mask-${theme.palette.mode}.png`
+  const src = image || `/images/pages/auth-v1-login-mask-${theme.palette.mode}.png`;
 
   if (!hidden) {
-    return <MaskImg alt='mask' src={src} />
+    return <MaskImg alt='mask' src={src} />;
   } else {
-    return null
+    return null;
   }
-}
+};
 
-export default FooterIllustrationsV1
+export default FooterIllustrationsV1;

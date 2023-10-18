@@ -1,25 +1,25 @@
 // ** React Imports
-import { useState } from 'react'
+import { useState } from 'react';
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Fade from '@mui/material/Fade'
-import Grow from '@mui/material/Grow'
-import Alert from '@mui/material/Alert'
-import Slide from '@mui/material/Slide'
-import Button from '@mui/material/Button'
-import Collapse from '@mui/material/Collapse'
-import IconButton from '@mui/material/IconButton'
+import Box from '@mui/material/Box';
+import Fade from '@mui/material/Fade';
+import Grow from '@mui/material/Grow';
+import Alert from '@mui/material/Alert';
+import Slide from '@mui/material/Slide';
+import Button from '@mui/material/Button';
+import Collapse from '@mui/material/Collapse';
+import IconButton from '@mui/material/IconButton';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 const AlertsDismissible = () => {
   // ** States
-  const [open1, setOpen1] = useState<boolean>(true)
-  const [open2, setOpen2] = useState<boolean>(true)
-  const [open3, setOpen3] = useState<boolean>(true)
-  const [open4, setOpen4] = useState<boolean>(true)
+  const [open1, setOpen1] = useState<boolean>(true);
+  const [open2, setOpen2] = useState<boolean>(true);
+  const [open3, setOpen3] = useState<boolean>(true);
+  const [open4, setOpen4] = useState<boolean>(true);
 
   return (
     <>
@@ -91,7 +91,7 @@ const AlertsDismissible = () => {
         </Button>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default AlertsDismissible
+export default AlertsDismissible;

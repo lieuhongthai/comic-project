@@ -1,10 +1,10 @@
 // ** MUI Imports
-import TreeItem from '@mui/lab/TreeItem'
-import { alpha, styled } from '@mui/material/styles'
-import MuiTreeView, { TreeViewProps } from '@mui/lab/TreeView'
+import TreeItem from '@mui/lab/TreeItem';
+import { alpha, styled } from '@mui/material/styles';
+import MuiTreeView, { TreeViewProps } from '@mui/lab/TreeView';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // Styled TreeView component
 const TreeView = styled(MuiTreeView)<TreeViewProps>(({ theme }) => ({
@@ -17,7 +17,7 @@ const TreeView = styled(MuiTreeView)<TreeViewProps>(({ theme }) => ({
     paddingLeft: 18,
     borderLeft: `1px dashed ${alpha(theme.palette.text.primary, 0.4)}`
   }
-}))
+}));
 
 const TreeViewCustomized = () => {
   return (
@@ -42,7 +42,7 @@ const TreeViewCustomized = () => {
         <TreeItem nodeId='5' label='Something something' />
       </TreeItem>
     </TreeView>
-  )
-}
+  );
+};
 
-export default TreeViewCustomized
+export default TreeViewCustomized;

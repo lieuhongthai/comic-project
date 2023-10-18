@@ -1,38 +1,38 @@
 // ** React Imports
-import { ReactNode } from 'react'
+import { ReactNode } from 'react';
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import Table from '@mui/material/Table'
-import TableRow from '@mui/material/TableRow'
-import TableBody from '@mui/material/TableBody'
-import TableCell from '@mui/material/TableCell'
-import Typography from '@mui/material/Typography'
-import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
-import LinearProgress from '@mui/material/LinearProgress'
-import TableContainer from '@mui/material/TableContainer'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Table from '@mui/material/Table';
+import TableRow from '@mui/material/TableRow';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import Typography from '@mui/material/Typography';
+import CardHeader from '@mui/material/CardHeader';
+import CardContent from '@mui/material/CardContent';
+import LinearProgress from '@mui/material/LinearProgress';
+import TableContainer from '@mui/material/TableContainer';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Types
-import { ThemeColor } from 'src/@core/layouts/types'
+import { ThemeColor } from 'src/@core/layouts/types';
 
 // ** Custom Components Imports
-import CustomAvatar from 'src/@core/components/mui/avatar'
-import OptionsMenu from 'src/@core/components/option-menu'
+import CustomAvatar from 'src/@core/components/mui/avatar';
+import OptionsMenu from 'src/@core/components/option-menu';
 
 interface DataType {
-  title: string
-  amount: string
-  trend: ReactNode
-  color: ThemeColor
-  trendNumber: string
+  title: string;
+  amount: string;
+  trend: ReactNode;
+  color: ThemeColor;
+  trendNumber: string;
 }
 
-const data: DataType[] = [
+const dataList: DataType[] = [
   {
     title: 'Profit',
     color: 'primary',
@@ -66,7 +66,7 @@ const data: DataType[] = [
       </Box>
     )
   }
-]
+];
 
 const CardGeneralStatistics = () => {
   return (
@@ -75,10 +75,7 @@ const CardGeneralStatistics = () => {
         title='General Statistics'
         titleTypographyProps={{ sx: { lineHeight: '2rem !important', letterSpacing: '0.15px !important' } }}
         action={
-          <OptionsMenu
-            options={['Last 28 Days', 'Last Month', 'Last Year']}
-            iconButtonProps={{ size: 'small', className: 'card-more-options' }}
-          />
+          <OptionsMenu options={['Last 28 Days', 'Last Month', 'Last Year']} iconButtonProps={{ size: 'small', className: 'card-more-options' }} />
         }
       />
       <CardContent sx={{ pt: theme => `${theme.spacing(2.5)} !important` }}>
@@ -99,7 +96,7 @@ const CardGeneralStatistics = () => {
         <TableContainer>
           <Table>
             <TableBody>
-              {data.map((row: DataType) => {
+              {dataList.map((row: DataType) => {
                 return (
                   <TableRow
                     key={row.title}
@@ -113,9 +110,7 @@ const CardGeneralStatistics = () => {
                     }}
                   >
                     <TableCell>
-                      <Box
-                        sx={{ display: 'flex', alignItems: 'center', '& svg': { mr: 1.8, color: `${row.color}.main` } }}
-                      >
+                      <Box sx={{ display: 'flex', alignItems: 'center', '& svg': { mr: 1.8, color: `${row.color}.main` } }}>
                         <Icon icon='mdi:circle' fontSize='1rem' />
                         <Typography variant='body2' sx={{ color: 'text.primary' }}>
                           {row.title}
@@ -136,14 +131,14 @@ const CardGeneralStatistics = () => {
                       </Box>
                     </TableCell>
                   </TableRow>
-                )
+                );
               })}
             </TableBody>
           </Table>
         </TableContainer>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardGeneralStatistics
+export default CardGeneralStatistics;

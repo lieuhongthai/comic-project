@@ -1,14 +1,14 @@
 // ** Mock Adapter
-import mock from 'src/@fake-db/mock'
+import mock from 'src/@fake-db/mock';
 
 // ** Utils Import
-import { getDateRange } from 'src/@core/utils/get-daterange'
+import { getDateRange } from 'src/@core/utils/get-daterange';
 
 // ** Types
-import { InvoiceType } from 'src/types/apps/invoiceTypes'
+import { InvoiceType } from 'src/types/apps/invoiceTypes';
 
-const now = new Date()
-const currentMonth = now.toLocaleString('default', { month: 'short' })
+const now = new Date();
+const currentMonth = now.toLocaleString('default', { month: 'short' });
 
 const data: { invoices: InvoiceType[] } = {
   invoices: [
@@ -831,31 +831,31 @@ const data: { invoices: InvoiceType[] } = {
       dueDate: `25 ${currentMonth} ${now.getFullYear()}`
     }
   ]
-}
+};
 
 // ------------------------------------------------
 // GET: Return Invoice List
 // ------------------------------------------------
 mock.onGet('/apps/invoice/invoices').reply(config => {
-  const { q = '', status = '', dates = [] } = config.params ?? ''
-  const queryLowered = q.toLowerCase()
+  const { q = '', status = '', dates = [] } = config.params ?? '';
+  const queryLowered = q.toLowerCase();
   const filteredData = data.invoices.filter(invoice => {
     if (dates.length) {
-      const [start, end] = dates
-      const filtered: number[] = []
-      const range = getDateRange(start, end)
-      const invoiceDate = new Date(invoice.issuedDate)
+      const [start, end] = dates;
+      const filtered: number[] = [];
+      const range = getDateRange(start, end);
+      const invoiceDate = new Date(invoice.issuedDate);
 
       range.filter(date => {
-        const rangeDate = new Date(date)
+        const rangeDate = new Date(date);
         if (
           invoiceDate.getFullYear() === rangeDate.getFullYear() &&
           invoiceDate.getDate() === rangeDate.getDate() &&
           invoiceDate.getMonth() === rangeDate.getMonth()
         ) {
-          filtered.push(invoice.id)
+          filtered.push(invoice.id);
         }
-      })
+      });
 
       if (filtered.length && filtered.includes(invoice.id)) {
         return (
@@ -866,7 +866,7 @@ mock.onGet('/apps/invoice/invoices').reply(config => {
             String(invoice.balance).toLowerCase().includes(queryLowered) ||
             invoice.dueDate.toLowerCase().includes(queryLowered)) &&
           invoice.invoiceStatus.toLowerCase() === (status.toLowerCase() || invoice.invoiceStatus.toLowerCase())
-        )
+        );
       }
     } else {
       return (
@@ -877,9 +877,9 @@ mock.onGet('/apps/invoice/invoices').reply(config => {
           String(invoice.balance).toLowerCase().includes(queryLowered) ||
           invoice.dueDate.toLowerCase().includes(queryLowered)) &&
         invoice.invoiceStatus.toLowerCase() === (status.toLowerCase() || invoice.invoiceStatus.toLowerCase())
-      )
+      );
     }
-  })
+  });
 
   return [
     200,
@@ -889,16 +889,16 @@ mock.onGet('/apps/invoice/invoices').reply(config => {
       invoices: filteredData,
       total: filteredData.length
     }
-  ]
-})
+  ];
+});
 
 // ------------------------------------------------
 // GET: Return Single Invoice
 // ------------------------------------------------
 mock.onGet('apps/invoice/single-invoice').reply(config => {
-  const { id } = config.params
+  const { id } = config.params;
 
-  const invoiceData = data.invoices.filter(invoice => invoice.id === parseInt(id, 10))
+  const invoiceData = data.invoices.filter(invoice => invoice.id === parseInt(id, 10));
   if (invoiceData.length) {
     const responseData = {
       invoice: invoiceData[0],
@@ -909,20 +909,20 @@ mock.onGet('apps/invoice/single-invoice').reply(config => {
         iban: 'ETD95476213874685',
         swiftCode: 'BR91905'
       }
-    }
+    };
 
-    return [200, responseData]
+    return [200, responseData];
   } else {
-    return [404, { message: 'Unable to find the requested invoice!' }]
+    return [404, { message: 'Unable to find the requested invoice!' }];
   }
-})
+});
 
 // ------------------------------------------------
 // GET: Return Clients
 // ------------------------------------------------
 mock.onGet('/apps/invoice/clients').reply(() => {
   const clients = data.invoices.map(invoice => {
-    const { address, company, companyEmail, country, contact, name } = invoice
+    const { address, company, companyEmail, country, contact, name } = invoice;
 
     return {
       name,
@@ -931,20 +931,20 @@ mock.onGet('/apps/invoice/clients').reply(() => {
       country,
       contact,
       companyEmail
-    }
-  })
+    };
+  });
 
-  return [200, clients.slice(0, 5)]
-})
+  return [200, clients.slice(0, 5)];
+});
 
 // ------------------------------------------------
 // DELETE: Deletes Invoice
 // ------------------------------------------------
 mock.onDelete('/apps/invoice/delete').reply(config => {
   // Get invoice id from URL
-  const invoiceId = Number(config.data)
-  const invoiceIndex = data.invoices.findIndex(t => t.id === invoiceId)
-  data.invoices.splice(invoiceIndex, 1)
+  const invoiceId = Number(config.data);
+  const invoiceIndex = data.invoices.findIndex(t => t.id === invoiceId);
+  data.invoices.splice(invoiceIndex, 1);
 
-  return [200]
-})
+  return [200];
+});

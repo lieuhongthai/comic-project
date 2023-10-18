@@ -1,14 +1,14 @@
 // ** MUI Imports
-import List from '@mui/material/List'
-import Avatar from '@mui/material/Avatar'
-import ListItem from '@mui/material/ListItem'
-import IconButton from '@mui/material/IconButton'
-import ListItemText from '@mui/material/ListItemText'
-import ListItemAvatar from '@mui/material/ListItemAvatar'
-import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction'
+import List from '@mui/material/List';
+import Avatar from '@mui/material/Avatar';
+import ListItem from '@mui/material/ListItem';
+import IconButton from '@mui/material/IconButton';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 const ListSecondary = () => {
   return (
@@ -47,7 +47,7 @@ const ListSecondary = () => {
         </ListItemSecondaryAction>
       </ListItem>
     </List>
-  )
-}
+  );
+};
 
-export default ListSecondary
+export default ListSecondary;

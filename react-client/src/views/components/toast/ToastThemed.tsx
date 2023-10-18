@@ -1,18 +1,18 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
-import { useTheme } from '@mui/material/styles'
-import Typography from '@mui/material/Typography'
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import { useTheme } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Third Party Components
-import toast from 'react-hot-toast'
+import toast from 'react-hot-toast';
 
 const ToastThemed = () => {
   // ** Hook
-  const theme = useTheme()
+  const theme = useTheme();
 
   const handleClick = () => {
     return toast.success('Look at me, I have brand styles.', {
@@ -25,13 +25,11 @@ const ToastThemed = () => {
         primary: theme.palette.primary.main,
         secondary: theme.palette.primary.contrastText
       }
-    })
-  }
+    });
+  };
 
   return (
-    <Box
-      sx={{ display: 'flex', textAlign: 'center', alignItems: 'center', flexDirection: 'column', '& svg': { mb: 2 } }}
-    >
+    <Box sx={{ display: 'flex', textAlign: 'center', alignItems: 'center', flexDirection: 'column', '& svg': { mb: 2 } }}>
       <Icon icon='mdi:palette-outline' fontSize='2rem' />
       <Typography sx={{ mb: 4, fontWeight: 600 }}>Themed</Typography>
       <Typography sx={{ mb: 3 }}>Customize the default styles the way you want.</Typography>
@@ -39,7 +37,7 @@ const ToastThemed = () => {
         Themed
       </Button>
     </Box>
-  )
-}
+  );
+};
 
-export default ToastThemed
+export default ToastThemed;

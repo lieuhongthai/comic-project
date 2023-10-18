@@ -1,13 +1,13 @@
 // ** React Imports
-import { SyntheticEvent, useState } from 'react'
+import { SyntheticEvent, useState } from 'react';
 
 // ** MUI Imports
-import Tab from '@mui/material/Tab'
-import TabPanel from '@mui/lab/TabPanel'
-import TabContext from '@mui/lab/TabContext'
-import { styled } from '@mui/material/styles'
-import Typography from '@mui/material/Typography'
-import MuiTabList, { TabListProps } from '@mui/lab/TabList'
+import Tab from '@mui/material/Tab';
+import TabPanel from '@mui/lab/TabPanel';
+import TabContext from '@mui/lab/TabContext';
+import { styled } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import MuiTabList, { TabListProps } from '@mui/lab/TabList';
 
 // Styled TabList component
 const TabList = styled(MuiTabList)<TabListProps>(({ theme }) => ({
@@ -25,15 +25,15 @@ const TabList = styled(MuiTabList)<TabListProps>(({ theme }) => ({
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2)
   }
-}))
+}));
 
 const TabsCustomized = () => {
   // ** State
-  const [value, setValue] = useState<string>('1')
+  const [value, setValue] = useState<string>('1');
 
   const handleChange = (event: SyntheticEvent, newValue: string) => {
-    setValue(newValue)
-  }
+    setValue(newValue);
+  };
 
   return (
     <TabContext value={value}>
@@ -44,24 +44,22 @@ const TabsCustomized = () => {
       </TabList>
       <TabPanel value='1'>
         <Typography>
-          Cake apple pie chupa chups biscuit liquorice tootsie roll liquorice sugar plum. Cotton candy wafer wafer jelly
-          cake caramels brownie gummies.
+          Cake apple pie chupa chups biscuit liquorice tootsie roll liquorice sugar plum. Cotton candy wafer wafer jelly cake caramels brownie
+          gummies.
         </Typography>
       </TabPanel>
       <TabPanel value='2'>
         <Typography>
-          Chocolate bar carrot cake candy canes sesame snaps. Cupcake pie gummi bears jujubes candy canes. Chupa chups
-          sesame snaps halvah.
+          Chocolate bar carrot cake candy canes sesame snaps. Cupcake pie gummi bears jujubes candy canes. Chupa chups sesame snaps halvah.
         </Typography>
       </TabPanel>
       <TabPanel value='3'>
         <Typography>
-          Danish tiramisu jujubes cupcake chocolate bar cake cheesecake chupa chups. Macaroon ice cream tootsie roll
-          carrot cake gummi bears.
+          Danish tiramisu jujubes cupcake chocolate bar cake cheesecake chupa chups. Macaroon ice cream tootsie roll carrot cake gummi bears.
         </Typography>
       </TabPanel>
     </TabContext>
-  )
-}
+  );
+};
 
-export default TabsCustomized
+export default TabsCustomized;

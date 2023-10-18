@@ -1,26 +1,26 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import Grid from '@mui/material/Grid'
-import { useTheme } from '@mui/material/styles'
-import CardHeader from '@mui/material/CardHeader'
-import Typography from '@mui/material/Typography'
-import CardContent from '@mui/material/CardContent'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Grid from '@mui/material/Grid';
+import { useTheme } from '@mui/material/styles';
+import CardHeader from '@mui/material/CardHeader';
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Third Party Imports
-import { ApexOptions } from 'apexcharts'
+import { ApexOptions } from 'apexcharts';
 
 // ** Custom Components Imports
-import CustomAvatar from 'src/@core/components/mui/avatar'
-import OptionsMenu from 'src/@core/components/option-menu'
+import CustomAvatar from 'src/@core/components/mui/avatar';
+import OptionsMenu from 'src/@core/components/option-menu';
 
 // ** Util Import
-import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
+import { hexToRGBA } from 'src/@core/utils/hex-to-rgba';
 
-import ReactApexcharts from 'react-apexcharts'
+import ReactApexcharts from 'react-apexcharts';
 
 const series = [
   {
@@ -38,11 +38,11 @@ const series = [
     name: 'Expense',
     data: [73, 20, 50, -20, 58, 15, 31]
   }
-]
+];
 
 const CardWidgetsWeeklySales = () => {
   // ** Hook
-  const theme = useTheme()
+  const theme = useTheme();
 
   const options: ApexOptions = {
     chart: {
@@ -88,9 +88,10 @@ const CardWidgetsWeeklySales = () => {
     plotOptions: {
       bar: {
         borderRadius: 8,
-        columnWidth: '57%',
-        endingShape: 'flat',
-        startingShape: 'rounded'
+        columnWidth: '57%'
+
+        // endingShape: 'flat',
+        // startingShape: 'rounded'
       }
     },
     xaxis: {
@@ -106,7 +107,7 @@ const CardWidgetsWeeklySales = () => {
       min: -100,
       show: false
     }
-  }
+  };
 
   return (
     <Card>
@@ -145,7 +146,7 @@ const CardWidgetsWeeklySales = () => {
         <ReactApexcharts type='line' height={225} series={series} options={options} />
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardWidgetsWeeklySales
+export default CardWidgetsWeeklySales;

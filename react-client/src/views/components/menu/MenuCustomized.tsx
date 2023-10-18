@@ -1,23 +1,23 @@
 // ** React Imports
-import { MouseEvent, useState } from 'react'
+import { MouseEvent, useState } from 'react';
 
 // ** MUI Imports
-import Button from '@mui/material/Button'
-import { styled } from '@mui/material/styles'
-import ListItemIcon from '@mui/material/ListItemIcon'
-import ListItemText from '@mui/material/ListItemText'
-import MuiMenu, { MenuProps } from '@mui/material/Menu'
-import MuiMenuItem, { MenuItemProps } from '@mui/material/MenuItem'
+import Button from '@mui/material/Button';
+import { styled } from '@mui/material/styles';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import MuiMenu, { MenuProps } from '@mui/material/Menu';
+import MuiMenuItem, { MenuItemProps } from '@mui/material/MenuItem';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // Styled Menu component
 const Menu = styled(MuiMenu)<MenuProps>(({ theme }) => ({
   '& .MuiMenu-paper': {
     border: `1px solid ${theme.palette.divider}`
   }
-}))
+}));
 
 // Styled MenuItem component
 const MenuItem = styled(MuiMenuItem)<MenuItemProps>(({ theme }) => ({
@@ -27,19 +27,19 @@ const MenuItem = styled(MuiMenuItem)<MenuItemProps>(({ theme }) => ({
       color: theme.palette.common.white
     }
   }
-}))
+}));
 
 const MenuCustomized = () => {
   // ** State
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const handleClick = (event: MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget)
-  }
+    setAnchorEl(event.currentTarget);
+  };
 
   const handleClose = () => {
-    setAnchorEl(null)
-  }
+    setAnchorEl(null);
+  };
 
   return (
     <div>
@@ -82,7 +82,7 @@ const MenuCustomized = () => {
         </MenuItem>
       </Menu>
     </div>
-  )
-}
+  );
+};
 
-export default MenuCustomized
+export default MenuCustomized;

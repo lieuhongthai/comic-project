@@ -1,7 +1,7 @@
 // ** MUI Imports
-import Avatar from '@mui/material/Avatar'
-import Tooltip from '@mui/material/Tooltip'
-import AvatarGroup from '@mui/material/AvatarGroup'
+import Avatar from '@mui/material/Avatar';
+import Tooltip from '@mui/material/Tooltip';
+import AvatarGroup from '@mui/material/AvatarGroup';
 
 const AvatarsGroupedPullUpWithTooltip = () => {
   return (
@@ -22,7 +22,7 @@ const AvatarsGroupedPullUpWithTooltip = () => {
         <Avatar src='/images/avatars/7.png' alt='Jeffery Warner' />
       </Tooltip>
     </AvatarGroup>
-  )
-}
+  );
+};
 
-export default AvatarsGroupedPullUpWithTooltip
+export default AvatarsGroupedPullUpWithTooltip;

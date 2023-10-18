@@ -1,6 +1,6 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Rating from '@mui/material/Rating'
+import Box from '@mui/material/Box';
+import Rating from '@mui/material/Rating';
 
 const RatingsSizes = () => {
   return (
@@ -9,7 +9,7 @@ const RatingsSizes = () => {
       <Rating defaultValue={2} name='size-medium' />
       <Rating defaultValue={2} name='size-large' size='large' />
     </Box>
-  )
-}
+  );
+};
 
-export default RatingsSizes
+export default RatingsSizes;

@@ -1,13 +1,13 @@
 // ** React Imports
-import { MouseEvent, useState } from 'react'
+import { MouseEvent, useState } from 'react';
 
 // ** MUI Imports
-import Menu from '@mui/material/Menu'
-import MenuItem from '@mui/material/MenuItem'
-import IconButton from '@mui/material/IconButton'
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import IconButton from '@mui/material/IconButton';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 const options = [
   'None',
@@ -24,21 +24,21 @@ const options = [
   'Titania',
   'Triton',
   'Umbriel'
-]
+];
 
-const ITEM_HEIGHT = 48
+const ITEM_HEIGHT = 48;
 
 const MenuMaxHeight = () => {
   // ** State
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const handleClick = (event: MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget)
-  }
+    setAnchorEl(event.currentTarget);
+  };
 
   const handleClose = () => {
-    setAnchorEl(null)
-  }
+    setAnchorEl(null);
+  };
 
   return (
     <div>
@@ -64,7 +64,7 @@ const MenuMaxHeight = () => {
         ))}
       </Menu>
     </div>
-  )
-}
+  );
+};
 
-export default MenuMaxHeight
+export default MenuMaxHeight;

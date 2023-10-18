@@ -1,77 +1,74 @@
 // ** React Imports
-import { Ref, useState, forwardRef, ReactElement, ChangeEvent } from 'react'
+import { Ref, useState, forwardRef, ReactElement, ChangeEvent } from 'react';
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import Grid from '@mui/material/Grid'
-import Switch from '@mui/material/Switch'
-import Button from '@mui/material/Button'
-import Dialog from '@mui/material/Dialog'
-import TextField from '@mui/material/TextField'
-import IconButton from '@mui/material/IconButton'
-import Typography from '@mui/material/Typography'
-import CardContent from '@mui/material/CardContent'
-import Fade, { FadeProps } from '@mui/material/Fade'
-import DialogContent from '@mui/material/DialogContent'
-import DialogActions from '@mui/material/DialogActions'
-import FormControlLabel from '@mui/material/FormControlLabel'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Grid from '@mui/material/Grid';
+import Switch from '@mui/material/Switch';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import TextField from '@mui/material/TextField';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
+import Fade, { FadeProps } from '@mui/material/Fade';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 // ** Third Party Imports
-import Payment from 'payment'
-import Cards, { Focused } from 'react-credit-cards'
+import Payment from 'payment';
+import Cards, { Focused } from 'react-credit-cards';
 
 // ** Util Import
-import { formatCVC, formatExpirationDate, formatCreditCardNumber } from 'src/@core/utils/format'
+import { formatCVC, formatExpirationDate, formatCreditCardNumber } from 'src/@core/utils/format';
 
 // ** Styled Component Imports
-import CardWrapper from 'src/@core/styles/libs/react-credit-cards'
+import CardWrapper from 'src/@core/styles/libs/react-credit-cards';
 
 // ** Styles Import
-import 'react-credit-cards/es/styles-compiled.css'
+import 'react-credit-cards/es/styles-compiled.css';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
-const Transition = forwardRef(function Transition(
-  props: FadeProps & { children?: ReactElement<any, any> },
-  ref: Ref<unknown>
-) {
-  return <Fade ref={ref} {...props} />
-})
+const Transition = forwardRef(function Transition(props: FadeProps & { children?: ReactElement<any, any> }, ref: Ref<unknown>) {
+  return <Fade ref={ref} {...props} />;
+});
 
 const DialogAddCard = () => {
   // ** States
-  const [name, setName] = useState<string>('')
-  const [show, setShow] = useState<boolean>(false)
-  const [cvc, setCvc] = useState<string | number>('')
-  const [cardNumber, setCardNumber] = useState<string>('')
-  const [focus, setFocus] = useState<Focused | undefined>()
-  const [expiry, setExpiry] = useState<string | number>('')
+  const [name, setName] = useState<string>('');
+  const [show, setShow] = useState<boolean>(false);
+  const [cvc, setCvc] = useState<string | number>('');
+  const [cardNumber, setCardNumber] = useState<string>('');
+  const [focus, setFocus] = useState<Focused | undefined>();
+  const [expiry, setExpiry] = useState<string | number>('');
 
-  const handleBlur = () => setFocus(undefined)
+  const handleBlur = () => setFocus(undefined);
 
   const handleInputChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     if (target.name === 'number') {
-      target.value = formatCreditCardNumber(target.value, Payment)
-      setCardNumber(target.value)
+      target.value = formatCreditCardNumber(target.value, Payment);
+      setCardNumber(target.value);
     } else if (target.name === 'expiry') {
-      target.value = formatExpirationDate(target.value)
-      setExpiry(target.value)
+      target.value = formatExpirationDate(target.value);
+      setExpiry(target.value);
     } else if (target.name === 'cvc') {
-      target.value = formatCVC(target.value, cardNumber, Payment)
-      setCvc(target.value)
+      target.value = formatCVC(target.value, cardNumber, Payment);
+      setCvc(target.value);
     }
-  }
+  };
 
   const handleClose = () => {
-    setShow(false)
-    setCvc('')
-    setName('')
-    setExpiry('')
-    setCardNumber('')
-    setFocus(undefined)
-  }
+    setShow(false);
+    setCvc('');
+    setName('');
+    setExpiry('');
+    setCardNumber('');
+    setFocus(undefined);
+  };
 
   return (
     <Card>
@@ -80,22 +77,12 @@ const DialogAddCard = () => {
         <Typography variant='h6' sx={{ mb: 4 }}>
           Add New Card
         </Typography>
-        <Typography sx={{ mb: 3 }}>
-          Quickly collect the credit card details, built in input mask and form validation support.
-        </Typography>
+        <Typography sx={{ mb: 3 }}>Quickly collect the credit card details, built in input mask and form validation support.</Typography>
         <Button variant='contained' onClick={() => setShow(true)}>
           Show
         </Button>
       </CardContent>
-      <Dialog
-        fullWidth
-        open={show}
-        maxWidth='sm'
-        scroll='body'
-        onClose={handleClose}
-        onBackdropClick={handleClose}
-        TransitionComponent={Transition}
-      >
+      <Dialog fullWidth open={show} maxWidth='sm' scroll='body' onClose={handleClose} onBackdropClick={handleClose} TransitionComponent={Transition}>
         <DialogContent sx={{ pb: 6, px: { xs: 8, sm: 15 }, pt: { xs: 8, sm: 12.5 }, position: 'relative' }}>
           <IconButton size='small' onClick={handleClose} sx={{ position: 'absolute', right: '1rem', top: '1rem' }}>
             <Icon icon='mdi:close' />
@@ -187,7 +174,7 @@ const DialogAddCard = () => {
         </DialogActions>
       </Dialog>
     </Card>
-  )
-}
+  );
+};
 
-export default DialogAddCard
+export default DialogAddCard;

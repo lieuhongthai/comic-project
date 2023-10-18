@@ -50,7 +50,7 @@ const ButtonsColors = () => {
 export default ButtonsColors
 `}</code>
   </pre>
-)
+);
 
 export const ButtonsFabJSXCode = (
   <pre className='language-jsx'>
@@ -134,7 +134,7 @@ const ButtonsFab = () => {
 export default ButtonsFab
 `}</code>
   </pre>
-)
+);
 
 export const ButtonsContainedJSXCode = (
   <pre className='language-jsx'>
@@ -161,7 +161,7 @@ const ButtonsContained = () => {
 export default ButtonsContained
 `}</code>
   </pre>
-)
+);
 
 export const ButtonsCustomizedJSXCode = (
   <pre className='language-jsx'>
@@ -230,7 +230,7 @@ const ButtonsCustomized = () => {
 export default ButtonsCustomized
 `}</code>
   </pre>
-)
+);
 
 export const ButtonsFabSizesJSXCode = (
   <pre className='language-jsx'>
@@ -278,7 +278,7 @@ const ButtonsFabSizes = () => {
 export default ButtonsFabSizes
 `}</code>
   </pre>
-)
+);
 
 export const ButtonsIconsJSXCode = (
   <pre className='language-jsx'>
@@ -310,7 +310,7 @@ const ButtonsIcons = () => {
 export default ButtonsIcons
 `}</code>
   </pre>
-)
+);
 
 export const ButtonsSizesJSXCode = (
   <pre className='language-jsx'>
@@ -381,7 +381,7 @@ const ButtonsSizes = () => {
 export default ButtonsSizes
 `}</code>
   </pre>
-)
+);
 
 export const ButtonsTextJSXCode = (
   <pre className='language-jsx'>
@@ -408,7 +408,7 @@ const ButtonsText = () => {
 export default ButtonsText
 `}</code>
   </pre>
-)
+);
 
 export const ButtonsOutlinedJSXCode = (
   <pre className='language-jsx'>
@@ -435,7 +435,7 @@ const ButtonsOutlined = () => {
 export default ButtonsOutlined
 `}</code>
   </pre>
-)
+);
 
 export const ButtonsWithIconAndLabelJSXCode = (
   <pre className='language-jsx'>
@@ -461,7 +461,7 @@ const ButtonsWithIconAndLabel = () => {
 export default ButtonsWithIconAndLabel
 `}</code>
   </pre>
-)
+);
 
 export const ButtonsContainedTSXCode = (
   <pre className='language-jsx'>
@@ -488,7 +488,7 @@ const ButtonsContained = () => {
 export default ButtonsContained
 `}</code>
   </pre>
-)
+);
 
 export const ButtonsCustomizedTSXCode = (
   <pre className='language-jsx'>
@@ -557,7 +557,7 @@ const ButtonsCustomized = () => {
 export default ButtonsCustomized
 `}</code>
   </pre>
-)
+);
 
 export const ButtonsFabTSXCode = (
   <pre className='language-jsx'>
@@ -641,7 +641,7 @@ const ButtonsFab = () => {
 export default ButtonsFab
 `}</code>
   </pre>
-)
+);
 
 export const ButtonsColorsTSXCode = (
   <pre className='language-jsx'>
@@ -695,7 +695,7 @@ const ButtonsColors = () => {
 export default ButtonsColors
 `}</code>
   </pre>
-)
+);
 
 export const ButtonsFabSizesTSXCode = (
   <pre className='language-jsx'>
@@ -743,7 +743,7 @@ const ButtonsFabSizes = () => {
 export default ButtonsFabSizes
 `}</code>
   </pre>
-)
+);
 
 export const ButtonsOutlinedTSXCode = (
   <pre className='language-jsx'>
@@ -770,7 +770,7 @@ const ButtonsOutlined = () => {
 export default ButtonsOutlined
 `}</code>
   </pre>
-)
+);
 
 export const ButtonsIconsTSXCode = (
   <pre className='language-jsx'>
@@ -802,7 +802,7 @@ const ButtonsIcons = () => {
 export default ButtonsIcons
 `}</code>
   </pre>
-)
+);
 
 export const ButtonsSizesTSXCode = (
   <pre className='language-jsx'>
@@ -873,7 +873,7 @@ const ButtonsSizes = () => {
 export default ButtonsSizes
 `}</code>
   </pre>
-)
+);
 
 export const ButtonsWithIconAndLabelTSXCode = (
   <pre className='language-jsx'>
@@ -899,7 +899,7 @@ const ButtonsWithIconAndLabel = () => {
 export default ButtonsWithIconAndLabel
 `}</code>
   </pre>
-)
+);
 
 export const ButtonsTextTSXCode = (
   <pre className='language-jsx'>
@@ -926,4 +926,4 @@ const ButtonsText = () => {
 export default ButtonsText
 `}</code>
   </pre>
-)
+);

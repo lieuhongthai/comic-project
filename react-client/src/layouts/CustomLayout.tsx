@@ -1,28 +1,28 @@
 // ** React Imports
-import { useState } from 'react'
+import { useState } from 'react';
 
 // ** MUI Imports
-import { Theme } from '@mui/material/styles'
-import useMediaQuery from '@mui/material/useMediaQuery'
+import { Theme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 // ** Layout Imports
-import Layout from 'src/@core/layouts/Layout'
+import Layout from 'src/@core/layouts/Layout';
 
 // ** Navigation Imports
-import VerticalNavItems from 'src/navigation/vertical'
+import VerticalNavItems from 'src/navigation/vertical';
 
 // ** Component Import
 
-import VerticalAppBarContent from './components/vertical/AppBarContent'
+import VerticalAppBarContent from './components/vertical/AppBarContent';
 
 // ** Hook Import
-import { AuthProvider } from 'src/context/AuthContext'
+import { AuthProvider } from 'src/context/AuthContext';
 
 // ** React router dom
-import { Outlet, useNavigation } from 'react-router-dom'
+import { Outlet, useNavigation } from 'react-router-dom';
 
 // ** Spinner Import
-import Spinner from 'src/@core/components/spinner'
+import Spinner from 'src/@core/components/spinner';
 
 // ** Component Imports
 
@@ -35,21 +35,22 @@ import Spinner from 'src/@core/components/spinner'
 // ** ThemeConfig Import
 
 // ** Types Import
-import { Settings, initialSettings } from 'src/@core/context/settingsContext'
+import { Settings, initialSettings } from 'src/@core/context/settingsContext';
 
 const CustomLayout = () => {
   // ** Hooks
-  const navigation = useNavigation()
-  // ** Statte
-  const [settings, saveSettings] = useState<Settings>({ ...initialSettings })
+  const navigation = useNavigation();
 
-  const hidden = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'))
+  // ** Statte
+  const [settings, saveSettings] = useState<Settings>({ ...initialSettings });
+
+  const hidden = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'));
 
   if (hidden && settings.layout === 'horizontal') {
-    settings.layout = 'vertical'
+    settings.layout = 'vertical';
   }
 
-  const renderChildren = () => (navigation.state === 'loading' ? <Spinner /> : <Outlet />)
+  const renderChildren = () => (navigation.state === 'loading' ? <Spinner /> : <Outlet />);
 
   return (
     <Layout
@@ -69,7 +70,7 @@ const CustomLayout = () => {
     >
       <AuthProvider>{renderChildren()}</AuthProvider>
     </Layout>
-  )
-}
+  );
+};
 
-export default CustomLayout
+export default CustomLayout;

@@ -1,5 +1,5 @@
 // ** MUI Imports
-import Chip from '@mui/material/Chip'
+import Chip from '@mui/material/Chip';
 
 const ChipsVariants = () => {
   return (
@@ -7,7 +7,7 @@ const ChipsVariants = () => {
       <Chip label='Basic' />
       <Chip label='Outlined' variant='outlined' />
     </div>
-  )
-}
+  );
+};
 
-export default ChipsVariants
+export default ChipsVariants;

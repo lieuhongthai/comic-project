@@ -37,7 +37,7 @@ const RatingsBasic = () => {
 export default RatingsBasic
 `}</code>
   </pre>
-)
+);
 
 export const RatingsCustomizedJSXCode = (
   <pre className='language-jsx'>
@@ -111,7 +111,7 @@ const RatingsCustomized = () => {
 export default RatingsCustomized
 `}</code>
   </pre>
-)
+);
 
 export const RatingsHalfJSXCode = (
   <pre className='language-jsx'>
@@ -138,7 +138,7 @@ const RatingsHalf = () => {
 export default RatingsHalf
 `}</code>
   </pre>
-)
+);
 
 export const RatingsSizesJSXCode = (
   <pre className='language-jsx'>
@@ -159,7 +159,7 @@ const RatingsSizes = () => {
 export default RatingsSizes
 `}</code>
   </pre>
-)
+);
 
 export const RatingsHoverFeedbackJSXCode = (
   <pre className='language-jsx'>
@@ -207,7 +207,7 @@ const RatingsHoverFeedback = () => {
 export default RatingsHoverFeedback
 `}</code>
   </pre>
-)
+);
 
 export const RatingsBasicTSXCode = (
   <pre className='language-jsx'>
@@ -248,7 +248,7 @@ const RatingsBasic = () => {
 export default RatingsBasic
 `}</code>
   </pre>
-)
+);
 
 export const RatingsCustomizedTSXCode = (
   <pre className='language-jsx'>
@@ -326,7 +326,7 @@ const RatingsCustomized = () => {
 export default RatingsCustomized
 `}</code>
   </pre>
-)
+);
 
 export const RatingsHoverFeedbackTSXCode = (
   <pre className='language-jsx'>
@@ -374,7 +374,7 @@ const RatingsHoverFeedback = () => {
 export default RatingsHoverFeedback
 `}</code>
   </pre>
-)
+);
 
 export const RatingsHalfTSXCode = (
   <pre className='language-jsx'>
@@ -401,7 +401,7 @@ const RatingsHalf = () => {
 export default RatingsHalf
 `}</code>
   </pre>
-)
+);
 
 export const RatingsSizesTSXCode = (
   <pre className='language-jsx'>
@@ -422,4 +422,4 @@ const RatingsSizes = () => {
 export default RatingsSizes
 `}</code>
   </pre>
-)
+);

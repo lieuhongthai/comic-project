@@ -1,6 +1,6 @@
 // ** MUI imports
-import { styled } from '@mui/material/styles'
-import Box, { BoxProps } from '@mui/material/Box'
+import { styled } from '@mui/material/styles';
+import Box, { BoxProps } from '@mui/material/Box';
 
 const DropzoneWrapper = styled(Box)<BoxProps>(({ theme }) => ({
   '&.dropzone, & .dropzone': {
@@ -71,6 +71,6 @@ const DropzoneWrapper = styled(Box)<BoxProps>(({ theme }) => ({
       borderRadius: theme.shape.borderRadius
     }
   }
-}))
+}));
 
-export default DropzoneWrapper
+export default DropzoneWrapper;

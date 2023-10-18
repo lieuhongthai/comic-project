@@ -1,5 +1,5 @@
 // ** MUI Imports
-import Button from '@mui/material/Button'
+import Button from '@mui/material/Button';
 
 const ButtonsContained = () => {
   return (
@@ -15,7 +15,7 @@ const ButtonsContained = () => {
         Link
       </Button>
     </div>
-  )
-}
+  );
+};
 
-export default ButtonsContained
+export default ButtonsContained;

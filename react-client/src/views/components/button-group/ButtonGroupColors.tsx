@@ -1,6 +1,6 @@
 // ** MUI Imports
-import Button from '@mui/material/Button'
-import ButtonGroup from '@mui/material/ButtonGroup'
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
 
 const ButtonGroupColor = () => {
   return (
@@ -35,7 +35,7 @@ const ButtonGroupColor = () => {
         <Button>Three</Button>
       </ButtonGroup>
     </div>
-  )
-}
+  );
+};
 
-export default ButtonGroupColor
+export default ButtonGroupColor;

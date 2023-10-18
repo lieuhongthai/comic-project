@@ -1,15 +1,15 @@
 // ** React Imports
-import { SyntheticEvent, useState } from 'react'
+import { SyntheticEvent, useState } from 'react';
 
 // ** MUI Imports
-import { styled } from '@mui/material/styles'
-import Typography from '@mui/material/Typography'
-import MuiAccordion, { AccordionProps } from '@mui/material/Accordion'
-import MuiAccordionSummary, { AccordionSummaryProps } from '@mui/material/AccordionSummary'
-import MuiAccordionDetails, { AccordionDetailsProps } from '@mui/material/AccordionDetails'
+import { styled } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import MuiAccordion, { AccordionProps } from '@mui/material/Accordion';
+import MuiAccordionSummary, { AccordionSummaryProps } from '@mui/material/AccordionSummary';
+import MuiAccordionDetails, { AccordionDetailsProps } from '@mui/material/AccordionDetails';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // Styled component for Accordion component
 const Accordion = styled(MuiAccordion)<AccordionProps>(({ theme }) => ({
@@ -36,7 +36,7 @@ const Accordion = styled(MuiAccordion)<AccordionProps>(({ theme }) => ({
       borderBottomRightRadius: 8
     }
   }
-}))
+}));
 
 // Styled component for AccordionSummary component
 const AccordionSummary = styled(MuiAccordionSummary)<AccordionSummaryProps>(({ theme }) => ({
@@ -52,74 +52,61 @@ const AccordionSummary = styled(MuiAccordionSummary)<AccordionSummaryProps>(({ t
   '& .MuiAccordionSummary-content.Mui-expanded': {
     margin: '10px 0'
   }
-}))
+}));
 
 // Styled component for AccordionDetails component
 const AccordionDetails = styled(MuiAccordionDetails)<AccordionDetailsProps>(({ theme }) => ({
   padding: `${theme.spacing(4)} !important`
-}))
+}));
 
 const AccordionCustomized = () => {
   // ** State
-  const [expanded, setExpanded] = useState<string | false>('panel1')
+  const [expanded, setExpanded] = useState<string | false>('panel1');
 
   const handleChange = (panel: string) => (event: SyntheticEvent, isExpanded: boolean) => {
-    setExpanded(isExpanded ? panel : false)
-  }
+    setExpanded(isExpanded ? panel : false);
+  };
 
-  const expandIcon = (value: string) => <Icon icon={expanded === value ? 'mdi:minus' : 'mdi:plus'} />
+  const expandIcon = (value: string) => <Icon icon={expanded === value ? 'mdi:minus' : 'mdi:plus'} />;
 
   return (
     <div>
       <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-        <AccordionSummary
-          id='customized-panel-header-1'
-          expandIcon={expandIcon('panel1')}
-          aria-controls='customized-panel-content-1'
-        >
+        <AccordionSummary id='customized-panel-header-1' expandIcon={expandIcon('panel1')} aria-controls='customized-panel-content-1'>
           <Typography>Accordion 1</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Wafer sesame snaps chocolate bar candy canes halvah. Cupcake sesame snaps sweet tart dessert biscuit.
-            Topping soufflé tart sweet croissant.
+            Wafer sesame snaps chocolate bar candy canes halvah. Cupcake sesame snaps sweet tart dessert biscuit. Topping soufflé tart sweet
+            croissant.
           </Typography>
         </AccordionDetails>
       </Accordion>
 
       <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-        <AccordionSummary
-          id='customized-panel-header-2'
-          expandIcon={expandIcon('panel2')}
-          aria-controls='customized-panel-content-2'
-        >
+        <AccordionSummary id='customized-panel-header-2' expandIcon={expandIcon('panel2')} aria-controls='customized-panel-content-2'>
           <Typography>Accordion 2</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Sugar plum sesame snaps caramels. Cake pie tart fruitcake sesame snaps donut cupcake macaroon. Gingerbread
-            pudding cheesecake pie ice cream.
+            Sugar plum sesame snaps caramels. Cake pie tart fruitcake sesame snaps donut cupcake macaroon. Gingerbread pudding cheesecake pie ice
+            cream.
           </Typography>
         </AccordionDetails>
       </Accordion>
 
       <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-        <AccordionSummary
-          id='customized-panel-header-3'
-          expandIcon={expandIcon('panel3')}
-          aria-controls='customized-panel-content-3'
-        >
+        <AccordionSummary id='customized-panel-header-3' expandIcon={expandIcon('panel3')} aria-controls='customized-panel-content-3'>
           <Typography>Accordion 3</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Gingerbread lemon drops bear claw gummi bears bonbon wafer jujubes tiramisu. Jelly pie cake. Sweet roll
-            dessert sweet pastry powder.
+            Gingerbread lemon drops bear claw gummi bears bonbon wafer jujubes tiramisu. Jelly pie cake. Sweet roll dessert sweet pastry powder.
           </Typography>
         </AccordionDetails>
       </Accordion>
     </div>
-  )
-}
+  );
+};
 
-export default AccordionCustomized
+export default AccordionCustomized;

@@ -1,31 +1,25 @@
 // ** React Imports
-import { MouseEvent, useState } from 'react'
+import { MouseEvent, useState } from 'react';
 
 // ** MUI Imports
-import ToggleButton from '@mui/material/ToggleButton'
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 const ButtonToggleSizes = () => {
   // ** State
-  const [alignment, setAlignment] = useState<string | null>('left')
+  const [alignment, setAlignment] = useState<string | null>('left');
 
   const handleAlignment = (event: MouseEvent<HTMLElement>, newAlignment: string | null) => {
-    setAlignment(newAlignment)
-  }
+    setAlignment(newAlignment);
+  };
 
   return (
     <div className='demo-space-y'>
       <div>
-        <ToggleButtonGroup
-          exclusive
-          size='small'
-          value={alignment}
-          onChange={handleAlignment}
-          aria-label='text alignment'
-        >
+        <ToggleButtonGroup exclusive size='small' value={alignment} onChange={handleAlignment} aria-label='text alignment'>
           <ToggleButton value='left' aria-label='left aligned'>
             <Icon icon='mdi:format-align-left' />
           </ToggleButton>
@@ -57,13 +51,7 @@ const ButtonToggleSizes = () => {
         </ToggleButtonGroup>
       </div>
       <div>
-        <ToggleButtonGroup
-          exclusive
-          size='large'
-          value={alignment}
-          onChange={handleAlignment}
-          aria-label='text alignment'
-        >
+        <ToggleButtonGroup exclusive size='large' value={alignment} onChange={handleAlignment} aria-label='text alignment'>
           <ToggleButton value='left' aria-label='left aligned'>
             <Icon icon='mdi:format-align-left' />
           </ToggleButton>
@@ -79,7 +67,7 @@ const ButtonToggleSizes = () => {
         </ToggleButtonGroup>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ButtonToggleSizes
+export default ButtonToggleSizes;

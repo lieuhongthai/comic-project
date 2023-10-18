@@ -1,8 +1,8 @@
 // ** Mock Adapter
-import mock from 'src/@fake-db/mock'
+import mock from 'src/@fake-db/mock';
 
 // ** Types
-import { PricingDataType } from 'src/@core/components/plan-details/types'
+import { PricingDataType } from 'src/@core/components/plan-details/types';
 
 const data: PricingDataType = {
   pricingPlans: [
@@ -19,13 +19,7 @@ const data: PricingDataType = {
         perMonth: 0,
         totalAnnual: 0
       },
-      planBenefits: [
-        '100 responses a month',
-        'Unlimited forms and surveys',
-        'Unlimited fields',
-        'Basic form creation tools',
-        'Up to 2 subdomains'
-      ]
+      planBenefits: ['100 responses a month', 'Unlimited forms and surveys', 'Unlimited fields', 'Basic form creation tools', 'Up to 2 subdomains']
     },
     {
       imgWidth: 100,
@@ -61,13 +55,7 @@ const data: PricingDataType = {
         perMonth: 80,
         totalAnnual: 960
       },
-      planBenefits: [
-        'PayPal payments',
-        'Logic Jumps',
-        'File upload with 5GB storage',
-        'Custom domain support',
-        'Stripe integration'
-      ]
+      planBenefits: ['PayPal payments', 'Logic Jumps', 'File upload with 5GB storage', 'Custom domain support', 'Stripe integration']
     }
   ],
   faq: [
@@ -161,6 +149,6 @@ const data: PricingDataType = {
       }
     ]
   }
-}
+};
 
-mock.onGet('/pages/pricing').reply(() => [200, data])
+mock.onGet('/pages/pricing').reply(() => [200, data]);

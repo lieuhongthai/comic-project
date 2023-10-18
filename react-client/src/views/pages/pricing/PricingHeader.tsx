@@ -1,46 +1,41 @@
 // ** React Imports
-import { ChangeEvent } from 'react'
+import { ChangeEvent } from 'react';
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Switch from '@mui/material/Switch'
-import { Theme } from '@mui/material/styles'
-import Typography from '@mui/material/Typography'
-import InputLabel from '@mui/material/InputLabel'
-import useMediaQuery from '@mui/material/useMediaQuery'
+import Box from '@mui/material/Box';
+import Switch from '@mui/material/Switch';
+import { Theme } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import InputLabel from '@mui/material/InputLabel';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 // ** Icon Import
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Custom Component Import
-import CustomChip from 'src/@core/components/mui/chip'
+import CustomChip from 'src/@core/components/mui/chip';
 
 interface Props {
-  plan: string
-  handleChange: (e: ChangeEvent<{ checked: boolean }>) => void
+  plan: string;
+  handleChange: (e: ChangeEvent<{ checked: boolean }>) => void;
 }
 
 const PricingHeader = (props: Props) => {
   // ** Props
-  const { plan, handleChange } = props
+  const { plan, handleChange } = props;
 
   // ** Hook
-  const hidden = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'))
+  const hidden = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
 
   return (
     <Box sx={{ mb: [10, 17.5], textAlign: 'center' }}>
       <Typography variant='h4'>Pricing Plans</Typography>
       <Box sx={{ mt: 2.5, mb: 10.75 }}>
-        <Typography variant='body2'>
-          All plans include 40+ advanced tools and features to boost your product.
-        </Typography>
+        <Typography variant='body2'>All plans include 40+ advanced tools and features to boost your product.</Typography>
         <Typography variant='body2'>Choose the best plan to fit your needs.</Typography>
       </Box>
       <Box sx={{ display: 'flex', position: 'relative', alignItems: 'center', justifyContent: 'center' }}>
-        <InputLabel
-          htmlFor='pricing-switch'
-          sx={{ fontWeight: 600, cursor: 'pointer', fontSize: '0.875rem', color: 'text.secondary' }}
-        >
+        <InputLabel htmlFor='pricing-switch' sx={{ fontWeight: 600, cursor: 'pointer', fontSize: '0.875rem', color: 'text.secondary' }}>
           Monthly
         </InputLabel>
         <Switch color='secondary' id='pricing-switch' onChange={handleChange} checked={plan === 'annually'} />
@@ -64,7 +59,7 @@ const PricingHeader = (props: Props) => {
         )}
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default PricingHeader
+export default PricingHeader;

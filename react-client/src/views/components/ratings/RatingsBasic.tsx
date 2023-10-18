@@ -1,14 +1,14 @@
 // ** React Imports
-import { useState } from 'react'
+import { useState } from 'react';
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Rating from '@mui/material/Rating'
-import Typography from '@mui/material/Typography'
+import Box from '@mui/material/Box';
+import Rating from '@mui/material/Rating';
+import Typography from '@mui/material/Typography';
 
 const RatingsBasic = () => {
   // ** State
-  const [value, setValue] = useState<number | null>(2)
+  const [value, setValue] = useState<number | null>(2);
 
   return (
     <div>
@@ -29,7 +29,7 @@ const RatingsBasic = () => {
         <Rating value={null} name='no-value' />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default RatingsBasic
+export default RatingsBasic;

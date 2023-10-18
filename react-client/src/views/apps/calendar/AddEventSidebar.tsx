@@ -1,52 +1,52 @@
 // ** React Imports
-import { useState, useEffect, forwardRef, useCallback, Fragment } from 'react'
+import { useState, useEffect, forwardRef, useCallback, Fragment } from 'react';
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Drawer from '@mui/material/Drawer'
-import Select from '@mui/material/Select'
-import Switch from '@mui/material/Switch'
-import Button from '@mui/material/Button'
-import MenuItem from '@mui/material/MenuItem'
-import TextField from '@mui/material/TextField'
-import IconButton from '@mui/material/IconButton'
-import InputLabel from '@mui/material/InputLabel'
-import Typography from '@mui/material/Typography'
-import FormControl from '@mui/material/FormControl'
-import FormHelperText from '@mui/material/FormHelperText'
-import FormControlLabel from '@mui/material/FormControlLabel'
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
+import Select from '@mui/material/Select';
+import Switch from '@mui/material/Switch';
+import Button from '@mui/material/Button';
+import MenuItem from '@mui/material/MenuItem';
+import TextField from '@mui/material/TextField';
+import IconButton from '@mui/material/IconButton';
+import InputLabel from '@mui/material/InputLabel';
+import Typography from '@mui/material/Typography';
+import FormControl from '@mui/material/FormControl';
+import FormHelperText from '@mui/material/FormHelperText';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 // ** Third Party Imports
-import DatePicker from 'react-datepicker'
-import { useForm, Controller } from 'react-hook-form'
+import DatePicker from 'react-datepicker';
+import { useForm, Controller } from 'react-hook-form';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Styled Components
-import DatePickerWrapper from 'src/@core/styles/libs/react-datepicker'
+import DatePickerWrapper from 'src/@core/styles/libs/react-datepicker';
 
 // ** Types
-import { EventDateType, AddEventSidebarType } from 'src/types/apps/calendarTypes'
+import { EventDateType, AddEventSidebarType } from 'src/types/apps/calendarTypes';
 
 interface PickerProps {
-  label?: string
-  error?: boolean
-  registername?: string
+  label?: string;
+  error?: boolean;
+  registername?: string;
 }
 
 interface DefaultStateType {
-  url: string
-  title: string
-  allDay: boolean
-  calendar: string
-  description: string
-  endDate: Date | string
-  startDate: Date | string
-  guests: string[] | string | undefined
+  url: string;
+  title: string;
+  allDay: boolean;
+  calendar: string;
+  description: string;
+  endDate: Date | string;
+  startDate: Date | string;
+  guests: string[] | string | undefined;
 }
 
-const capitalize = (string: string) => string && string[0].toUpperCase() + string.slice(1)
+const capitalize = (string: string) => string && string[0].toUpperCase() + string.slice(1);
 
 const defaultState: DefaultStateType = {
   url: '',
@@ -57,7 +57,7 @@ const defaultState: DefaultStateType = {
   endDate: new Date(),
   calendar: 'Business',
   startDate: new Date()
-}
+};
 
 const AddEventSidebar = (props: AddEventSidebarType) => {
   // ** Props
@@ -72,10 +72,10 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
     handleSelectEvent,
     addEventSidebarOpen,
     handleAddEventSidebarToggle
-  } = props
+  } = props;
 
   // ** States
-  const [values, setValues] = useState<DefaultStateType>(defaultState)
+  const [values, setValues] = useState<DefaultStateType>(defaultState);
 
   const {
     control,
@@ -83,14 +83,14 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
     clearErrors,
     handleSubmit,
     formState: { errors }
-  } = useForm({ defaultValues: { title: '' } })
+  } = useForm({ defaultValues: { title: '' } });
 
   const handleSidebarClose = async () => {
-    setValues(defaultState)
-    clearErrors()
-    dispatch(handleSelectEvent(null))
-    handleAddEventSidebarToggle()
-  }
+    setValues(defaultState);
+    clearErrors();
+    dispatch(handleSelectEvent(null));
+    handleAddEventSidebarToggle();
+  };
 
   const onSubmit = (data: { title: string }) => {
     const modifiedEvent = {
@@ -105,35 +105,35 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
         guests: values.guests && values.guests.length ? values.guests : undefined,
         description: values.description.length ? values.description : undefined
       }
-    }
+    };
     if (store.selectedEvent === null || (store.selectedEvent !== null && !store.selectedEvent.title.length)) {
-      dispatch(addEvent(modifiedEvent))
+      dispatch(addEvent(modifiedEvent));
     } else {
-      dispatch(updateEvent({ id: store.selectedEvent.id, ...modifiedEvent }))
+      dispatch(updateEvent({ id: store.selectedEvent.id, ...modifiedEvent }));
     }
-    calendarApi.refetchEvents()
-    handleSidebarClose()
-  }
+    calendarApi.refetchEvents();
+    handleSidebarClose();
+  };
 
   const handleDeleteEvent = () => {
     if (store.selectedEvent) {
-      dispatch(deleteEvent(store.selectedEvent.id))
+      dispatch(deleteEvent(store.selectedEvent.id));
     }
 
     // calendarApi.getEventById(store.selectedEvent.id).remove()
-    handleSidebarClose()
-  }
+    handleSidebarClose();
+  };
 
   const handleStartDate = (date: Date) => {
     if (date > values.endDate) {
-      setValues({ ...values, startDate: new Date(date), endDate: new Date(date) })
+      setValues({ ...values, startDate: new Date(date), endDate: new Date(date) });
     }
-  }
+  };
 
   const resetToStoredValues = useCallback(() => {
     if (store.selectedEvent !== null) {
-      const event = store.selectedEvent
-      setValue('title', event.title || '')
+      const event = store.selectedEvent;
+      setValue('title', event.title || '');
       setValues({
         url: event.url || '',
         title: event.title || '',
@@ -143,26 +143,26 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
         calendar: event.extendedProps.calendar || 'Business',
         endDate: event.end !== null ? event.end : event.start,
         startDate: event.start !== null ? event.start : new Date()
-      })
+      });
     }
-  }, [setValue, store.selectedEvent])
+  }, [setValue, store.selectedEvent]);
 
   const resetToEmptyValues = useCallback(() => {
-    setValue('title', '')
-    setValues(defaultState)
-  }, [setValue])
+    setValue('title', '');
+    setValues(defaultState);
+  }, [setValue]);
 
   useEffect(() => {
     if (store.selectedEvent !== null) {
-      resetToStoredValues()
+      resetToStoredValues();
     } else {
-      resetToEmptyValues()
+      resetToEmptyValues();
     }
-  }, [addEventSidebarOpen, resetToStoredValues, resetToEmptyValues, store.selectedEvent])
+  }, [addEventSidebarOpen, resetToStoredValues, resetToEmptyValues, store.selectedEvent]);
 
   const PickersComponent = forwardRef(({ ...props }: PickerProps, ref) => {
-    return <TextField inputRef={ref} fullWidth {...props} label={props.label || ''} sx={{ width: '100%' }} error={props.error} />
-  })
+    return <TextField inputRef={ref} fullWidth {...props} label={props.label || ''} sx={{ width: '100%' }} error={props.error} />;
+  });
 
   const RenderSidebarFooter = () => {
     if (store.selectedEvent === null || (store.selectedEvent !== null && !store.selectedEvent.title.length)) {
@@ -175,7 +175,7 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
             Reset
           </Button>
         </Fragment>
-      )
+      );
     } else {
       return (
         <Fragment>
@@ -186,9 +186,9 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
             Reset
           </Button>
         </Fragment>
-      )
+      );
     }
-  }
+  };
 
   return (
     <Drawer
@@ -329,7 +329,7 @@ const AddEventSidebar = (props: AddEventSidebarType) => {
         </DatePickerWrapper>
       </Box>
     </Drawer>
-  )
-}
+  );
+};
 
-export default AddEventSidebar
+export default AddEventSidebar;

@@ -1,25 +1,25 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import Typography from '@mui/material/Typography'
-import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
-import LinearProgress from '@mui/material/LinearProgress'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Typography from '@mui/material/Typography';
+import CardHeader from '@mui/material/CardHeader';
+import CardContent from '@mui/material/CardContent';
+import LinearProgress from '@mui/material/LinearProgress';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Types
-import { ThemeColor } from 'src/@core/layouts/types'
+import { ThemeColor } from 'src/@core/layouts/types';
 
 // ** Custom Components Imports
-import OptionsMenu from 'src/@core/components/option-menu'
+import OptionsMenu from 'src/@core/components/option-menu';
 
 interface DataType {
-  title: string
-  amount: string
-  progress: number
-  color: ThemeColor
+  title: string;
+  amount: string;
+  progress: number;
+  color: ThemeColor;
 }
 
 const data: DataType[] = [
@@ -41,7 +41,7 @@ const data: DataType[] = [
     color: 'error',
     amount: '$4,978'
   }
-]
+];
 
 const CardTotalEarnings = () => {
   return (
@@ -49,10 +49,7 @@ const CardTotalEarnings = () => {
       <CardHeader
         title='Total Earning'
         action={
-          <OptionsMenu
-            options={['Last 28 Days', 'Last Month', 'Last Year']}
-            iconButtonProps={{ size: 'small', sx: { color: 'text.primary' } }}
-          />
+          <OptionsMenu options={['Last 28 Days', 'Last Month', 'Last Year']} iconButtonProps={{ size: 'small', sx: { color: 'text.primary' } }} />
         }
       />
       <CardContent sx={{ pt: theme => `${theme.spacing(2.5)} !important` }}>
@@ -83,11 +80,11 @@ const CardTotalEarnings = () => {
               </Box>
               <LinearProgress color={item.color} value={item.progress} variant='determinate' />
             </Box>
-          )
+          );
         })}
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardTotalEarnings
+export default CardTotalEarnings;

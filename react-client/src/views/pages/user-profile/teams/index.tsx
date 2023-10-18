@@ -1,27 +1,27 @@
 // ** React Imports
-import { SyntheticEvent } from 'react'
+import { SyntheticEvent } from 'react';
 
 // ** MUI Components
-import Box from '@mui/material/Box'
-import Grid from '@mui/material/Grid'
-import Card from '@mui/material/Card'
-import Avatar from '@mui/material/Avatar'
-import Tooltip from '@mui/material/Tooltip'
-import IconButton from '@mui/material/IconButton'
-import Typography from '@mui/material/Typography'
-import AvatarGroup from '@mui/material/AvatarGroup'
-import CardContent from '@mui/material/CardContent'
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Card from '@mui/material/Card';
+import Avatar from '@mui/material/Avatar';
+import Tooltip from '@mui/material/Tooltip';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import AvatarGroup from '@mui/material/AvatarGroup';
+import CardContent from '@mui/material/CardContent';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Types
-import { TeamsTabType } from 'src/@fake-db/types'
+import { TeamsTabType } from 'src/@fake-db/types';
 
 // ** Custom Components Imports
-import CustomChip from 'src/@core/components/mui/chip'
-import OptionsMenu from 'src/@core/components/option-menu'
-import { Link } from 'react-router-dom'
+import CustomChip from 'src/@core/components/mui/chip';
+import OptionsMenu from 'src/@core/components/option-menu';
+import { Link } from 'react-router-dom';
 
 const Teams = ({ data }: { data: TeamsTabType[] }) => {
   return (
@@ -65,7 +65,7 @@ const Teams = ({ data }: { data: TeamsTabType[] }) => {
                             <Tooltip key={index} title={person.name}>
                               <Avatar src={person.avatar} alt={person.name} sx={{ height: 32, width: 32 }} />
                             </Tooltip>
-                          )
+                          );
                         })}
                         <Typography variant='body2' sx={{ ml: 0.5, color: 'text.disabled' }}>
                           +{item.extraMembers}
@@ -94,10 +94,10 @@ const Teams = ({ data }: { data: TeamsTabType[] }) => {
                 </CardContent>
               </Card>
             </Grid>
-          )
+          );
         })}
     </Grid>
-  )
-}
+  );
+};
 
-export default Teams
+export default Teams;

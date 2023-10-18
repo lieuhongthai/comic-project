@@ -1,15 +1,15 @@
 // ** React Imports
-import { useState } from 'react'
+import { useState } from 'react';
 
 // ** MUI Imports
-import Chip from '@mui/material/Chip'
-import Avatar from '@mui/material/Avatar'
+import Chip from '@mui/material/Chip';
+import Avatar from '@mui/material/Avatar';
 
 interface ChipData {
-  key: number
-  label: string
-  avatar?: string
-  avatarAlt?: string
+  key: number;
+  label: string;
+  avatar?: string;
+  avatarAlt?: string;
 }
 
 const ChipsArray = () => {
@@ -20,11 +20,11 @@ const ChipsArray = () => {
     { key: 2, label: 'Max Burns' },
     { key: 3, avatar: '/images/avatars/4.png', avatarAlt: 'User Avatar', label: 'Ellen Nguyen' },
     { key: 4, avatar: '/images/avatars/5.png', avatarAlt: 'User Avatar', label: 'Edward Francis' }
-  ])
+  ]);
 
   const handleDelete = (chipToDelete: ChipData) => () => {
-    setChipData(chips => chips.filter(chip => chip.key !== chipToDelete.key))
-  }
+    setChipData(chips => chips.filter(chip => chip.key !== chipToDelete.key));
+  };
 
   return (
     <div className='demo-space-x'>
@@ -37,7 +37,7 @@ const ChipsArray = () => {
         />
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default ChipsArray
+export default ChipsArray;

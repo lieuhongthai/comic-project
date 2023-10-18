@@ -1,9 +1,9 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import { Direction } from '@mui/material'
+import Box from '@mui/material/Box';
+import { Direction } from '@mui/material';
 
 // ** Third Party Components
-import { useKeenSlider } from 'keen-slider/react'
+import { useKeenSlider } from 'keen-slider/react';
 
 const SwiperFreeMode = ({ direction }: { direction: Direction }) => {
   // ** Hook
@@ -15,7 +15,7 @@ const SwiperFreeMode = ({ direction }: { direction: Direction }) => {
       perView: 2,
       spacing: 16
     }
-  })
+  });
 
   return (
     <Box ref={ref} className='keen-slider'>
@@ -35,7 +35,7 @@ const SwiperFreeMode = ({ direction }: { direction: Direction }) => {
         <img src='/images/banners/banner-25.jpg' alt='swiper 25' />
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default SwiperFreeMode
+export default SwiperFreeMode;

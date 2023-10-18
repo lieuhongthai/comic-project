@@ -1,9 +1,9 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import MuiAvatar from '@mui/material/Avatar'
+import Box from '@mui/material/Box';
+import MuiAvatar from '@mui/material/Avatar';
 
 // ** Custom Components Imports
-import CustomAvatar from 'src/@core/components/mui/avatar'
+import CustomAvatar from 'src/@core/components/mui/avatar';
 
 const AvatarsLetter = () => {
   return (
@@ -17,7 +17,7 @@ const AvatarsLetter = () => {
         AB
       </CustomAvatar>
     </Box>
-  )
-}
+  );
+};
 
-export default AvatarsLetter
+export default AvatarsLetter;

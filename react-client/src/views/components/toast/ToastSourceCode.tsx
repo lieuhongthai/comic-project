@@ -29,7 +29,7 @@ const ToastSimple = () => {
 export default ToastSimple
 `}</code>
   </pre>
-)
+);
 
 export const ToastCustomPositionJSXCode = (
   <pre className='language-jsx'>
@@ -68,7 +68,7 @@ const ToastCustomPosition = () => {
 export default ToastCustomPosition
 `}</code>
   </pre>
-)
+);
 
 export const ToastEmojiJSXCode = (
   <pre className='language-jsx'>
@@ -101,7 +101,7 @@ const ToastEmoji = () => {
 export default ToastEmoji
 `}</code>
   </pre>
-)
+);
 
 export const ToastCustomJSXCode = (
   <pre className='language-jsx'>
@@ -160,7 +160,7 @@ const ToastCustom = () => {
 export default ToastCustom
 `}</code>
   </pre>
-)
+);
 
 export const ToastPromiseJSXCode = (
   <pre className='language-jsx'>
@@ -211,7 +211,7 @@ const ToastPromise = () => {
 export default ToastPromise
 `}</code>
   </pre>
-)
+);
 
 export const ToastSuccessJSXCode = (
   <pre className='language-jsx'>
@@ -244,7 +244,7 @@ const ToastSuccess = () => {
 export default ToastSuccess
 `}</code>
   </pre>
-)
+);
 
 export const ToastThemedJSXCode = (
   <pre className='language-jsx'>
@@ -295,7 +295,7 @@ const ToastThemed = () => {
 export default ToastThemed
 `}</code>
   </pre>
-)
+);
 
 export const ToastMultiLineJSXCode = (
   <pre className='language-jsx'>
@@ -334,7 +334,7 @@ const ToastMultiLine = () => {
 export default ToastMultiLine
 `}</code>
   </pre>
-)
+);
 
 export const ToastErrorJSXCode = (
   <pre className='language-jsx'>
@@ -367,7 +367,7 @@ const ToastError = () => {
 export default ToastError
 `}</code>
   </pre>
-)
+);
 
 export const ToastCustomPositionTSXCode = (
   <pre className='language-jsx'>
@@ -406,7 +406,7 @@ const ToastCustomPosition = () => {
 export default ToastCustomPosition
 `}</code>
   </pre>
-)
+);
 
 export const ToastEmojiTSXCode = (
   <pre className='language-jsx'>
@@ -439,7 +439,7 @@ const ToastEmoji = () => {
 export default ToastEmoji
 `}</code>
   </pre>
-)
+);
 
 export const ToastBlankTSXCode = (
   <pre className='language-jsx'>
@@ -472,7 +472,7 @@ const ToastSimple = () => {
 export default ToastSimple
 `}</code>
   </pre>
-)
+);
 
 export const ToastPromiseTSXCode = (
   <pre className='language-jsx'>
@@ -523,7 +523,7 @@ const ToastPromise = () => {
 export default ToastPromise
 `}</code>
   </pre>
-)
+);
 
 export const ToastCustomTSXCode = (
   <pre className='language-jsx'>
@@ -582,7 +582,7 @@ const ToastCustom = () => {
 export default ToastCustom
 `}</code>
   </pre>
-)
+);
 
 export const ToastErrorTSXCode = (
   <pre className='language-jsx'>
@@ -615,7 +615,7 @@ const ToastError = () => {
 export default ToastError
 `}</code>
   </pre>
-)
+);
 
 export const ToastSuccessTSXCode = (
   <pre className='language-jsx'>
@@ -648,7 +648,7 @@ const ToastSuccess = () => {
 export default ToastSuccess
 `}</code>
   </pre>
-)
+);
 
 export const ToastMultiLineTSXCode = (
   <pre className='language-jsx'>
@@ -687,7 +687,7 @@ const ToastMultiLine = () => {
 export default ToastMultiLine
 `}</code>
   </pre>
-)
+);
 
 export const ToastThemedTSXCode = (
   <pre className='language-jsx'>
@@ -738,4 +738,4 @@ const ToastThemed = () => {
 export default ToastThemed
 `}</code>
   </pre>
-)
+);

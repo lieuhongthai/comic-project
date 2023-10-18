@@ -1,27 +1,27 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import Avatar from '@mui/material/Avatar'
-import Typography from '@mui/material/Typography'
-import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Avatar from '@mui/material/Avatar';
+import Typography from '@mui/material/Typography';
+import CardHeader from '@mui/material/CardHeader';
+import CardContent from '@mui/material/CardContent';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Types
-import { ThemeColor } from 'src/@core/layouts/types'
+import { ThemeColor } from 'src/@core/layouts/types';
 
 // ** Custom Components
-import CustomChip from 'src/@core/components/mui/chip'
-import OptionsMenu from 'src/@core/components/option-menu'
+import CustomChip from 'src/@core/components/mui/chip';
+import OptionsMenu from 'src/@core/components/option-menu';
 
 interface DataType {
-  src: string
-  title: string
-  subtitle: string
-  chipText: string
-  chipColor: ThemeColor
+  src: string;
+  title: string;
+  subtitle: string;
+  chipText: string;
+  chipColor: ThemeColor;
 }
 
 const data: DataType[] = [
@@ -67,19 +67,14 @@ const data: DataType[] = [
     src: '/images/avatars/7.png',
     subtitle: '05 Oct | 10:00-12:45'
   }
-]
+];
 
 const CardMeetingSchedule = () => {
   return (
     <Card>
       <CardHeader
         title='Meeting Schedule'
-        action={
-          <OptionsMenu
-            options={['Refresh', 'Share', 'Reschedule']}
-            iconButtonProps={{ size: 'small', sx: { color: 'text.primary' } }}
-          />
-        }
+        action={<OptionsMenu options={['Refresh', 'Share', 'Reschedule']} iconButtonProps={{ size: 'small', sx: { color: 'text.primary' } }} />}
       />
       <CardContent>
         {data.map((item: DataType, index: number) => {
@@ -126,11 +121,11 @@ const CardMeetingSchedule = () => {
                 />
               </Box>
             </Box>
-          )
+          );
         })}
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardMeetingSchedule
+export default CardMeetingSchedule;

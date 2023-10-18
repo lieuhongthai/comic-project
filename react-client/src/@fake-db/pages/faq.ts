@@ -1,8 +1,8 @@
 // ** Mock Adapter
-import mock from 'src/@fake-db/mock'
+import mock from 'src/@fake-db/mock';
 
 // ** Types
-import { FaqType } from 'src/@fake-db/types'
+import { FaqType } from 'src/@fake-db/types';
 
 const data: { faqData: FaqType } = {
   faqData: {
@@ -62,8 +62,7 @@ const data: { faqData: FaqType } = {
         {
           id: 'delivery-cost',
           question: 'What is the delivery cost of my order?',
-          answer:
-            'The cost of scheduled delivery is $69 or $99 per order, depending on the destination postal code. The parcel delivery is free.'
+          answer: 'The cost of scheduled delivery is $69 or $99 per order, depending on the destination postal code. The parcel delivery is free.'
         },
         {
           id: 'product-damaged',
@@ -138,14 +137,12 @@ const data: { faqData: FaqType } = {
         {
           id: 'shipping-notification',
           question: 'Will I be notified once my order has shipped?',
-          answer:
-            'Yes, We will send you an email once your order has been shipped. This email will contain tracking and order information.'
+          answer: 'Yes, We will send you an email once your order has been shipped. This email will contain tracking and order information.'
         },
         {
           id: 'warranty-notification',
           question: 'Where can I find warranty information?',
-          answer:
-            'We are committed to quality products. For information on warranty period and warranty services, visit our Warranty section here.'
+          answer: 'We are committed to quality products. For information on warranty period and warranty services, visit our Warranty section here.'
         },
         {
           id: 'warranty-coverage',
@@ -156,29 +153,29 @@ const data: { faqData: FaqType } = {
       ]
     }
   }
-}
+};
 
 mock.onGet('/pages/faqs').reply(config => {
   if (config.params) {
-    const { q = '' } = config.params
-    const queryLowered = q.toLowerCase()
+    const { q = '' } = config.params;
+    const queryLowered = q.toLowerCase();
 
-    const filteredData: FaqType = {}
+    const filteredData: FaqType = {};
     Object.entries(data.faqData).forEach(entry => {
-      const [categoryName, categoryObj] = entry
+      const [categoryName, categoryObj] = entry;
       const filteredQAndAOfCategory = categoryObj.qandA.filter(qAndAObj => {
-        return qAndAObj.question.toLowerCase().includes(queryLowered)
-      })
+        return qAndAObj.question.toLowerCase().includes(queryLowered);
+      });
       if (filteredQAndAOfCategory.length) {
         filteredData[categoryName] = {
           ...categoryObj,
           qandA: filteredQAndAOfCategory
-        }
+        };
       }
-    })
+    });
 
-    return [200, { faqData: filteredData }]
+    return [200, { faqData: filteredData }];
   } else {
-    return [200, data]
+    return [200, data];
   }
-})
+});

@@ -1,14 +1,14 @@
 // ** MUI Import
-import Grid from '@mui/material/Grid'
+import Grid from '@mui/material/Grid';
 
 // ** Type Import
-import { CardStatsCharacterProps } from 'src/@core/components/card-statistics/types'
+import { CardStatsCharacterProps } from 'src/@core/components/card-statistics/types';
 
 // ** Custom Components Imports
-import CardStatisticsCharacter from 'src/@core/components/card-statistics/card-stats-with-image'
+import CardStatisticsCharacter from 'src/@core/components/card-statistics/card-stats-with-image';
 
 interface Props {
-  data: CardStatsCharacterProps[]
+  data: CardStatsCharacterProps[];
 }
 
 const CardStatsCharacter = ({ data }: Props) => {
@@ -28,10 +28,10 @@ const CardStatsCharacter = ({ data }: Props) => {
           <CardStatisticsCharacter data={data[3]} />
         </Grid>
       </Grid>
-    )
+    );
   } else {
-    return null
+    return null;
   }
-}
+};
 
-export default CardStatsCharacter
+export default CardStatsCharacter;

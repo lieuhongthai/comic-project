@@ -115,7 +115,7 @@ const MenuComposition = () => {
 export default MenuComposition
 `}</code>
   </pre>
-)
+);
 
 export const MenuBasicJSXCode = (
   <pre className='language-jsx'>
@@ -156,7 +156,7 @@ const MenuBasic = () => {
 export default MenuBasic
 `}</code>
   </pre>
-)
+);
 
 export const MenuCustomizedJSXCode = (
   <pre className='language-jsx'>
@@ -250,7 +250,7 @@ const MenuCustomized = () => {
 export default MenuCustomized
 `}</code>
   </pre>
-)
+);
 
 export const MenuContextJSXCode = (
   <pre className='language-jsx'>
@@ -314,7 +314,7 @@ const MenuContext = () => {
 export default MenuContext
 `}</code>
   </pre>
-)
+);
 
 export const MenuMaxHeightJSXCode = (
   <pre className='language-jsx'>
@@ -389,7 +389,7 @@ const MenuMaxHeight = () => {
 export default MenuMaxHeight
 `}</code>
   </pre>
-)
+);
 
 export const MenuSelectedJSXCode = (
   <pre className='language-jsx'>
@@ -465,7 +465,7 @@ const MenuSelected = () => {
 export default MenuSelected
 `}</code>
   </pre>
-)
+);
 
 export const MenuTransitionJSXCode = (
   <pre className='language-jsx'>
@@ -514,7 +514,7 @@ const MenuTransition = () => {
 export default MenuTransition
 `}</code>
   </pre>
-)
+);
 
 export const MenuCompositionTSXCode = (
   <pre className='language-jsx'>
@@ -635,7 +635,7 @@ const MenuComposition = () => {
 export default MenuComposition
 `}</code>
   </pre>
-)
+);
 
 export const MenuContextTSXCode = (
   <pre className='language-jsx'>
@@ -704,7 +704,7 @@ const MenuContext = () => {
 export default MenuContext
 `}</code>
   </pre>
-)
+);
 
 export const MenuBasicTSXCode = (
   <pre className='language-jsx'>
@@ -745,7 +745,7 @@ const MenuBasic = () => {
 export default MenuBasic
 `}</code>
   </pre>
-)
+);
 
 export const MenuCustomizedTSXCode = (
   <pre className='language-jsx'>
@@ -839,7 +839,7 @@ const MenuCustomized = () => {
 export default MenuCustomized
 `}</code>
   </pre>
-)
+);
 
 export const MenuMaxHeightTSXCode = (
   <pre className='language-jsx'>
@@ -915,7 +915,7 @@ const MenuMaxHeight = () => {
 export default MenuMaxHeight
 `}</code>
   </pre>
-)
+);
 
 export const MenuSelectedTSXCode = (
   <pre className='language-jsx'>
@@ -991,7 +991,7 @@ const MenuSelected = () => {
 export default MenuSelected
 `}</code>
   </pre>
-)
+);
 
 export const MenuTransitionTSXCode = (
   <pre className='language-jsx'>
@@ -1040,4 +1040,4 @@ const MenuTransition = () => {
 export default MenuTransition
 `}</code>
   </pre>
-)
+);

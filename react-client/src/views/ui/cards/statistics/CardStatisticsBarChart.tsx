@@ -1,18 +1,18 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import { useTheme } from '@mui/material/styles'
-import Typography from '@mui/material/Typography'
-import CardContent from '@mui/material/CardContent'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import { useTheme } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
 
 // ** Third Party Imports
-import { ApexOptions } from 'apexcharts'
+import { ApexOptions } from 'apexcharts';
 
 // ** Custom Components Imports
-import ReactApexcharts from 'react-apexcharts'
+import ReactApexcharts from 'react-apexcharts';
 
 // ** Util Import
-import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
+import { hexToRGBA } from 'src/@core/utils/hex-to-rgba';
 
 const series = [
   {
@@ -23,11 +23,11 @@ const series = [
     name: 'Expense',
     data: [72, 120, 50, 65]
   }
-]
+];
 
 const CardStatisticsBarChart = () => {
   // ** Hook
-  const theme = useTheme()
+  const theme = useTheme();
 
   const options: ApexOptions = {
     chart: {
@@ -51,8 +51,9 @@ const CardStatisticsBarChart = () => {
     plotOptions: {
       bar: {
         borderRadius: 5,
-        columnWidth: '48%',
-        startingShape: 'rounded'
+        columnWidth: '48%'
+
+        // startingShape: 'rounded'
       }
     },
     states: {
@@ -72,7 +73,7 @@ const CardStatisticsBarChart = () => {
     yaxis: {
       labels: { show: false }
     }
-  }
+  };
 
   return (
     <Card>
@@ -89,7 +90,7 @@ const CardStatisticsBarChart = () => {
         <ReactApexcharts type='bar' height={108} options={options} series={series} />
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardStatisticsBarChart
+export default CardStatisticsBarChart;

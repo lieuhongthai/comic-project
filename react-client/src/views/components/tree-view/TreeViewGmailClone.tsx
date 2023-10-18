@@ -1,22 +1,22 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import TreeView from '@mui/lab/TreeView'
-import { styled } from '@mui/material/styles'
-import Typography from '@mui/material/Typography'
-import TreeItem, { TreeItemProps } from '@mui/lab/TreeItem'
+import Box from '@mui/material/Box';
+import TreeView from '@mui/lab/TreeView';
+import { styled } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import TreeItem, { TreeItemProps } from '@mui/lab/TreeItem';
 
 // ** Custom Icon Import
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 interface Props {
-  direction: 'ltr' | 'rtl'
+  direction: 'ltr' | 'rtl';
 }
 
 type StyledTreeItemProps = TreeItemProps & {
-  labelText: string
-  labelIcon: string
-  labelInfo?: string
-}
+  labelText: string;
+  labelIcon: string;
+  labelInfo?: string;
+};
 
 // Styled TreeItem component
 const StyledTreeItemRoot = styled(TreeItem)<TreeItemProps>(({ theme }) => ({
@@ -40,11 +40,11 @@ const StyledTreeItemRoot = styled(TreeItem)<TreeItemProps>(({ theme }) => ({
       fontWeight: theme.typography.fontWeightRegular
     }
   }
-}))
+}));
 
 const StyledTreeItem = (props: StyledTreeItemProps) => {
   // ** Props
-  const { labelText, labelIcon, labelInfo, ...other } = props
+  const { labelText, labelIcon, labelInfo, ...other } = props;
 
   return (
     <StyledTreeItemRoot
@@ -63,19 +63,14 @@ const StyledTreeItem = (props: StyledTreeItemProps) => {
         </Box>
       }
     />
-  )
-}
+  );
+};
 
 const TreeViewGmailClone = ({ direction }: Props) => {
-  const ExpandIcon = <Icon icon={direction === 'rtl' ? 'mdi:chevron-left' : 'mdi:chevron-right'} />
+  const ExpandIcon = <Icon icon={direction === 'rtl' ? 'mdi:chevron-left' : 'mdi:chevron-right'} />;
 
   return (
-    <TreeView
-      sx={{ minHeight: 240 }}
-      defaultExpanded={['3']}
-      defaultExpandIcon={ExpandIcon}
-      defaultCollapseIcon={<Icon icon='mdi:chevron-down' />}
-    >
+    <TreeView sx={{ minHeight: 240 }} defaultExpanded={['3']} defaultExpandIcon={ExpandIcon} defaultCollapseIcon={<Icon icon='mdi:chevron-down' />}>
       <StyledTreeItem nodeId='1' labelText='All Mail' labelIcon='mdi:email-outline' />
       <StyledTreeItem nodeId='2' labelText='Trash' labelIcon='mdi:delete-outline' />
       <StyledTreeItem nodeId='3' labelText='Categories' labelIcon='mdi:label-outline'>
@@ -86,7 +81,7 @@ const TreeViewGmailClone = ({ direction }: Props) => {
       </StyledTreeItem>
       <StyledTreeItem nodeId='4' labelText='History' labelIcon='mdi:label-outline' />
     </TreeView>
-  )
-}
+  );
+};
 
-export default TreeViewGmailClone
+export default TreeViewGmailClone;

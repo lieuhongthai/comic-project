@@ -1,5 +1,5 @@
 // ** MUI Imports
-import Button from '@mui/material/Button'
+import Button from '@mui/material/Button';
 
 const ButtonsOutlined = () => {
   return (
@@ -15,7 +15,7 @@ const ButtonsOutlined = () => {
         Link
       </Button>
     </div>
-  )
-}
+  );
+};
 
-export default ButtonsOutlined
+export default ButtonsOutlined;

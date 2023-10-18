@@ -1,23 +1,23 @@
 // ** React Imports
 
 // ** MUI Components
-import Button from '@mui/material/Button'
-import { styled } from '@mui/material/styles'
-import Typography from '@mui/material/Typography'
-import Box, { BoxProps } from '@mui/material/Box'
+import Button from '@mui/material/Button';
+import { styled } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import Box, { BoxProps } from '@mui/material/Box';
 
 // ** Layout Import
 
 // ** Demo Imports
-import FooterIllustrations from 'src/views/pages/misc/FooterIllustrations'
-import { Link, useRouteError } from 'react-router-dom'
+import FooterIllustrations from 'src/views/pages/misc/FooterIllustrations';
+import { Link, useRouteError } from 'react-router-dom';
 
 // ** Styled Components
 const BoxWrapper = styled(Box)<BoxProps>(({ theme }) => ({
   [theme.breakpoints.down('md')]: {
     width: '90vw'
   }
-}))
+}));
 
 const Img = styled('img')(({ theme }) => ({
   marginTop: theme.spacing(15),
@@ -30,11 +30,11 @@ const Img = styled('img')(({ theme }) => ({
   [theme.breakpoints.down('md')]: {
     height: 400
   }
-}))
+}));
 
 const Error404 = () => {
-  const error = useRouteError()
-  console.log(12005, 'isRouteErrorResponse: ', error)
+  const error = useRouteError();
+  console.log(12005, 'isRouteErrorResponse: ', error);
 
   return (
     <Box className='content-center'>
@@ -55,7 +55,7 @@ const Error404 = () => {
       </Box>
       <FooterIllustrations image='/images/pages/misc-404-object.png' />
     </Box>
-  )
-}
+  );
+};
 
-export default Error404
+export default Error404;

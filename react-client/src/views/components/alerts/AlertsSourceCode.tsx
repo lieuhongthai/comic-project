@@ -41,7 +41,7 @@ const AlertsBasic = () => {
 export default AlertsBasic
 `}</code>
   </pre>
-)
+);
 
 export const AlertsBasicJSXCode = (
   <pre className='language-jsx'>
@@ -62,7 +62,7 @@ const AlertsBasic = () => {
 export default AlertsBasic
 `}</code>
   </pre>
-)
+);
 
 export const AlertsDescriptionJSXCode = (
   <pre className='language-jsx'>
@@ -96,7 +96,7 @@ const AlertsDescription = () => {
 export default AlertsDescription
 `}</code>
   </pre>
-)
+);
 
 export const AlertsOutlinedJSXCode = (
   <pre className='language-jsx'>
@@ -125,7 +125,7 @@ const AlertsOutlined = () => {
 export default AlertsOutlined
 `}</code>
   </pre>
-)
+);
 
 export const AlertsFilledJSXCode = (
   <pre className='language-jsx'>
@@ -154,7 +154,7 @@ const AlertsFilled = () => {
 export default AlertsFilled
 `}</code>
   </pre>
-)
+);
 
 export const AlertsDismissibleJSXCode = (
   <pre className='language-jsx'>
@@ -257,7 +257,7 @@ const AlertsDismissible = () => {
 export default AlertsDismissible
 `}</code>
   </pre>
-)
+);
 
 export const AlertsActionsTSXCode = (
   <pre className='language-jsx'>
@@ -302,7 +302,7 @@ const AlertsBasic = () => {
 export default AlertsBasic
 `}</code>
   </pre>
-)
+);
 
 export const AlertsBasicTSXCode = (
   <pre className='language-jsx'>
@@ -323,7 +323,7 @@ const AlertsBasic = () => {
 export default AlertsBasic
 `}</code>
   </pre>
-)
+);
 
 export const AlertsDescriptionTSXCode = (
   <pre className='language-jsx'>
@@ -357,7 +357,7 @@ const AlertsDescription = () => {
 export default AlertsDescription
 `}</code>
   </pre>
-)
+);
 
 export const AlertsDismissibleTSXCode = (
   <pre className='language-jsx'>
@@ -460,7 +460,7 @@ const AlertsDismissible = () => {
 export default AlertsDismissible
 `}</code>
   </pre>
-)
+);
 
 export const AlertsFilledTSXCode = (
   <pre className='language-jsx'>
@@ -489,7 +489,7 @@ const AlertsFilled = () => {
 export default AlertsFilled
 `}</code>
   </pre>
-)
+);
 
 export const AlertsOutlinedTSXCode = (
   <pre className='language-jsx'>
@@ -518,4 +518,4 @@ const AlertsOutlined = () => {
 export default AlertsOutlined
 `}</code>
   </pre>
-)
+);

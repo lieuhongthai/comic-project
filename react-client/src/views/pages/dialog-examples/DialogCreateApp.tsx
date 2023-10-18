@@ -1,45 +1,45 @@
 // ** React Imports
-import { Ref, useState, forwardRef, ReactElement } from 'react'
+import { Ref, useState, forwardRef, ReactElement } from 'react';
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Tab from '@mui/material/Tab'
-import Card from '@mui/material/Card'
-import TabList from '@mui/lab/TabList'
-import TabPanel from '@mui/lab/TabPanel'
-import Avatar from '@mui/material/Avatar'
-import Dialog from '@mui/material/Dialog'
-import Button from '@mui/material/Button'
-import TabContext from '@mui/lab/TabContext'
-import IconButton from '@mui/material/IconButton'
-import Typography from '@mui/material/Typography'
-import CardContent from '@mui/material/CardContent'
-import Fade, { FadeProps } from '@mui/material/Fade'
-import DialogContent from '@mui/material/DialogContent'
+import Box from '@mui/material/Box';
+import Tab from '@mui/material/Tab';
+import Card from '@mui/material/Card';
+import TabList from '@mui/lab/TabList';
+import TabPanel from '@mui/lab/TabPanel';
+import Avatar from '@mui/material/Avatar';
+import Dialog from '@mui/material/Dialog';
+import Button from '@mui/material/Button';
+import TabContext from '@mui/lab/TabContext';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
+import Fade, { FadeProps } from '@mui/material/Fade';
+import DialogContent from '@mui/material/DialogContent';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Tab Content Imports
-import DialogTabDetails from 'src/views/pages/dialog-examples/create-app-tabs/DialogTabDetails'
-import DialogTabBilling from 'src/views/pages/dialog-examples/create-app-tabs/DialogTabBilling'
-import DialogTabDatabase from 'src/views/pages/dialog-examples/create-app-tabs/DialogTabDatabase'
-import DialogTabFramework from 'src/views/pages/dialog-examples/create-app-tabs/DialogTabFramework'
-import { initialSettings } from 'src/@core/context/settingsContext'
+import DialogTabDetails from 'src/views/pages/dialog-examples/create-app-tabs/DialogTabDetails';
+import DialogTabBilling from 'src/views/pages/dialog-examples/create-app-tabs/DialogTabBilling';
+import DialogTabDatabase from 'src/views/pages/dialog-examples/create-app-tabs/DialogTabDatabase';
+import DialogTabFramework from 'src/views/pages/dialog-examples/create-app-tabs/DialogTabFramework';
+import { initialSettings } from 'src/@core/context/settingsContext';
 
 interface TabLabelProps {
-  title: string
-  active: boolean
-  subtitle: string
-  icon: ReactElement
+  title: string;
+  active: boolean;
+  subtitle: string;
+  icon: ReactElement;
 }
 
 const Transition = forwardRef(function Transition(props: FadeProps & { children?: ReactElement<any, any> }, ref: Ref<unknown>) {
-  return <Fade ref={ref} {...props} />
-})
+  return <Fade ref={ref} {...props} />;
+});
 
 const TabLabel = (props: TabLabelProps) => {
-  const { icon, title, subtitle, active } = props
+  const { icon, title, subtitle, active } = props;
 
   return (
     <div>
@@ -61,30 +61,30 @@ const TabLabel = (props: TabLabelProps) => {
         </Box>
       </Box>
     </div>
-  )
-}
+  );
+};
 
-const tabsArr = ['detailsTab', 'frameworkTab', 'DatabaseTab', 'paymentTab', 'submitTab']
+const tabsArr = ['detailsTab', 'frameworkTab', 'DatabaseTab', 'paymentTab', 'submitTab'];
 
 const DialogCreateApp = () => {
   // ** States
-  const [show, setShow] = useState<boolean>(false)
-  const [activeTab, setActiveTab] = useState<string>('detailsTab')
+  const [show, setShow] = useState<boolean>(false);
+  const [activeTab, setActiveTab] = useState<string>('detailsTab');
 
   // ** Var
-  const { mode, direction } = initialSettings
+  const { mode, direction } = initialSettings;
 
   const handleClose = () => {
-    setShow(false)
-    setActiveTab('detailsTab')
-  }
+    setShow(false);
+    setActiveTab('detailsTab');
+  };
 
-  const nextArrow = direction === 'ltr' ? 'mdi:arrow-right' : 'mdi:arrow-left'
-  const previousArrow = direction === 'ltr' ? 'mdi:arrow-left' : 'mdi:arrow-right'
+  const nextArrow = direction === 'ltr' ? 'mdi:arrow-right' : 'mdi:arrow-left';
+  const previousArrow = direction === 'ltr' ? 'mdi:arrow-left' : 'mdi:arrow-right';
 
   const renderTabFooter = () => {
-    const prevTab = tabsArr[tabsArr.indexOf(activeTab) - 1]
-    const nextTab = tabsArr[tabsArr.indexOf(activeTab) + 1]
+    const prevTab = tabsArr[tabsArr.indexOf(activeTab) - 1];
+    const nextTab = tabsArr[tabsArr.indexOf(activeTab) + 1];
 
     return (
       <Box sx={{ mt: 8.5, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -103,17 +103,17 @@ const DialogCreateApp = () => {
           endIcon={<Icon icon={activeTab === 'submitTab' ? 'mdi:check' : nextArrow} />}
           onClick={() => {
             if (activeTab !== 'submitTab') {
-              setActiveTab(nextTab)
+              setActiveTab(nextTab);
             } else {
-              handleClose()
+              handleClose();
             }
           }}
         >
           {activeTab === 'submitTab' ? 'Submit' : 'Next'}
         </Button>
       </Box>
-    )
-  }
+    );
+  };
 
   return (
     <Card>
@@ -252,7 +252,7 @@ const DialogCreateApp = () => {
         </DialogContent>
       </Dialog>
     </Card>
-  )
-}
+  );
+};
 
-export default DialogCreateApp
+export default DialogCreateApp;

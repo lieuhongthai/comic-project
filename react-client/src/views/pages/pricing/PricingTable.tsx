@@ -1,35 +1,35 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Table from '@mui/material/Table'
-import Button from '@mui/material/Button'
-import TableRow from '@mui/material/TableRow'
-import TableHead from '@mui/material/TableHead'
-import TableBody from '@mui/material/TableBody'
-import TableCell from '@mui/material/TableCell'
-import Typography from '@mui/material/Typography'
-import TableContainer from '@mui/material/TableContainer'
+import Box from '@mui/material/Box';
+import Table from '@mui/material/Table';
+import Button from '@mui/material/Button';
+import TableRow from '@mui/material/TableRow';
+import TableHead from '@mui/material/TableHead';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import Typography from '@mui/material/Typography';
+import TableContainer from '@mui/material/TableContainer';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Custom Components Imports
-import CustomChip from 'src/@core/components/mui/chip'
+import CustomChip from 'src/@core/components/mui/chip';
 
 // ** Types
-import { PricingDataType, PricingTableRowType } from 'src/@core/components/plan-details/types'
+import { PricingDataType, PricingTableRowType } from 'src/@core/components/plan-details/types';
 
 interface Props {
-  data: PricingDataType | null
+  data: PricingDataType | null;
 }
 
 const PricingTable = ({ data }: Props) => {
   const renderTableCell = (row: PricingTableRowType) => {
     if (typeof row.pro === 'boolean') {
-      return <Icon fontSize={20} icon={row.pro ? 'mdi:check-circle' : 'mdi:close-circle'} />
+      return <Icon fontSize={20} icon={row.pro ? 'mdi:check-circle' : 'mdi:close-circle'} />;
     } else {
-      return <CustomChip size='small' skin='light' label={row.pro} color='primary' sx={{ lineHeight: 1 }} />
+      return <CustomChip size='small' skin='light' label={row.pro} color='primary' sx={{ lineHeight: 1 }} />;
     }
-  }
+  };
 
   return data && data.pricingTable ? (
     <div>
@@ -79,10 +79,7 @@ const PricingTable = ({ data }: Props) => {
                           {head.title}
                         </Typography>
                       )}
-                      <Typography
-                        noWrap
-                        sx={{ fontSize: '.75rem', letterSpacing: '.4px', textTransform: 'capitalize' }}
-                      >
+                      <Typography noWrap sx={{ fontSize: '.75rem', letterSpacing: '.4px', textTransform: 'capitalize' }}>
                         {head.subtitle}
                       </Typography>
                     </Box>
@@ -94,16 +91,10 @@ const PricingTable = ({ data }: Props) => {
               {data.pricingTable.rows.map((row, index) => (
                 <TableRow key={index}>
                   <TableCell sx={{ whiteSpace: 'nowrap' }}>{row.feature}</TableCell>
-                  <TableCell
-                    align='center'
-                    sx={{ '& svg': { verticalAlign: 'middle', color: row.starter ? 'primary.main' : 'text.disabled' } }}
-                  >
+                  <TableCell align='center' sx={{ '& svg': { verticalAlign: 'middle', color: row.starter ? 'primary.main' : 'text.disabled' } }}>
                     <Icon fontSize={20} icon={row.starter ? 'mdi:check-circle' : 'mdi:close-circle'} />
                   </TableCell>
-                  <TableCell
-                    align='center'
-                    sx={{ '& svg': { verticalAlign: 'middle', color: row.pro ? 'primary.main' : 'text.disabled' } }}
-                  >
+                  <TableCell align='center' sx={{ '& svg': { verticalAlign: 'middle', color: row.pro ? 'primary.main' : 'text.disabled' } }}>
                     {renderTableCell(row)}
                   </TableCell>
                   <TableCell
@@ -133,7 +124,7 @@ const PricingTable = ({ data }: Props) => {
         </TableContainer>
       </Box>
     </div>
-  ) : null
-}
+  ) : null;
+};
 
-export default PricingTable
+export default PricingTable;

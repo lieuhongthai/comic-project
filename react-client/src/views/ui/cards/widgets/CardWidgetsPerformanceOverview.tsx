@@ -1,27 +1,27 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import { useTheme } from '@mui/material/styles'
-import CardHeader from '@mui/material/CardHeader'
-import Typography from '@mui/material/Typography'
-import CardContent from '@mui/material/CardContent'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import { useTheme } from '@mui/material/styles';
+import CardHeader from '@mui/material/CardHeader';
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Third Party Imports
-import { ApexOptions } from 'apexcharts'
+import { ApexOptions } from 'apexcharts';
 
 // ** Custom Components Imports
-import OptionsMenu from 'src/@core/components/option-menu'
-import ReactApexcharts from 'react-apexcharts'
+import OptionsMenu from 'src/@core/components/option-menu';
+import ReactApexcharts from 'react-apexcharts';
 
 // ** Util Import
-import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
+import { hexToRGBA } from 'src/@core/utils/hex-to-rgba';
 
 const CardWidgetsPerformanceOverview = () => {
   // ** Hook
-  const theme = useTheme()
+  const theme = useTheme();
 
   const options: ApexOptions = {
     chart: {
@@ -45,7 +45,7 @@ const CardWidgetsPerformanceOverview = () => {
     yaxis: {
       labels: { show: false }
     }
-  }
+  };
 
   return (
     <Card>
@@ -73,7 +73,7 @@ const CardWidgetsPerformanceOverview = () => {
         </Box>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardWidgetsPerformanceOverview
+export default CardWidgetsPerformanceOverview;

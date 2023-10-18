@@ -1,13 +1,13 @@
 // ** MUI Imports
-import Grid from '@mui/material/Grid'
+import Grid from '@mui/material/Grid';
 
 // ** Demo Components Imports
-import CardStatisticsBarChart from 'src/views/ui/cards/statistics/CardStatisticsBarChart'
-import CardStatisticsLineChart from 'src/views/ui/cards/statistics/CardStatisticsLineChart'
-import CardStatisticsDonutChart from 'src/views/ui/cards/statistics/CardStatisticsDonutChart'
-import CardStatisticsRadialBarChart from 'src/views/ui/cards/statistics/CardStatisticsRadialBarChart'
-import CardStatisticsStackedBarChart from 'src/views/ui/cards/statistics/CardStatisticsStackedBarChart'
-import CardStatisticsSmoothLineChart from 'src/views/ui/cards/statistics/CardStatisticsSmoothLineChart'
+import CardStatisticsBarChart from 'src/views/ui/cards/statistics/CardStatisticsBarChart';
+import CardStatisticsLineChart from 'src/views/ui/cards/statistics/CardStatisticsLineChart';
+import CardStatisticsDonutChart from 'src/views/ui/cards/statistics/CardStatisticsDonutChart';
+import CardStatisticsRadialBarChart from 'src/views/ui/cards/statistics/CardStatisticsRadialBarChart';
+import CardStatisticsStackedBarChart from 'src/views/ui/cards/statistics/CardStatisticsStackedBarChart';
+import CardStatisticsSmoothLineChart from 'src/views/ui/cards/statistics/CardStatisticsSmoothLineChart';
 
 const CardStatisticsCharts = () => {
   return (
@@ -31,7 +31,7 @@ const CardStatisticsCharts = () => {
         <CardStatisticsDonutChart />
       </Grid>
     </Grid>
-  )
-}
+  );
+};
 
-export default CardStatisticsCharts
+export default CardStatisticsCharts;

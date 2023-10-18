@@ -1,15 +1,15 @@
 // ** React Imports
-import { MouseEvent, useState } from 'react'
+import { MouseEvent, useState } from 'react';
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Divider from '@mui/material/Divider'
-import { styled } from '@mui/material/styles'
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
-import MuiToggleButton, { ToggleButtonProps } from '@mui/material/ToggleButton'
+import Box from '@mui/material/Box';
+import Divider from '@mui/material/Divider';
+import { styled } from '@mui/material/styles';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import MuiToggleButton, { ToggleButtonProps } from '@mui/material/ToggleButton';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // Styled ToggleButton component
 const ToggleButton = styled(MuiToggleButton)<ToggleButtonProps>(({ theme }) => ({
@@ -22,20 +22,20 @@ const ToggleButton = styled(MuiToggleButton)<ToggleButtonProps>(({ theme }) => (
   '&:first-of-type': {
     borderRadius: `${theme.shape.borderRadius}px !important`
   }
-}))
+}));
 
 const ButtonToggleCustomized = () => {
   // ** States
-  const [alignment, setAlignment] = useState<string | null>('left')
-  const [formats, setFormats] = useState<string[]>(() => ['italic'])
+  const [alignment, setAlignment] = useState<string | null>('left');
+  const [formats, setFormats] = useState<string[]>(() => ['italic']);
 
   const handleAlignment = (event: MouseEvent<HTMLElement>, newAlignment: string | null) => {
-    setAlignment(newAlignment)
-  }
+    setAlignment(newAlignment);
+  };
 
   const handleFormat = (event: MouseEvent<HTMLElement>, newFormats: string[]) => {
-    setFormats(newFormats)
-  }
+    setFormats(newFormats);
+  };
 
   return (
     <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
@@ -69,7 +69,7 @@ const ButtonToggleCustomized = () => {
         </ToggleButton>
       </ToggleButtonGroup>
     </Box>
-  )
-}
+  );
+};
 
-export default ButtonToggleCustomized
+export default ButtonToggleCustomized;

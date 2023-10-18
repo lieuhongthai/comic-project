@@ -1,6 +1,6 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Avatar from '@mui/material/Avatar'
+import Box from '@mui/material/Box';
+import Avatar from '@mui/material/Avatar';
 
 const AvatarsSizes = () => {
   return (
@@ -9,7 +9,7 @@ const AvatarsSizes = () => {
       <Avatar alt='Victor Anderson' src='/images/avatars/3.png' />
       <Avatar alt='Victor Anderson' sx={{ width: 56, height: 56 }} src='/images/avatars/3.png' />
     </Box>
-  )
-}
+  );
+};
 
-export default AvatarsSizes
+export default AvatarsSizes;

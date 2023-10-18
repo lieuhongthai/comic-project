@@ -1,9 +1,9 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import { Direction } from '@mui/material'
+import Box from '@mui/material/Box';
+import { Direction } from '@mui/material';
 
 // ** Third Party Components
-import { useKeenSlider } from 'keen-slider/react'
+import { useKeenSlider } from 'keen-slider/react';
 
 const SwiperMultipleSlides = ({ direction }: { direction: Direction }) => {
   // ** Hook
@@ -12,7 +12,7 @@ const SwiperMultipleSlides = ({ direction }: { direction: Direction }) => {
     slides: {
       perView: 2
     }
-  })
+  });
 
   return (
     <Box ref={ref} className='keen-slider'>
@@ -32,7 +32,7 @@ const SwiperMultipleSlides = ({ direction }: { direction: Direction }) => {
         <img src='/images/banners/banner-15.jpg' alt='swiper 15' />
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default SwiperMultipleSlides
+export default SwiperMultipleSlides;

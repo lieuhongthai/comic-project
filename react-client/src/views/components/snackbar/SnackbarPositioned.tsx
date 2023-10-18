@@ -1,12 +1,12 @@
 // ** React Imports
-import { Fragment, useState } from 'react'
+import { Fragment, useState } from 'react';
 
 // ** MUI Imports
-import Button from '@mui/material/Button'
-import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar'
+import Button from '@mui/material/Button';
+import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
 
 interface State extends SnackbarOrigin {
-  open: boolean
+  open: boolean;
 }
 
 const SnackbarPositioned = () => {
@@ -15,16 +15,16 @@ const SnackbarPositioned = () => {
     open: false,
     vertical: 'top',
     horizontal: 'center'
-  })
-  const { vertical, horizontal, open } = state
+  });
+  const { vertical, horizontal, open } = state;
 
   const handleClick = (newState: SnackbarOrigin) => () => {
-    setState({ open: true, ...newState })
-  }
+    setState({ open: true, ...newState });
+  };
 
   const handleClose = () => {
-    setState({ ...state, open: false })
-  }
+    setState({ ...state, open: false });
+  };
 
   return (
     <Fragment>
@@ -57,7 +57,7 @@ const SnackbarPositioned = () => {
         anchorOrigin={{ vertical, horizontal }}
       />
     </Fragment>
-  )
-}
+  );
+};
 
-export default SnackbarPositioned
+export default SnackbarPositioned;

@@ -1,17 +1,17 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import { styled } from '@mui/material/styles'
-import ListItem from '@mui/material/ListItem'
-import List, { ListProps } from '@mui/material/List'
-import ListItemText from '@mui/material/ListItemText'
-import ListItemAvatar from '@mui/material/ListItemAvatar'
-import LinearProgress from '@mui/material/LinearProgress'
+import Box from '@mui/material/Box';
+import { styled } from '@mui/material/styles';
+import ListItem from '@mui/material/ListItem';
+import List, { ListProps } from '@mui/material/List';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import LinearProgress from '@mui/material/LinearProgress';
 
 // ** Custom Components Imports
-import CustomAvatar from 'src/@core/components/mui/avatar'
+import CustomAvatar from 'src/@core/components/mui/avatar';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 const StyledList = styled(List)<ListProps>(({ theme }) => ({
   '& .MuiListItem-root': {
@@ -34,7 +34,7 @@ const StyledList = styled(List)<ListProps>(({ theme }) => ({
       }
     }
   }
-}))
+}));
 
 const ListProgress = () => {
   return (
@@ -95,7 +95,7 @@ const ListProgress = () => {
         </Box>
       </ListItem>
     </StyledList>
-  )
-}
+  );
+};
 
-export default ListProgress
+export default ListProgress;

@@ -1,34 +1,34 @@
 // ** React Imports
-import { useState } from 'react'
+import { useState } from 'react';
 
 // ** MUI Imports
-import List from '@mui/material/List'
-import Switch from '@mui/material/Switch'
-import ListItem from '@mui/material/ListItem'
-import ListItemText from '@mui/material/ListItemText'
-import ListItemIcon from '@mui/material/ListItemIcon'
-import ListSubheader from '@mui/material/ListSubheader'
-import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction'
+import List from '@mui/material/List';
+import Switch from '@mui/material/Switch';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListSubheader from '@mui/material/ListSubheader';
+import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 const ListWithSwitch = () => {
   // ** State
-  const [checked, setChecked] = useState<string[]>(['wifi', 'location'])
+  const [checked, setChecked] = useState<string[]>(['wifi', 'location']);
 
   const handleToggle = (value: string) => () => {
-    const currentIndex = checked.indexOf(value)
-    const newChecked = [...checked]
+    const currentIndex = checked.indexOf(value);
+    const newChecked = [...checked];
 
     if (currentIndex === -1) {
-      newChecked.push(value)
+      newChecked.push(value);
     } else {
-      newChecked.splice(currentIndex, 1)
+      newChecked.splice(currentIndex, 1);
     }
 
-    setChecked(newChecked)
-  }
+    setChecked(newChecked);
+  };
 
   return (
     <List subheader={<ListSubheader>Settings</ListSubheader>}>
@@ -83,15 +83,11 @@ const ListWithSwitch = () => {
         </ListItemIcon>
         <ListItemText primary='Do not disturb' />
         <ListItemSecondaryAction>
-          <Switch
-            edge='end'
-            checked={checked.indexOf('do-not-disturb') !== -1}
-            onChange={handleToggle('do-not-disturb')}
-          />
+          <Switch edge='end' checked={checked.indexOf('do-not-disturb') !== -1} onChange={handleToggle('do-not-disturb')} />
         </ListItemSecondaryAction>
       </ListItem>
     </List>
-  )
-}
+  );
+};
 
-export default ListWithSwitch
+export default ListWithSwitch;

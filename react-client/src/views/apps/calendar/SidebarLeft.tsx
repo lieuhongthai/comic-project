@@ -1,13 +1,13 @@
 // ** MUI Imports
-import Button from '@mui/material/Button'
-import Drawer from '@mui/material/Drawer'
-import Checkbox from '@mui/material/Checkbox'
-import Typography from '@mui/material/Typography'
-import FormControlLabel from '@mui/material/FormControlLabel'
+import Button from '@mui/material/Button';
+import Drawer from '@mui/material/Drawer';
+import Checkbox from '@mui/material/Checkbox';
+import Typography from '@mui/material/Typography';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 // ** Types
-import { ThemeColor } from 'src/@core/layouts/types'
-import { SidebarLeftType, CalendarFiltersType } from 'src/types/apps/calendarTypes'
+import { ThemeColor } from 'src/@core/layouts/types';
+import { SidebarLeftType, CalendarFiltersType } from 'src/types/apps/calendarTypes';
 
 const SidebarLeft = (props: SidebarLeftType) => {
   const {
@@ -22,9 +22,9 @@ const SidebarLeft = (props: SidebarLeftType) => {
     handleCalendarsUpdate,
     handleLeftSidebarToggle,
     handleAddEventSidebarToggle
-  } = props
+  } = props;
 
-  const colorsArr = calendarsColor ? Object.entries(calendarsColor) : []
+  const colorsArr = calendarsColor ? Object.entries(calendarsColor) : [];
 
   const renderFilters = colorsArr.length
     ? colorsArr.map(([key, value]: string[]) => {
@@ -41,14 +41,14 @@ const SidebarLeft = (props: SidebarLeftType) => {
               />
             }
           />
-        )
+        );
       })
-    : null
+    : null;
 
   const handleSidebarToggleSidebar = () => {
-    handleAddEventSidebarToggle()
-    dispatch(handleSelectEvent(null))
-  }
+    handleAddEventSidebarToggle();
+    dispatch(handleSelectEvent(null));
+  };
 
   if (renderFilters) {
     return (
@@ -103,10 +103,10 @@ const SidebarLeft = (props: SidebarLeftType) => {
         />
         {renderFilters}
       </Drawer>
-    )
+    );
   } else {
-    return null
+    return null;
   }
-}
+};
 
-export default SidebarLeft
+export default SidebarLeft;

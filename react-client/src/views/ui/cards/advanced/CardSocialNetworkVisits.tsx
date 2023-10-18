@@ -1,31 +1,31 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import Typography from '@mui/material/Typography'
-import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Typography from '@mui/material/Typography';
+import CardHeader from '@mui/material/CardHeader';
+import CardContent from '@mui/material/CardContent';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Types
-import { ThemeColor } from 'src/@core/layouts/types'
+import { ThemeColor } from 'src/@core/layouts/types';
 
 // ** Custom Components Imports
-import CustomChip from 'src/@core/components/mui/chip'
-import OptionsMenu from 'src/@core/components/option-menu'
+import CustomChip from 'src/@core/components/mui/chip';
+import OptionsMenu from 'src/@core/components/option-menu';
 
 interface DataType {
-  title: string
-  imgAlt: string
-  imgSrc: string
-  amount: string
-  subtitle: string
-  chipText: string
-  chipColor: ThemeColor
+  title: string;
+  imgAlt: string;
+  imgSrc: string;
+  amount: string;
+  subtitle: string;
+  chipText: string;
+  chipColor: ThemeColor;
 }
 
-const data: DataType[] = [
+const dataList: DataType[] = [
   {
     amount: '12,348',
     chipText: '+12%',
@@ -62,7 +62,7 @@ const data: DataType[] = [
     subtitle: 'Social Media',
     imgSrc: '/images/cards/social-instagram.png'
   }
-]
+];
 
 const CardSocialNetworkVisits = () => {
   return (
@@ -71,10 +71,7 @@ const CardSocialNetworkVisits = () => {
         title='Social Network Visits'
         titleTypographyProps={{ sx: { lineHeight: '2rem !important', letterSpacing: '0.15px !important' } }}
         action={
-          <OptionsMenu
-            options={['Last 28 Days', 'Last Month', 'Last Year']}
-            iconButtonProps={{ size: 'small', className: 'card-more-options' }}
-          />
+          <OptionsMenu options={['Last 28 Days', 'Last Month', 'Last Year']} iconButtonProps={{ size: 'small', className: 'card-more-options' }} />
         }
       />
       <CardContent>
@@ -91,20 +88,18 @@ const CardSocialNetworkVisits = () => {
         <Typography component='p' variant='caption' sx={{ mb: 5 }}>
           Last 1 Year Visits
         </Typography>
-        {data.map((item: DataType, index: number) => {
+        {dataList.map((item: DataType, index: number) => {
           return (
             <Box
               key={item.title}
               sx={{
                 display: 'flex',
                 alignItems: 'center',
-                mb: index !== data.length - 1 ? 5.75 : undefined
+                mb: index !== dataList.length - 1 ? 5.75 : undefined
               }}
             >
               <img width={34} height={34} alt={item.imgAlt} src={item.imgSrc} />
-              <Box
-                sx={{ ml: 3, width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
-              >
+              <Box sx={{ ml: 3, width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <Box sx={{ mr: 2, display: 'flex', flexDirection: 'column' }}>
                   <Typography variant='body2' sx={{ fontWeight: 600, color: 'text.primary' }}>
                     {item.title}
@@ -125,11 +120,11 @@ const CardSocialNetworkVisits = () => {
                 </Box>
               </Box>
             </Box>
-          )
+          );
         })}
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardSocialNetworkVisits
+export default CardSocialNetworkVisits;

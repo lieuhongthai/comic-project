@@ -1,9 +1,9 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import { Direction } from '@mui/material'
+import Box from '@mui/material/Box';
+import { Direction } from '@mui/material';
 
 // ** Third Party Components
-import { useKeenSlider } from 'keen-slider/react'
+import { useKeenSlider } from 'keen-slider/react';
 
 const SwiperCentered = ({ direction }: { direction: Direction }) => {
   // ** Hook
@@ -14,7 +14,7 @@ const SwiperCentered = ({ direction }: { direction: Direction }) => {
       spacing: 16,
       origin: 'center'
     }
-  })
+  });
 
   return (
     <Box ref={ref} className='keen-slider'>
@@ -34,7 +34,7 @@ const SwiperCentered = ({ direction }: { direction: Direction }) => {
         <img src='/images/banners/banner-30.jpg' alt='swiper 30' />
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default SwiperCentered
+export default SwiperCentered;

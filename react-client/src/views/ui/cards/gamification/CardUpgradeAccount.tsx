@@ -1,9 +1,9 @@
 // ** MUI Imports
-import Card from '@mui/material/Card'
-import Button from '@mui/material/Button'
-import { styled } from '@mui/material/styles'
-import Typography from '@mui/material/Typography'
-import CardContent from '@mui/material/CardContent'
+import Card from '@mui/material/Card';
+import Button from '@mui/material/Button';
+import { styled } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
 
 // Styled component for the avatar image
 const AvatarImg = styled('img')(({ theme }) => ({
@@ -17,7 +17,7 @@ const AvatarImg = styled('img')(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     height: 149
   }
-}))
+}));
 
 const CardUpgradeAccount = () => {
   return (
@@ -39,7 +39,7 @@ const CardUpgradeAccount = () => {
         <AvatarImg alt='Upgrade Account' src='/images/cards/illustration-upgrade-account.png' />
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardUpgradeAccount
+export default CardUpgradeAccount;

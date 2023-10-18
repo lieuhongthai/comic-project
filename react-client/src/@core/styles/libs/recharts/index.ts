@@ -1,5 +1,5 @@
 // ** MUI imports
-import { styled } from '@mui/material/styles'
+import { styled } from '@mui/material/styles';
 
 const RechartsWrapper = styled('div')(({ theme }) => ({
   '& .recharts-cartesian-grid-vertical, & .recharts-cartesian-grid-horizontal, & .recharts-polar-grid-angle, & .recharts-polar-radius-axis, & .recharts-cartesian-axis':
@@ -29,10 +29,9 @@ const RechartsWrapper = styled('div')(({ theme }) => ({
   '& .recharts-tooltip-cursor': {
     fill: theme.palette.action.hover
   },
-  '& .recharts-yAxis .recharts-cartesian-axis-ticks .recharts-cartesian-axis-tick .recharts-cartesian-axis-tick-value':
-    {
-      textAnchor: theme.direction === 'rtl' ? 'end' : undefined
-    },
+  '& .recharts-yAxis .recharts-cartesian-axis-ticks .recharts-cartesian-axis-tick .recharts-cartesian-axis-tick-value': {
+    textAnchor: theme.direction === 'rtl' ? 'end' : undefined
+  },
   '& .recharts-active-dot .recharts-dot': {
     fill: theme.palette.secondary.main
   },
@@ -44,6 +43,6 @@ const RechartsWrapper = styled('div')(({ theme }) => ({
     fontSize: '0.875rem',
     fill: theme.palette.text.disabled
   }
-}))
+}));
 
-export default RechartsWrapper
+export default RechartsWrapper;

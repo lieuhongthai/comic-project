@@ -1,45 +1,45 @@
 // ** React Imports
-import { useRef, useState, Fragment, SyntheticEvent } from 'react'
+import { useRef, useState, Fragment, SyntheticEvent } from 'react';
 
 // ** MUI Imports
-import Grow from '@mui/material/Grow'
-import Paper from '@mui/material/Paper'
-import Button from '@mui/material/Button'
-import Popper from '@mui/material/Popper'
-import MenuItem from '@mui/material/MenuItem'
-import MenuList from '@mui/material/MenuList'
-import ButtonGroup from '@mui/material/ButtonGroup'
-import ClickAwayListener from '@mui/material/ClickAwayListener'
+import Grow from '@mui/material/Grow';
+import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button';
+import Popper from '@mui/material/Popper';
+import MenuItem from '@mui/material/MenuItem';
+import MenuList from '@mui/material/MenuList';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
-const options = ['Create a merge commit', 'Squash and merge', 'Rebase and merge']
+const options = ['Create a merge commit', 'Squash and merge', 'Rebase and merge'];
 
 const ButtonGroupSplit = () => {
   // ** States
-  const [open, setOpen] = useState<boolean>(false)
-  const [selectedIndex, setSelectedIndex] = useState<number>(1)
+  const [open, setOpen] = useState<boolean>(false);
+  const [selectedIndex, setSelectedIndex] = useState<number>(1);
 
   // ** Ref
-  const anchorRef = useRef<HTMLDivElement | null>(null)
+  const anchorRef = useRef<HTMLDivElement | null>(null);
 
   const handleClick = () => {
-    console.info(`You clicked '${options[selectedIndex]}'`)
-  }
+    console.info(`You clicked '${options[selectedIndex]}'`);
+  };
 
   const handleMenuItemClick = (event: SyntheticEvent, index: number) => {
-    setSelectedIndex(index)
-    setOpen(false)
-  }
+    setSelectedIndex(index);
+    setOpen(false);
+  };
 
   const handleToggle = () => {
-    setOpen(prevOpen => !prevOpen)
-  }
+    setOpen(prevOpen => !prevOpen);
+  };
 
   const handleClose = () => {
-    setOpen(false)
-  }
+    setOpen(false);
+  };
 
   return (
     <Fragment>
@@ -58,10 +58,7 @@ const ButtonGroupSplit = () => {
       </ButtonGroup>
       <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
         {({ TransitionProps, placement }) => (
-          <Grow
-            {...TransitionProps}
-            style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
-          >
+          <Grow {...TransitionProps} style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}>
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList id='split-button-menu'>
@@ -82,7 +79,7 @@ const ButtonGroupSplit = () => {
         )}
       </Popper>
     </Fragment>
-  )
-}
+  );
+};
 
-export default ButtonGroupSplit
+export default ButtonGroupSplit;

@@ -1,43 +1,40 @@
 // ** React Imports
-import { useState, SyntheticEvent } from 'react'
+import { useState, SyntheticEvent } from 'react';
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import Link from '@mui/material/Link'
-import Avatar from '@mui/material/Avatar'
-import Button from '@mui/material/Button'
-import TextField from '@mui/material/TextField'
-import Typography from '@mui/material/Typography'
-import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Link from '@mui/material/Link';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import CardHeader from '@mui/material/CardHeader';
+import CardContent from '@mui/material/CardContent';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Custom Components Imports
-import OptionsMenu from 'src/@core/components/option-menu'
+import OptionsMenu from 'src/@core/components/option-menu';
 
 // ** Hooks Imports
-import useBgColor from 'src/@core/hooks/useBgColor'
+import useBgColor from 'src/@core/hooks/useBgColor';
 
 const CardPlanUpgrade = () => {
   // ** States
-  const [cvc1, setCvc1] = useState<number | string>('')
-  const [cvc2, setCvc2] = useState<number | string>('')
+  const [cvc1, setCvc1] = useState<number | string>('');
+  const [cvc2, setCvc2] = useState<number | string>('');
 
   // ** Hook
-  const bgColors = useBgColor()
+  const bgColors = useBgColor();
 
   return (
     <Card>
       <CardHeader
         title='Upgrade Your Plan'
         action={
-          <OptionsMenu
-            options={['Add Cards', 'Edit Cards', 'Delete Year']}
-            iconButtonProps={{ size: 'small', sx: { color: 'text.primary' } }}
-          />
+          <OptionsMenu options={['Add Cards', 'Edit Cards', 'Delete Year']} iconButtonProps={{ size: 'small', sx: { color: 'text.primary' } }} />
         }
       />
       <CardContent>
@@ -91,11 +88,7 @@ const CardPlanUpgrade = () => {
                 </Typography>
               </Box>
               <Box sx={{ display: 'flex' }}>
-                <Typography
-                  component='sup'
-                  variant='body2'
-                  sx={{ mt: 0.5, color: 'text.primary', alignSelf: 'flex-start' }}
-                >
+                <Typography component='sup' variant='body2' sx={{ mt: 0.5, color: 'text.primary', alignSelf: 'flex-start' }}>
                   $
                 </Typography>
                 <Typography variant='h5'>2,199</Typography>
@@ -135,9 +128,7 @@ const CardPlanUpgrade = () => {
               value={cvc1}
               type='number'
               sx={{ width: 80, mt: 0.4 }}
-              onChange={e =>
-                e.target.value.length > 3 ? setCvc1(e.target.value.slice(0, 3)) : setCvc1(e.target.value)
-              }
+              onChange={e => (e.target.value.length > 3 ? setCvc1(e.target.value.slice(0, 3)) : setCvc1(e.target.value))}
             />
           </Box>
         </Box>
@@ -166,36 +157,22 @@ const CardPlanUpgrade = () => {
               value={cvc2}
               type='number'
               sx={{ width: 80, mt: 0.4 }}
-              onChange={e =>
-                e.target.value.length > 3 ? setCvc2(e.target.value.slice(0, 3)) : setCvc2(e.target.value)
-              }
+              onChange={e => (e.target.value.length > 3 ? setCvc2(e.target.value.slice(0, 3)) : setCvc2(e.target.value))}
             />
           </Box>
         </Box>
 
-        <Typography
-          href='/'
-          component={Link}
-          variant='caption'
-          sx={{ color: 'primary.main' }}
-          onClick={(e: SyntheticEvent) => e.preventDefault()}
-        >
+        <Typography href='/' component={Link} variant='caption' sx={{ color: 'primary.main' }} onClick={(e: SyntheticEvent) => e.preventDefault()}>
           Add Payment Method
         </Typography>
 
-        <TextField
-          fullWidth
-          size='small'
-          label='Email Address'
-          sx={{ mt: 2.75, mb: 3.5 }}
-          placeholder='john.doe@email.com'
-        />
+        <TextField fullWidth size='small' label='Email Address' sx={{ mt: 2.75, mb: 3.5 }} placeholder='john.doe@email.com' />
         <Button fullWidth variant='contained' endIcon={<Icon icon='mdi:arrow-right' />}>
           Proceed to payment
         </Button>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardPlanUpgrade
+export default CardPlanUpgrade;

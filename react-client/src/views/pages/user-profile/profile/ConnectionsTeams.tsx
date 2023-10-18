@@ -1,30 +1,30 @@
 // ** React Imports
-import { SyntheticEvent } from 'react'
+import { SyntheticEvent } from 'react';
 
 // ** MUI Components
-import Box from '@mui/material/Box'
-import Grid from '@mui/material/Grid'
-import Card from '@mui/material/Card'
-import Button from '@mui/material/Button'
-import Avatar from '@mui/material/Avatar'
-import Typography from '@mui/material/Typography'
-import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Card from '@mui/material/Card';
+import Button from '@mui/material/Button';
+import Avatar from '@mui/material/Avatar';
+import Typography from '@mui/material/Typography';
+import CardHeader from '@mui/material/CardHeader';
+import CardContent from '@mui/material/CardContent';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Custom Components Imports
-import CustomChip from 'src/@core/components/mui/chip'
-import OptionsMenu from 'src/@core/components/option-menu'
+import CustomChip from 'src/@core/components/mui/chip';
+import OptionsMenu from 'src/@core/components/option-menu';
 
 // ** Types
-import { ProfileTeamsTechType, ProfileConnectionsType } from 'src/@fake-db/types'
-import { Link } from 'react-router-dom'
+import { ProfileTeamsTechType, ProfileConnectionsType } from 'src/@fake-db/types';
+import { Link } from 'react-router-dom';
 
 interface Props {
-  teams: ProfileTeamsTechType[]
-  connections: ProfileConnectionsType[]
+  teams: ProfileTeamsTechType[];
+  connections: ProfileConnectionsType[];
 }
 
 const ConnectionsTeams = ({ connections, teams }: Props) => {
@@ -69,7 +69,7 @@ const ConnectionsTeams = ({ connections, teams }: Props) => {
                       <Icon icon='mdi:account-outline' />
                     </Button>
                   </Box>
-                )
+                );
               })}
             <Box sx={{ width: '100%', textAlign: 'center' }}>
               <Typography
@@ -120,7 +120,7 @@ const ConnectionsTeams = ({ connections, teams }: Props) => {
                       <CustomChip size='small' skin='light' color={team.ChipColor} label={team.chipText} />
                     </Box>
                   </Box>
-                )
+                );
               })}
             <Box sx={{ width: '100%', textAlign: 'center' }}>
               <Typography
@@ -136,7 +136,7 @@ const ConnectionsTeams = ({ connections, teams }: Props) => {
         </Card>
       </Grid>
     </>
-  )
-}
+  );
+};
 
-export default ConnectionsTeams
+export default ConnectionsTeams;

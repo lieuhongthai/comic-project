@@ -1,29 +1,29 @@
 // ** MUI Imports
-import Card from '@mui/material/Card'
-import { useTheme } from '@mui/material/styles'
-import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
+import Card from '@mui/material/Card';
+import { useTheme } from '@mui/material/styles';
+import CardHeader from '@mui/material/CardHeader';
+import CardContent from '@mui/material/CardContent';
 
 // ** Third Party Imports
-import { ApexOptions } from 'apexcharts'
+import { ApexOptions } from 'apexcharts';
 
 // ** Custom Components Imports
-import OptionsMenu from 'src/@core/components/option-menu'
-import ReactApexcharts from 'react-apexcharts'
+import OptionsMenu from 'src/@core/components/option-menu';
+import ReactApexcharts from 'react-apexcharts';
 
 // ** Util Import
-import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
+import { hexToRGBA } from 'src/@core/utils/hex-to-rgba';
 
 const series = [
   {
     name: 'Sales',
     data: [17165, 13850, 12375, 9567, 7880]
   }
-]
+];
 
 const CardWidgetsSalesCountry = () => {
   // ** Hook
-  const theme = useTheme()
+  const theme = useTheme();
 
   const options: ApexOptions = {
     chart: {
@@ -35,8 +35,9 @@ const CardWidgetsSalesCountry = () => {
         borderRadius: 8,
         barHeight: '60%',
         horizontal: true,
-        distributed: true,
-        startingShape: 'rounded'
+        distributed: true
+
+        // startingShape: 'rounded'
       }
     },
     dataLabels: {
@@ -100,7 +101,7 @@ const CardWidgetsSalesCountry = () => {
         }
       }
     }
-  }
+  };
 
   return (
     <Card>
@@ -117,7 +118,7 @@ const CardWidgetsSalesCountry = () => {
         <ReactApexcharts type='bar' height={294} series={series} options={options} />
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardWidgetsSalesCountry
+export default CardWidgetsSalesCountry;

@@ -1,22 +1,22 @@
 // ** React Imports
-import { MouseEvent, useState } from 'react'
+import { MouseEvent, useState } from 'react';
 
 // ** MUI Imports
-import Menu from '@mui/material/Menu'
-import Button from '@mui/material/Button'
-import MenuItem from '@mui/material/MenuItem'
+import Menu from '@mui/material/Menu';
+import Button from '@mui/material/Button';
+import MenuItem from '@mui/material/MenuItem';
 
 const MenuBasic = () => {
   // ** State
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget)
-  }
+    setAnchorEl(event.currentTarget);
+  };
 
   const handleClose = () => {
-    setAnchorEl(null)
-  }
+    setAnchorEl(null);
+  };
 
   return (
     <div>
@@ -29,7 +29,7 @@ const MenuBasic = () => {
         <MenuItem onClick={handleClose}>Logout</MenuItem>
       </Menu>
     </div>
-  )
-}
+  );
+};
 
-export default MenuBasic
+export default MenuBasic;

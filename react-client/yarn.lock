@@ -3752,6 +3752,11 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
+"@yr/monotone-cubic-spline@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@yr/monotone-cubic-spline/-/monotone-cubic-spline-1.0.3.tgz#7272d89f8e4f6fb7a1600c28c378cc18d3b577b9"
+  integrity sha512-FQXkOta0XBSUPHndIKON2Y9JeQz5ZeMqLYZVVK93FliNBFm7LNMIZmY6FrMEB9XPcDbE2bekMbZD6kzDkxwYjA==
+
 "@zeit/schemas@2.29.0":
   version "2.29.0"
   resolved "https://registry.yarnpkg.com/@zeit/schemas/-/schemas-2.29.0.tgz#a59ae6ebfdf4ddc66a876872dd736baa58b6696c"
@@ -3943,6 +3948,19 @@ apexcharts-clevision@^3.28.5:
   resolved "https://registry.yarnpkg.com/apexcharts-clevision/-/apexcharts-clevision-3.28.5.tgz#83ef5e80120499dca9e54f9efd53b07f4492271f"
   integrity sha512-FaxvmpCGxUyusUGzS1iAt3yL00UG5Bus73fhEhnK1QuH+expzz53f4lJFxwP1kY31vpR9WTzZx52CZzDEk4UOg==
   dependencies:
+    svg.draggable.js "^2.2.2"
+    svg.easing.js "^2.0.0"
+    svg.filter.js "^2.0.2"
+    svg.pathmorphing.js "^0.1.3"
+    svg.resize.js "^1.4.3"
+    svg.select.js "^3.0.1"
+
+apexcharts@^3.43.0:
+  version "3.43.0"
+  resolved "https://registry.yarnpkg.com/apexcharts/-/apexcharts-3.43.0.tgz#6906154605ae981f6e68c493ecfdfa57bdb55ce7"
+  integrity sha512-YPw1aLatPQMUqVLMp5d+LDaXFi4QrRQND72/XO7/2NJdg+R5MjE9sifJ0GzOfgoZM7ltBUTjwfSxIvwR/9V8yw==
+  dependencies:
+    "@yr/monotone-cubic-spline" "^1.0.3"
     svg.draggable.js "^2.2.2"
     svg.easing.js "^2.0.0"
     svg.filter.js "^2.0.2"

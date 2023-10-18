@@ -1,22 +1,15 @@
 // ** Mock Adapter
-import mock from 'src/@fake-db/mock'
+import mock from 'src/@fake-db/mock';
 
 // ** Types
-import {
-  TeamsTabType,
-  ProfileTabType,
-  ProjectsTabType,
-  ProfileHeaderType,
-  ConnectionsTabType,
-  ProjectTableRowType
-} from 'src/@fake-db/types'
+import { TeamsTabType, ProfileTabType, ProjectsTabType, ProfileHeaderType, ConnectionsTabType, ProjectTableRowType } from 'src/@fake-db/types';
 
 interface DataType {
-  profileHeader: ProfileHeaderType
-  profile: ProfileTabType
-  teams: TeamsTabType[]
-  projects: ProjectsTabType[]
-  connections: ConnectionsTabType[]
+  profileHeader: ProfileHeaderType;
+  profile: ProfileTabType;
+  teams: TeamsTabType[];
+  projects: ProjectsTabType[];
+  connections: ConnectionsTabType[];
 }
 
 const data: DataType = {
@@ -132,8 +125,7 @@ const data: DataType = {
         { avatar: '/images/avatars/3.png', name: 'Julee Rossignol' },
         { avatar: '/images/avatars/4.png', name: 'George Burrill' }
       ],
-      description:
-        'We don’t make assumptions about the rest of your technology stack, so you can develop new features in React.',
+      description: 'We don’t make assumptions about the rest of your technology stack, so you can develop new features in React.',
       chips: [
         {
           title: 'React',
@@ -155,8 +147,7 @@ const data: DataType = {
         { avatar: '/images/avatars/7.png', name: 'Alan Walker' },
         { avatar: '/images/avatars/8.png', name: 'Calvin Middleton' }
       ],
-      description:
-        'The development of Vue and its ecosystem is guided by an international team, some of whom have chosen to be featured below.',
+      description: 'The development of Vue and its ecosystem is guided by an international team, some of whom have chosen to be featured below.',
       chips: [
         {
           title: 'Vuejs',
@@ -178,8 +169,7 @@ const data: DataType = {
         { avatar: '/images/avatars/3.png', name: 'Danny Paul' },
         { avatar: '/images/avatars/4.png', name: 'Alicia Littleton' }
       ],
-      description:
-        'A design or product team is more than just the people on it. A team includes the people, the roles they play.',
+      description: 'A design or product team is more than just the people on it. A team includes the people, the roles they play.',
       chips: [
         {
           title: 'Sketch',
@@ -201,8 +191,7 @@ const data: DataType = {
         { avatar: '/images/avatars/7.png', name: 'Rossie Kim' },
         { avatar: '/images/avatars/8.png', name: 'Mary Hunter' }
       ],
-      description:
-        'Support your team. Your customer support team is fielding the good, the bad, and the ugly day in and day out.',
+      description: 'Support your team. Your customer support team is fielding the good, the bad, and the ugly day in and day out.',
       chips: [
         {
           color: 'info',
@@ -220,8 +209,7 @@ const data: DataType = {
         { avatar: '/images/avatars/3.png', name: 'Nurvi Karlos' },
         { avatar: '/images/avatars/4.png', name: 'Margorie Whitmire' }
       ],
-      description:
-        'Digital marketing refers to advertising delivered through digital channels such as search engines, websites…',
+      description: 'Digital marketing refers to advertising delivered through digital channels such as search engines, websites…',
       chips: [
         {
           color: 'primary',
@@ -243,8 +231,7 @@ const data: DataType = {
         { avatar: '/images/avatars/7.png', name: 'Julee Rossignol' },
         { avatar: '/images/avatars/8.png', name: 'Daniel Long' }
       ],
-      description:
-        'Event is defined as a particular contest which is part of a program of contests. An example of an event is the long…',
+      description: 'Event is defined as a particular contest which is part of a program of contests. An example of an event is the long…',
       chips: [
         {
           title: 'Hubilo',
@@ -262,8 +249,7 @@ const data: DataType = {
         { avatar: '/images/avatars/3.png', name: 'Michel Pal' },
         { avatar: '/images/avatars/4.png', name: 'Herman Lockard' }
       ],
-      description:
-        'Explore, install, use, and remix thousands of plugins and files published to the Figma Community by designers and developers.',
+      description: 'Explore, install, use, and remix thousands of plugins and files published to the Figma Community by designers and developers.',
       chips: [
         {
           title: 'UI/UX',
@@ -285,8 +271,7 @@ const data: DataType = {
         { avatar: '/images/avatars/7.png', name: 'Peter Adward' },
         { avatar: '/images/avatars/8.png', name: 'Leona Miller' }
       ],
-      description:
-        'Learn the basics of how websites work, front-end vs back-end, and using a code editor. Learn basic HTML, CSS, and…',
+      description: 'Learn the basics of how websites work, front-end vs back-end, and using a code editor. Learn basic HTML, CSS, and…',
       chips: [
         {
           title: 'CSS',
@@ -563,7 +548,7 @@ const data: DataType = {
       ]
     }
   ]
-}
+};
 
 const projectTable: ProjectTableRowType[] = [
   {
@@ -656,29 +641,29 @@ const projectTable: ProjectTableRowType[] = [
     avatar: '/images/icons/project-icons/vue-label.png',
     avatarGroup: ['/images/avatars/2.png', '/images/avatars/3.png', '/images/avatars/4.png', '/images/avatars/5.png']
   }
-]
+];
 
 mock.onGet('/pages/profile').reply(config => {
-  const { tab = '' } = config.params ?? ''
+  const { tab = '' } = config.params ?? '';
 
   // @ts-ignore
-  return [200, data[tab]]
-})
+  return [200, data[tab]];
+});
 
 mock.onGet('/pages/profile-header').reply(() => {
-  return [200, data.profileHeader]
-})
+  return [200, data.profileHeader];
+});
 
 mock.onGet('/pages/profile-table').reply(config => {
-  const { q = '' } = config.params ?? ''
-  const queryLowered = q.toLowerCase()
+  const { q = '' } = config.params ?? '';
+  const queryLowered = q.toLowerCase();
   const filteredData = projectTable.filter(row => {
     return (
       row.name.toLowerCase().includes(queryLowered) ||
       row.date.toLowerCase().includes(queryLowered) ||
       row.leader.toLowerCase().includes(queryLowered)
-    )
-  })
+    );
+  });
 
-  return [200, filteredData]
-})
+  return [200, filteredData];
+});

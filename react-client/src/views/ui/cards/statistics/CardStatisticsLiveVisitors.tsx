@@ -1,32 +1,32 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import { useTheme } from '@mui/material/styles'
-import Typography from '@mui/material/Typography'
-import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import { useTheme } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import CardHeader from '@mui/material/CardHeader';
+import CardContent from '@mui/material/CardContent';
 
 // ** Third Party Imports
-import { ApexOptions } from 'apexcharts'
+import { ApexOptions } from 'apexcharts';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Custom Components Imports
-import ReactApexcharts from 'react-apexcharts'
+import ReactApexcharts from 'react-apexcharts';
 
 // ** Util Import
-import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
+import { hexToRGBA } from 'src/@core/utils/hex-to-rgba';
 
 const series = [
   {
     data: [70, 118, 92, 49, 19, 49, 23, 82, 65, 23, 49, 65, 65]
   }
-]
+];
 
 const CardStatisticsLiveVisitors = () => {
   // ** Hook
-  const theme = useTheme()
+  const theme = useTheme();
 
   const options: ApexOptions = {
     chart: {
@@ -50,9 +50,10 @@ const CardStatisticsLiveVisitors = () => {
     plotOptions: {
       bar: {
         borderRadius: 6,
-        columnWidth: '43%',
-        endingShape: 'rounded',
-        startingShape: 'rounded'
+        columnWidth: '43%'
+
+        // endingShape: 'rounded',
+        // startingShape: 'rounded'
       }
     },
     states: {
@@ -71,7 +72,7 @@ const CardStatisticsLiveVisitors = () => {
     yaxis: {
       labels: { show: false }
     }
-  }
+  };
 
   return (
     <Card>
@@ -94,7 +95,7 @@ const CardStatisticsLiveVisitors = () => {
         <ReactApexcharts type='bar' height={250} options={options} series={series} />
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardStatisticsLiveVisitors
+export default CardStatisticsLiveVisitors;

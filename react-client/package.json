@@ -36,6 +36,7 @@
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "apexcharts": "^3.43.0",
     "apexcharts-clevision": "^3.28.5",
     "axios": "^1.4.0",
     "axios-mock-adapter": "^1.21.5",
@@ -87,7 +88,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
+    "build:icons": "tsc -b src/iconify-bundle && node src/iconify-bundle/bundle-icons-react.js"
   },
   "eslintConfig": {
     "extends": [

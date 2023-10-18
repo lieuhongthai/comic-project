@@ -1,25 +1,25 @@
 // ** React Imports
-import { Fragment, SyntheticEvent, useState } from 'react'
+import { Fragment, SyntheticEvent, useState } from 'react';
 
 // ** MUI Imports
-import Alert from '@mui/material/Alert'
-import Button from '@mui/material/Button'
-import Snackbar from '@mui/material/Snackbar'
+import Alert from '@mui/material/Alert';
+import Button from '@mui/material/Button';
+import Snackbar from '@mui/material/Snackbar';
 
 const SnackbarAlert = () => {
   // ** State
-  const [open, setOpen] = useState<boolean>(false)
+  const [open, setOpen] = useState<boolean>(false);
 
   const handleClick = () => {
-    setOpen(true)
-  }
+    setOpen(true);
+  };
 
   const handleClose = (event?: Event | SyntheticEvent, reason?: string) => {
     if (reason === 'clickaway') {
-      return
+      return;
     }
-    setOpen(false)
-  }
+    setOpen(false);
+  };
 
   return (
     <Fragment>
@@ -32,7 +32,7 @@ const SnackbarAlert = () => {
         </Alert>
       </Snackbar>
     </Fragment>
-  )
-}
+  );
+};
 
-export default SnackbarAlert
+export default SnackbarAlert;

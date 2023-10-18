@@ -1,18 +1,18 @@
 // ** MUI Import
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import Avatar from '@mui/material/Avatar'
-import { styled } from '@mui/material/styles'
-import TimelineDot from '@mui/lab/TimelineDot'
-import CardMedia from '@mui/material/CardMedia'
-import TimelineItem from '@mui/lab/TimelineItem'
-import CardHeader from '@mui/material/CardHeader'
-import Typography from '@mui/material/Typography'
-import CardContent from '@mui/material/CardContent'
-import TimelineContent from '@mui/lab/TimelineContent'
-import TimelineSeparator from '@mui/lab/TimelineSeparator'
-import TimelineConnector from '@mui/lab/TimelineConnector'
-import MuiTimeline, { TimelineProps } from '@mui/lab/Timeline'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Avatar from '@mui/material/Avatar';
+import { styled } from '@mui/material/styles';
+import TimelineDot from '@mui/lab/TimelineDot';
+import CardMedia from '@mui/material/CardMedia';
+import TimelineItem from '@mui/lab/TimelineItem';
+import CardHeader from '@mui/material/CardHeader';
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
+import TimelineContent from '@mui/lab/TimelineContent';
+import TimelineSeparator from '@mui/lab/TimelineSeparator';
+import TimelineConnector from '@mui/lab/TimelineConnector';
+import MuiTimeline, { TimelineProps } from '@mui/lab/Timeline';
 
 // Styled Timeline component
 const Timeline = styled(MuiTimeline)<TimelineProps>({
@@ -24,7 +24,7 @@ const Timeline = styled(MuiTimeline)<TimelineProps>({
       display: 'none'
     }
   }
-})
+});
 
 const CardActivityTimeline = () => {
   return (
@@ -120,7 +120,7 @@ const CardActivityTimeline = () => {
         </Timeline>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardActivityTimeline
+export default CardActivityTimeline;

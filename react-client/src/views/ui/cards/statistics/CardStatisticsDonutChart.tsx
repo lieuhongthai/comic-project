@@ -1,19 +1,19 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import { useTheme } from '@mui/material/styles'
-import Typography from '@mui/material/Typography'
-import CardContent from '@mui/material/CardContent'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import { useTheme } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
 
 // ** Third Party Imports
-import { ApexOptions } from 'apexcharts'
+import { ApexOptions } from 'apexcharts';
 
 // ** Custom Components Imports
-import ReactApexcharts from 'react-apexcharts'
+import ReactApexcharts from 'react-apexcharts';
 
 const CardStatsDonutChart = () => {
   // ** Hook
-  const theme = useTheme()
+  const theme = useTheme();
 
   const options: ApexOptions = {
     legend: { show: false },
@@ -60,7 +60,7 @@ const CardStatsDonutChart = () => {
         }
       }
     }
-  }
+  };
 
   return (
     <Card>
@@ -77,7 +77,7 @@ const CardStatsDonutChart = () => {
         <ReactApexcharts type='donut' height={135} options={options} series={[35, 30, 23]} />
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardStatsDonutChart
+export default CardStatsDonutChart;

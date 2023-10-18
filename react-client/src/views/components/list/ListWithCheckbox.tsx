@@ -1,32 +1,32 @@
 // ** React Imports
-import { useState } from 'react'
+import { useState } from 'react';
 
 // ** MUI Imports
-import List from '@mui/material/List'
-import Avatar from '@mui/material/Avatar'
-import ListItem from '@mui/material/ListItem'
-import Checkbox from '@mui/material/Checkbox'
-import ListItemText from '@mui/material/ListItemText'
-import ListItemButton from '@mui/material/ListItemButton'
-import ListItemAvatar from '@mui/material/ListItemAvatar'
-import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction'
+import List from '@mui/material/List';
+import Avatar from '@mui/material/Avatar';
+import ListItem from '@mui/material/ListItem';
+import Checkbox from '@mui/material/Checkbox';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction';
 
 const ListWithCheckbox = () => {
   // ** State
-  const [checked, setChecked] = useState<number[]>([0])
+  const [checked, setChecked] = useState<number[]>([0]);
 
   const handleToggle = (value: number) => () => {
-    const currentIndex = checked.indexOf(value)
-    const newChecked = [...checked]
+    const currentIndex = checked.indexOf(value);
+    const newChecked = [...checked];
 
     if (currentIndex === -1) {
-      newChecked.push(value)
+      newChecked.push(value);
     } else {
-      newChecked.splice(currentIndex, 1)
+      newChecked.splice(currentIndex, 1);
     }
 
-    setChecked(newChecked)
-  }
+    setChecked(newChecked);
+  };
 
   return (
     <List>
@@ -85,7 +85,7 @@ const ListWithCheckbox = () => {
         </ListItemButton>
       </ListItem>
     </List>
-  )
-}
+  );
+};
 
-export default ListWithCheckbox
+export default ListWithCheckbox;

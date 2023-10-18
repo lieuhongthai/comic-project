@@ -1,16 +1,16 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Grid from '@mui/material/Grid'
-import Checkbox from '@mui/material/Checkbox'
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Checkbox from '@mui/material/Checkbox';
 
 // ** Type Imports
-import { CustomCheckboxImgProps } from 'src/@core/components/custom-checkbox/types'
+import { CustomCheckboxImgProps } from 'src/@core/components/custom-checkbox/types';
 
 const CustomCheckboxImg = (props: CustomCheckboxImgProps) => {
   // ** Props
-  const { data, name, selected, gridProps, handleChange, color = 'primary' } = props
+  const { data, name, selected, gridProps, handleChange, color = 'primary' } = props;
 
-  const { alt, img, value } = data
+  const { alt, img, value } = data;
 
   const renderComponent = () => {
     return (
@@ -54,10 +54,10 @@ const CustomCheckboxImg = (props: CustomCheckboxImgProps) => {
           />
         </Box>
       </Grid>
-    )
-  }
+    );
+  };
 
-  return data ? renderComponent() : null
-}
+  return data ? renderComponent() : null;
+};
 
-export default CustomCheckboxImg
+export default CustomCheckboxImg;

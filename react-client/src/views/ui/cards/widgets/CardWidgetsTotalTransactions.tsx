@@ -1,27 +1,28 @@
 // ** MUI Imports
-import Card from '@mui/material/Card'
-import Button from '@mui/material/Button'
-import Divider from '@mui/material/Divider'
-import CardHeader from '@mui/material/CardHeader'
-import Typography from '@mui/material/Typography'
-import CardContent from '@mui/material/CardContent'
-import Grid, { GridProps } from '@mui/material/Grid'
-import { styled, useTheme } from '@mui/material/styles'
+import Card from '@mui/material/Card';
+import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
+import CardHeader from '@mui/material/CardHeader';
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
+import Grid, { GridProps } from '@mui/material/Grid';
+import { styled, useTheme } from '@mui/material/styles';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Third Party Imports
-import { ApexOptions } from 'apexcharts'
+import { ApexOptions } from 'apexcharts';
 
 // ** Custom Components Imports
-import CustomAvatar from 'src/@core/components/mui/avatar'
-import OptionsMenu from 'src/@core/components/option-menu'
+import CustomAvatar from 'src/@core/components/mui/avatar';
+import OptionsMenu from 'src/@core/components/option-menu';
+
 // import ReactApexcharts from 'react-apexcharts'
-import ReactApexcharts from 'react-apexcharts'
+import ReactApexcharts from 'react-apexcharts';
 
 // ** Util Import
-import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
+import { hexToRGBA } from 'src/@core/utils/hex-to-rgba';
 
 const series = [
   {
@@ -32,7 +33,7 @@ const series = [
     name: 'This Week',
     data: [-84, -156, -216, -282, -216, -156, -84]
   }
-]
+];
 
 // Styled Grid component
 const StyledGrid = styled(Grid)<GridProps>(({ theme }) => ({
@@ -42,11 +43,11 @@ const StyledGrid = styled(Grid)<GridProps>(({ theme }) => ({
   [theme.breakpoints.up('sm')]: {
     borderRight: `1px solid ${theme.palette.divider}`
   }
-}))
+}));
 
 const CardWidgetsTotalTransactions = () => {
   // ** Hook
-  const theme = useTheme()
+  const theme = useTheme();
 
   const options: ApexOptions = {
     chart: {
@@ -85,9 +86,10 @@ const CardWidgetsTotalTransactions = () => {
       bar: {
         borderRadius: 5,
         barHeight: '30%',
-        horizontal: true,
-        endingShape: 'flat',
-        startingShape: 'rounded'
+        horizontal: true
+
+        // endingShape: 'flat',
+        // startingShape: 'rounded'
       }
     },
     xaxis: {
@@ -103,7 +105,7 @@ const CardWidgetsTotalTransactions = () => {
     yaxis: {
       labels: { show: false }
     }
-  }
+  };
 
   return (
     <Card>
@@ -176,7 +178,7 @@ const CardWidgetsTotalTransactions = () => {
         </Grid>
       </Grid>
     </Card>
-  )
-}
+  );
+};
 
-export default CardWidgetsTotalTransactions
+export default CardWidgetsTotalTransactions;

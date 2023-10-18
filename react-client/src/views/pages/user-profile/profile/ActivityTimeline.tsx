@@ -1,23 +1,23 @@
 // ** MUI Import
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import Avatar from '@mui/material/Avatar'
-import { styled } from '@mui/material/styles'
-import TimelineDot from '@mui/lab/TimelineDot'
-import TimelineItem from '@mui/lab/TimelineItem'
-import CardHeader from '@mui/material/CardHeader'
-import Typography from '@mui/material/Typography'
-import CardContent from '@mui/material/CardContent'
-import TimelineContent from '@mui/lab/TimelineContent'
-import TimelineSeparator from '@mui/lab/TimelineSeparator'
-import TimelineConnector from '@mui/lab/TimelineConnector'
-import MuiTimeline, { TimelineProps } from '@mui/lab/Timeline'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Avatar from '@mui/material/Avatar';
+import { styled } from '@mui/material/styles';
+import TimelineDot from '@mui/lab/TimelineDot';
+import TimelineItem from '@mui/lab/TimelineItem';
+import CardHeader from '@mui/material/CardHeader';
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
+import TimelineContent from '@mui/lab/TimelineContent';
+import TimelineSeparator from '@mui/lab/TimelineSeparator';
+import TimelineConnector from '@mui/lab/TimelineConnector';
+import MuiTimeline, { TimelineProps } from '@mui/lab/Timeline';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Custom Components Import
-import OptionsMenu from 'src/@core/components/option-menu'
+import OptionsMenu from 'src/@core/components/option-menu';
 
 // Styled Timeline component
 const Timeline = styled(MuiTimeline)<TimelineProps>({
@@ -29,7 +29,7 @@ const Timeline = styled(MuiTimeline)<TimelineProps>({
       display: 'none'
     }
   }
-})
+});
 
 const ActivityTimeline = () => {
   return (
@@ -39,12 +39,7 @@ const ActivityTimeline = () => {
         sx={{ '& .MuiCardHeader-avatar': { mr: 2.5 } }}
         avatar={<Icon icon='mdi:format-list-bulleted' />}
         titleTypographyProps={{ sx: { color: 'text.primary' } }}
-        action={
-          <OptionsMenu
-            iconButtonProps={{ size: 'small' }}
-            options={['Share timeline', 'Suggest edits', { divider: true }, 'Report bug']}
-          />
-        }
+        action={<OptionsMenu iconButtonProps={{ size: 'small' }} options={['Share timeline', 'Suggest edits', { divider: true }, 'Report bug']} />}
       />
       <CardContent>
         <Timeline sx={{ my: 0, py: 0 }}>
@@ -161,7 +156,7 @@ const ActivityTimeline = () => {
         </Timeline>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default ActivityTimeline
+export default ActivityTimeline;

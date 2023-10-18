@@ -67,4 +67,4 @@ export default [
     component: 'Transitions',
     link: 'https://mui.com/material-ui/transitions/'
   }
-]
+];

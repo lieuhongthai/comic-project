@@ -1,23 +1,23 @@
 // ** React Imports
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import { Theme } from '@mui/material/styles'
-import useMediaQuery from '@mui/material/useMediaQuery'
+import Box from '@mui/material/Box';
+import { Theme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 // ** Redux Imports
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
 
 // ** Types
-import { RootState, AppDispatch } from 'src/store'
-import { CalendarColors, CalendarFiltersType } from 'src/types/apps/calendarTypes'
+import { RootState, AppDispatch } from 'src/store';
+import { CalendarColors, CalendarFiltersType } from 'src/types/apps/calendarTypes';
 
 // ** FullCalendar & App Components Imports
-import Calendar from 'src/views/apps/calendar/Calendar'
-import SidebarLeft from 'src/views/apps/calendar/SidebarLeft'
-import CalendarWrapper from 'src/@core/styles/libs/fullcalendar'
-import AddEventSidebar from 'src/views/apps/calendar/AddEventSidebar'
+import Calendar from 'src/views/apps/calendar/Calendar';
+import SidebarLeft from 'src/views/apps/calendar/SidebarLeft';
+import CalendarWrapper from 'src/@core/styles/libs/fullcalendar';
+import AddEventSidebar from 'src/views/apps/calendar/AddEventSidebar';
 
 // ** Actions
 import {
@@ -28,8 +28,8 @@ import {
   handleSelectEvent,
   handleAllCalendars,
   handleCalendarsUpdate
-} from 'src/store/apps/calendar'
-import { initialSettings } from 'src/@core/context/settingsContext'
+} from 'src/store/apps/calendar';
+import { initialSettings } from 'src/@core/context/settingsContext';
 
 // ** CalendarColors
 const calendarsColor: CalendarColors = {
@@ -38,31 +38,31 @@ const calendarsColor: CalendarColors = {
   Family: 'warning',
   Holiday: 'success',
   ETC: 'info'
-}
+};
 
 const AppCalendar = () => {
   // ** States
-  const [calendarApi, setCalendarApi] = useState<null | any>(null)
-  const [leftSidebarOpen, setLeftSidebarOpen] = useState<boolean>(false)
-  const [addEventSidebarOpen, setAddEventSidebarOpen] = useState<boolean>(false)
+  const [calendarApi, setCalendarApi] = useState<null | any>(null);
+  const [leftSidebarOpen, setLeftSidebarOpen] = useState<boolean>(false);
+  const [addEventSidebarOpen, setAddEventSidebarOpen] = useState<boolean>(false);
 
   // ** Hooks
-  const dispatch = useDispatch<AppDispatch>()
-  const store = useSelector((state: RootState) => state.calendar)
+  const dispatch = useDispatch<AppDispatch>();
+  const store = useSelector((state: RootState) => state.calendar);
 
   // ** Vars
-  const leftSidebarWidth = 260
-  const addEventSidebarWidth = 400
-  const { skin, direction } = initialSettings
-  const mdAbove = useMediaQuery((theme: Theme) => theme.breakpoints.up('md'))
+  const leftSidebarWidth = 260;
+  const addEventSidebarWidth = 400;
+  const { skin } = initialSettings;
+  const mdAbove = useMediaQuery((theme: Theme) => theme.breakpoints.up('md'));
 
   useEffect(() => {
-    dispatch(fetchEvents(store.selectedCalendars as CalendarFiltersType[]))
-  }, [dispatch, store.selectedCalendars])
+    dispatch(fetchEvents(store.selectedCalendars as CalendarFiltersType[]));
+  }, [dispatch, store.selectedCalendars]);
 
-  const handleLeftSidebarToggle = () => setLeftSidebarOpen(!leftSidebarOpen)
+  const handleLeftSidebarToggle = () => setLeftSidebarOpen(!leftSidebarOpen);
 
-  const handleAddEventSidebarToggle = () => setAddEventSidebarOpen(!addEventSidebarOpen)
+  const handleAddEventSidebarToggle = () => setAddEventSidebarOpen(!addEventSidebarOpen);
 
   return (
     <CalendarWrapper
@@ -122,7 +122,7 @@ const AppCalendar = () => {
         handleAddEventSidebarToggle={handleAddEventSidebarToggle}
       />
     </CalendarWrapper>
-  )
-}
+  );
+};
 
-export default AppCalendar
+export default AppCalendar;

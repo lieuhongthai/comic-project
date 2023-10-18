@@ -1,13 +1,13 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
-import Rating, { IconContainerProps } from '@mui/material/Rating'
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Rating, { IconContainerProps } from '@mui/material/Rating';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 interface CustomIcons {
-  [index: string]: { icon: string; label: string }
+  [index: string]: { icon: string; label: string };
 }
 
 const customIcons: CustomIcons = {
@@ -27,17 +27,17 @@ const customIcons: CustomIcons = {
     label: 'Very Satisfied',
     icon: 'mdi:emoticon-outline'
   }
-}
+};
 
 const IconContainer = (props: IconContainerProps) => {
-  const { value } = props
+  const { value } = props;
 
   return (
     <span {...props}>
       <Icon icon={customIcons[value].icon} />
     </span>
-  )
-}
+  );
+};
 
 const RatingsCustomized = () => {
   return (
@@ -66,7 +66,7 @@ const RatingsCustomized = () => {
         <Rating name='customized-icons' defaultValue={2} max={4} IconContainerComponent={IconContainer} />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default RatingsCustomized
+export default RatingsCustomized;

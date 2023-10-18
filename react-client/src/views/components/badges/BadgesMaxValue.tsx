@@ -1,14 +1,14 @@
 // ** MUI Imports
-import Badge from '@mui/material/Badge'
-import Avatar from '@mui/material/Avatar'
-import { styled } from '@mui/material/styles'
+import Badge from '@mui/material/Badge';
+import Avatar from '@mui/material/Avatar';
+import { styled } from '@mui/material/styles';
 
 // Styled component for the wrapper
 const Wrapper = styled('div')(({ theme }) => ({
   '& > *': {
     marginRight: `${theme.spacing(6)} !important`
   }
-}))
+}));
 
 const BadgesMaxValue = () => {
   return (
@@ -23,7 +23,7 @@ const BadgesMaxValue = () => {
         <Avatar src='/images/avatars/1.png' alt='User Avatar' />
       </Badge>
     </Wrapper>
-  )
-}
+  );
+};
 
-export default BadgesMaxValue
+export default BadgesMaxValue;

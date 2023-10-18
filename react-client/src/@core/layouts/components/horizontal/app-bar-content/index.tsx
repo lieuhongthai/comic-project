@@ -1,21 +1,21 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
-import { styled, useTheme } from '@mui/material/styles'
-import { Link } from 'react-router-dom'
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import { styled, useTheme } from '@mui/material/styles';
+import { Link } from 'react-router-dom';
 
 // ** Type Import
-import { LayoutProps } from 'src/@core/layouts/types'
+import { LayoutProps } from 'src/@core/layouts/types';
 
 // ** Theme Config Import
-import themeConfig from 'src/configs/themeConfig'
+import themeConfig from 'src/configs/themeConfig';
 
 interface Props {
-  hidden: LayoutProps['hidden']
-  settings: LayoutProps['settings']
-  saveSettings: LayoutProps['saveSettings']
-  appBarContent: NonNullable<NonNullable<LayoutProps['horizontalLayoutProps']>['appBar']>['content']
-  appBarBranding: NonNullable<NonNullable<LayoutProps['horizontalLayoutProps']>['appBar']>['branding']
+  hidden: LayoutProps['hidden'];
+  settings: LayoutProps['settings'];
+  saveSettings: LayoutProps['saveSettings'];
+  appBarContent: NonNullable<NonNullable<LayoutProps['horizontalLayoutProps']>['appBar']>['content'];
+  appBarBranding: NonNullable<NonNullable<LayoutProps['horizontalLayoutProps']>['appBar']>['branding'];
 }
 
 const StyledLink = styled(Link)(({ theme }) => ({
@@ -23,14 +23,14 @@ const StyledLink = styled(Link)(({ theme }) => ({
   alignItems: 'center',
   textDecoration: 'none',
   marginRight: theme.spacing(8)
-}))
+}));
 
 const AppBarContent = (props: Props) => {
   // ** Props
-  const { appBarContent: userAppBarContent, appBarBranding: userAppBarBranding } = props
+  const { appBarContent: userAppBarContent, appBarBranding: userAppBarBranding } = props;
 
   // ** Hooks
-  const theme = useTheme()
+  const theme = useTheme();
 
   return (
     <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -101,7 +101,7 @@ const AppBarContent = (props: Props) => {
       )}
       {userAppBarContent ? userAppBarContent(props) : null}
     </Box>
-  )
-}
+  );
+};
 
-export default AppBarContent
+export default AppBarContent;

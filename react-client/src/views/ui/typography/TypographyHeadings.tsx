@@ -1,16 +1,16 @@
 // ** MUI Imports
-import Card from '@mui/material/Card'
-import { styled } from '@mui/material/styles'
-import CardHeader from '@mui/material/CardHeader'
-import Typography from '@mui/material/Typography'
-import CardContent from '@mui/material/CardContent'
-import Grid, { GridProps } from '@mui/material/Grid'
+import Card from '@mui/material/Card';
+import { styled } from '@mui/material/styles';
+import CardHeader from '@mui/material/CardHeader';
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
+import Grid, { GridProps } from '@mui/material/Grid';
 
 const DemoGrid = styled(Grid)<GridProps>(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     paddingTop: `${theme.spacing(1)} !important`
   }
-}))
+}));
 
 const TypographyHeadings = () => {
   return (
@@ -80,7 +80,7 @@ const TypographyHeadings = () => {
         </Grid>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default TypographyHeadings
+export default TypographyHeadings;

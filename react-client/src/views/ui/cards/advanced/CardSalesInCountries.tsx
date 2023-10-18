@@ -1,33 +1,33 @@
 // ** React Imports
-import { ReactNode } from 'react'
+import { ReactNode } from 'react';
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import Table from '@mui/material/Table'
-import TableRow from '@mui/material/TableRow'
-import TableBody from '@mui/material/TableBody'
-import TableCell from '@mui/material/TableCell'
-import Typography from '@mui/material/Typography'
-import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
-import TableContainer from '@mui/material/TableContainer'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Table from '@mui/material/Table';
+import TableRow from '@mui/material/TableRow';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import Typography from '@mui/material/Typography';
+import CardHeader from '@mui/material/CardHeader';
+import CardContent from '@mui/material/CardContent';
+import TableContainer from '@mui/material/TableContainer';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Custom Components Imports
-import CustomChip from 'src/@core/components/mui/chip'
-import OptionsMenu from 'src/@core/components/option-menu'
+import CustomChip from 'src/@core/components/mui/chip';
+import OptionsMenu from 'src/@core/components/option-menu';
 
 interface DataType {
-  title: string
-  sales: string
-  trend: ReactNode
-  trendNumber: string
+  title: string;
+  sales: string;
+  trend: ReactNode;
+  trendNumber: string;
 }
 
-const data: DataType[] = [
+const dataList: DataType[] = [
   {
     sales: '18,879',
     title: 'Australia',
@@ -88,7 +88,7 @@ const data: DataType[] = [
       </Box>
     )
   }
-]
+];
 
 const CardSalesInCountries = () => {
   return (
@@ -97,10 +97,7 @@ const CardSalesInCountries = () => {
         title='Most Sales in Countries'
         titleTypographyProps={{ sx: { lineHeight: '2rem !important', letterSpacing: '0.15px !important' } }}
         action={
-          <OptionsMenu
-            options={['Last 28 Days', 'Last Month', 'Last Year']}
-            iconButtonProps={{ size: 'small', sx: { color: 'text.primary' } }}
-          />
+          <OptionsMenu options={['Last 28 Days', 'Last Month', 'Last Year']} iconButtonProps={{ size: 'small', sx: { color: 'text.primary' } }} />
         }
       />
       <CardContent>
@@ -109,13 +106,7 @@ const CardSalesInCountries = () => {
             <Typography variant='h3' sx={{ mr: 3.5 }}>
               22,842
             </Typography>
-            <CustomChip
-              skin='light'
-              size='small'
-              label='+42%'
-              color='success'
-              sx={{ height: 20, fontSize: '0.75rem', fontWeight: 500 }}
-            />
+            <CustomChip skin='light' size='small' label='+42%' color='success' sx={{ height: 20, fontSize: '0.75rem', fontWeight: 500 }} />
           </Box>
           <Typography variant='caption'>Sales Last 90 Days</Typography>
         </Box>
@@ -123,7 +114,7 @@ const CardSalesInCountries = () => {
         <TableContainer>
           <Table>
             <TableBody>
-              {data.map((row: DataType) => {
+              {dataList.map((row: DataType) => {
                 return (
                   <TableRow
                     key={row.title}
@@ -145,21 +136,19 @@ const CardSalesInCountries = () => {
                     </TableCell>
                     <TableCell>
                       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
-                        <Typography sx={{ mr: 1.5, fontWeight: 600, fontSize: '0.875rem' }}>
-                          {row.trendNumber}
-                        </Typography>
+                        <Typography sx={{ mr: 1.5, fontWeight: 600, fontSize: '0.875rem' }}>{row.trendNumber}</Typography>
                         {row.trend}
                       </Box>
                     </TableCell>
                   </TableRow>
-                )
+                );
               })}
             </TableBody>
           </Table>
         </TableContainer>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardSalesInCountries
+export default CardSalesInCountries;

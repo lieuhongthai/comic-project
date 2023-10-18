@@ -1,6 +1,6 @@
 // ** MUI imports
-import Box, { BoxProps } from '@mui/material/Box'
-import { alpha, styled } from '@mui/material/styles'
+import Box, { BoxProps } from '@mui/material/Box';
+import { alpha, styled } from '@mui/material/styles';
 
 const StepperWrapper = styled(Box)<BoxProps>(({ theme }) => {
   return {
@@ -97,7 +97,7 @@ const StepperWrapper = styled(Box)<BoxProps>(({ theme }) => {
         }
       }
     }
-  }
-})
+  };
+});
 
-export default StepperWrapper
+export default StepperWrapper;

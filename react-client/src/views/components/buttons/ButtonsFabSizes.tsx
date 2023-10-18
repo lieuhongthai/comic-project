@@ -1,11 +1,11 @@
 // ** React Imports
-import { Fragment } from 'react'
+import { Fragment } from 'react';
 
 // ** MUI Imports
-import Fab from '@mui/material/Fab'
+import Fab from '@mui/material/Fab';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 const ButtonsFabSizes = () => {
   return (
@@ -36,7 +36,7 @@ const ButtonsFabSizes = () => {
         </Fab>
       </div>
     </Fragment>
-  )
-}
+  );
+};
 
-export default ButtonsFabSizes
+export default ButtonsFabSizes;

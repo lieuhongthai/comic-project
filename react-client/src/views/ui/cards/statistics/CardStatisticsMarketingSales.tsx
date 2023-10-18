@@ -1,34 +1,34 @@
 // ** React Imports
-import { useState } from 'react'
+import { useState } from 'react';
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import Grid from '@mui/material/Grid'
-import Badge from '@mui/material/Badge'
-import Button from '@mui/material/Button'
-import { useTheme } from '@mui/material/styles'
-import Typography from '@mui/material/Typography'
-import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Grid from '@mui/material/Grid';
+import Badge from '@mui/material/Badge';
+import Button from '@mui/material/Button';
+import { useTheme } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import CardHeader from '@mui/material/CardHeader';
+import CardContent from '@mui/material/CardContent';
 
 // ** Third Party Components
-import clsx from 'clsx'
-import { useKeenSlider } from 'keen-slider/react'
+import clsx from 'clsx';
+import { useKeenSlider } from 'keen-slider/react';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Custom Components Imports
-import CustomAvatar from 'src/@core/components/mui/avatar'
+import CustomAvatar from 'src/@core/components/mui/avatar';
 
 interface SwiperData {
-  img: string
-  title: string
-  details: { [key: string]: string }
+  img: string;
+  title: string;
+  details: { [key: string]: string };
 }
 
-const data: SwiperData[] = [
+const dataList: SwiperData[] = [
   {
     title: 'Marketing Expense',
     img: '/images/cards/marketing-expense-logo.png',
@@ -59,12 +59,12 @@ const data: SwiperData[] = [
       Quotations: '12'
     }
   }
-]
+];
 
 const Slides = () => {
   return (
     <>
-      {data.map((slide: SwiperData, index: number) => {
+      {dataList.map((slide: SwiperData, index: number) => {
         return (
           <Box key={index} className='keen-slider__slide'>
             <Box sx={{ mb: 4.5, display: 'flex', alignItems: 'center' }}>
@@ -106,19 +106,19 @@ const Slides = () => {
               </Button>
             </div>
           </Box>
-        )
+        );
       })}
     </>
-  )
-}
+  );
+};
 
 const CardStatisticsMarketingSales = () => {
   // ** States
-  const [loaded, setLoaded] = useState<boolean>(false)
-  const [currentSlide, setCurrentSlide] = useState<number>(0)
+  const [isLoaded, setLoaded] = useState<boolean>(false);
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
 
   // ** Hook
-  const theme = useTheme()
+  const theme = useTheme();
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     initial: 0,
     rtl: theme.direction === 'rtl',
@@ -126,12 +126,12 @@ const CardStatisticsMarketingSales = () => {
       spacing: 16
     },
     slideChanged(slider) {
-      setCurrentSlide(slider.track.details.rel)
+      setCurrentSlide(slider.track.details.rel);
     },
     created() {
-      setLoaded(true)
+      setLoaded(true);
     }
-  })
+  });
 
   return (
     <Card>
@@ -151,7 +151,7 @@ const CardStatisticsMarketingSales = () => {
           </Box>
         }
         action={
-          loaded &&
+          isLoaded &&
           instanceRef.current && (
             <Box className='swiper-dots'>
               {[...Array(instanceRef.current.track.details.slides.length).keys()].map(idx => {
@@ -164,7 +164,7 @@ const CardStatisticsMarketingSales = () => {
                       active: currentSlide === idx
                     })}
                     onClick={() => {
-                      instanceRef.current?.moveToIdx(idx)
+                      instanceRef.current?.moveToIdx(idx);
                     }}
                     sx={{
                       mr: theme => `${theme.spacing(2.5)} !important`,
@@ -175,7 +175,7 @@ const CardStatisticsMarketingSales = () => {
                       }
                     }}
                   ></Badge>
-                )
+                );
               })}
             </Box>
           )
@@ -187,7 +187,7 @@ const CardStatisticsMarketingSales = () => {
         </Box>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardStatisticsMarketingSales
+export default CardStatisticsMarketingSales;

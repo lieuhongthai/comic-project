@@ -1,10 +1,10 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import Button from '@mui/material/Button'
-import { styled } from '@mui/material/styles'
-import Typography from '@mui/material/Typography'
-import CardContent from '@mui/material/CardContent'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Button from '@mui/material/Button';
+import { styled } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
 
 // Styled component for the trophy image
 const TrophyImg = styled('img')(({ theme }) => ({
@@ -15,7 +15,7 @@ const TrophyImg = styled('img')(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     width: 95
   }
-}))
+}));
 
 const CardAward = () => {
   return (
@@ -43,7 +43,7 @@ const CardAward = () => {
         <TrophyImg alt='trophy' src='/images/cards/trophy.png' />
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardAward
+export default CardAward;

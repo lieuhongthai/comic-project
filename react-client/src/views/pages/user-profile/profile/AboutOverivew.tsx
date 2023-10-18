@@ -1,21 +1,21 @@
 // ** MUI Components
-import Box from '@mui/material/Box'
-import Grid from '@mui/material/Grid'
-import Card from '@mui/material/Card'
-import Typography from '@mui/material/Typography'
-import CardContent from '@mui/material/CardContent'
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Card from '@mui/material/Card';
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Types
-import { ProfileTeamsType, ProfileTabCommonType } from 'src/@fake-db/types'
+import { ProfileTeamsType, ProfileTabCommonType } from 'src/@fake-db/types';
 
 interface Props {
-  teams: ProfileTeamsType[]
-  about: ProfileTabCommonType[]
-  contacts: ProfileTabCommonType[]
-  overview: ProfileTabCommonType[]
+  teams: ProfileTeamsType[];
+  about: ProfileTabCommonType[];
+  contacts: ProfileTabCommonType[];
+  overview: ProfileTabCommonType[];
 }
 
 const renderList = (arr: ProfileTabCommonType[]) => {
@@ -36,16 +36,14 @@ const renderList = (arr: ProfileTabCommonType[]) => {
           <Typography sx={{ mx: 2, fontWeight: 600, color: 'text.secondary' }}>
             {`${item.property.charAt(0).toUpperCase() + item.property.slice(1)}:`}
           </Typography>
-          <Typography sx={{ color: 'text.secondary' }}>
-            {item.value.charAt(0).toUpperCase() + item.value.slice(1)}
-          </Typography>
+          <Typography sx={{ color: 'text.secondary' }}>{item.value.charAt(0).toUpperCase() + item.value.slice(1)}</Typography>
         </Box>
-      )
-    })
+      );
+    });
   } else {
-    return null
+    return null;
   }
-}
+};
 
 const renderTeams = (arr: ProfileTeamsType[]) => {
   if (arr && arr.length) {
@@ -65,19 +63,17 @@ const renderTeams = (arr: ProfileTeamsType[]) => {
           <Typography sx={{ mx: 2, fontWeight: 600, color: 'text.secondary' }}>
             {item.property.charAt(0).toUpperCase() + item.property.slice(1)}
           </Typography>
-          <Typography sx={{ color: 'text.secondary' }}>
-            {item.value.charAt(0).toUpperCase() + item.value.slice(1)}
-          </Typography>
+          <Typography sx={{ color: 'text.secondary' }}>{item.value.charAt(0).toUpperCase() + item.value.slice(1)}</Typography>
         </Box>
-      )
-    })
+      );
+    });
   } else {
-    return null
+    return null;
   }
-}
+};
 
 const AboutOverivew = (props: Props) => {
-  const { teams, about, contacts, overview } = props
+  const { teams, about, contacts, overview } = props;
 
   return (
     <Grid container spacing={6}>
@@ -118,7 +114,7 @@ const AboutOverivew = (props: Props) => {
         </Card>
       </Grid>
     </Grid>
-  )
-}
+  );
+};
 
-export default AboutOverivew
+export default AboutOverivew;

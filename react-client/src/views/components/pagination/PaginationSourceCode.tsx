@@ -15,7 +15,7 @@ const PaginationDisabled = () => {
 export default PaginationDisabled
 `}</code>
   </pre>
-)
+);
 
 export const PaginationControlledJSXCode = (
   <pre className='language-jsx'>
@@ -45,7 +45,7 @@ const PaginationControlled = () => {
 export default PaginationControlled
 `}</code>
   </pre>
-)
+);
 
 export const PaginationRangesJSXCode = (
   <pre className='language-jsx'>
@@ -66,7 +66,7 @@ const PaginationRanges = () => {
 export default PaginationRanges
 `}</code>
   </pre>
-)
+);
 
 export const PaginationButtonsJSXCode = (
   <pre className='language-jsx'>
@@ -85,7 +85,7 @@ const PaginationButtons = () => {
 export default PaginationButtons
 `}</code>
   </pre>
-)
+);
 
 export const PaginationOutlinedJSXCode = (
   <pre className='language-jsx'>
@@ -105,7 +105,7 @@ const PaginationOutlined = () => {
 export default PaginationOutlined
 `}</code>
   </pre>
-)
+);
 
 export const PaginationSimpleJSXCode = (
   <pre className='language-jsx'>
@@ -125,7 +125,7 @@ const PaginationSimple = () => {
 export default PaginationSimple
 `}</code>
   </pre>
-)
+);
 
 export const PaginationRoundedJSXCode = (
   <pre className='language-jsx'>
@@ -144,7 +144,7 @@ const PaginationRounded = () => {
 export default PaginationRounded
 `}</code>
   </pre>
-)
+);
 
 export const PaginationSizesJSXCode = (
   <pre className='language-jsx'>
@@ -164,7 +164,7 @@ const PaginationSizes = () => {
 export default PaginationSizes
 `}</code>
   </pre>
-)
+);
 
 export const PaginationButtonsTSXCode = (
   <pre className='language-jsx'>
@@ -183,7 +183,7 @@ const PaginationButtons = () => {
 export default PaginationButtons
 `}</code>
   </pre>
-)
+);
 
 export const PaginationControlledTSXCode = (
   <pre className='language-jsx'>
@@ -213,7 +213,7 @@ const PaginationControlled = () => {
 export default PaginationControlled
 `}</code>
   </pre>
-)
+);
 
 export const PaginationRoundedTSXCode = (
   <pre className='language-jsx'>
@@ -232,7 +232,7 @@ const PaginationRounded = () => {
 export default PaginationRounded
 `}</code>
   </pre>
-)
+);
 
 export const PaginationDisabledTSXCode = (
   <pre className='language-jsx'>
@@ -251,7 +251,7 @@ const PaginationDisabled = () => {
 export default PaginationDisabled
 `}</code>
   </pre>
-)
+);
 
 export const PaginationOutlinedTSXCode = (
   <pre className='language-jsx'>
@@ -271,7 +271,7 @@ const PaginationOutlined = () => {
 export default PaginationOutlined
 `}</code>
   </pre>
-)
+);
 
 export const PaginationSizesTSXCode = (
   <pre className='language-jsx'>
@@ -291,7 +291,7 @@ const PaginationSizes = () => {
 export default PaginationSizes
 `}</code>
   </pre>
-)
+);
 
 export const PaginationSimpleTSXCode = (
   <pre className='language-jsx'>
@@ -311,7 +311,7 @@ const PaginationSimple = () => {
 export default PaginationSimple
 `}</code>
   </pre>
-)
+);
 
 export const PaginationRangesTSXCode = (
   <pre className='language-jsx'>
@@ -332,4 +332,4 @@ const PaginationRanges = () => {
 export default PaginationRanges
 `}</code>
   </pre>
-)
+);

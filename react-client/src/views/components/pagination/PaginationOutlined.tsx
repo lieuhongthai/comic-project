@@ -1,5 +1,5 @@
 // ** MUI Imports
-import Pagination from '@mui/material/Pagination'
+import Pagination from '@mui/material/Pagination';
 
 const PaginationOutlined = () => {
   return (
@@ -8,7 +8,7 @@ const PaginationOutlined = () => {
       <Pagination count={10} variant='outlined' color='primary' />
       <Pagination count={10} variant='outlined' color='secondary' />
     </div>
-  )
-}
+  );
+};
 
-export default PaginationOutlined
+export default PaginationOutlined;

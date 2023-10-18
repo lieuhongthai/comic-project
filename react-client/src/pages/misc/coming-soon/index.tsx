@@ -1,25 +1,25 @@
 // ** React Imports
-import { ReactNode, SyntheticEvent } from 'react'
+import { ReactNode, SyntheticEvent } from 'react';
 
 // ** MUI Components
-import Button from '@mui/material/Button'
-import { styled } from '@mui/material/styles'
-import TextField from '@mui/material/TextField'
-import Typography from '@mui/material/Typography'
-import Box, { BoxProps } from '@mui/material/Box'
+import Button from '@mui/material/Button';
+import { styled } from '@mui/material/styles';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import Box, { BoxProps } from '@mui/material/Box';
 
 // ** Layout Import
-import BlankLayout from 'src/@core/layouts/BlankLayout'
+import BlankLayout from 'src/@core/layouts/BlankLayout';
 
 // ** Demo Imports
-import FooterIllustrations from 'src/views/pages/misc/FooterIllustrations'
+import FooterIllustrations from 'src/views/pages/misc/FooterIllustrations';
 
 // ** Styled Components
 const BoxWrapper = styled(Box)<BoxProps>(({ theme }) => ({
   [theme.breakpoints.down('md')]: {
     width: '90vw'
   }
-}))
+}));
 
 const Img = styled('img')(({ theme }) => ({
   marginTop: theme.spacing(15),
@@ -30,12 +30,12 @@ const Img = styled('img')(({ theme }) => ({
   [theme.breakpoints.down('md')]: {
     height: 400
   }
-}))
+}));
 
 const ComingSoon = () => {
   const handleSubmit = (e: SyntheticEvent) => {
-    e.preventDefault()
-  }
+    e.preventDefault();
+  };
 
   return (
     <Box className='content-center'>
@@ -45,9 +45,7 @@ const ComingSoon = () => {
             <Typography variant='h5' sx={{ mb: 2.5, fontSize: '1.5rem !important' }}>
               We are launching soon 🚀
             </Typography>
-            <Typography variant='body2'>
-              Our website is opening soon. Please register to get notified when it&prime;s ready!
-            </Typography>
+            <Typography variant='body2'>Our website is opening soon. Please register to get notified when it&prime;s ready!</Typography>
           </Box>
           <form noValidate autoComplete='off' onSubmit={handleSubmit}>
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -62,9 +60,9 @@ const ComingSoon = () => {
       </Box>
       <FooterIllustrations />
     </Box>
-  )
-}
+  );
+};
 
-ComingSoon.getLayout = (page: ReactNode) => <BlankLayout>{page}</BlankLayout>
+ComingSoon.getLayout = (page: ReactNode) => <BlankLayout>{page}</BlankLayout>;
 
-export default ComingSoon
+export default ComingSoon;

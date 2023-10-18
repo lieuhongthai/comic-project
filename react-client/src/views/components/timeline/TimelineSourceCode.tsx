@@ -305,7 +305,7 @@ const TimelineCenter = () => {
 export default TimelineCenter
 `}</code>
   </pre>
-)
+);
 
 export const TimelineOutlinedJSXCode = (
   <pre className='language-jsx'>
@@ -491,7 +491,7 @@ const TimelineRight = () => {
 export default TimelineRight
 `}</code>
   </pre>
-)
+);
 
 export const TimelineFilledJSXCode = (
   <pre className='language-jsx'>
@@ -685,7 +685,7 @@ const TimelineLeft = () => {
 export default TimelineLeft
 `}</code>
   </pre>
-)
+);
 
 export const TimelineCenterTSXCode = (
   <pre className='language-jsx'>
@@ -994,7 +994,7 @@ const TimelineCenter = () => {
 export default TimelineCenter
 `}</code>
   </pre>
-)
+);
 
 export const TimelineFilledTSXCode = (
   <pre className='language-jsx'>
@@ -1188,7 +1188,7 @@ const TimelineLeft = () => {
 export default TimelineLeft
 `}</code>
   </pre>
-)
+);
 
 export const TimelineOutlinedTSXCode = (
   <pre className='language-jsx'>
@@ -1374,4 +1374,4 @@ const TimelineRight = () => {
 export default TimelineRight
 `}</code>
   </pre>
-)
+);

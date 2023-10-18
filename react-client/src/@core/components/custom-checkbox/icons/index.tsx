@@ -1,20 +1,20 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Grid from '@mui/material/Grid'
-import Checkbox from '@mui/material/Checkbox'
-import Typography from '@mui/material/Typography'
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Checkbox from '@mui/material/Checkbox';
+import Typography from '@mui/material/Typography';
 
 // ** Type Imports
-import { CustomCheckboxIconsProps } from 'src/@core/components/custom-checkbox/types'
+import { CustomCheckboxIconsProps } from 'src/@core/components/custom-checkbox/types';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 const CustomCheckboxIcons = (props: CustomCheckboxIconsProps) => {
   // ** Props
-  const { data, icon, name, selected, gridProps, iconProps, handleChange, color = 'primary' } = props
+  const { data, icon, name, selected, gridProps, iconProps, handleChange, color = 'primary' } = props;
 
-  const { title, value, content } = data
+  const { title, value, content } = data;
 
   const renderComponent = () => {
     return (
@@ -63,10 +63,10 @@ const CustomCheckboxIcons = (props: CustomCheckboxIconsProps) => {
           />
         </Box>
       </Grid>
-    )
-  }
+    );
+  };
 
-  return data ? renderComponent() : null
-}
+  return data ? renderComponent() : null;
+};
 
-export default CustomCheckboxIcons
+export default CustomCheckboxIcons;

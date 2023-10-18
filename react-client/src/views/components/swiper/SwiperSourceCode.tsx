@@ -71,7 +71,7 @@ const SwiperAutoSwitch = ({ direction }) => {
 export default SwiperAutoSwitch
 `}</code>
   </pre>
-)
+);
 
 export const SwiperCenteredJSXCode = (
   <pre className='language-jsx'>
@@ -116,7 +116,7 @@ const SwiperCentered = ({ direction }) => {
 export default SwiperCentered
 `}</code>
   </pre>
-)
+);
 
 export const SwiperDefaultJSXCode = (
   <pre className='language-jsx'>
@@ -156,7 +156,7 @@ const SwiperDefault = ({ direction }) => {
 export default SwiperDefault
 `}</code>
   </pre>
-)
+);
 
 export const SwiperFreeModeJSXCode = (
   <pre className='language-jsx'>
@@ -202,7 +202,7 @@ const SwiperFreeMode = ({ direction }) => {
 export default SwiperFreeMode
 `}</code>
   </pre>
-)
+);
 
 export const SwiperLoopJSXCode = (
   <pre className='language-jsx'>
@@ -240,7 +240,7 @@ const SwiperLoop = ({ direction }) => {
 export default SwiperLoop
 `}</code>
   </pre>
-)
+);
 
 export const SwiperControlsJSXCode = (
   <pre className='language-jsx'>
@@ -340,7 +340,7 @@ const SwiperControls = ({ direction }) => {
 export default SwiperControls
 `}</code>
   </pre>
-)
+);
 
 export const SwiperFaderJSXCode = (
   <pre className='language-jsx'>
@@ -388,7 +388,7 @@ const SwiperFader = ({ direction }) => {
 export default SwiperFader
 `}</code>
   </pre>
-)
+);
 
 export const SwiperMutationObserverJSXCode = (
   <pre className='language-jsx'>
@@ -468,7 +468,7 @@ const SwiperMutationObserver = ({ direction }) => {
 export default SwiperMutationObserver
 `}</code>
   </pre>
-)
+);
 
 export const SwiperThumbnailsJSXCode = (
   <pre className='language-jsx'>
@@ -581,7 +581,7 @@ const SwiperThumbnails = ({ direction }) => {
 export default SwiperThumbnails
 `}</code>
   </pre>
-)
+);
 
 export const SwiperMultipleSlidesJSXCode = (
   <pre className='language-jsx'>
@@ -624,7 +624,7 @@ const SwiperMultipleSlides = ({ direction }) => {
 export default SwiperMultipleSlides
 `}</code>
   </pre>
-)
+);
 
 export const SwiperZoomJSXCode = (
   <pre className='language-jsx'>
@@ -686,7 +686,7 @@ const SwiperZoom = ({ direction }) => {
 export default SwiperZoom
 `}</code>
   </pre>
-)
+);
 
 export const SwiperVerticalJSXCode = (
   <pre className='language-jsx'>
@@ -720,7 +720,7 @@ const SwiperVertical = () => {
 export default SwiperVertical
 `}</code>
   </pre>
-)
+);
 
 export const SwiperSpacingJSXCode = (
   <pre className='language-jsx'>
@@ -764,7 +764,7 @@ const SwiperSpacing = ({ direction }) => {
 export default SwiperSpacing
 `}</code>
   </pre>
-)
+);
 
 export const SwiperCenteredTSXCode = (
   <pre className='language-jsx'>
@@ -810,7 +810,7 @@ const SwiperCentered = ({ direction }: { direction: Direction }) => {
 export default SwiperCentered
 `}</code>
   </pre>
-)
+);
 
 export const SwiperAutoSwitchTSXCode = (
   <pre className='language-jsx'>
@@ -884,7 +884,7 @@ const SwiperAutoSwitch = ({ direction }: { direction: Direction }) => {
 export default SwiperAutoSwitch
 `}</code>
   </pre>
-)
+);
 
 export const SwiperFaderTSXCode = (
   <pre className='language-jsx'>
@@ -933,7 +933,7 @@ const SwiperFader = ({ direction }: { direction: Direction }) => {
 export default SwiperFader
 `}</code>
   </pre>
-)
+);
 
 export const SwiperControlsTSXCode = (
   <pre className='language-jsx'>
@@ -1034,7 +1034,7 @@ const SwiperControls = ({ direction }: { direction: Direction }) => {
 export default SwiperControls
 `}</code>
   </pre>
-)
+);
 
 export const SwiperDefaultTSXCode = (
   <pre className='language-jsx'>
@@ -1075,7 +1075,7 @@ const SwiperDefault = ({ direction }: { direction: Direction }) => {
 export default SwiperDefault
 `}</code>
   </pre>
-)
+);
 
 export const SwiperFreeModeTSXCode = (
   <pre className='language-jsx'>
@@ -1122,7 +1122,7 @@ const SwiperFreeMode = ({ direction }: { direction: Direction }) => {
 export default SwiperFreeMode
 `}</code>
   </pre>
-)
+);
 
 export const SwiperSpacingTSXCode = (
   <pre className='language-jsx'>
@@ -1167,7 +1167,7 @@ const SwiperSpacing = ({ direction }: { direction: Direction }) => {
 export default SwiperSpacing
 `}</code>
   </pre>
-)
+);
 
 export const SwiperMultipleSlidesTSXCode = (
   <pre className='language-jsx'>
@@ -1211,7 +1211,7 @@ const SwiperMultipleSlides = ({ direction }: { direction: Direction }) => {
 export default SwiperMultipleSlides
 `}</code>
   </pre>
-)
+);
 
 export const SwiperMutationObserverTSXCode = (
   <pre className='language-jsx'>
@@ -1292,7 +1292,7 @@ const SwiperMutationObserver = ({ direction }: { direction: Direction }) => {
 export default SwiperMutationObserver
 `}</code>
   </pre>
-)
+);
 
 export const SwiperThumbnailsTSXCode = (
   <pre className='language-jsx'>
@@ -1409,7 +1409,7 @@ const SwiperThumbnails = ({ direction }: { direction: Direction }) => {
 export default SwiperThumbnails
 `}</code>
   </pre>
-)
+);
 
 export const SwiperLoopTSXCode = (
   <pre className='language-jsx'>
@@ -1448,7 +1448,7 @@ const SwiperLoop = ({ direction }: { direction: Direction }) => {
 export default SwiperLoop
 `}</code>
   </pre>
-)
+);
 
 export const SwiperZoomTSXCode = (
   <pre className='language-jsx'>
@@ -1511,7 +1511,7 @@ const SwiperZoom = ({ direction }: { direction: Direction }) => {
 export default SwiperZoom
 `}</code>
   </pre>
-)
+);
 
 export const SwiperVerticalTSXCode = (
   <pre className='language-jsx'>
@@ -1545,4 +1545,4 @@ const SwiperVertical = () => {
 export default SwiperVertical
 `}</code>
   </pre>
-)
+);

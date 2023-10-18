@@ -1,26 +1,26 @@
 // ** React Imports
-import { useState } from 'react'
+import { useState } from 'react';
 
 // ** MUI Imports
-import List from '@mui/material/List'
-import Avatar from '@mui/material/Avatar'
-import ListItem from '@mui/material/ListItem'
-import IconButton from '@mui/material/IconButton'
-import ListItemText from '@mui/material/ListItemText'
-import ListItemButton from '@mui/material/ListItemButton'
-import ListItemAvatar from '@mui/material/ListItemAvatar'
-import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction'
+import List from '@mui/material/List';
+import Avatar from '@mui/material/Avatar';
+import ListItem from '@mui/material/ListItem';
+import IconButton from '@mui/material/IconButton';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 const ListItemSelected = () => {
   // ** State
-  const [selectedIndex, setSelectedIndex] = useState<number>(1)
+  const [selectedIndex, setSelectedIndex] = useState<number>(1);
 
   const handleListItemClick = (index: number) => {
-    setSelectedIndex(index)
-  }
+    setSelectedIndex(index);
+  };
 
   return (
     <List>
@@ -64,7 +64,7 @@ const ListItemSelected = () => {
         </ListItemButton>
       </ListItem>
     </List>
-  )
-}
+  );
+};
 
-export default ListItemSelected
+export default ListItemSelected;

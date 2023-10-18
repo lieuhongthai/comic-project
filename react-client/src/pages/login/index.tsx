@@ -1,46 +1,45 @@
 // ** React Imports
-import { useState, ReactNode, MouseEvent } from 'react'
+import { useState, MouseEvent } from 'react';
 
 // ** MUI Components
-import Alert from '@mui/material/Alert'
-import Button from '@mui/material/Button'
-import Divider from '@mui/material/Divider'
-import Checkbox from '@mui/material/Checkbox'
-import TextField from '@mui/material/TextField'
-import InputLabel from '@mui/material/InputLabel'
-import IconButton from '@mui/material/IconButton'
-import Box, { BoxProps } from '@mui/material/Box'
-import FormControl from '@mui/material/FormControl'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import OutlinedInput from '@mui/material/OutlinedInput'
-import { styled, useTheme } from '@mui/material/styles'
-import FormHelperText from '@mui/material/FormHelperText'
-import InputAdornment from '@mui/material/InputAdornment'
-import Typography, { TypographyProps } from '@mui/material/Typography'
-import MuiFormControlLabel, { FormControlLabelProps } from '@mui/material/FormControlLabel'
+import Alert from '@mui/material/Alert';
+import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
+import Checkbox from '@mui/material/Checkbox';
+import TextField from '@mui/material/TextField';
+import InputLabel from '@mui/material/InputLabel';
+import IconButton from '@mui/material/IconButton';
+import Box, { BoxProps } from '@mui/material/Box';
+import FormControl from '@mui/material/FormControl';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import { styled, useTheme } from '@mui/material/styles';
+import FormHelperText from '@mui/material/FormHelperText';
+import InputAdornment from '@mui/material/InputAdornment';
+import Typography, { TypographyProps } from '@mui/material/Typography';
+import MuiFormControlLabel, { FormControlLabelProps } from '@mui/material/FormControlLabel';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Third Party Imports
-import * as yup from 'yup'
-import { useForm, Controller } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup';
+import { useForm, Controller } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 // ** Hooks
-import { useAuth } from 'src/hooks/useAuth'
-import useBgColor from 'src/@core/hooks/useBgColor'
+import { useAuth } from 'src/hooks/useAuth';
+import useBgColor from 'src/@core/hooks/useBgColor';
 
 // ** Configs
-import themeConfig from 'src/configs/themeConfig'
+import themeConfig from 'src/configs/themeConfig';
 
 // ** Layout Import
-import BlankLayout from 'src/@core/layouts/BlankLayout'
 
 // ** Demo Imports
-import FooterIllustrationsV2 from 'src/views/pages/auth/FooterIllustrationsV2'
-import { Link } from 'react-router-dom'
-import { initialSettings } from 'src/@core/context/settingsContext'
+import FooterIllustrationsV2 from 'src/views/pages/auth/FooterIllustrationsV2';
+import { Link } from 'react-router-dom';
+import { initialSettings } from 'src/@core/context/settingsContext';
 
 // ** Styled Components
 const LoginIllustrationWrapper = styled(Box)<BoxProps>(({ theme }) => ({
@@ -49,7 +48,7 @@ const LoginIllustrationWrapper = styled(Box)<BoxProps>(({ theme }) => ({
   [theme.breakpoints.down('lg')]: {
     padding: theme.spacing(10)
   }
-}))
+}));
 
 const LoginIllustration = styled('img')(({ theme }) => ({
   maxWidth: '48rem',
@@ -59,7 +58,7 @@ const LoginIllustration = styled('img')(({ theme }) => ({
   [theme.breakpoints.down('lg')]: {
     maxWidth: '30rem'
   }
-}))
+}));
 
 const RightWrapper = styled(Box)<BoxProps>(({ theme }) => ({
   width: '100%',
@@ -69,56 +68,56 @@ const RightWrapper = styled(Box)<BoxProps>(({ theme }) => ({
   [theme.breakpoints.up('lg')]: {
     maxWidth: 450
   }
-}))
+}));
 
 const BoxWrapper = styled(Box)<BoxProps>(({ theme }) => ({
   width: '100%',
   [theme.breakpoints.down('md')]: {
     maxWidth: 400
   }
-}))
+}));
 
 const TypographyStyled = styled(Typography)<TypographyProps>(({ theme }) => ({
   fontWeight: 600,
   letterSpacing: '0.18px',
   marginBottom: theme.spacing(1.5),
   [theme.breakpoints.down('md')]: { marginTop: theme.spacing(8) }
-}))
+}));
 
 const FormControlLabel = styled(MuiFormControlLabel)<FormControlLabelProps>(({ theme }) => ({
   '& .MuiFormControlLabel-label': {
     fontSize: '0.875rem',
     color: theme.palette.text.secondary
   }
-}))
+}));
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),
   password: yup.string().min(5).required()
-})
+});
 
 const defaultValues = {
   password: 'admin',
   email: 'admin@materialize.com'
-}
+};
 
 interface FormData {
-  email: string
-  password: string
+  email: string;
+  password: string;
 }
 
 const LoginPage = () => {
-  const [rememberMe, setRememberMe] = useState<boolean>(true)
-  const [showPassword, setShowPassword] = useState<boolean>(false)
+  const [rememberMe, setRememberMe] = useState<boolean>(true);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   // ** Hooks
-  const auth = useAuth()
-  const theme = useTheme()
-  const bgColors = useBgColor()
-  const hidden = useMediaQuery(theme.breakpoints.down('md'))
+  const auth = useAuth();
+  const theme = useTheme();
+  const bgColors = useBgColor();
+  const hidden = useMediaQuery(theme.breakpoints.down('md'));
 
   // ** Vars
-  const { skin } = initialSettings
+  const { skin } = initialSettings;
 
   const {
     control,
@@ -129,19 +128,19 @@ const LoginPage = () => {
     defaultValues,
     mode: 'onBlur',
     resolver: yupResolver(schema)
-  })
+  });
 
   const onSubmit = (data: FormData) => {
-    const { email, password } = data
+    const { email, password } = data;
     auth.login({ email, password, rememberMe }, () => {
       setError('email', {
         type: 'manual',
         message: 'Email or Password is invalid'
-      })
-    })
-  }
+      });
+    });
+  };
 
-  const imageSource = skin === 'bordered' ? 'auth-v2-login-illustration-bordered' : 'auth-v2-login-illustration'
+  const imageSource = skin === 'bordered' ? 'auth-v2-login-illustration-bordered' : 'auth-v2-login-illustration';
 
   return (
     <Box className='content-right'>
@@ -348,7 +347,7 @@ const LoginPage = () => {
         </Box>
       </RightWrapper>
     </Box>
-  )
-}
+  );
+};
 
-export default LoginPage
+export default LoginPage;

@@ -1,13 +1,13 @@
 // ** MUI Imports
-import Alert from '@mui/material/Alert'
-import Button from '@mui/material/Button'
+import Alert from '@mui/material/Alert';
+import Button from '@mui/material/Button';
 
 const AlertsBasic = () => {
   return (
     <div className='demo-space-y'>
       <Alert
         onClose={e => {
-          e.preventDefault()
+          e.preventDefault();
         }}
       >
         This is a success alert — check it out!
@@ -33,7 +33,7 @@ const AlertsBasic = () => {
         This is a success alert — check it out!
       </Alert>
     </div>
-  )
-}
+  );
+};
 
-export default AlertsBasic
+export default AlertsBasic;

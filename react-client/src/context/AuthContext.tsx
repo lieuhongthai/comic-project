@@ -1,18 +1,18 @@
 // ** React Imports
-import { createContext, useEffect, useState, ReactNode } from 'react'
+import { createContext, useEffect, useState, ReactNode } from 'react';
 
 // ** React Router Import
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom';
 
 // ** Axios
-import axios from 'axios'
+import axios from 'axios';
 
 // ** Config
-import authConfig from 'src/configs/auth'
+import authConfig from 'src/configs/auth';
 
 // ** Types
-import { AuthValuesType, RegisterParams, LoginParams, ErrCallbackType, UserDataType } from './types'
-import { useCookies } from 'react-cookie'
+import { AuthValuesType, RegisterParams, LoginParams, ErrCallbackType, UserDataType } from './types';
+import { useCookies } from 'react-cookie';
 
 // ** Defaults
 const defaultProvider: AuthValuesType = {
@@ -23,32 +23,32 @@ const defaultProvider: AuthValuesType = {
   login: () => Promise.resolve(),
   logout: () => Promise.resolve(),
   register: () => Promise.resolve()
-}
+};
 
-const AuthContext = createContext(defaultProvider)
+const AuthContext = createContext(defaultProvider);
 
 type Props = {
-  children: ReactNode
-}
+  children: ReactNode;
+};
 
 const AuthProvider = ({ children }: Props) => {
   // ** States
-  const [user, setUser] = useState<UserDataType | null>(defaultProvider.user)
-  const [loading, setLoading] = useState<boolean>(defaultProvider.loading)
+  const [user, setUser] = useState<UserDataType | null>(defaultProvider.user);
+  const [loading, setLoading] = useState<boolean>(defaultProvider.loading);
 
   // ** Hooks
-  const location = useLocation()
-  const pathname = location.pathname
-  const returnUrl: string = location.state?.returnUrl || ''
-  const navigate = useNavigate()
+  const location = useLocation();
+  const pathname = location.pathname;
+  const returnUrl: string = location.state?.returnUrl || '';
+  const navigate = useNavigate();
 
-  const [cookies] = useCookies(['__auth_'])
+  const [cookies] = useCookies(['__auth_']);
 
   useEffect(() => {
     const initAuth = async (): Promise<void> => {
-      const storedToken = window.localStorage.getItem(authConfig.storageTokenKeyName)!
+      const storedToken = window.localStorage.getItem(authConfig.storageTokenKeyName)!;
       if (cookies.__auth_) {
-        setLoading(true)
+        setLoading(true);
         await axios
           .get(authConfig.meEndpoint, {
             headers: {
@@ -56,26 +56,25 @@ const AuthProvider = ({ children }: Props) => {
             }
           })
           .then(async response => {
-            setLoading(false)
-            setUser({ ...response.data.userData })
+            setLoading(false);
+            setUser({ ...response.data.userData });
           })
           .catch(() => {
-            localStorage.removeItem('userData')
-            localStorage.removeItem('refreshToken')
-            localStorage.removeItem('accessToken')
-            setUser(null)
-            setLoading(false)
+            localStorage.removeItem('userData');
+            localStorage.removeItem('refreshToken');
+            localStorage.removeItem('accessToken');
+            setUser(null);
+            setLoading(false);
             if (authConfig.onTokenExpiration === 'logout' && pathname.includes('login')) {
-              navigate('/login', { replace: true })
+              navigate('/login', { replace: true });
             }
-          })
+          });
       } else {
-        setLoading(false)
+        setLoading(false);
       }
-    }
-    initAuth()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    };
+    initAuth();
+  }, []);
 
   const handleLogin = (params: LoginParams, errorCallback?: ErrCallbackType) => {
     axios
@@ -83,38 +82,39 @@ const AuthProvider = ({ children }: Props) => {
       .then(async response => {
         // params.rememberMe ? localStorage.setItem(authConfig.storageTokenKeyName, response.data.accessToken) : null
 
-        setUser({ ...response.data.userData })
+        setUser({ ...response.data.userData });
+
         // params.rememberMe ? localStorage.setItem('userData', JSON.stringify(response.data.userData)) : null
 
-        const redirectURL = returnUrl && returnUrl !== '/' ? returnUrl : '/'
+        const redirectURL = returnUrl && returnUrl !== '/' ? returnUrl : '/';
 
-        navigate(redirectURL as string, { replace: true })
+        navigate(redirectURL as string, { replace: true });
       })
 
       .catch(err => {
-        if (errorCallback) errorCallback(err)
-      })
-  }
+        if (errorCallback) errorCallback(err);
+      });
+  };
 
   const handleLogout = () => {
-    setUser(null)
-    window.localStorage.removeItem('userData')
-    window.localStorage.removeItem(authConfig.storageTokenKeyName)
-    navigate('/login')
-  }
+    setUser(null);
+    window.localStorage.removeItem('userData');
+    window.localStorage.removeItem(authConfig.storageTokenKeyName);
+    navigate('/login');
+  };
 
   const handleRegister = (params: RegisterParams, errorCallback?: ErrCallbackType) => {
     axios
       .post(authConfig.registerEndpoint, params)
       .then(res => {
         if (res.data.error) {
-          if (errorCallback) errorCallback(res.data.error)
+          if (errorCallback) errorCallback(res.data.error);
         } else {
-          handleLogin({ email: params.email, password: params.password })
+          handleLogin({ email: params.email, password: params.password });
         }
       })
-      .catch((err: { [key: string]: string }) => (errorCallback ? errorCallback(err) : null))
-  }
+      .catch((err: { [key: string]: string }) => (errorCallback ? errorCallback(err) : null));
+  };
 
   const values = {
     user,
@@ -124,9 +124,9 @@ const AuthProvider = ({ children }: Props) => {
     login: handleLogin,
     logout: handleLogout,
     register: handleRegister
-  }
+  };
 
-  return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>
-}
+  return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
+};
 
-export { AuthContext, AuthProvider }
+export { AuthContext, AuthProvider };

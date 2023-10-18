@@ -1,25 +1,25 @@
 // ** React Imports
-import { SyntheticEvent } from 'react'
+import { SyntheticEvent } from 'react';
 
 // ** MUI Components
-import Box from '@mui/material/Box'
-import Grid from '@mui/material/Grid'
-import Card from '@mui/material/Card'
-import Avatar from '@mui/material/Avatar'
-import Button from '@mui/material/Button'
-import Typography from '@mui/material/Typography'
-import CardContent from '@mui/material/CardContent'
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Card from '@mui/material/Card';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Types
-import { ConnectionsTabType } from 'src/@fake-db/types'
+import { ConnectionsTabType } from 'src/@fake-db/types';
 
 // ** Custom Components Imports
-import CustomChip from 'src/@core/components/mui/chip'
-import OptionsMenu from 'src/@core/components/option-menu'
-import { Link } from 'react-router-dom'
+import CustomChip from 'src/@core/components/mui/chip';
+import OptionsMenu from 'src/@core/components/option-menu';
+import { Link } from 'react-router-dom';
 
 const Connections = ({ data }: { data: ConnectionsTabType[] }) => {
   return (
@@ -104,10 +104,10 @@ const Connections = ({ data }: { data: ConnectionsTabType[] }) => {
                 </CardContent>
               </Card>
             </Grid>
-          )
+          );
         })}
     </Grid>
-  )
-}
+  );
+};
 
-export default Connections
+export default Connections;

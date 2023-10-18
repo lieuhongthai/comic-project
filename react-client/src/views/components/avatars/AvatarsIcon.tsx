@@ -1,12 +1,12 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Avatar from '@mui/material/Avatar'
+import Box from '@mui/material/Box';
+import Avatar from '@mui/material/Avatar';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Custom Components Imports
-import CustomAvatar from 'src/@core/components/mui/avatar'
+import CustomAvatar from 'src/@core/components/mui/avatar';
 
 const AvatarsIcon = () => {
   return (
@@ -21,7 +21,7 @@ const AvatarsIcon = () => {
         <Icon icon='mdi:checkbox-marked-circle-outline' />
       </CustomAvatar>
     </Box>
-  )
-}
+  );
+};
 
-export default AvatarsIcon
+export default AvatarsIcon;

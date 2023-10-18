@@ -1,48 +1,45 @@
 // ** React Imports
-import { Ref, useState, forwardRef, ReactElement } from 'react'
+import { Ref, useState, forwardRef, ReactElement } from 'react';
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Chip from '@mui/material/Chip'
-import Grid from '@mui/material/Grid'
-import Card from '@mui/material/Card'
-import Switch from '@mui/material/Switch'
-import Dialog from '@mui/material/Dialog'
-import Button from '@mui/material/Button'
-import MenuItem from '@mui/material/MenuItem'
-import TextField from '@mui/material/TextField'
-import IconButton from '@mui/material/IconButton'
-import Typography from '@mui/material/Typography'
-import InputLabel from '@mui/material/InputLabel'
-import FormControl from '@mui/material/FormControl'
-import CardContent from '@mui/material/CardContent'
-import Fade, { FadeProps } from '@mui/material/Fade'
-import DialogContent from '@mui/material/DialogContent'
-import DialogActions from '@mui/material/DialogActions'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import Select, { SelectChangeEvent } from '@mui/material/Select'
+import Box from '@mui/material/Box';
+import Chip from '@mui/material/Chip';
+import Grid from '@mui/material/Grid';
+import Card from '@mui/material/Card';
+import Switch from '@mui/material/Switch';
+import Dialog from '@mui/material/Dialog';
+import Button from '@mui/material/Button';
+import MenuItem from '@mui/material/MenuItem';
+import TextField from '@mui/material/TextField';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import InputLabel from '@mui/material/InputLabel';
+import FormControl from '@mui/material/FormControl';
+import CardContent from '@mui/material/CardContent';
+import Fade, { FadeProps } from '@mui/material/Fade';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
-const Transition = forwardRef(function Transition(
-  props: FadeProps & { children?: ReactElement<any, any> },
-  ref: Ref<unknown>
-) {
-  return <Fade ref={ref} {...props} />
-})
+const Transition = forwardRef(function Transition(props: FadeProps & { children?: ReactElement<any, any> }, ref: Ref<unknown>) {
+  return <Fade ref={ref} {...props} />;
+});
 
 const DialogEditUserInfo = () => {
   // ** States
-  const [show, setShow] = useState<boolean>(false)
-  const [languages, setLanguages] = useState<string[]>([])
+  const [show, setShow] = useState<boolean>(false);
+  const [languages, setLanguages] = useState<string[]>([]);
 
   const handleChange = (event: SelectChangeEvent<typeof languages>) => {
     const {
       target: { value }
-    } = event
-    setLanguages(typeof value === 'string' ? value.split(',') : value)
-  }
+    } = event;
+    setLanguages(typeof value === 'string' ? value.split(',') : value);
+  };
 
   return (
     <Card>
@@ -66,11 +63,7 @@ const DialogEditUserInfo = () => {
         onBackdropClick={() => setShow(false)}
       >
         <DialogContent sx={{ pb: 6, px: { xs: 8, sm: 15 }, pt: { xs: 8, sm: 12.5 }, position: 'relative' }}>
-          <IconButton
-            size='small'
-            onClick={() => setShow(false)}
-            sx={{ position: 'absolute', right: '1rem', top: '1rem' }}
-          >
+          <IconButton size='small' onClick={() => setShow(false)} sx={{ position: 'absolute', right: '1rem', top: '1rem' }}>
             <Icon icon='mdi:close' />
           </IconButton>
           <Box sx={{ mb: 8, textAlign: 'center' }}>
@@ -90,12 +83,7 @@ const DialogEditUserInfo = () => {
               <TextField fullWidth defaultValue='oliverQueen' label='Username' placeholder='johnDoe' />
             </Grid>
             <Grid item sm={6} xs={12}>
-              <TextField
-                fullWidth
-                label='Billing Email'
-                placeholder='johnDoe@email.com'
-                defaultValue='oliverQueen@email.com'
-              />
+              <TextField fullWidth label='Billing Email' placeholder='johnDoe@email.com' defaultValue='oliverQueen@email.com' />
             </Grid>
             <Grid item sm={6} xs={12}>
               <FormControl fullWidth>
@@ -143,13 +131,7 @@ const DialogEditUserInfo = () => {
             <Grid item sm={6} xs={12}>
               <FormControl fullWidth>
                 <InputLabel id='country-select'>Country</InputLabel>
-                <Select
-                  fullWidth
-                  label='Country'
-                  placeholder='UK'
-                  labelId='country-select'
-                  defaultValue='Select Country'
-                >
+                <Select fullWidth label='Country' placeholder='UK' labelId='country-select' defaultValue='Select Country'>
                   <MenuItem value='Select Country'>Select Country</MenuItem>
                   <MenuItem value='France'>France</MenuItem>
                   <MenuItem value='Russia'>Russia</MenuItem>
@@ -182,7 +164,7 @@ const DialogEditUserInfo = () => {
         </DialogActions>
       </Dialog>
     </Card>
-  )
-}
+  );
+};
 
-export default DialogEditUserInfo
+export default DialogEditUserInfo;

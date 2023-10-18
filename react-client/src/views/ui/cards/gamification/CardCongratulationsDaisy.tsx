@@ -1,11 +1,11 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import Button from '@mui/material/Button'
-import Typography from '@mui/material/Typography'
-import Grid, { GridProps } from '@mui/material/Grid'
-import { styled, useTheme } from '@mui/material/styles'
-import MuiCardContent, { CardContentProps } from '@mui/material/CardContent'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Grid, { GridProps } from '@mui/material/Grid';
+import { styled, useTheme } from '@mui/material/styles';
+import MuiCardContent, { CardContentProps } from '@mui/material/CardContent';
 
 // Styled CardContent component
 const CardContent = styled(MuiCardContent)<CardContentProps>(({ theme }) => ({
@@ -13,7 +13,7 @@ const CardContent = styled(MuiCardContent)<CardContentProps>(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     paddingBottom: '0 !important'
   }
-}))
+}));
 
 // Styled Grid component
 const StyledGrid = styled(Grid)<GridProps>(({ theme }) => ({
@@ -21,7 +21,7 @@ const StyledGrid = styled(Grid)<GridProps>(({ theme }) => ({
     display: 'flex',
     justifyContent: 'center'
   }
-}))
+}));
 
 // Styled component for the image
 const Img = styled('img')(({ theme }) => ({
@@ -33,11 +33,11 @@ const Img = styled('img')(({ theme }) => ({
     width: 250,
     position: 'static'
   }
-}))
+}));
 
 const CardCongratulationsDaisy = () => {
   // ** Hook
-  const theme = useTheme()
+  const theme = useTheme();
 
   return (
     <Card sx={{ position: 'relative' }}>
@@ -63,7 +63,7 @@ const CardCongratulationsDaisy = () => {
         </Grid>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardCongratulationsDaisy
+export default CardCongratulationsDaisy;

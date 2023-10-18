@@ -1,5 +1,5 @@
 // ** MUI Imports
-import Pagination from '@mui/material/Pagination'
+import Pagination from '@mui/material/Pagination';
 
 const PaginationSimple = () => {
   return (
@@ -8,7 +8,7 @@ const PaginationSimple = () => {
       <Pagination count={10} color='primary' />
       <Pagination count={10} color='secondary' />
     </div>
-  )
-}
+  );
+};
 
-export default PaginationSimple
+export default PaginationSimple;

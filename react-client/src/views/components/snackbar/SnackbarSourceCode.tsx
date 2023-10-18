@@ -40,7 +40,7 @@ const SnackbarAlert = () => {
 export default SnackbarAlert
 `}</code>
   </pre>
-)
+);
 
 export const SnackbarConsecutiveJSXCode = (
   <pre className='language-jsx'>
@@ -116,7 +116,7 @@ const SnackbarConsecutive = () => {
 export default SnackbarConsecutive
 `}</code>
   </pre>
-)
+);
 
 export const SnackbarControlSlideDirectionJSXCode = (
   <pre className='language-jsx'>
@@ -189,7 +189,7 @@ const SnackbarControlSlideDirection = () => {
 export default SnackbarControlSlideDirection
 `}</code>
   </pre>
-)
+);
 
 export const SnackbarPositionedJSXCode = (
   <pre className='language-jsx'>
@@ -254,7 +254,7 @@ const SnackbarPositioned = () => {
 export default SnackbarPositioned
 `}</code>
   </pre>
-)
+);
 
 export const SnackbarSimpleJSXCode = (
   <pre className='language-jsx'>
@@ -312,7 +312,7 @@ const SnackbarSimple = () => {
 export default SnackbarSimple
 `}</code>
   </pre>
-)
+);
 
 export const SnackbarTransitionJSXCode = (
   <pre className='language-jsx'>
@@ -383,7 +383,7 @@ const SnackbarTransition = () => {
 export default SnackbarTransition
 `}</code>
   </pre>
-)
+);
 
 export const SnackbarAlertTSXCode = (
   <pre className='language-jsx'>
@@ -427,7 +427,7 @@ const SnackbarAlert = () => {
 export default SnackbarAlert
 `}</code>
   </pre>
-)
+);
 
 export const SnackbarConsecutiveTSXCode = (
   <pre className='language-jsx'>
@@ -509,7 +509,7 @@ const SnackbarConsecutive = () => {
 export default SnackbarConsecutive
 `}</code>
   </pre>
-)
+);
 
 export const SnackbarControlSlideDirectionTSXCode = (
   <pre className='language-jsx'>
@@ -584,7 +584,7 @@ const SnackbarControlSlideDirection = () => {
 export default SnackbarControlSlideDirection
 `}</code>
   </pre>
-)
+);
 
 export const SnackbarPositionedTSXCode = (
   <pre className='language-jsx'>
@@ -653,7 +653,7 @@ const SnackbarPositioned = () => {
 export default SnackbarPositioned
 `}</code>
   </pre>
-)
+);
 
 export const SnackbarTransitionTSXCode = (
   <pre className='language-jsx'>
@@ -739,7 +739,7 @@ const SnackbarTransition = () => {
 export default SnackbarTransition
 `}</code>
   </pre>
-)
+);
 
 export const SnackbarSimpleTSXCode = (
   <pre className='language-jsx'>
@@ -797,4 +797,4 @@ const SnackbarSimple = () => {
 export default SnackbarSimple
 `}</code>
   </pre>
-)
+);

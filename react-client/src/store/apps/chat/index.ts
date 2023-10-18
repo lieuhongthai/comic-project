@@ -1,41 +1,38 @@
 // ** Redux Imports
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 // ** Axios Imports
-import axios from 'axios'
+import axios from 'axios';
 
 // ** Types
-import { Dispatch } from 'redux'
-import { SendMsgParamsType } from 'src/types/apps/chatTypes'
+import { Dispatch } from 'redux';
+import { SendMsgParamsType } from 'src/types/apps/chatTypes';
 
 // ** Fetch User Profile
 export const fetchUserProfile = createAsyncThunk('appChat/fetchUserProfile', async () => {
-  const response = await axios.get('/apps/chat/users/profile-user')
+  const response = await axios.get('/apps/chat/users/profile-user');
 
-  return response.data
-})
+  return response.data;
+});
 
 // ** Fetch Chats & Contacts
 export const fetchChatsContacts = createAsyncThunk('appChat/fetchChatsContacts', async () => {
-  const response = await axios.get('/apps/chat/chats-and-contacts')
+  const response = await axios.get('/apps/chat/chats-and-contacts');
 
-  return response.data
-})
+  return response.data;
+});
 
 // ** Select Chat
-export const selectChat = createAsyncThunk(
-  'appChat/selectChat',
-  async (id: number | string, { dispatch }: { dispatch: Dispatch<any> }) => {
-    const response = await axios.get('/apps/chat/get-chat', {
-      params: {
-        id
-      }
-    })
-    await dispatch(fetchChatsContacts())
+export const selectChat = createAsyncThunk('appChat/selectChat', async (id: number | string, { dispatch }: { dispatch: Dispatch<any> }) => {
+  const response = await axios.get('/apps/chat/get-chat', {
+    params: {
+      id
+    }
+  });
+  await dispatch(fetchChatsContacts());
 
-    return response.data
-  }
-)
+  return response.data;
+});
 
 // ** Send Msg
 export const sendMsg = createAsyncThunk('appChat/sendMsg', async (obj: SendMsgParamsType, { dispatch }) => {
@@ -43,14 +40,14 @@ export const sendMsg = createAsyncThunk('appChat/sendMsg', async (obj: SendMsgPa
     data: {
       obj
     }
-  })
+  });
   if (obj.contact) {
-    await dispatch(selectChat(obj.contact.id))
+    await dispatch(selectChat(obj.contact.id));
   }
-  await dispatch(fetchChatsContacts())
+  await dispatch(fetchChatsContacts());
 
-  return response.data
-})
+  return response.data;
+});
 
 export const appChatSlice = createSlice({
   name: 'appChat',
@@ -62,23 +59,23 @@ export const appChatSlice = createSlice({
   },
   reducers: {
     removeSelectedChat: state => {
-      state.selectedChat = null
+      state.selectedChat = null;
     }
   },
   extraReducers: builder => {
     builder.addCase(fetchUserProfile.fulfilled, (state, action) => {
-      state.userProfile = action.payload
-    })
+      state.userProfile = action.payload;
+    });
     builder.addCase(fetchChatsContacts.fulfilled, (state, action) => {
-      state.contacts = action.payload.contacts
-      state.chats = action.payload.chatsContacts
-    })
+      state.contacts = action.payload.contacts;
+      state.chats = action.payload.chatsContacts;
+    });
     builder.addCase(selectChat.fulfilled, (state, action) => {
-      state.selectedChat = action.payload
-    })
+      state.selectedChat = action.payload;
+    });
   }
-})
+});
 
-export const { removeSelectedChat } = appChatSlice.actions
+export const { removeSelectedChat } = appChatSlice.actions;
 
-export default appChatSlice.reducer
+export default appChatSlice.reducer;

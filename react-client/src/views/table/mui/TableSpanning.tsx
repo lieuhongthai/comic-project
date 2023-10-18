@@ -1,48 +1,44 @@
 // ** MUI Imports
-import Paper from '@mui/material/Paper'
-import Table from '@mui/material/Table'
-import TableRow from '@mui/material/TableRow'
-import TableHead from '@mui/material/TableHead'
-import TableBody from '@mui/material/TableBody'
-import TableCell from '@mui/material/TableCell'
-import TableContainer from '@mui/material/TableContainer'
+import Paper from '@mui/material/Paper';
+import Table from '@mui/material/Table';
+import TableRow from '@mui/material/TableRow';
+import TableHead from '@mui/material/TableHead';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
 
 interface Row {
-  desc: string
-  qty: number
-  unit: number
-  price: number
+  desc: string;
+  qty: number;
+  unit: number;
+  price: number;
 }
 
-const TAX_RATE = 0.07
+const TAX_RATE = 0.07;
 
 const ccyFormat = (num: number) => {
-  return `${num.toFixed(2)}`
-}
+  return `${num.toFixed(2)}`;
+};
 
 const priceRow = (qty: number, unit: number) => {
-  return qty * unit
-}
+  return qty * unit;
+};
 
 const createRow = (desc: string, qty: number, unit: number) => {
-  const price = priceRow(qty, unit)
+  const price = priceRow(qty, unit);
 
-  return { desc, qty, unit, price }
-}
+  return { desc, qty, unit, price };
+};
 
 const subtotal = (items: readonly Row[]) => {
-  return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0)
-}
+  return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
+};
 
-const rows = [
-  createRow('Paperclips (Box)', 100, 1.15),
-  createRow('Paper (Case)', 10, 45.99),
-  createRow('Waste Basket', 2, 17.99)
-]
+const rows = [createRow('Paperclips (Box)', 100, 1.15), createRow('Paper (Case)', 10, 45.99), createRow('Waste Basket', 2, 17.99)];
 
-const invoiceSubtotal = subtotal(rows)
-const invoiceTaxes = TAX_RATE * invoiceSubtotal
-const invoiceTotal = invoiceTaxes + invoiceSubtotal
+const invoiceSubtotal = subtotal(rows);
+const invoiceTaxes = TAX_RATE * invoiceSubtotal;
+const invoiceTotal = invoiceTaxes + invoiceSubtotal;
 
 const TableSpanning = () => {
   return (
@@ -88,7 +84,7 @@ const TableSpanning = () => {
         </TableBody>
       </Table>
     </TableContainer>
-  )
-}
+  );
+};
 
-export default TableSpanning
+export default TableSpanning;

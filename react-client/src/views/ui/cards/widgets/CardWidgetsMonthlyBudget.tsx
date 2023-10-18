@@ -1,20 +1,20 @@
 // ** MUI Imports
-import Card from '@mui/material/Card'
-import { useTheme } from '@mui/material/styles'
-import CardHeader from '@mui/material/CardHeader'
-import Typography from '@mui/material/Typography'
-import CardContent from '@mui/material/CardContent'
+import Card from '@mui/material/Card';
+import { useTheme } from '@mui/material/styles';
+import CardHeader from '@mui/material/CardHeader';
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
 
 // ** Third Party Imports
-import { ApexOptions } from 'apexcharts'
+import { ApexOptions } from 'apexcharts';
 
 // ** Custom Components Imports
-import OptionsMenu from 'src/@core/components/option-menu'
-import ReactApexcharts from 'react-apexcharts'
+import OptionsMenu from 'src/@core/components/option-menu';
+import ReactApexcharts from 'react-apexcharts';
 
 const CardWidgetsMonthlyBudget = () => {
   // ** Hook
-  const theme = useTheme()
+  const theme = useTheme();
 
   const options: ApexOptions = {
     chart: {
@@ -92,7 +92,7 @@ const CardWidgetsMonthlyBudget = () => {
         }
       ]
     }
-  }
+  };
 
   return (
     <Card>
@@ -105,7 +105,7 @@ const CardWidgetsMonthlyBudget = () => {
         <Typography variant='body2'>Last month you had $2.42 expense transactions, 12 savings entries and 4 bills.</Typography>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardWidgetsMonthlyBudget
+export default CardWidgetsMonthlyBudget;

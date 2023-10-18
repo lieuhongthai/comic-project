@@ -1,15 +1,15 @@
 // ** MUI Imports
-import Card from '@mui/material/Card'
-import { useTheme } from '@mui/material/styles'
-import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
+import Card from '@mui/material/Card';
+import { useTheme } from '@mui/material/styles';
+import CardHeader from '@mui/material/CardHeader';
+import CardContent from '@mui/material/CardContent';
 
 // ** Third Party Imports
-import { ApexOptions } from 'apexcharts'
+import { ApexOptions } from 'apexcharts';
 
 // ** Custom Components Imports
-import OptionsMenu from 'src/@core/components/option-menu'
-import ReactApexcharts from 'react-apexcharts'
+import OptionsMenu from 'src/@core/components/option-menu';
+import ReactApexcharts from 'react-apexcharts';
 
 const series = [
   {
@@ -20,11 +20,11 @@ const series = [
     name: 'Net Worth',
     data: [110, 72, 62, 65, 100, 75]
   }
-]
+];
 
 const CardWidgetsPerformance = () => {
   // ** Hook
-  const theme = useTheme()
+  const theme = useTheme();
 
   const options: ApexOptions = {
     chart: {
@@ -78,7 +78,7 @@ const CardWidgetsPerformance = () => {
     },
     yaxis: { show: false },
     grid: { show: false }
-  }
+  };
 
   return (
     <Card>
@@ -92,7 +92,7 @@ const CardWidgetsPerformance = () => {
         <ReactApexcharts type='radar' height={294} series={series} options={options} />
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardWidgetsPerformance
+export default CardWidgetsPerformance;

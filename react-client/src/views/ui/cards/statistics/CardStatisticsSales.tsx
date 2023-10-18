@@ -1,29 +1,29 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Grid from '@mui/material/Grid'
-import Card from '@mui/material/Card'
-import CardHeader from '@mui/material/CardHeader'
-import Typography from '@mui/material/Typography'
-import CardContent from '@mui/material/CardContent'
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Types
-import { ThemeColor } from 'src/@core/layouts/types'
+import { ThemeColor } from 'src/@core/layouts/types';
 
 // ** Custom Components Imports
-import CustomAvatar from 'src/@core/components/mui/avatar'
-import OptionsMenu from 'src/@core/components/option-menu'
+import CustomAvatar from 'src/@core/components/mui/avatar';
+import OptionsMenu from 'src/@core/components/option-menu';
 
 interface SaleDataType {
-  icon: string
-  stats: string
-  title: string
-  color: ThemeColor
+  icon: string;
+  stats: string;
+  title: string;
+  color: ThemeColor;
 }
 
-const salesData: SaleDataType[] = [
+const salesDatas: SaleDataType[] = [
   {
     stats: '8,458',
     color: 'primary',
@@ -42,10 +42,10 @@ const salesData: SaleDataType[] = [
     title: 'Transactions',
     icon: 'mdi:trending-up'
   }
-]
+];
 
 const renderStats = () => {
-  return salesData.map((sale: SaleDataType, index: number) => (
+  return salesDatas.map((sale: SaleDataType, index: number) => (
     <Grid item xs={12} sm={4} key={index}>
       <Box key={index} sx={{ display: 'flex', alignItems: 'center' }}>
         <CustomAvatar skin='light' variant='rounded' color={sale.color} sx={{ mr: 4 }}>
@@ -59,8 +59,8 @@ const renderStats = () => {
         </Box>
       </Box>
     </Grid>
-  ))
-}
+  ));
+};
 
 const CardStatisticsSales = () => {
   return (
@@ -92,7 +92,7 @@ const CardStatisticsSales = () => {
         </Grid>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardStatisticsSales
+export default CardStatisticsSales;

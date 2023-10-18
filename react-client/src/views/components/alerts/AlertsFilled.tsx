@@ -1,5 +1,5 @@
 // ** MUI Imports
-import Alert from '@mui/material/Alert'
+import Alert from '@mui/material/Alert';
 
 const AlertsFilled = () => {
   return (
@@ -17,7 +17,7 @@ const AlertsFilled = () => {
         This is an success alert — check it out!
       </Alert>
     </div>
-  )
-}
+  );
+};
 
-export default AlertsFilled
+export default AlertsFilled;

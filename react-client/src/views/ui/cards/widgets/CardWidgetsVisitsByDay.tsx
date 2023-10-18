@@ -1,29 +1,30 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import { useTheme } from '@mui/material/styles'
-import CardHeader from '@mui/material/CardHeader'
-import Typography from '@mui/material/Typography'
-import CardContent from '@mui/material/CardContent'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import { useTheme } from '@mui/material/styles';
+import CardHeader from '@mui/material/CardHeader';
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Third Party Imports
-import { ApexOptions } from 'apexcharts'
+import { ApexOptions } from 'apexcharts';
 
 // ** Custom Components Imports
-import CustomAvatar from 'src/@core/components/mui/avatar'
-import OptionsMenu from 'src/@core/components/option-menu'
+import CustomAvatar from 'src/@core/components/mui/avatar';
+import OptionsMenu from 'src/@core/components/option-menu';
+
 // import ReactApexcharts from 'react-apexcharts'
-import ReactApexcharts from 'react-apexcharts'
+import ReactApexcharts from 'react-apexcharts';
 
 // ** Util Import
-import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
+import { hexToRGBA } from 'src/@core/utils/hex-to-rgba';
 
 const CardWidgetsVisitsByDay = () => {
   // ** Hook
-  const theme = useTheme()
+  const theme = useTheme();
 
   const options: ApexOptions = {
     chart: {
@@ -61,9 +62,10 @@ const CardWidgetsVisitsByDay = () => {
       bar: {
         borderRadius: 8,
         distributed: true,
-        columnWidth: '55%',
-        endingShape: 'rounded',
-        startingShape: 'rounded'
+        columnWidth: '55%'
+
+        // endingShape: 'rounded',
+        // startingShape: 'rounded'
       }
     },
     xaxis: {
@@ -75,7 +77,7 @@ const CardWidgetsVisitsByDay = () => {
       }
     },
     yaxis: { show: false }
-  }
+  };
 
   return (
     <Card>
@@ -99,7 +101,7 @@ const CardWidgetsVisitsByDay = () => {
         </Box>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardWidgetsVisitsByDay
+export default CardWidgetsVisitsByDay;

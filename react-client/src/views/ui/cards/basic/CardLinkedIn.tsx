@@ -1,27 +1,23 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import Avatar from '@mui/material/Avatar'
-import Typography from '@mui/material/Typography'
-import CardContent from '@mui/material/CardContent'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Avatar from '@mui/material/Avatar';
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 const CardLinkedIn = () => {
   return (
     <Card sx={{ border: 0, boxShadow: 0, color: 'common.white', backgroundColor: '#007BB6' }}>
       <CardContent sx={{ p: theme => `${theme.spacing(3.25, 5, 4.5)} !important` }}>
-        <Typography
-          variant='h6'
-          sx={{ display: 'flex', mr: 2.75, alignItems: 'center', color: 'common.white', '& svg': { mr: 2.5 } }}
-        >
+        <Typography variant='h6' sx={{ display: 'flex', mr: 2.75, alignItems: 'center', color: 'common.white', '& svg': { mr: 2.5 } }}>
           <Icon icon='mdi:linkedin' />
           LinkedIn Card
         </Typography>
         <Typography variant='body2' sx={{ mb: 3, color: 'common.white' }}>
-          With the Internet spreading like wildfire and reaching every part of our daily life, more and more traffic is
-          directed.
+          With the Internet spreading like wildfire and reaching every part of our daily life, more and more traffic is directed.
         </Typography>
         <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between' }}>
           <Box sx={{ mr: 2, display: 'flex', alignItems: 'center' }}>
@@ -47,7 +43,7 @@ const CardLinkedIn = () => {
         </Box>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardLinkedIn
+export default CardLinkedIn;

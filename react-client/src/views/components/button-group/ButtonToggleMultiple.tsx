@@ -1,20 +1,20 @@
 // ** React Imports
-import { MouseEvent, useState } from 'react'
+import { MouseEvent, useState } from 'react';
 
 // ** MUI Imports
-import ToggleButton from '@mui/material/ToggleButton'
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 const ButtonToggleMultiple = () => {
   // ** State
-  const [formats, setFormats] = useState<string[]>(() => ['bold', 'italic'])
+  const [formats, setFormats] = useState<string[]>(() => ['bold', 'italic']);
 
   const handleFormat = (event: MouseEvent<HTMLElement>, newFormats: string[]) => {
-    setFormats(newFormats)
-  }
+    setFormats(newFormats);
+  };
 
   return (
     <ToggleButtonGroup value={formats} onChange={handleFormat} aria-label='text alignment'>
@@ -31,7 +31,7 @@ const ButtonToggleMultiple = () => {
         <Icon icon='mdi:format-color-fill' />
       </ToggleButton>
     </ToggleButtonGroup>
-  )
-}
+  );
+};
 
-export default ButtonToggleMultiple
+export default ButtonToggleMultiple;

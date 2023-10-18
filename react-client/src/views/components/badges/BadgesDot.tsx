@@ -1,7 +1,7 @@
 // ** MUI Imports
-import Badge from '@mui/material/Badge'
-import Avatar from '@mui/material/Avatar'
-import Typography from '@mui/material/Typography'
+import Badge from '@mui/material/Badge';
+import Avatar from '@mui/material/Avatar';
+import Typography from '@mui/material/Typography';
 
 const BadgesDot = () => {
   return (
@@ -16,7 +16,7 @@ const BadgesDot = () => {
         <Typography>Typography</Typography>
       </Badge>
     </div>
-  )
-}
+  );
+};
 
-export default BadgesDot
+export default BadgesDot;

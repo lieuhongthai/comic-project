@@ -1,32 +1,32 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import Table from '@mui/material/Table'
-import Avatar from '@mui/material/Avatar'
-import TableRow from '@mui/material/TableRow'
-import TableBody from '@mui/material/TableBody'
-import TableCell from '@mui/material/TableCell'
-import TableHead from '@mui/material/TableHead'
-import Typography from '@mui/material/Typography'
-import CardHeader from '@mui/material/CardHeader'
-import TableContainer from '@mui/material/TableContainer'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Table from '@mui/material/Table';
+import Avatar from '@mui/material/Avatar';
+import TableRow from '@mui/material/TableRow';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableHead from '@mui/material/TableHead';
+import Typography from '@mui/material/Typography';
+import CardHeader from '@mui/material/CardHeader';
+import TableContainer from '@mui/material/TableContainer';
 
 // ** Custom Components Imports
-import OptionsMenu from 'src/@core/components/option-menu'
+import OptionsMenu from 'src/@core/components/option-menu';
 
 interface DataType {
-  date: string
-  title: string
-  imgAlt: string
-  imgSrc: string
-  balance: string
-  imgWidth: number
-  subtitle: string
-  imgHeight: number
-  debitAmount: string
+  date: string;
+  title: string;
+  imgAlt: string;
+  imgSrc: string;
+  balance: string;
+  imgWidth: number;
+  subtitle: string;
+  imgHeight: number;
+  debitAmount: string;
 }
 
-const data: DataType[] = [
+const dataList: DataType[] = [
   {
     imgWidth: 30,
     imgHeight: 10,
@@ -93,7 +93,7 @@ const data: DataType[] = [
     imgAlt: 'visa',
     imgSrc: '/images/cards/logo-visa.png'
   }
-]
+];
 
 const CardPaymentHistory = () => {
   return (
@@ -102,10 +102,7 @@ const CardPaymentHistory = () => {
         title='Payment History'
         titleTypographyProps={{ sx: { lineHeight: '2rem !important', letterSpacing: '0.15px !important' } }}
         action={
-          <OptionsMenu
-            options={['Last 28 Days', 'Last Month', 'Last Year']}
-            iconButtonProps={{ size: 'small', className: 'card-more-options' }}
-          />
+          <OptionsMenu options={['Last 28 Days', 'Last Month', 'Last Year']} iconButtonProps={{ size: 'small', className: 'card-more-options' }} />
         }
       />
       <TableContainer>
@@ -130,12 +127,9 @@ const CardPaymentHistory = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((row: DataType, index: number) => {
+            {dataList.map((row: DataType, index: number) => {
               return (
-                <TableRow
-                  key={index}
-                  sx={{ '& .MuiTableCell-root': { border: 0, py: theme => `${theme.spacing(3)} !important` } }}
-                >
+                <TableRow key={index} sx={{ '& .MuiTableCell-root': { border: 0, py: theme => `${theme.spacing(3)} !important` } }}>
                   <TableCell>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                       <Avatar
@@ -171,13 +165,13 @@ const CardPaymentHistory = () => {
                     </Box>
                   </TableCell>
                 </TableRow>
-              )
+              );
             })}
           </TableBody>
         </Table>
       </TableContainer>
     </Card>
-  )
-}
+  );
+};
 
-export default CardPaymentHistory
+export default CardPaymentHistory;

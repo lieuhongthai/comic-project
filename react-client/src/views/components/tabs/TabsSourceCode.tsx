@@ -50,7 +50,7 @@ const TabsCentered = () => {
 export default TabsCentered
 `}</code>
   </pre>
-)
+);
 
 export const TabsCustomizedJSXCode = (
   <pre className='language-jsx'>
@@ -123,7 +123,7 @@ const TabsCustomized = () => {
 export default TabsCustomized
 `}</code>
   </pre>
-)
+);
 
 export const TabsCustomizedVerticalJSXCode = (
   <pre className='language-jsx'>
@@ -202,7 +202,7 @@ const TabsCustomizedVertical = () => {
 export default TabsCustomizedVertical
 `}</code>
   </pre>
-)
+);
 
 export const TabsForcedScrollJSXCode = (
   <pre className='language-jsx'>
@@ -273,7 +273,7 @@ const TabsForcedScroll = () => {
 export default TabsForcedScroll
 `}</code>
   </pre>
-)
+);
 
 export const TabsColorJSXCode = (
   <pre className='language-jsx'>
@@ -332,7 +332,7 @@ const TabsColor = () => {
 export default TabsColor
 `}</code>
   </pre>
-)
+);
 
 export const TabsIconJSXCode = (
   <pre className='language-jsx'>
@@ -389,7 +389,7 @@ const TabsIcon = () => {
 export default TabsIcon
 `}</code>
   </pre>
-)
+);
 
 export const TabsNavJSXCode = (
   <pre className='language-jsx'>
@@ -443,7 +443,7 @@ const TabsNav = () => {
 export default TabsNav
 `}</code>
   </pre>
-)
+);
 
 export const TabsFullWidthJSXCode = (
   <pre className='language-jsx'>
@@ -497,7 +497,7 @@ const TabsFullWidth = () => {
 export default TabsFullWidth
 `}</code>
   </pre>
-)
+);
 
 export const TabsVerticalJSXCode = (
   <pre className='language-jsx'>
@@ -554,7 +554,7 @@ const TabsVertical = () => {
 export default TabsVertical
 `}</code>
   </pre>
-)
+);
 
 export const TabsSimpleJSXCode = (
   <pre className='language-jsx'>
@@ -608,7 +608,7 @@ const TabsSimple = () => {
 export default TabsSimple
 `}</code>
   </pre>
-)
+);
 
 export const TabsColorTSXCode = (
   <pre className='language-jsx'>
@@ -667,7 +667,7 @@ const TabsColor = () => {
 export default TabsColor
 `}</code>
   </pre>
-)
+);
 
 export const TabsCenteredTSXCode = (
   <pre className='language-jsx'>
@@ -721,7 +721,7 @@ const TabsCentered = () => {
 export default TabsCentered
 `}</code>
   </pre>
-)
+);
 
 export const TabsCustomizedTSXCode = (
   <pre className='language-jsx'>
@@ -794,7 +794,7 @@ const TabsCustomized = () => {
 export default TabsCustomized
 `}</code>
   </pre>
-)
+);
 
 export const TabsCustomizedVerticalTSXCode = (
   <pre className='language-jsx'>
@@ -873,7 +873,7 @@ const TabsCustomizedVertical = () => {
 export default TabsCustomizedVertical
 `}</code>
   </pre>
-)
+);
 
 export const TabsForcedScrollTSXCode = (
   <pre className='language-jsx'>
@@ -944,7 +944,7 @@ const TabsForcedScroll = () => {
 export default TabsForcedScroll
 `}</code>
   </pre>
-)
+);
 
 export const TabsFullWidthTSXCode = (
   <pre className='language-jsx'>
@@ -998,7 +998,7 @@ const TabsFullWidth = () => {
 export default TabsFullWidth
 `}</code>
   </pre>
-)
+);
 
 export const TabsIconTSXCode = (
   <pre className='language-jsx'>
@@ -1055,7 +1055,7 @@ const TabsIcon = () => {
 export default TabsIcon
 `}</code>
   </pre>
-)
+);
 
 export const TabsNavTSXCode = (
   <pre className='language-jsx'>
@@ -1127,7 +1127,7 @@ const TabsNav = () => {
 export default TabsNav
 `}</code>
   </pre>
-)
+);
 
 export const TabsVerticalTSXCode = (
   <pre className='language-jsx'>
@@ -1184,7 +1184,7 @@ const TabsVertical = () => {
 export default TabsVertical
 `}</code>
   </pre>
-)
+);
 
 export const TabsSimpleTSXCode = (
   <pre className='language-jsx'>
@@ -1238,4 +1238,4 @@ const TabsSimple = () => {
 export default TabsSimple
 `}</code>
   </pre>
-)
+);

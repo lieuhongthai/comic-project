@@ -1,46 +1,43 @@
 // ** React Imports
-import { Ref, useState, forwardRef, ReactElement } from 'react'
+import { Ref, useState, forwardRef, ReactElement } from 'react';
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Grid from '@mui/material/Grid'
-import Card from '@mui/material/Card'
-import Switch from '@mui/material/Switch'
-import Select from '@mui/material/Select'
-import Dialog from '@mui/material/Dialog'
-import Button from '@mui/material/Button'
-import MenuItem from '@mui/material/MenuItem'
-import TextField from '@mui/material/TextField'
-import IconButton from '@mui/material/IconButton'
-import Typography from '@mui/material/Typography'
-import InputLabel from '@mui/material/InputLabel'
-import FormControl from '@mui/material/FormControl'
-import CardContent from '@mui/material/CardContent'
-import Fade, { FadeProps } from '@mui/material/Fade'
-import DialogContent from '@mui/material/DialogContent'
-import DialogActions from '@mui/material/DialogActions'
-import FormControlLabel from '@mui/material/FormControlLabel'
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Card from '@mui/material/Card';
+import Switch from '@mui/material/Switch';
+import Select from '@mui/material/Select';
+import Dialog from '@mui/material/Dialog';
+import Button from '@mui/material/Button';
+import MenuItem from '@mui/material/MenuItem';
+import TextField from '@mui/material/TextField';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import InputLabel from '@mui/material/InputLabel';
+import FormControl from '@mui/material/FormControl';
+import CardContent from '@mui/material/CardContent';
+import Fade, { FadeProps } from '@mui/material/Fade';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Hooks
-import useBgColor from 'src/@core/hooks/useBgColor'
+import useBgColor from 'src/@core/hooks/useBgColor';
 
-const Transition = forwardRef(function Transition(
-  props: FadeProps & { children?: ReactElement<any, any> },
-  ref: Ref<unknown>
-) {
-  return <Fade ref={ref} {...props} />
-})
+const Transition = forwardRef(function Transition(props: FadeProps & { children?: ReactElement<any, any> }, ref: Ref<unknown>) {
+  return <Fade ref={ref} {...props} />;
+});
 
 const DialogAddAddress = () => {
   // ** States
-  const [show, setShow] = useState<boolean>(false)
-  const [addressType, setAddressType] = useState<'home' | 'office'>('home')
+  const [show, setShow] = useState<boolean>(false);
+  const [addressType, setAddressType] = useState<'home' | 'office'>('home');
 
   // ** Hooks
-  const bgColors = useBgColor()
+  const bgColors = useBgColor();
 
   return (
     <Card>
@@ -49,9 +46,7 @@ const DialogAddAddress = () => {
         <Typography variant='h6' sx={{ mb: 4 }}>
           Add New Address
         </Typography>
-        <Typography sx={{ mb: 3 }}>
-          Ready to use form to collect user address data with validation and custom input support.
-        </Typography>
+        <Typography sx={{ mb: 3 }}>Ready to use form to collect user address data with validation and custom input support.</Typography>
         <Button variant='contained' onClick={() => setShow(true)}>
           Show
         </Button>
@@ -66,11 +61,7 @@ const DialogAddAddress = () => {
         onBackdropClick={() => setShow(false)}
       >
         <DialogContent sx={{ pb: 6, px: { xs: 8, sm: 15 }, pt: { xs: 8, sm: 12.5 }, position: 'relative' }}>
-          <IconButton
-            size='small'
-            onClick={() => setShow(false)}
-            sx={{ position: 'absolute', right: '1rem', top: '1rem' }}
-          >
+          <IconButton size='small' onClick={() => setShow(false)} sx={{ position: 'absolute', right: '1rem', top: '1rem' }}>
             <Icon icon='mdi:close' />
           </IconButton>
           <Box sx={{ mb: 9, textAlign: 'center' }}>
@@ -89,11 +80,8 @@ const DialogAddAddress = () => {
                   borderRadius: 1,
                   cursor: 'pointer',
                   ...(addressType === 'home' ? { ...bgColors.primaryLight } : { backgroundColor: 'action.hover' }),
-                  border: theme =>
-                    `1px solid ${addressType === 'home' ? theme.palette.primary.main : theme.palette.secondary.main}`,
-                  ...(addressType === 'home'
-                    ? { ...bgColors.primaryLight }
-                    : { backgroundColor: bgColors.secondaryLight.backgroundColor })
+                  border: theme => `1px solid ${addressType === 'home' ? theme.palette.primary.main : theme.palette.secondary.main}`,
+                  ...(addressType === 'home' ? { ...bgColors.primaryLight } : { backgroundColor: bgColors.secondaryLight.backgroundColor })
                 }}
               >
                 <Box sx={{ mb: 1, display: 'flex', alignItems: 'center', '& svg': { mr: 2 } }}>
@@ -102,9 +90,7 @@ const DialogAddAddress = () => {
                     Home
                   </Typography>
                 </Box>
-                <Typography sx={{ ...(addressType === 'home' ? { color: 'primary.main' } : {}) }}>
-                  Delivery Time (7am - 9pm)
-                </Typography>
+                <Typography sx={{ ...(addressType === 'home' ? { color: 'primary.main' } : {}) }}>Delivery Time (7am - 9pm)</Typography>
               </Box>
             </Grid>
             <Grid item sm={6} xs={12}>
@@ -116,11 +102,8 @@ const DialogAddAddress = () => {
                   borderRadius: 1,
                   cursor: 'pointer',
                   ...(addressType === 'office' ? { ...bgColors.primaryLight } : { backgroundColor: 'action.hover' }),
-                  border: theme =>
-                    `1px solid ${addressType === 'office' ? theme.palette.primary.main : theme.palette.secondary.main}`,
-                  ...(addressType === 'office'
-                    ? { ...bgColors.primaryLight }
-                    : { backgroundColor: bgColors.secondaryLight.backgroundColor })
+                  border: theme => `1px solid ${addressType === 'office' ? theme.palette.primary.main : theme.palette.secondary.main}`,
+                  ...(addressType === 'office' ? { ...bgColors.primaryLight } : { backgroundColor: bgColors.secondaryLight.backgroundColor })
                 }}
               >
                 <Box sx={{ mb: 1, display: 'flex', alignItems: 'center', '& svg': { mr: 2 } }}>
@@ -129,9 +112,7 @@ const DialogAddAddress = () => {
                     Office
                   </Typography>
                 </Box>
-                <Typography sx={{ ...(addressType === 'office' ? { color: 'primary.main' } : {}) }}>
-                  Delivery Time (10am - 6pm)
-                </Typography>
+                <Typography sx={{ ...(addressType === 'office' ? { color: 'primary.main' } : {}) }}>Delivery Time (10am - 6pm)</Typography>
               </Box>
             </Grid>
             <Grid item sm={6} xs={12}>
@@ -143,13 +124,7 @@ const DialogAddAddress = () => {
             <Grid item xs={12}>
               <FormControl fullWidth>
                 <InputLabel id='country-select'>Country</InputLabel>
-                <Select
-                  fullWidth
-                  placeholder='UK'
-                  label='Country'
-                  labelId='country-select'
-                  defaultValue='Select Country'
-                >
+                <Select fullWidth placeholder='UK' label='Country' labelId='country-select' defaultValue='Select Country'>
                   <MenuItem value='Select Country'>Select Country</MenuItem>
                   <MenuItem value='France'>France</MenuItem>
                   <MenuItem value='Russia'>Russia</MenuItem>
@@ -189,7 +164,7 @@ const DialogAddAddress = () => {
         </DialogActions>
       </Dialog>
     </Card>
-  )
-}
+  );
+};
 
-export default DialogAddAddress
+export default DialogAddAddress;

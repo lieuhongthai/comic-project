@@ -1,25 +1,25 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import { useTheme } from '@mui/material/styles'
-import Typography from '@mui/material/Typography'
-import CardContent from '@mui/material/CardContent'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import { useTheme } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
 
 // ** Third Party Imports
-import { ApexOptions } from 'apexcharts'
+import { ApexOptions } from 'apexcharts';
 
 // ** Custom Components Imports
-import ReactApexcharts from 'react-apexcharts'
+import ReactApexcharts from 'react-apexcharts';
 
 const series = [
   {
     data: [0, 30, 10, 70, 40, 110, 95]
   }
-]
+];
 
 const CardStatsSmoothLineChart = () => {
   // ** Hook
-  const theme = useTheme()
+  const theme = useTheme();
 
   const options: ApexOptions = {
     chart: {
@@ -49,7 +49,7 @@ const CardStatsSmoothLineChart = () => {
     yaxis: {
       labels: { show: false }
     }
-  }
+  };
 
   return (
     <Card>
@@ -66,7 +66,7 @@ const CardStatsSmoothLineChart = () => {
         <ReactApexcharts type='line' height={108} options={options} series={series} />
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardStatsSmoothLineChart
+export default CardStatsSmoothLineChart;

@@ -1,12 +1,12 @@
 // ** React Imports
-import { useState } from 'react'
+import { useState } from 'react';
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import { Direction } from '@mui/material'
+import Box from '@mui/material/Box';
+import { Direction } from '@mui/material';
 
 // ** Third Party Components
-import { useKeenSlider } from 'keen-slider/react'
+import { useKeenSlider } from 'keen-slider/react';
 
 const images = [
   '/images/banners/banner-9.jpg',
@@ -14,20 +14,20 @@ const images = [
   '/images/banners/banner-6.jpg',
   '/images/banners/banner-10.jpg',
   '/images/banners/banner-8.jpg'
-]
+];
 
 const SwiperFader = ({ direction }: { direction: Direction }) => {
-  const [opacities, setOpacities] = useState<number[]>([])
+  const [opacities, setOpacities] = useState<number[]>([]);
 
   // ** Hook
   const [sliderRef] = useKeenSlider<HTMLDivElement>({
     slides: images.length,
     rtl: direction === 'rtl',
     detailsChanged(s) {
-      const new_opacities = s.track.details.slides.map(slide => slide.portion)
-      setOpacities(new_opacities)
+      const new_opacities = s.track.details.slides.map(slide => slide.portion);
+      setOpacities(new_opacities);
     }
-  })
+  });
 
   return (
     <Box ref={sliderRef} className='fader' sx={{ height: [200, 250, 395] }}>
@@ -37,7 +37,7 @@ const SwiperFader = ({ direction }: { direction: Direction }) => {
         </Box>
       ))}
     </Box>
-  )
-}
+  );
+};
 
-export default SwiperFader
+export default SwiperFader;

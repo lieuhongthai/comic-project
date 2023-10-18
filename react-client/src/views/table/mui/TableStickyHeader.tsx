@@ -1,22 +1,22 @@
 // ** React Imports
-import { useState, ChangeEvent } from 'react'
+import { useState, ChangeEvent } from 'react';
 
 // ** MUI Imports
-import Paper from '@mui/material/Paper'
-import Table from '@mui/material/Table'
-import TableRow from '@mui/material/TableRow'
-import TableHead from '@mui/material/TableHead'
-import TableBody from '@mui/material/TableBody'
-import TableCell from '@mui/material/TableCell'
-import TableContainer from '@mui/material/TableContainer'
-import TablePagination from '@mui/material/TablePagination'
+import Paper from '@mui/material/Paper';
+import Table from '@mui/material/Table';
+import TableRow from '@mui/material/TableRow';
+import TableHead from '@mui/material/TableHead';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TablePagination from '@mui/material/TablePagination';
 
 interface Column {
-  id: 'name' | 'code' | 'population' | 'size' | 'density'
-  label: string
-  minWidth?: number
-  align?: 'right'
-  format?: (value: number) => string
+  id: 'name' | 'code' | 'population' | 'size' | 'density';
+  label: string;
+  minWidth?: number;
+  align?: 'right';
+  format?: (value: number) => string;
 }
 
 const columns: readonly Column[] = [
@@ -43,20 +43,20 @@ const columns: readonly Column[] = [
     align: 'right',
     format: (value: number) => value.toFixed(2)
   }
-]
+];
 
 interface Data {
-  name: string
-  code: string
-  size: number
-  density: number
-  population: number
+  name: string;
+  code: string;
+  size: number;
+  density: number;
+  population: number;
 }
 
 function createData(name: string, code: string, population: number, size: number): Data {
-  const density = population / size
+  const density = population / size;
 
-  return { name, code, population, size, density }
+  return { name, code, population, size, density };
 }
 
 const rows = [
@@ -75,21 +75,21 @@ const rows = [
   createData('Russia', 'RU', 146793744, 17098246),
   createData('Nigeria', 'NG', 200962417, 923768),
   createData('Brazil', 'BR', 210147125, 8515767)
-]
+];
 
 const TableStickyHeader = () => {
   // ** States
-  const [page, setPage] = useState<number>(0)
-  const [rowsPerPage, setRowsPerPage] = useState<number>(10)
+  const [page, setPage] = useState<number>(0);
+  const [rowsPerPage, setRowsPerPage] = useState<number>(10);
 
   const handleChangePage = (event: unknown, newPage: number) => {
-    setPage(newPage)
-  }
+    setPage(newPage);
+  };
 
   const handleChangeRowsPerPage = (event: ChangeEvent<HTMLInputElement>) => {
-    setRowsPerPage(+event.target.value)
-    setPage(0)
-  }
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
 
   return (
     <>
@@ -109,16 +109,16 @@ const TableStickyHeader = () => {
               return (
                 <TableRow hover role='checkbox' tabIndex={-1} key={row.code}>
                   {columns.map(column => {
-                    const value = row[column.id]
+                    const value = row[column.id];
 
                     return (
                       <TableCell key={column.id} align={column.align}>
                         {column.format && typeof value === 'number' ? column.format(value) : value}
                       </TableCell>
-                    )
+                    );
                   })}
                 </TableRow>
-              )
+              );
             })}
           </TableBody>
         </Table>
@@ -133,7 +133,7 @@ const TableStickyHeader = () => {
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
     </>
-  )
-}
+  );
+};
 
-export default TableStickyHeader
+export default TableStickyHeader;

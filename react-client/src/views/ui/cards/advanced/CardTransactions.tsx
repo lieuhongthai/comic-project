@@ -1,36 +1,36 @@
 // ** React Imports
-import { ReactNode } from 'react'
+import { ReactNode } from 'react';
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import Typography from '@mui/material/Typography'
-import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Typography from '@mui/material/Typography';
+import CardHeader from '@mui/material/CardHeader';
+import CardContent from '@mui/material/CardContent';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Types
-import { ThemeColor } from 'src/@core/layouts/types'
+import { ThemeColor } from 'src/@core/layouts/types';
 
 // ** Custom Components Imports
-import CustomAvatar from 'src/@core/components/mui/avatar'
-import OptionsMenu from 'src/@core/components/option-menu'
+import CustomAvatar from 'src/@core/components/mui/avatar';
+import OptionsMenu from 'src/@core/components/option-menu';
 
 interface DataType {
-  title: string
-  imgAlt: string
-  imgSrc: string
-  amount: string
-  trend: ReactNode
-  subtitle: string
-  imgWidth: number
-  imgHeight: number
-  avatarColor: ThemeColor
+  title: string;
+  imgAlt: string;
+  imgSrc: string;
+  amount: string;
+  trend: ReactNode;
+  subtitle: string;
+  imgWidth: number;
+  imgHeight: number;
+  avatarColor: ThemeColor;
 }
 
-const data: DataType[] = [
+const dataList: DataType[] = [
   {
     imgHeight: 18,
     imgWidth: 22.5,
@@ -121,7 +121,7 @@ const data: DataType[] = [
       </Box>
     )
   }
-]
+];
 
 const CardTransactions = () => {
   return (
@@ -129,21 +129,18 @@ const CardTransactions = () => {
       <CardHeader
         title='Transactions'
         action={
-          <OptionsMenu
-            options={['Last 28 Days', 'Last Month', 'Last Year']}
-            iconButtonProps={{ size: 'small', sx: { color: 'text.primary' } }}
-          />
+          <OptionsMenu options={['Last 28 Days', 'Last Month', 'Last Year']} iconButtonProps={{ size: 'small', sx: { color: 'text.primary' } }} />
         }
       />
       <CardContent>
-        {data.map((item: DataType, index: number) => {
+        {dataList.map((item: DataType, index: number) => {
           return (
             <Box
               key={index}
               sx={{
                 display: 'flex',
                 alignItems: 'center',
-                mb: index !== data.length - 1 ? 7 : undefined
+                mb: index !== dataList.length - 1 ? 7 : undefined
               }}
             >
               <CustomAvatar skin='light' color={item.avatarColor} variant='rounded' sx={{ mr: 3 }}>
@@ -172,11 +169,11 @@ const CardTransactions = () => {
                 </Box>
               </Box>
             </Box>
-          )
+          );
         })}
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardTransactions
+export default CardTransactions;

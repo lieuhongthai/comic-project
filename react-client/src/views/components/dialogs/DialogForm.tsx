@@ -1,22 +1,22 @@
 // ** React Imports
-import { Fragment, useState } from 'react'
+import { Fragment, useState } from 'react';
 
 // ** MUI Imports
-import Button from '@mui/material/Button'
-import Dialog from '@mui/material/Dialog'
-import TextField from '@mui/material/TextField'
-import DialogTitle from '@mui/material/DialogTitle'
-import DialogContent from '@mui/material/DialogContent'
-import DialogActions from '@mui/material/DialogActions'
-import DialogContentText from '@mui/material/DialogContentText'
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import TextField from '@mui/material/TextField';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContentText from '@mui/material/DialogContentText';
 
 const DialogForm = () => {
   // ** State
-  const [open, setOpen] = useState<boolean>(false)
+  const [open, setOpen] = useState<boolean>(false);
 
-  const handleClickOpen = () => setOpen(true)
+  const handleClickOpen = () => setOpen(true);
 
-  const handleClose = () => setOpen(false)
+  const handleClose = () => setOpen(false);
 
   return (
     <Fragment>
@@ -37,7 +37,7 @@ const DialogForm = () => {
         </DialogActions>
       </Dialog>
     </Fragment>
-  )
-}
+  );
+};
 
-export default DialogForm
+export default DialogForm;

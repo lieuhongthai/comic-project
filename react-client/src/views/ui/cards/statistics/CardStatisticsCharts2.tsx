@@ -1,11 +1,11 @@
 // ** MUI Imports
-import Grid from '@mui/material/Grid'
+import Grid from '@mui/material/Grid';
 
 // ** Demo Components Imports
-import CardStatsSalesMonth from 'src/views/ui/cards/statistics/CardStatsSalesMonth'
-import CardStatsTotalVisits from 'src/views/ui/cards/statistics/CardStatsTotalVisits'
-import CardStatsSalesProfit from 'src/views/ui/cards/statistics/CardStatsSalesProfit'
-import CardStatsOrdersImpressions from 'src/views/ui/cards/statistics/CardStatsOrdersImpressions'
+import CardStatsSalesMonth from 'src/views/ui/cards/statistics/CardStatsSalesMonth';
+import CardStatsTotalVisits from 'src/views/ui/cards/statistics/CardStatsTotalVisits';
+import CardStatsSalesProfit from 'src/views/ui/cards/statistics/CardStatsSalesProfit';
+import CardStatsOrdersImpressions from 'src/views/ui/cards/statistics/CardStatsOrdersImpressions';
 
 const CardStatisticsCharts2 = () => {
   return (
@@ -23,7 +23,7 @@ const CardStatisticsCharts2 = () => {
         <CardStatsOrdersImpressions />
       </Grid>
     </Grid>
-  )
-}
+  );
+};
 
-export default CardStatisticsCharts2
+export default CardStatisticsCharts2;

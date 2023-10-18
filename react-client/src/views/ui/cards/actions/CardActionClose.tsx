@@ -1,34 +1,29 @@
 // ** React Imports
-import { useState } from 'react'
+import { useState } from 'react';
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Fade from '@mui/material/Fade'
-import Card from '@mui/material/Card'
-import IconButton from '@mui/material/IconButton'
-import Typography from '@mui/material/Typography'
-import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
+import Box from '@mui/material/Box';
+import Fade from '@mui/material/Fade';
+import Card from '@mui/material/Card';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import CardHeader from '@mui/material/CardHeader';
+import CardContent from '@mui/material/CardContent';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 const CardActionClose = () => {
   // ** State
-  const [visibility, setVisibility] = useState<boolean>(true)
+  const [isVisibility, setVisibility] = useState<boolean>(true);
 
   return (
-    <Fade in={visibility} timeout={300}>
+    <Fade in={isVisibility} timeout={300}>
       <Card>
         <CardHeader
           title='Remove Card'
           action={
-            <IconButton
-              size='small'
-              aria-label='collapse'
-              sx={{ color: 'text.secondary' }}
-              onClick={() => setVisibility(false)}
-            >
+            <IconButton size='small' aria-label='collapse' sx={{ color: 'text.secondary' }} onClick={() => setVisibility(false)}>
               <Icon icon='mdi:close' fontSize={20} />
             </IconButton>
           }
@@ -44,7 +39,7 @@ const CardActionClose = () => {
         </CardContent>
       </Card>
     </Fade>
-  )
-}
+  );
+};
 
-export default CardActionClose
+export default CardActionClose;

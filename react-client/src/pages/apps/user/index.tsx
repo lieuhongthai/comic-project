@@ -1,178 +1,63 @@
 // ** React Imports
-import { useState, useEffect, MouseEvent, useCallback, useMemo } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react';
 
 // ** MUI Imports
-import Card from '@mui/material/Card'
-import Menu from '@mui/material/Menu'
-import Grid from '@mui/material/Grid'
-import Divider from '@mui/material/Divider'
-import { styled, useTheme } from '@mui/material/styles'
-import MenuItem from '@mui/material/MenuItem'
-import IconButton from '@mui/material/IconButton'
-import CardHeader from '@mui/material/CardHeader'
-import InputLabel from '@mui/material/InputLabel'
-import FormControl from '@mui/material/FormControl'
-import CardContent from '@mui/material/CardContent'
-import Select, { SelectChangeEvent } from '@mui/material/Select'
+import Card from '@mui/material/Card';
+import Grid from '@mui/material/Grid';
+import Divider from '@mui/material/Divider';
+import { useTheme } from '@mui/material/styles';
+import MenuItem from '@mui/material/MenuItem';
+import CardHeader from '@mui/material/CardHeader';
+import InputLabel from '@mui/material/InputLabel';
+import FormControl from '@mui/material/FormControl';
+import CardContent from '@mui/material/CardContent';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
 
 // ** Store Imports
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
 
 // ** Custom Components Imports
-import CustomAvatar from 'src/@core/components/mui/avatar'
 
 // ** Utils Import
-import { getInitials } from 'src/@core/utils/get-initials'
 
 // ** Actions Imports
-import { fetchData, deleteUser } from 'src/store/apps/user'
+import { fetchData } from 'src/store/apps/user';
 
 // ** Third Party Components
 
 // ** Types Imports
-import { RootState, AppDispatch } from 'src/store'
-import { ThemeColor } from 'src/@core/layouts/types'
-import { UsersType } from 'src/types/apps/userTypes'
+import { RootState, AppDispatch } from 'src/store';
 
 // ** Custom Table Components Imports
-import TableHeader from 'src/views/apps/user/TableHeader'
-import AddUserDrawer from 'src/views/apps/user/AddUserDrawer'
-import { Link } from 'react-router-dom'
-import { MaterialReactTable, type MRT_ColumnDef } from 'material-react-table'
-
-interface UserRoleType {
-  [key: string]: { icon: string; color: string }
-}
-
-interface UserStatusType {
-  [key: string]: ThemeColor
-}
+import TableHeader from 'src/views/apps/user/TableHeader';
+import AddUserDrawer from 'src/views/apps/user/AddUserDrawer';
+import { MaterialReactTable, type MRT_ColumnDef } from 'material-react-table';
 
 type UserType = {
-  fullName: string
-  email: string
+  fullName: string;
+  email: string;
 
-  role: string
+  role: string;
 
-  currentPlan: string
-  status: string
-  actions: any
-}
-
-// ** Vars
-const userRoleObj: UserRoleType = {
-  admin: { icon: 'mdi:laptop', color: 'error.main' },
-  author: { icon: 'mdi:cog-outline', color: 'warning.main' },
-  editor: { icon: 'mdi:pencil-outline', color: 'info.main' },
-  maintainer: { icon: 'mdi:chart-donut', color: 'success.main' },
-  subscriber: { icon: 'mdi:account-outline', color: 'primary.main' }
-}
-
-interface CellType {
-  row: UsersType
-}
-
-const userStatusObj: UserStatusType = {
-  active: 'success',
-  pending: 'warning',
-  inactive: 'secondary'
-}
-
-const StyledLink = styled(Link)(({ theme }) => ({
-  fontWeight: 600,
-  fontSize: '1rem',
-  cursor: 'pointer',
-  textDecoration: 'none',
-  color: theme.palette.text.secondary,
-  '&:hover': {
-    color: theme.palette.primary.main
-  }
-}))
-
-// ** renders client column
-const renderClient = (row: UsersType) => {
-  if (row.avatar.length) {
-    return <CustomAvatar src={row.avatar} sx={{ mr: 3, width: 34, height: 34 }} />
-  } else {
-    return (
-      <CustomAvatar skin='light' color={row.avatarColor || 'primary'} sx={{ mr: 3, width: 34, height: 34, fontSize: '1rem' }}>
-        {getInitials(row.fullName ? row.fullName : 'John Doe')}
-      </CustomAvatar>
-    )
-  }
-}
-
-const RowOptions = ({ id }: { id: number | string }) => {
-  // ** Hooks
-  const dispatch = useDispatch<AppDispatch>()
-
-  // ** State
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-
-  const rowOptionsOpen = Boolean(anchorEl)
-
-  const handleRowOptionsClick = (event: MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget)
-  }
-  const handleRowOptionsClose = () => {
-    setAnchorEl(null)
-  }
-
-  const handleDelete = () => {
-    dispatch(deleteUser(id))
-    handleRowOptionsClose()
-  }
-
-  return (
-    <>
-      <IconButton size='small' onClick={handleRowOptionsClick}>
-        <Icon icon='mdi:dots-vertical' />
-      </IconButton>
-      <Menu
-        keepMounted
-        anchorEl={anchorEl}
-        open={rowOptionsOpen}
-        onClose={handleRowOptionsClose}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'right'
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'right'
-        }}
-        PaperProps={{ style: { minWidth: '8rem' } }}
-      >
-        <MenuItem component={Link} sx={{ '& svg': { mr: 2 } }} onClick={handleRowOptionsClose} to='/apps/user/view/overview/'>
-          <Icon icon='mdi:eye-outline' fontSize={20} />
-          View
-        </MenuItem>
-        <MenuItem onClick={handleRowOptionsClose} sx={{ '& svg': { mr: 2 } }}>
-          <Icon icon='mdi:pencil-outline' fontSize={20} />
-          Edit
-        </MenuItem>
-        <MenuItem onClick={handleDelete} sx={{ '& svg': { mr: 2 } }}>
-          <Icon icon='mdi:delete-outline' fontSize={20} />
-          Delete
-        </MenuItem>
-      </Menu>
-    </>
-  )
-}
+  currentPlan: string;
+  status: string;
+  actions: any;
+};
 
 const UserList = () => {
   // ** State
-  const [role, setRole] = useState<string>('')
-  const [plan, setPlan] = useState<string>('')
-  const [value, setValue] = useState<string>('')
-  const [status, setStatus] = useState<string>('')
-  const [addUserOpen, setAddUserOpen] = useState<boolean>(false)
+  const [role, setRole] = useState<string>('');
+  const [plan, setPlan] = useState<string>('');
+  const [value, setValue] = useState<string>('');
+  const [status, setStatus] = useState<string>('');
+  const [addUserOpen, setAddUserOpen] = useState<boolean>(false);
 
   // ** Hook
-  const theme = useTheme()
+  const theme = useTheme();
+
+  console.log(12005, 'Re-render component: UserList');
 
   const userColumns = useMemo<MRT_ColumnDef<UserType>[]>(
     () => [
@@ -204,11 +89,11 @@ const UserList = () => {
       }
     ],
     []
-  )
+  );
 
   // ** Hooks
-  const dispatch = useDispatch<AppDispatch>()
-  const store = useSelector((state: RootState) => state.user)
+  const dispatch = useDispatch<AppDispatch>();
+  const store = useSelector((state: RootState) => state.user);
 
   useEffect(() => {
     dispatch(
@@ -218,26 +103,26 @@ const UserList = () => {
         q: value,
         currentPlan: plan
       })
-    )
-  }, [dispatch, plan, role, status, value])
+    );
+  }, [dispatch, plan, role, status, value]);
 
   const handleFilter = useCallback((val: string) => {
-    setValue(val)
-  }, [])
+    setValue(val);
+  }, []);
 
   const handleRoleChange = useCallback((e: SelectChangeEvent) => {
-    setRole(e.target.value)
-  }, [])
+    setRole(e.target.value);
+  }, []);
 
   const handlePlanChange = useCallback((e: SelectChangeEvent) => {
-    setPlan(e.target.value)
-  }, [])
+    setPlan(e.target.value);
+  }, []);
 
   const handleStatusChange = useCallback((e: SelectChangeEvent) => {
-    setStatus(e.target.value)
-  }, [])
+    setStatus(e.target.value);
+  }, []);
 
-  const toggleAddUserDrawer = () => setAddUserOpen(!addUserOpen)
+  const toggleAddUserDrawer = () => setAddUserOpen(!addUserOpen);
 
   return (
     <Grid container spacing={6}>
@@ -358,7 +243,7 @@ const UserList = () => {
 
       <AddUserDrawer open={addUserOpen} toggle={toggleAddUserDrawer} />
     </Grid>
-  )
-}
+  );
+};
 
-export default UserList
+export default UserList;

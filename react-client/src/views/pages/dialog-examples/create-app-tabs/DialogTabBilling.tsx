@@ -1,47 +1,47 @@
 // ** React Imports
-import { useState, ChangeEvent } from 'react'
+import { useState, ChangeEvent } from 'react';
 
 // ** MUI Imports
-import Grid from '@mui/material/Grid'
-import Switch from '@mui/material/Switch'
-import TextField from '@mui/material/TextField'
-import FormControlLabel from '@mui/material/FormControlLabel'
+import Grid from '@mui/material/Grid';
+import Switch from '@mui/material/Switch';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 // ** Third Party Imports
-import Payment from 'payment'
-import Cards, { Focused } from 'react-credit-cards'
+import Payment from 'payment';
+import Cards, { Focused } from 'react-credit-cards';
 
 // ** Util Import
-import { formatCVC, formatExpirationDate, formatCreditCardNumber } from 'src/@core/utils/format'
+import { formatCVC, formatExpirationDate, formatCreditCardNumber } from 'src/@core/utils/format';
 
 // ** Styled Component Imports
-import CardWrapper from 'src/@core/styles/libs/react-credit-cards'
+import CardWrapper from 'src/@core/styles/libs/react-credit-cards';
 
 // ** Styles Import
-import 'react-credit-cards/es/styles-compiled.css'
+import 'react-credit-cards/es/styles-compiled.css';
 
 const TabBilling = () => {
   // ** States
-  const [name, setName] = useState<string>('')
-  const [cvc, setCvc] = useState<string | number>('')
-  const [cardNumber, setCardNumber] = useState<string>('')
-  const [focus, setFocus] = useState<Focused | undefined>()
-  const [expiry, setExpiry] = useState<string | number>('')
+  const [name, setName] = useState<string>('');
+  const [cvc, setCvc] = useState<string | number>('');
+  const [cardNumber, setCardNumber] = useState<string>('');
+  const [focus, setFocus] = useState<Focused | undefined>();
+  const [expiry, setExpiry] = useState<string | number>('');
 
-  const handleBlur = () => setFocus(undefined)
+  const handleBlur = () => setFocus(undefined);
 
   const handleInputChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     if (target.name === 'number') {
-      target.value = formatCreditCardNumber(target.value, Payment)
-      setCardNumber(target.value)
+      target.value = formatCreditCardNumber(target.value, Payment);
+      setCardNumber(target.value);
     } else if (target.name === 'expiry') {
-      target.value = formatExpirationDate(target.value)
-      setExpiry(target.value)
+      target.value = formatExpirationDate(target.value);
+      setExpiry(target.value);
     } else if (target.name === 'cvc') {
-      target.value = formatCVC(target.value, cardNumber, Payment)
-      setCvc(target.value)
+      target.value = formatCVC(target.value, cardNumber, Payment);
+      setCvc(target.value);
     }
-  }
+  };
 
   return (
     <Grid container spacing={6}>
@@ -110,7 +110,7 @@ const TabBilling = () => {
         />
       </Grid>
     </Grid>
-  )
-}
+  );
+};
 
-export default TabBilling
+export default TabBilling;

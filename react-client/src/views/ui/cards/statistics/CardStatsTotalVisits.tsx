@@ -1,16 +1,16 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import Divider from '@mui/material/Divider'
-import Typography from '@mui/material/Typography'
-import CardContent from '@mui/material/CardContent'
-import LinearProgress from '@mui/material/LinearProgress'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Divider from '@mui/material/Divider';
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
+import LinearProgress from '@mui/material/LinearProgress';
 
 // ** Custom Components Imports
-import CustomAvatar from 'src/@core/components/mui/avatar'
+import CustomAvatar from 'src/@core/components/mui/avatar';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 const CardStatsTotalVisits = () => {
   return (
@@ -31,12 +31,7 @@ const CardStatsTotalVisits = () => {
         <Box sx={{ mb: 5, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
             <Box sx={{ mb: 2.5, display: 'flex', alignItems: 'center' }}>
-              <CustomAvatar
-                skin='light'
-                color='warning'
-                variant='rounded'
-                sx={{ mr: 1.5, height: 24, width: 24, borderRadius: '6px' }}
-              >
+              <CustomAvatar skin='light' color='warning' variant='rounded' sx={{ mr: 1.5, height: 24, width: 24, borderRadius: '6px' }}>
                 <Icon icon='mdi:cellphone' fontSize='0.875rem' />
               </CustomAvatar>
               <Typography variant='body2'>Mobile</Typography>
@@ -47,11 +42,7 @@ const CardStatsTotalVisits = () => {
             </Typography>
           </Box>
           <Divider flexItem sx={{ m: 0 }} orientation='vertical'>
-            <CustomAvatar
-              skin='light'
-              color='secondary'
-              sx={{ height: 24, width: 24, fontSize: '0.6875rem', color: 'text.secondary' }}
-            >
+            <CustomAvatar skin='light' color='secondary' sx={{ height: 24, width: 24, fontSize: '0.6875rem', color: 'text.secondary' }}>
               VS
             </CustomAvatar>
           </Divider>
@@ -85,7 +76,7 @@ const CardStatsTotalVisits = () => {
         />
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardStatsTotalVisits
+export default CardStatsTotalVisits;

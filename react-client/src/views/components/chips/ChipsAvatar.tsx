@@ -1,9 +1,9 @@
 // ** MUI Imports
-import Chip from '@mui/material/Chip'
-import Avatar from '@mui/material/Avatar'
+import Chip from '@mui/material/Chip';
+import Avatar from '@mui/material/Avatar';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 const ChipsAvatar = () => {
   return (
@@ -20,7 +20,7 @@ const ChipsAvatar = () => {
         }
       />
     </div>
-  )
-}
+  );
+};
 
-export default ChipsAvatar
+export default ChipsAvatar;

@@ -1,20 +1,20 @@
 // ** React Imports
-import { MouseEvent, useState } from 'react'
+import { MouseEvent, useState } from 'react';
 
 // ** MUI Imports
-import ToggleButton from '@mui/material/ToggleButton'
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 const ButtonToggleSimple = () => {
   // ** State
-  const [alignment, setAlignment] = useState<string | null>('left')
+  const [alignment, setAlignment] = useState<string | null>('left');
 
   const handleAlignment = (event: MouseEvent<HTMLElement>, newAlignment: string | null) => {
-    setAlignment(newAlignment)
-  }
+    setAlignment(newAlignment);
+  };
 
   return (
     <ToggleButtonGroup exclusive value={alignment} onChange={handleAlignment} aria-label='text alignment'>
@@ -31,7 +31,7 @@ const ButtonToggleSimple = () => {
         <Icon icon='mdi:format-align-justify' />
       </ToggleButton>
     </ToggleButtonGroup>
-  )
-}
+  );
+};
 
-export default ButtonToggleSimple
+export default ButtonToggleSimple;

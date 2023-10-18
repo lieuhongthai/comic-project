@@ -1,6 +1,6 @@
 // ** MUI Imports
-import Alert from '@mui/material/Alert'
-import AlertTitle from '@mui/material/AlertTitle'
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
 
 const AlertsDescription = () => {
   return (
@@ -22,7 +22,7 @@ const AlertsDescription = () => {
         This is an success alert — <strong>check it out!</strong>
       </Alert>
     </div>
-  )
-}
+  );
+};
 
-export default AlertsDescription
+export default AlertsDescription;

@@ -1,5 +1,5 @@
 // ** MUI Imports
-import { ThemeOptions } from '@mui/system'
+import { ThemeOptions } from '@mui/system';
 
 // ** To use core palette, uncomment the below import
 // import corePalette from 'src/@core/theme/palette'
@@ -176,7 +176,7 @@ const UserThemeOptions = (): ThemeOptions => {
       appBar: 1200,
       drawer: 1100
     } */
-  }
-}
+  };
+};
 
-export default UserThemeOptions
+export default UserThemeOptions;

@@ -1,32 +1,32 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import { useTheme } from '@mui/material/styles'
+import Box from '@mui/material/Box';
+import { useTheme } from '@mui/material/styles';
 
 // ** Type Import
-import { LayoutProps } from 'src/@core/layouts/types'
+import { LayoutProps } from 'src/@core/layouts/types';
 
 // ** Footer Content Component
-import FooterContent from './FooterContent'
+import FooterContent from './FooterContent';
 
 interface Props {
-  settings: LayoutProps['settings']
-  saveSettings: LayoutProps['saveSettings']
-  footerStyles?: NonNullable<LayoutProps['footerProps']>['sx']
-  footerContent?: NonNullable<LayoutProps['footerProps']>['content']
+  settings: LayoutProps['settings'];
+  saveSettings: LayoutProps['saveSettings'];
+  footerStyles?: NonNullable<LayoutProps['footerProps']>['sx'];
+  footerContent?: NonNullable<LayoutProps['footerProps']>['content'];
 }
 
 const Footer = (props: Props) => {
   // ** Props
-  const { settings, footerStyles, footerContent: userFooterContent } = props
+  const { settings, footerStyles, footerContent: userFooterContent } = props;
 
   // ** Hook
-  const theme = useTheme()
+  const theme = useTheme();
 
   // ** Vars
-  const { skin, footer, layout, contentWidth } = settings
+  const { skin, footer, layout, contentWidth } = settings;
 
   if (footer === 'hidden') {
-    return null
+    return null;
   }
 
   return (
@@ -70,9 +70,7 @@ const Footer = (props: Props) => {
                     '@media (min-width:1440px)': { maxWidth: `calc(1440px - ${theme.spacing(6)} * 2)` }
                   }),
                 ...(layout === 'vertical' && {
-                  ...(skin === 'bordered'
-                    ? { border: `1px solid ${theme.palette.divider}`, borderBottomWidth: 0 }
-                    : { boxShadow: 6 })
+                  ...(skin === 'bordered' ? { border: `1px solid ${theme.palette.divider}`, borderBottomWidth: 0 } : { boxShadow: 6 })
                 })
               }
             : { px: [4, 6] })
@@ -81,7 +79,7 @@ const Footer = (props: Props) => {
         {userFooterContent ? userFooterContent(props) : <FooterContent />}
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

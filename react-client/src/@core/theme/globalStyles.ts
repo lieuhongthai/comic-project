@@ -1,20 +1,20 @@
 // ** MUI Imports
-import { Theme } from '@mui/material/styles'
+import { Theme } from '@mui/material/styles';
 
 // ** Hook Import
-import { initialSettings } from '../context/settingsContext'
+import { initialSettings } from '../context/settingsContext';
 
 const GlobalStyles = (theme: Theme) => {
   // ** Hook & Var
-  const { mode } = initialSettings
+  const { mode } = initialSettings;
 
   const perfectScrollbarThumbBgColor = () => {
     if (mode === 'light') {
-      return '#BFBFD5 !important'
+      return '#BFBFD5 !important';
     } else {
-      return '#57596C !important'
+      return '#57596C !important';
     }
-  }
+  };
 
   return {
     '.demo-space-x > *': {
@@ -69,7 +69,7 @@ const GlobalStyles = (theme: Theme) => {
         backgroundColor: theme.palette.primary.main
       }
     }
-  }
-}
+  };
+};
 
-export default GlobalStyles
+export default GlobalStyles;

@@ -1,18 +1,18 @@
 // ** MUI Imports
-import TreeView from '@mui/lab/TreeView'
-import TreeItem from '@mui/lab/TreeItem'
+import TreeView from '@mui/lab/TreeView';
+import TreeItem from '@mui/lab/TreeItem';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 interface Props {
-  direction: 'ltr' | 'rtl'
+  direction: 'ltr' | 'rtl';
 }
 
 interface RenderTree {
-  id: string
-  name: string
-  children?: RenderTree[]
+  id: string;
+  name: string;
+  children?: RenderTree[];
 }
 
 const data: RenderTree = {
@@ -34,16 +34,16 @@ const data: RenderTree = {
       ]
     }
   ]
-}
+};
 
 const TreeViewRichObject = ({ direction }: Props) => {
   const renderTree = (nodes: RenderTree) => (
     <TreeItem key={nodes.id} nodeId={nodes.id} label={nodes.name}>
       {Array.isArray(nodes.children) ? nodes.children.map(node => renderTree(node)) : null}
     </TreeItem>
-  )
+  );
 
-  const ExpandIcon = direction === 'rtl' ? 'mdi:chevron-left' : 'mdi:chevron-right'
+  const ExpandIcon = direction === 'rtl' ? 'mdi:chevron-left' : 'mdi:chevron-right';
 
   return (
     <TreeView
@@ -54,7 +54,7 @@ const TreeViewRichObject = ({ direction }: Props) => {
     >
       {renderTree(data)}
     </TreeView>
-  )
-}
+  );
+};
 
-export default TreeViewRichObject
+export default TreeViewRichObject;

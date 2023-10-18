@@ -69,7 +69,6 @@ const AuthProvider = ({ children }: Props) => {
     }
 
     initAuth()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleLogin = (params: LoginParams, errorCallback?: ErrCallbackType) => {

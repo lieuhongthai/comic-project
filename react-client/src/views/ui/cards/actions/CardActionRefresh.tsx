@@ -1,42 +1,37 @@
 // ** React Imports
-import { useState } from 'react'
+import { useState } from 'react';
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import Backdrop from '@mui/material/Backdrop'
-import IconButton from '@mui/material/IconButton'
-import Typography from '@mui/material/Typography'
-import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
-import CircularProgress from '@mui/material/CircularProgress'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Backdrop from '@mui/material/Backdrop';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import CardHeader from '@mui/material/CardHeader';
+import CardContent from '@mui/material/CardContent';
+import CircularProgress from '@mui/material/CircularProgress';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 const CardActionRefresh = () => {
   // ** State
-  const [reload, setReload] = useState<boolean>(false)
+  const [isReload, setReload] = useState<boolean>(false);
 
   const handleBackDrop = () => {
-    setReload(true)
+    setReload(true);
 
     setTimeout(() => {
-      setReload(false)
-    }, 2000)
-  }
+      setReload(false);
+    }, 2000);
+  };
 
   return (
     <Card sx={{ position: 'relative' }}>
       <CardHeader
         title='Refresh Content'
         action={
-          <IconButton
-            size='small'
-            aria-label='collapse'
-            sx={{ color: 'text.secondary' }}
-            onClick={() => handleBackDrop()}
-          >
+          <IconButton size='small' aria-label='collapse' sx={{ color: 'text.secondary' }} onClick={() => handleBackDrop()}>
             <Icon icon='mdi:refresh' fontSize={20} />
           </IconButton>
         }
@@ -52,7 +47,7 @@ const CardActionRefresh = () => {
       </CardContent>
 
       <Backdrop
-        open={reload}
+        open={isReload}
         sx={{
           position: 'absolute',
           color: 'common.white',
@@ -62,7 +57,7 @@ const CardActionRefresh = () => {
         <CircularProgress color='inherit' />
       </Backdrop>
     </Card>
-  )
-}
+  );
+};
 
-export default CardActionRefresh
+export default CardActionRefresh;

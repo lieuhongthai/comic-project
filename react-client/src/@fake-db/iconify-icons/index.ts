@@ -1,9 +1,9 @@
 // ** Mock Adapter
-import mock from 'src/@fake-db/mock'
+import mock from 'src/@fake-db/mock';
 
 export type IconsDataType = {
-  icon: string
-}
+  icon: string;
+};
 
 const icons: IconsDataType[] = [
   { icon: 'airplane' },
@@ -11,8 +11,8 @@ const icons: IconsDataType[] = [
   { icon: 'widgets-outline' },
   { icon: 'whatsapp' },
   { icon: 'water-well-outline' }
-]
+];
 
 mock.onGet('/api/icons/data').reply(() => {
-  return [200, icons]
-})
+  return [200, icons];
+});

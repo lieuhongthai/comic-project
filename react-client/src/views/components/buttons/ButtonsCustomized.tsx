@@ -1,7 +1,7 @@
 // ** MUI Imports
-import { brown } from '@mui/material/colors'
-import { styled } from '@mui/material/styles'
-import Button, { ButtonProps } from '@mui/material/Button'
+import { brown } from '@mui/material/colors';
+import { styled } from '@mui/material/styles';
+import Button, { ButtonProps } from '@mui/material/Button';
 
 // Styled component for a custom button
 const CustomButton = styled(Button)<ButtonProps>(({ theme }) => ({
@@ -10,7 +10,7 @@ const CustomButton = styled(Button)<ButtonProps>(({ theme }) => ({
   '&:hover': {
     backgroundColor: brown[700]
   }
-}))
+}));
 
 // Styled component for a Bootstrap button
 const BootstrapButton = styled(Button)({
@@ -47,7 +47,7 @@ const BootstrapButton = styled(Button)({
   '&:focus': {
     boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)'
   }
-})
+});
 
 const ButtonsCustomized = () => {
   return (
@@ -57,7 +57,7 @@ const ButtonsCustomized = () => {
         Bootstrap
       </BootstrapButton>
     </div>
-  )
-}
+  );
+};
 
-export default ButtonsCustomized
+export default ButtonsCustomized;

@@ -96,7 +96,7 @@ const AccordionActions = () => {
 export default AccordionActions
 `}</code>
   </pre>
-)
+);
 
 export const AccordionControlledJSXCode = (
   <pre className='language-jsx'>
@@ -176,7 +176,7 @@ const AccordionControlled = () => {
 export default AccordionControlled
 `}</code>
   </pre>
-)
+);
 
 export const AccordionCustomizedJSXCode = (
   <pre className='language-jsx'>
@@ -306,7 +306,7 @@ const AccordionCustomized = () => {
 export default AccordionCustomized
 `}</code>
   </pre>
-)
+);
 
 export const AccordionSimpleJSXCode = (
   <pre className='language-jsx'>
@@ -376,7 +376,7 @@ const AccordionSimple = () => {
 export default AccordionSimple
 `}</code>
   </pre>
-)
+);
 
 export const AccordionControlledTSXCode = (
   <pre className='language-jsx'>
@@ -456,7 +456,7 @@ const AccordionControlled = () => {
 export default AccordionControlled
 `}</code>
   </pre>
-)
+);
 
 export const AccordionCustomizedTSXCode = (
   <pre className='language-jsx'>
@@ -587,7 +587,7 @@ const AccordionCustomized = () => {
 export default AccordionCustomized
 `}</code>
   </pre>
-)
+);
 
 export const AccordionActionsTSXCode = (
   <pre className='language-jsx'>
@@ -687,7 +687,7 @@ const AccordionActions = () => {
 export default AccordionActions
 `}</code>
   </pre>
-)
+);
 
 export const AccordionSimpleTSXCode = (
   <pre className='language-jsx'>
@@ -757,4 +757,4 @@ const AccordionSimple = () => {
 export default AccordionSimple
 `}</code>
   </pre>
-)
+);

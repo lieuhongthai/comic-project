@@ -1,32 +1,32 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import Table from '@mui/material/Table'
-import Avatar from '@mui/material/Avatar'
-import TableRow from '@mui/material/TableRow'
-import TableBody from '@mui/material/TableBody'
-import TableCell from '@mui/material/TableCell'
-import TableHead from '@mui/material/TableHead'
-import Typography from '@mui/material/Typography'
-import CardHeader from '@mui/material/CardHeader'
-import TableContainer from '@mui/material/TableContainer'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Table from '@mui/material/Table';
+import Avatar from '@mui/material/Avatar';
+import TableRow from '@mui/material/TableRow';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableHead from '@mui/material/TableHead';
+import Typography from '@mui/material/Typography';
+import CardHeader from '@mui/material/CardHeader';
+import TableContainer from '@mui/material/TableContainer';
 
 // ** Icon Imports
-import Icon from 'src/@core/components/icon'
+import Icon from 'src/@core/components/icon';
 
 // ** Custom Components Imports
-import OptionsMenu from 'src/@core/components/option-menu'
+import OptionsMenu from 'src/@core/components/option-menu';
 
 interface DataType {
-  title: string
-  imgAlt: string
-  imgSrc: string
-  subscribers: string
-  trendNumber: string
-  trendDir: 'up' | 'down'
+  title: string;
+  imgAlt: string;
+  imgSrc: string;
+  subscribers: string;
+  trendNumber: string;
+  trendDir: 'up' | 'down';
 }
 
-const data: DataType[] = [
+const dataList: DataType[] = [
   {
     title: 'USA',
     trendDir: 'up',
@@ -75,7 +75,7 @@ const data: DataType[] = [
     trendNumber: '-2.4%',
     imgSrc: '/images/cards/flag-china.png'
   }
-]
+];
 
 const CardSubscribersByCountries = () => {
   return (
@@ -84,10 +84,7 @@ const CardSubscribersByCountries = () => {
         title='Subscribers by Countries'
         titleTypographyProps={{ sx: { lineHeight: '2rem !important', letterSpacing: '0.15px !important' } }}
         action={
-          <OptionsMenu
-            options={['Last 28 Days', 'Last Month', 'Last Year']}
-            iconButtonProps={{ size: 'small', className: 'card-more-options' }}
-          />
+          <OptionsMenu options={['Last 28 Days', 'Last Month', 'Last Year']} iconButtonProps={{ size: 'small', className: 'card-more-options' }} />
         }
       />
       <TableContainer>
@@ -112,7 +109,7 @@ const CardSubscribersByCountries = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((row: DataType) => {
+            {dataList.map((row: DataType) => {
               return (
                 <TableRow
                   key={row.title}
@@ -145,23 +142,20 @@ const CardSubscribersByCountries = () => {
                         '& svg': { color: row.trendDir === 'up' ? 'success.main' : 'error.main' }
                       }}
                     >
-                      <Typography
-                        variant='body2'
-                        sx={{ fontWeight: 600, color: row.trendDir === 'up' ? 'success.main' : 'error.main' }}
-                      >
+                      <Typography variant='body2' sx={{ fontWeight: 600, color: row.trendDir === 'up' ? 'success.main' : 'error.main' }}>
                         {row.trendNumber}
                       </Typography>
                       <Icon icon={row.trendDir === 'up' ? 'mdi:chevron-up' : 'mdi:chevron-down'} />
                     </Box>
                   </TableCell>
                 </TableRow>
-              )
+              );
             })}
           </TableBody>
         </Table>
       </TableContainer>
     </Card>
-  )
-}
+  );
+};
 
-export default CardSubscribersByCountries
+export default CardSubscribersByCountries;

@@ -37,7 +37,7 @@ const TreeViewBasic = ({ direction }) => {
 export default TreeViewBasic
 `}</code>
   </pre>
-)
+);
 
 export const TreeViewControlledJSXCode = (
   <pre className='language-jsx'>
@@ -96,7 +96,7 @@ const TreeViewControlled = ({ direction }) => {
 export default TreeViewControlled
 `}</code>
   </pre>
-)
+);
 
 export const TreeViewGmailCloneJSXCode = (
   <pre className='language-jsx'>
@@ -184,7 +184,7 @@ const TreeViewGmailClone = ({ direction }) => {
 export default TreeViewGmailClone
 `}</code>
   </pre>
-)
+);
 
 export const TreeViewCustomizedJSXCode = (
   <pre className='language-jsx'>
@@ -238,7 +238,7 @@ const TreeViewCustomized = () => {
 export default TreeViewCustomized
 `}</code>
   </pre>
-)
+);
 
 export const TreeViewMultiSelectionJSXCode = (
   <pre className='language-jsx'>
@@ -280,7 +280,7 @@ const TreeViewMultiSelection = ({ direction }) => {
 export default TreeViewMultiSelection
 `}</code>
   </pre>
-)
+);
 
 export const TreeViewRichObjectJSXCode = (
   <pre className='language-jsx'>
@@ -335,7 +335,7 @@ const TreeViewRichObject = ({ direction }) => {
 export default TreeViewRichObject
 `}</code>
   </pre>
-)
+);
 
 export const TreeViewBasicTSXCode = (
   <pre className='language-jsx'>
@@ -380,7 +380,7 @@ const TreeViewBasic = ({ direction }: Props) => {
 export default TreeViewBasic
 `}</code>
   </pre>
-)
+);
 
 export const TreeViewControlledTSXCode = (
   <pre className='language-jsx'>
@@ -444,7 +444,7 @@ const TreeViewControlled = ({ direction }: Props) => {
 export default TreeViewControlled
 `}</code>
   </pre>
-)
+);
 
 export const TreeViewGmailCloneTSXCode = (
   <pre className='language-jsx'>
@@ -542,7 +542,7 @@ const TreeViewGmailClone = ({ direction }: Props) => {
 export default TreeViewGmailClone
 `}</code>
   </pre>
-)
+);
 
 export const TreeViewRichObjectTSXCode = (
   <pre className='language-jsx'>
@@ -608,7 +608,7 @@ const TreeViewRichObject = ({ direction }: Props) => {
 export default TreeViewRichObject
 `}</code>
   </pre>
-)
+);
 
 export const TreeViewMultiSelectionTSXCode = (
   <pre className='language-jsx'>
@@ -654,7 +654,7 @@ const TreeViewMultiSelection = ({ direction }: Props) => {
 export default TreeViewMultiSelection
 `}</code>
   </pre>
-)
+);
 
 export const TreeViewCustomizedTSXCode = (
   <pre className='language-jsx'>
@@ -708,4 +708,4 @@ const TreeViewCustomized = () => {
 export default TreeViewCustomized
 `}</code>
   </pre>
-)
+);

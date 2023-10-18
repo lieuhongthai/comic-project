@@ -28,7 +28,7 @@ const ChipsAvatar = () => {
 export default ChipsAvatar
 `}</code>
   </pre>
-)
+);
 
 export const ChipsArrayJSXCode = (
   <pre className='language-jsx'>
@@ -70,7 +70,7 @@ const ChipsArray = () => {
 export default ChipsArray
 `}</code>
   </pre>
-)
+);
 
 export const ChipsClickableJSXCode = (
   <pre className='language-jsx'>
@@ -93,7 +93,7 @@ const ChipsClickable = () => {
 export default ChipsClickable
 `}</code>
   </pre>
-)
+);
 
 export const ChipsDisabledJSXCode = (
   <pre className='language-jsx'>
@@ -112,7 +112,7 @@ const ChipsDisabled = () => {
 export default ChipsDisabled
 `}</code>
   </pre>
-)
+);
 
 export const ChipsIconJSXCode = (
   <pre className='language-jsx'>
@@ -139,7 +139,7 @@ const ChipsIcon = () => {
 export default ChipsIcon
 `}</code>
   </pre>
-)
+);
 
 export const ChipsLightJSXCode = (
   <pre className='language-jsx'>
@@ -162,7 +162,7 @@ const ChipsCustomized = () => {
 export default ChipsCustomized
 `}</code>
   </pre>
-)
+);
 
 export const ChipsOnDeleteJSXCode = (
   <pre className='language-jsx'>
@@ -207,7 +207,7 @@ const ChipsOnDelete = () => {
 export default ChipsOnDelete
 `}</code>
   </pre>
-)
+);
 
 export const ChipsSizesJSXCode = (
   <pre className='language-jsx'>
@@ -226,7 +226,7 @@ const ChipsSizes = () => {
 export default ChipsSizes
 `}</code>
   </pre>
-)
+);
 
 export const ChipsRoundedJSXCode = (
   <pre className='language-jsx'>
@@ -249,7 +249,7 @@ const ChipsRounded = () => {
 export default ChipsRounded
 `}</code>
   </pre>
-)
+);
 
 export const ChipsVariantsJSXCode = (
   <pre className='language-jsx'>
@@ -268,7 +268,7 @@ const ChipsVariants = () => {
 export default ChipsVariants
 `}</code>
   </pre>
-)
+);
 
 export const ChipsColorsJSXCode = (
   <pre className='language-jsx'>
@@ -307,7 +307,7 @@ const ChipsColors = () => {
 export default ChipsColors
 `}</code>
   </pre>
-)
+);
 
 export const ChipsArrayTSXCode = (
   <pre className='language-jsx'>
@@ -356,7 +356,7 @@ const ChipsArray = () => {
 export default ChipsArray
 `}</code>
   </pre>
-)
+);
 
 export const ChipsClickableTSXCode = (
   <pre className='language-jsx'>
@@ -379,7 +379,7 @@ const ChipsClickable = () => {
 export default ChipsClickable
 `}</code>
   </pre>
-)
+);
 
 export const ChipsAvatarTSXCode = (
   <pre className='language-jsx'>
@@ -411,7 +411,7 @@ const ChipsAvatar = () => {
 export default ChipsAvatar
 `}</code>
   </pre>
-)
+);
 
 export const ChipsColorsTSXCode = (
   <pre className='language-jsx'>
@@ -450,7 +450,7 @@ const ChipsColors = () => {
 export default ChipsColors
 `}</code>
   </pre>
-)
+);
 
 export const ChipsIconTSXCode = (
   <pre className='language-jsx'>
@@ -477,7 +477,7 @@ const ChipsIcon = () => {
 export default ChipsIcon
 `}</code>
   </pre>
-)
+);
 
 export const ChipsLightTSXCode = (
   <pre className='language-jsx'>
@@ -500,7 +500,7 @@ const ChipsCustomized = () => {
 export default ChipsCustomized
 `}</code>
   </pre>
-)
+);
 
 export const ChipsRoundedTSXCode = (
   <pre className='language-jsx'>
@@ -523,7 +523,7 @@ const ChipsRounded = () => {
 export default ChipsRounded
 `}</code>
   </pre>
-)
+);
 
 export const ChipsOnDeleteTSXCode = (
   <pre className='language-jsx'>
@@ -568,7 +568,7 @@ const ChipsOnDelete = () => {
 export default ChipsOnDelete
 `}</code>
   </pre>
-)
+);
 
 export const ChipsDisabledTSXCode = (
   <pre className='language-jsx'>
@@ -587,7 +587,7 @@ const ChipsDisabled = () => {
 export default ChipsDisabled
 `}</code>
   </pre>
-)
+);
 
 export const ChipsSizesTSXCode = (
   <pre className='language-jsx'>
@@ -606,7 +606,7 @@ const ChipsSizes = () => {
 export default ChipsSizes
 `}</code>
   </pre>
-)
+);
 
 export const ChipsVariantsTSXCode = (
   <pre className='language-jsx'>
@@ -625,4 +625,4 @@ const ChipsVariants = () => {
 export default ChipsVariants
 `}</code>
   </pre>
-)
+);

@@ -1,34 +1,39 @@
-import { useEffect } from 'react'
-import { createBrowserRouter, useLocation } from 'react-router-dom'
-import BlankLayout from 'src/@core/layouts/BlankLayout'
-import Error404 from 'src/pages/404'
-import LoginPage from 'src/pages/login'
+import { useEffect } from 'react';
+import { createBrowserRouter, useLocation } from 'react-router-dom';
+import BlankLayout from 'src/@core/layouts/BlankLayout';
+import Error404 from 'src/pages/404';
+import LoginPage from 'src/pages/login';
 
 // ** Loader Import
-import NProgress from 'nprogress'
-import CustomLayout from 'src/layouts/CustomLayout'
-import UserList from 'src/pages/apps/user'
-import AppCalendar from 'src/pages/apps/calendar'
+import NProgress from 'nprogress';
+import CustomLayout from 'src/layouts/CustomLayout';
+import UserList from 'src/pages/apps/user';
+import CardBasic from 'src/pages/ui/cards/basic';
+import CardStatistics from 'src/pages/ui/cards/statistics';
+import { CardStatsType } from 'src/@fake-db/types';
+import axios from 'axios';
+import CardsAdvanced from 'src/pages/ui/cards/advanced';
+import CardWidgets from 'src/pages/ui/cards/widgets';
 
 export function Test2() {
-  return <div>aaaaaaaaaaaaaaaaaaaaaaaaa</div>
+  return <div>aaaaaaaaaaaaaaaaaaaaaaaaa</div>;
 }
 
 export function NprogressLoading() {
-  const location = useLocation()
+  const location = useLocation();
   useEffect(() => {
-    NProgress.start()
+    NProgress.start();
 
-    console.log(12005, 1)
+    console.log(12005, 1);
 
     return () => {
-      console.log(12005, 2)
+      console.log(12005, 2);
 
-      NProgress.done()
-    }
-  }, [location.pathname])
+      NProgress.done();
+    };
+  }, [location.pathname]);
 
-  return <></>
+  return <></>;
 }
 
 export function Component() {
@@ -36,7 +41,7 @@ export function Component() {
     <div>
       <h2>About</h2>
     </div>
-  )
+  );
 }
 
 export const routers = createBrowserRouter([
@@ -44,7 +49,7 @@ export const routers = createBrowserRouter([
     id: 'root',
     path: '/',
     loader() {
-      return { userD: 1 }
+      return { userD: 1 };
     },
 
     element: <CustomLayout />,
@@ -57,7 +62,7 @@ export const routers = createBrowserRouter([
         path: 'apps/',
         id: 'adminGuard',
         loader() {
-          return true
+          return true;
         },
         children: [
           { index: true, element: <>111111111111111111</> },
@@ -68,22 +73,50 @@ export const routers = createBrowserRouter([
           {
             path: 'calendar',
             async loader() {
-              await new Promise(r => setTimeout(r, 11500))
+              await new Promise(r => setTimeout(r, 11500));
 
-              return true
+              return true;
             },
             async lazy() {
-              await new Promise(r => setTimeout(r, 500))
-              let { default: AppCalendar } = await import('../pages/apps/calendar')
+              await new Promise(r => setTimeout(r, 500));
+              const { default: AppCalendar } = await import('../pages/apps/calendar');
 
               return {
                 Component: AppCalendar
-              }
+              };
             }
           },
           {
             path: 'user/list',
             element: <UserList />
+          }
+        ]
+      },
+      {
+        path: 'ui/',
+        children: [
+          {
+            path: 'cards/basic',
+            element: <CardBasic />
+          },
+          {
+            path: 'cards/advanced',
+            element: <CardsAdvanced />
+          },
+          {
+            path: 'cards/statistics',
+            async loader() {
+              const res = await axios.get('/cards/statistics');
+              const apiData: CardStatsType = res.data;
+
+              return { apiData };
+            },
+            element: <CardStatistics />
+          },
+          {
+            path: 'cards/widgets',
+
+            element: <CardWidgets />
           }
         ]
       }
@@ -98,7 +131,7 @@ export const routers = createBrowserRouter([
   {
     id: 'guestGuard',
     loader() {
-      return { guestGuard: true }
+      return { guestGuard: true };
     },
     path: '/login',
     element: (
@@ -107,6 +140,7 @@ export const routers = createBrowserRouter([
       </BlankLayout>
     )
   }
+
   // {
   //   path: '*',
   //   element: (
@@ -115,4 +149,4 @@ export const routers = createBrowserRouter([
   //     </BlankLayout>
   //   )
   // }
-])
+]);

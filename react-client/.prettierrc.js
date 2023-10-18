@@ -9,9 +9,10 @@ module.exports = {
   proseWrap: 'preserve',
   quoteProps: 'as-needed',
   requirePragma: false,
-  semi: false,
+  semi: true,
   singleQuote: true,
   tabWidth: 2,
   trailingComma: 'none',
-  useTabs: false
+  useTabs: false,
+  endOfLine: "lf",
 }

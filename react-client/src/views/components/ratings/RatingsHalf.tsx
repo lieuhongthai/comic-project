@@ -1,7 +1,7 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Rating from '@mui/material/Rating'
-import Typography from '@mui/material/Typography'
+import Box from '@mui/material/Box';
+import Rating from '@mui/material/Rating';
+import Typography from '@mui/material/Typography';
 
 const RatingsHalf = () => {
   return (
@@ -15,7 +15,7 @@ const RatingsHalf = () => {
         <Rating readOnly defaultValue={2.5} precision={0.5} name='read-only' />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default RatingsHalf
+export default RatingsHalf;

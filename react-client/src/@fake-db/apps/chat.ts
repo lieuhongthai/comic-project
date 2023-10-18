@@ -1,11 +1,11 @@
 // ** Mock Adapter
-import mock from 'src/@fake-db/mock'
+import mock from 'src/@fake-db/mock';
 
 // ** Types
-import { ProfileUserType, ChatsObj, ContactType } from 'src/types/apps/chatTypes'
+import { ProfileUserType, ChatsObj, ContactType } from 'src/types/apps/chatTypes';
 
-const previousDay = new Date(new Date().getTime() - 24 * 60 * 60 * 1000)
-const dayBeforePreviousDay = new Date(new Date().getTime() - 24 * 60 * 60 * 1000 * 2)
+const previousDay = new Date(new Date().getTime() - 24 * 60 * 60 * 1000);
+const dayBeforePreviousDay = new Date(new Date().getTime() - 24 * 60 * 60 * 1000 * 2);
 
 const data: { chats: ChatsObj[]; contacts: ContactType[]; profileUser: ProfileUserType } = {
   profileUser: {
@@ -13,8 +13,7 @@ const data: { chats: ChatsObj[]; contacts: ContactType[]; profileUser: ProfileUs
     avatar: '/images/avatars/1.png',
     fullName: 'John Doe',
     role: 'admin',
-    about:
-      'Dessert chocolate cake lemon drops jujubes. Biscuit cupcake ice cream bear claw brownie brownie marshmallow.',
+    about: 'Dessert chocolate cake lemon drops jujubes. Biscuit cupcake ice cream bear claw brownie brownie marshmallow.',
     status: 'online',
     settings: {
       isTwoStepAuthVerificationEnabled: true,
@@ -43,8 +42,7 @@ const data: { chats: ChatsObj[]; contacts: ContactType[]; profileUser: ProfileUs
       id: 3,
       fullName: 'Joaquina Weisenborn',
       role: 'Town planner',
-      about:
-        'Soufflé soufflé caramels sweet roll. Jelly lollipop sesame snaps bear claw jelly beans sugar plum sugar plum.',
+      about: 'Soufflé soufflé caramels sweet roll. Jelly lollipop sesame snaps bear claw jelly beans sugar plum sugar plum.',
       avatar: '/images/avatars/8.png',
       status: 'busy'
     },
@@ -78,8 +76,7 @@ const data: { chats: ChatsObj[]; contacts: ContactType[]; profileUser: ProfileUs
       id: 7,
       fullName: 'Miguel Guelff',
       role: 'Special educational needs teacher',
-      about:
-        'Biscuit powder oat cake donut brownie ice cream I love soufflé. I love tootsie roll I love powder tootsie roll.',
+      about: 'Biscuit powder oat cake donut brownie ice cream I love soufflé. I love tootsie roll I love powder tootsie roll.',
       avatar: '/images/avatars/7.png',
       status: 'online'
     },
@@ -87,8 +84,7 @@ const data: { chats: ChatsObj[]; contacts: ContactType[]; profileUser: ProfileUs
       id: 8,
       fullName: 'Mauro Elenbaas',
       role: 'Advertising copywriter',
-      about:
-        'Bear claw ice cream lollipop gingerbread carrot cake. Brownie gummi bears chocolate muffin croissant jelly I love marzipan wafer.',
+      about: 'Bear claw ice cream lollipop gingerbread carrot cake. Brownie gummi bears chocolate muffin croissant jelly I love marzipan wafer.',
       avatar: '/images/avatars/6.png',
       status: 'away'
     },
@@ -286,78 +282,78 @@ const data: { chats: ChatsObj[]; contacts: ContactType[]; profileUser: ProfileUs
       ]
     }
   ]
-}
+};
 
 const reorderChats = (arr: ChatsObj[], from: number, to: number) => {
-  const item = arr.splice(from, 1)
+  const item = arr.splice(from, 1);
 
   // ** Move the item to its new position
-  arr.splice(to, 0, item[0])
-}
+  arr.splice(to, 0, item[0]);
+};
 
 // ------------------------------------------------
 // GET: Return Chats Contacts and Contacts
 // ------------------------------------------------
 mock.onGet('/apps/chat/chats-and-contacts').reply(() => {
   const chatsContacts = data.chats.map((chat: ChatsObj) => {
-    const contact = data.contacts.find((c: ContactType) => c.id === chat.userId)
+    const contact = data.contacts.find((c: ContactType) => c.id === chat.userId);
 
     // @ts-ignore
-    contact.chat = { id: chat.id, unseenMsgs: chat.unseenMsgs, lastMessage: chat.chat[chat.chat.length - 1] }
+    contact.chat = { id: chat.id, unseenMsgs: chat.unseenMsgs, lastMessage: chat.chat[chat.chat.length - 1] };
 
-    return contact
-  })
+    return contact;
+  });
 
   const contactsToShow = data.contacts.filter((co: ContactType) => {
     return !data.chats.some((ch: ChatsObj) => {
-      return co.id === ch.id
-    })
-  })
+      return co.id === ch.id;
+    });
+  });
 
   const profileUserData = {
     id: data.profileUser.id,
     avatar: data.profileUser.avatar,
     fullName: data.profileUser.fullName,
     status: data.profileUser.status
-  }
+  };
 
-  return [200, { chatsContacts, contacts: contactsToShow, profileUser: profileUserData }]
-})
+  return [200, { chatsContacts, contacts: contactsToShow, profileUser: profileUserData }];
+});
 
 // ------------------------------------------------
 // GET: Return User Profile
 // ------------------------------------------------
-mock.onGet('/apps/chat/users/profile-user').reply(() => [200, data.profileUser])
+mock.onGet('/apps/chat/users/profile-user').reply(() => [200, data.profileUser]);
 
 // ------------------------------------------------
 // GET: Return Single Chat
 // ------------------------------------------------
 mock.onGet('/apps/chat/get-chat').reply(config => {
   // Get event id from URL
-  let userId = config.params.id
+  let userId = config.params.id;
 
   //  Convert Id to number
-  userId = Number(userId)
+  userId = Number(userId);
 
-  const chat = data.chats.find((c: ChatsObj) => c.id === userId)
+  const chat = data.chats.find((c: ChatsObj) => c.id === userId);
 
-  if (chat) chat.unseenMsgs = 0
-  const contact = data.contacts.find((c: ContactType) => c.id === userId)
+  if (chat) chat.unseenMsgs = 0;
+  const contact = data.contacts.find((c: ContactType) => c.id === userId);
 
   // @ts-ignore
-  if (contact.chat) contact.chat.unseenMsgs = 0
+  if (contact.chat) contact.chat.unseenMsgs = 0;
 
-  return [200, { chat, contact }]
-})
+  return [200, { chat, contact }];
+});
 
 // ------------------------------------------------
 // POST: Add new chat message
 // ------------------------------------------------
 mock.onPost('/apps/chat/send-msg').reply(config => {
   // Get event from post data
-  const { obj } = JSON.parse(config.data).data
+  const { obj } = JSON.parse(config.data).data;
 
-  let activeChat = data.chats.find((chat: ChatsObj) => chat.id === obj.contact.id)
+  let activeChat = data.chats.find((chat: ChatsObj) => chat.id === obj.contact.id);
 
   const newMessageData = {
     senderId: 11,
@@ -368,34 +364,34 @@ mock.onPost('/apps/chat/send-msg').reply(config => {
       isSeen: false,
       isDelivered: false
     }
-  }
+  };
 
   // If there's new chat for user create one
-  let isNewChat = false
+  let isNewChat = false;
 
   if (activeChat === undefined) {
-    isNewChat = true
+    isNewChat = true;
 
     data.chats.push({
       id: obj.contact.id,
       userId: obj.contact.id,
       unseenMsgs: 0,
       chat: [newMessageData]
-    })
-    activeChat = data.chats[data.chats.length - 1]
+    });
+    activeChat = data.chats[data.chats.length - 1];
   } else {
-    activeChat.chat.push(newMessageData)
+    activeChat.chat.push(newMessageData);
   }
-  const response = { newMessageData, id: obj.contact.id }
+  const response = { newMessageData, id: obj.contact.id };
 
   // @ts-ignore
-  if (isNewChat) response.chat = activeChat
+  if (isNewChat) response.chat = activeChat;
 
   reorderChats(
     data.chats,
     data.chats.findIndex(i => i.id === response.id),
     0
-  )
+  );
 
-  return [201, { response }]
-})
+  return [201, { response }];
+});

@@ -1,29 +1,26 @@
 // ** React Imports
-import { forwardRef, Fragment, ReactElement, Ref, useState } from 'react'
+import { forwardRef, Fragment, ReactElement, Ref, useState } from 'react';
 
 // ** MUI Imports
-import Button from '@mui/material/Button'
-import Dialog from '@mui/material/Dialog'
-import DialogTitle from '@mui/material/DialogTitle'
-import DialogContent from '@mui/material/DialogContent'
-import DialogActions from '@mui/material/DialogActions'
-import Slide, { SlideProps } from '@mui/material/Slide'
-import DialogContentText from '@mui/material/DialogContentText'
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import Slide, { SlideProps } from '@mui/material/Slide';
+import DialogContentText from '@mui/material/DialogContentText';
 
-const Transition = forwardRef(function Transition(
-  props: SlideProps & { children?: ReactElement<any, any> },
-  ref: Ref<unknown>
-) {
-  return <Slide direction='up' ref={ref} {...props} />
-})
+const Transition = forwardRef(function Transition(props: SlideProps & { children?: ReactElement<any, any> }, ref: Ref<unknown>) {
+  return <Slide direction='up' ref={ref} {...props} />;
+});
 
 const DialogTransition = () => {
   // ** State
-  const [open, setOpen] = useState<boolean>(false)
+  const [open, setOpen] = useState<boolean>(false);
 
-  const handleClickOpen = () => setOpen(true)
+  const handleClickOpen = () => setOpen(true);
 
-  const handleClose = () => setOpen(false)
+  const handleClose = () => setOpen(false);
 
   return (
     <Fragment>
@@ -41,8 +38,7 @@ const DialogTransition = () => {
         <DialogTitle id='alert-dialog-slide-title'>Use Google's location service?</DialogTitle>
         <DialogContent>
           <DialogContentText id='alert-dialog-slide-description'>
-            Let Google help apps determine location. This means sending anonymous location data to Google, even when no
-            apps are running.
+            Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.
           </DialogContentText>
         </DialogContent>
         <DialogActions className='dialog-actions-dense'>
@@ -51,7 +47,7 @@ const DialogTransition = () => {
         </DialogActions>
       </Dialog>
     </Fragment>
-  )
-}
+  );
+};
 
-export default DialogTransition
+export default DialogTransition;

@@ -1,8 +1,8 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
+import Box from '@mui/material/Box';
 
 // ** Third Party Components
-import { useKeenSlider } from 'keen-slider/react'
+import { useKeenSlider } from 'keen-slider/react';
 
 const SwiperVertical = () => {
   // ** Hook
@@ -12,7 +12,7 @@ const SwiperVertical = () => {
       perView: 2,
       spacing: 8
     }
-  })
+  });
 
   return (
     <Box ref={ref} className='keen-slider vertical' sx={{ maxHeight: 300 }}>
@@ -22,7 +22,7 @@ const SwiperVertical = () => {
         </Box>
       ))}
     </Box>
-  )
-}
+  );
+};
 
-export default SwiperVertical
+export default SwiperVertical;

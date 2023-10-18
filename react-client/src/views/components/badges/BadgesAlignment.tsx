@@ -1,6 +1,6 @@
 // ** MUI Imports
-import Badge from '@mui/material/Badge'
-import Avatar from '@mui/material/Avatar'
+import Badge from '@mui/material/Badge';
+import Avatar from '@mui/material/Avatar';
 
 const BadgesAlignment = () => {
   return (
@@ -18,7 +18,7 @@ const BadgesAlignment = () => {
         <Avatar src='/images/avatars/1.png' alt='User Avatar' />
       </Badge>
     </div>
-  )
-}
+  );
+};
 
-export default BadgesAlignment
+export default BadgesAlignment;

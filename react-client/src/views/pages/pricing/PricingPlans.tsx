@@ -1,20 +1,20 @@
 // ** MUI Imports
-import Grid from '@mui/material/Grid'
+import Grid from '@mui/material/Grid';
 
 // ** Custom Components Imports
-import PlanDetails from 'src/@core/components/plan-details'
+import PlanDetails from 'src/@core/components/plan-details';
 
 // ** Types
-import { PricingPlanType } from 'src/@core/components/plan-details/types'
+import { PricingPlanType } from 'src/@core/components/plan-details/types';
 
 interface Props {
-  plan: string
-  data: PricingPlanType[] | null
+  plan: string;
+  data: PricingPlanType[] | null;
 }
 
 const PricingPlans = (props: Props) => {
   // ** Props
-  const { plan, data } = props
+  const { plan, data } = props;
 
   return (
     <Grid container spacing={6}>
@@ -24,7 +24,7 @@ const PricingPlans = (props: Props) => {
         </Grid>
       ))}
     </Grid>
-  )
-}
+  );
+};
 
-export default PricingPlans
+export default PricingPlans;
