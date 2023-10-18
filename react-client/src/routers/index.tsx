@@ -8,12 +8,25 @@ import LoginPage from 'src/pages/login';
 import NProgress from 'nprogress';
 import CustomLayout from 'src/layouts/CustomLayout';
 import UserList from 'src/pages/apps/user';
-import CardBasic from 'src/pages/ui/cards/basic';
-import CardStatistics from 'src/pages/ui/cards/statistics';
-import { CardStatsType } from 'src/@fake-db/types';
-import axios from 'axios';
-import CardsAdvanced from 'src/pages/ui/cards/advanced';
-import CardWidgets from 'src/pages/ui/cards/widgets';
+import Accordion from 'src/pages/components/accordion';
+import Alerts from 'src/pages/components/alerts';
+import Avatars from 'src/pages/components/avatars';
+import Badges from 'src/pages/components/badges';
+import Buttons from 'src/pages/components/buttons';
+import ButtonGroup from 'src/pages/components/button-group';
+import Chips from 'src/pages/components/chips';
+import Dialogs from 'src/pages/components/dialogs';
+import Lists from 'src/pages/components/list';
+import Menus from 'src/pages/components/menu';
+import Pagination from 'src/pages/components/pagination';
+import Ratings from 'src/pages/components/ratings';
+import Snackbar from 'src/pages/components/snackbar';
+import Swiper from 'src/pages/components/swiper';
+import Tabs from 'src/pages/components/tabs';
+import Timelines from 'src/pages/components/timeline';
+import ReactHotToasts from 'src/pages/components/toast';
+import Misc from 'src/pages/components/more';
+import TreeView from 'src/pages/components/tree-view';
 
 export function Test2() {
   return <div>aaaaaaaaaaaaaaaaaaaaaaaaa</div>;
@@ -73,7 +86,7 @@ export const routers = createBrowserRouter([
           {
             path: 'calendar',
             async loader() {
-              await new Promise(r => setTimeout(r, 11500));
+              await new Promise(r => setTimeout(r, 1000));
 
               return true;
             },
@@ -92,31 +105,90 @@ export const routers = createBrowserRouter([
           }
         ]
       },
+
       {
-        path: 'ui/',
+        path: 'components/',
         children: [
           {
-            path: 'cards/basic',
-            element: <CardBasic />
+            path: 'accordion',
+            element: <Accordion />
           },
           {
-            path: 'cards/advanced',
-            element: <CardsAdvanced />
+            path: 'alerts',
+            element: <Alerts />
           },
           {
-            path: 'cards/statistics',
-            async loader() {
-              const res = await axios.get('/cards/statistics');
-              const apiData: CardStatsType = res.data;
+            path: 'avatars',
+            element: <Avatars />
+          },
 
-              return { apiData };
-            },
-            element: <CardStatistics />
+          {
+            path: 'badges',
+            element: <Badges />
           },
           {
-            path: 'cards/widgets',
+            path: 'buttons',
+            element: <Buttons />
+          },
+          {
+            path: 'button-group',
+            element: <ButtonGroup />
+          },
 
-            element: <CardWidgets />
+          {
+            path: 'chips',
+            element: <Chips />
+          },
+          {
+            path: 'dialogs',
+            element: <Dialogs />
+          },
+          {
+            path: 'lists',
+            element: <Lists />
+          },
+
+          {
+            path: 'menu',
+            element: <Menus />
+          },
+          {
+            path: 'pagination',
+            element: <Pagination />
+          },
+          {
+            path: 'ratings',
+            element: <Ratings />
+          },
+
+          {
+            path: 'snackbar',
+            element: <Snackbar />
+          },
+          {
+            path: 'swiper',
+            element: <Swiper />
+          },
+          {
+            path: 'tabs',
+            element: <Tabs />
+          },
+
+          {
+            path: 'timeline',
+            element: <Timelines />
+          },
+          {
+            path: 'toast',
+            element: <ReactHotToasts />
+          },
+          {
+            path: 'tree-view',
+            element: <TreeView />
+          },
+          {
+            path: 'more',
+            element: <Misc />
           }
         ]
       }
@@ -141,6 +213,35 @@ export const routers = createBrowserRouter([
     )
   }
 
+  // {
+  //   path: 'ui/',
+  //   children: [
+  //     {
+  //       path: 'cards/basic',
+  //       element: <CardBasic />
+  //     },
+  //     {
+  //       path: 'cards/advanced',
+  //       element: <CardsAdvanced />
+  //     },
+  //     {
+  //       path: 'cards/statistics',
+  //       async loader() {
+  //         const res = await axios.get('/cards/statistics');
+  //         const apiData: CardStatsType = res.data;
+  //         await new Promise(r => setTimeout(r, 1000));
+
+  //         return { apiData };
+  //       },
+  //       element: <CardStatistics />
+  //     },
+  //     {
+  //       path: 'cards/widgets',
+
+  //       element: <CardWidgets />
+  //     }
+  //   ]
+  // },
   // {
   //   path: '*',
   //   element: (

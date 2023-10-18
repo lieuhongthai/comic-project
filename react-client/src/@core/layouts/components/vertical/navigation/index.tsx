@@ -93,6 +93,8 @@ const Navigation = (props: Props) => {
 
   // ** Scroll Menu
   const scrollMenu = (container: any) => {
+    console.log(12005, 'container', container, container.scrollTop, container.target);
+
     if (beforeVerticalNavMenuContentPosition === 'static' || !beforeNavMenuContent) {
       container = hidden ? container.target : container;
       if (shadowRef && container.scrollTop > 0) {
@@ -127,6 +129,8 @@ const Navigation = (props: Props) => {
   // console.log(12005, 'Re-render: Navigation', navHover, userNavMenuContent && userNavMenuContent(props))
   const handleSetNav = (isBool: boolean) => setNavHover(isBool);
 
+  console.log(12005, hidden);
+
   return (
     <Drawer {...props} navHover={navHover} setNavHover={handleSetNav}>
       <VerticalNavHeader {...props} navHover={navHover} />
@@ -137,7 +141,7 @@ const Navigation = (props: Props) => {
       <Box sx={{ position: 'relative', overflow: 'hidden' }}>
         {/* @ts-ignore */}
         <ScrollWrapper
-          {...(hidden
+          {...(!hidden
             ? {
                 onScroll: (container: any) => scrollMenu(container),
                 sx: { height: '100%', overflowY: 'auto', overflowX: 'hidden' }
@@ -174,3 +178,5 @@ export default memo(
       pre.settings.navCollapsed !== next.settings.navCollapsed
     )
 );
+
+// export default Navigation;

@@ -57,8 +57,6 @@ const UserList = () => {
   // ** Hook
   const theme = useTheme();
 
-  console.log(12005, 'Re-render component: UserList');
-
   const userColumns = useMemo<MRT_ColumnDef<UserType>[]>(
     () => [
       {

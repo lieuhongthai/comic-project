@@ -91,40 +91,6 @@ const navigation = (): VerticalNavItemsType => {
       ]
     },
     {
-      sectionTitle: 'Card'
-    },
-
-    {
-      title: 'Cards',
-      icon: 'mdi:credit-card-outline',
-      children: [
-        {
-          title: 'Basic',
-          path: '/ui/cards/basic'
-        },
-        {
-          title: 'Advanced',
-          path: '/ui/cards/advanced'
-        },
-        {
-          title: 'Statistics',
-          path: '/ui/cards/statistics'
-        },
-        {
-          title: 'Widgets',
-          path: '/ui/cards/widgets'
-        },
-        {
-          title: 'Gamification',
-          path: '/ui/cards/gamification'
-        },
-        {
-          title: 'Actions',
-          path: '/ui/cards/actions'
-        }
-      ]
-    },
-    {
       sectionTitle: 'Component'
     },
     {
@@ -167,7 +133,7 @@ const navigation = (): VerticalNavItemsType => {
         },
         {
           title: 'List',
-          path: '/components/list'
+          path: '/components/lists'
         },
         {
           title: 'Menu',

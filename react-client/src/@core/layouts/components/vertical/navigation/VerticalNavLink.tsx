@@ -117,12 +117,6 @@ const VerticalNavLink = ({
   };
 
   const isNavLinkActive = () => {
-    // if (navigation.state !== 'idle' || navigation.location) console.log(12005, { navigation })
-    // console.log(12005, 'pathCurrent: ', pathCurrent)
-
-    // if (item.path === pathCurrent) return true
-    // return false
-
     if (
       (navigation.state !== 'idle' && navigation.location.pathname === item.path) ||
       (navigation.state === 'idle' && pathname === item.path) ||
