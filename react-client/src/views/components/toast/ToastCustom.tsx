@@ -13,7 +13,7 @@ import toast from 'react-hot-toast';
 
 const ToastCustom = () => {
   const handleClick = () => {
-    return toast(
+    return toast.custom(
       t => (
         <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -27,12 +27,13 @@ const ToastCustom = () => {
             <Icon icon='mdi:close' fontSize={20} />
           </IconButton>
         </Box>
-      ),
-      {
-        style: {
-          minWidth: '300px'
-        }
-      }
+      )
+
+      // {
+      //   style: {
+      //     minWidth: '300px'
+      //   }
+      // }
     );
   };
 

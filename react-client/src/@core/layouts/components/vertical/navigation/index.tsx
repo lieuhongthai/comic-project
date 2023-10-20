@@ -93,7 +93,7 @@ const Navigation = (props: Props) => {
 
   // ** Scroll Menu
   const scrollMenu = (container: any) => {
-    console.log(12005, 'container', container, container.scrollTop, container.target);
+    console.log(12005, 'container', container, container.scrollTop, container.target, hidden, beforeVerticalNavMenuContentPosition === 'static');
 
     if (beforeVerticalNavMenuContentPosition === 'static' || !beforeNavMenuContent) {
       container = hidden ? container.target : container;

@@ -6,6 +6,12 @@ import 'src/configs/i18n';
 // ** Fake-DB Import
 import 'src/@fake-db';
 
+// ** Prismjs Styles
+import 'prismjs';
+import 'prismjs/themes/prism-tomorrow.css';
+import 'prismjs/components/prism-jsx';
+import 'prismjs/components/prism-tsx';
+
 import { initialSettings } from 'src/@core/context/settingsContext';
 
 // ** React Perfect Scrollbar Style
