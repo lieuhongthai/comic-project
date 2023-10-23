@@ -1,5 +1,5 @@
 // ** React Import
-import { memo, useRef, useState } from 'react';
+import { memo, useMemo, useRef, useState } from 'react';
 
 // ** MUI Import
 import List from '@mui/material/List';
@@ -69,22 +69,39 @@ const Navigation = (props: Props) => {
   // ** Ref
   const shadowRef = useRef(null);
 
+  const scrollRef = useRef<HTMLElement>(null);
+
   // ** Hooks
   const theme = useTheme();
   const { mode } = settings;
+
+  // ** Memo
+  useMemo(() => {
+    if (settings.navCollapsed && !navHover) {
+      if (scrollRef && scrollRef.current) {
+        scrollRef.current.scrollTop = 0;
+      }
+    }
+  }, [navHover]);
 
   // ** Var
   const { afterVerticalNavMenuContentPosition, beforeVerticalNavMenuContentPosition } = themeConfig;
 
   // ** Fixes Navigation InfiniteScroll
   const handleInfiniteScroll = (ref: HTMLElement) => {
+    // @ts-ignore
+    scrollRef.current = ref;
+
     if (ref) {
       // @ts-ignore
       ref._getBoundingClientRect = ref.getBoundingClientRect;
 
+      console.log(12005, ref.getBoundingClientRect, navHover);
+
       ref.getBoundingClientRect = () => {
         // @ts-ignore
         const original = ref._getBoundingClientRect();
+        console.log(12005, Math.floor(original.height), navHover);
 
         return { ...original, height: Math.floor(original.height) };
       };
@@ -93,7 +110,7 @@ const Navigation = (props: Props) => {
 
   // ** Scroll Menu
   const scrollMenu = (container: any) => {
-    console.log(12005, 'container', container, container.scrollTop, container.target, hidden, beforeVerticalNavMenuContentPosition === 'static');
+    console.log(12005, 'Ref: ', scrollRef);
 
     if (beforeVerticalNavMenuContentPosition === 'static' || !beforeNavMenuContent) {
       container = hidden ? container.target : container;
@@ -126,13 +143,8 @@ const Navigation = (props: Props) => {
 
   const ScrollWrapper = hidden ? Box : PerfectScrollbar;
 
-  // console.log(12005, 'Re-render: Navigation', navHover, userNavMenuContent && userNavMenuContent(props))
-  const handleSetNav = (isBool: boolean) => setNavHover(isBool);
-
-  console.log(12005, hidden);
-
   return (
-    <Drawer {...props} navHover={navHover} setNavHover={handleSetNav}>
+    <Drawer {...props} navHover={navHover} setNavHover={setNavHover}>
       <VerticalNavHeader {...props} navHover={navHover} />
       {beforeNavMenuContent && beforeVerticalNavMenuContentPosition === 'fixed' ? beforeNavMenuContent(props) : null}
       {(beforeVerticalNavMenuContentPosition === 'static' || !beforeNavMenuContent) && (
@@ -141,7 +153,7 @@ const Navigation = (props: Props) => {
       <Box sx={{ position: 'relative', overflow: 'hidden' }}>
         {/* @ts-ignore */}
         <ScrollWrapper
-          {...(!hidden
+          {...(hidden
             ? {
                 onScroll: (container: any) => scrollMenu(container),
                 sx: { height: '100%', overflowY: 'auto', overflowX: 'hidden' }

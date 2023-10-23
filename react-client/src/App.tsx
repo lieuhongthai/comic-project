@@ -39,6 +39,9 @@ import { Helmet } from 'react-helmet-async';
 // ** Spinner Import
 import Spinner from 'src/@core/components/spinner';
 
+// ** Styles
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+
 import { routers } from './routers';
 
 function App() {
