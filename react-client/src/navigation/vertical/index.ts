@@ -237,6 +237,44 @@ const navigation = (): VerticalNavItemsType => {
           path: '/forms/form-elements/input-mask'
         }
       ]
+    },
+    {
+      icon: 'mdi:cube-outline',
+      title: 'Form Layouts',
+      path: '/forms/form-layouts'
+    },
+    {
+      title: 'Form Validation',
+      path: '/forms/form-validation',
+      icon: 'mdi:checkbox-marked-circle-outline'
+    },
+    {
+      title: 'Form Wizard',
+      path: '/forms/form-wizard',
+      icon: 'mdi:transit-connection-horizontal'
+    },
+    {
+      title: 'Table',
+      icon: 'mdi:grid-large',
+      path: '/tables/mui'
+    },
+    {
+      sectionTitle: 'User Interface'
+    },
+    {
+      title: 'Material React Table',
+      icon: 'mdi:grid',
+      path: '/tables/material-react-table'
+    },
+    {
+      title: 'Typography',
+      icon: 'mdi:format-letter-case',
+      path: '/ui/typography'
+    },
+    {
+      title: 'Icons',
+      path: '/ui/icons',
+      icon: 'mdi:google-circles-extended'
     }
   ];
 };

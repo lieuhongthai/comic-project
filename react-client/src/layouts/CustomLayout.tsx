@@ -36,6 +36,7 @@ import Spinner from 'src/@core/components/spinner';
 
 // ** Types Import
 import { Settings, initialSettings } from 'src/@core/context/settingsContext';
+import ScrollTopRouter from 'src/@core/components/scroll-to-top/ScrollTopRouter';
 
 const CustomLayout = () => {
   // ** Hooks
@@ -68,7 +69,9 @@ const CustomLayout = () => {
         }
       }}
     >
-      <AuthProvider>{renderChildren()}</AuthProvider>
+      <ScrollTopRouter>
+        <AuthProvider>{renderChildren()}</AuthProvider>
+      </ScrollTopRouter>
     </Layout>
   );
 };

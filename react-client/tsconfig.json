@@ -15,8 +15,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
-    // "noFallthroughCasesInSwitch": true,
+    "incremental": true,
+    "noFallthroughCasesInSwitch": true
     // "paths": {
     //   "apexcharts": ["./node_modules/apexcharts-clevision"],
     //   "apexcharts/*": ["./node_modules/apexcharts-clevision/*"]

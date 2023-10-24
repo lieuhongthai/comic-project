@@ -43,7 +43,9 @@ interface Props {
 }
 
 // ** Styled Components
-const MenuNavLink = styled(ListItemButton)<ListItemButtonProps & { component?: ElementType; to: string | undefined | null }>(({ theme }) => ({
+const MenuNavLink = styled(ListItemButton)<
+  ListItemButtonProps & { component?: ElementType; to: string | undefined | null; preventScrollReset?: boolean }
+>(({ theme }) => ({
   width: '100%',
   borderRadius: 8,
   transition: 'padding-left .25s ease-in-out',

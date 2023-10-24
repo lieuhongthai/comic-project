@@ -27,6 +27,26 @@ import Timelines from 'src/pages/components/timeline';
 import ReactHotToasts from 'src/pages/components/toast';
 import Misc from 'src/pages/components/more';
 import TreeView from 'src/pages/components/tree-view';
+import TextFields from 'src/pages/forms/form-elements/text-field';
+import Selects from 'src/pages/forms/form-elements/select';
+import Checkboxes from 'src/pages/forms/form-elements/checkbox';
+import Radios from 'src/pages/forms/form-elements/radio';
+import CustomInputs from 'src/pages/forms/form-elements/custom-inputs';
+import Textareas from 'src/pages/forms/form-elements/textarea';
+import Autocompletes from 'src/pages/forms/form-elements/autocomplete';
+import ReactDatePickers from 'src/pages/forms/form-elements/pickers';
+import Switches from 'src/pages/forms/form-elements/switch';
+import FileUploaders from 'src/pages/forms/form-elements/file-uploader';
+import Editors from 'src/pages/forms/form-elements/editor';
+import Sliders from 'src/pages/forms/form-elements/slider';
+import InputMasks from 'src/pages/forms/form-elements/input-mask';
+import FormLayouts from 'src/pages/forms/form-layouts';
+import FormValidations from 'src/pages/forms/form-validation';
+import FormWizards from 'src/pages/forms/form-wizard';
+import MUITable from 'src/pages/tables/mui';
+import MaterialReactTables from 'src/pages/tables/material-react-table';
+import Icons from 'src/pages/ui/icons';
+import TypographyPage from 'src/pages/ui/typography';
 
 export function Test2() {
   return <div>aaaaaaaaaaaaaaaaaaaaaaaaa</div>;
@@ -189,6 +209,102 @@ export const routers = createBrowserRouter([
           {
             path: 'more',
             element: <Misc />
+          }
+        ]
+      },
+
+      {
+        path: 'forms/',
+        children: [
+          {
+            path: 'form-elements/text-field',
+            element: <TextFields />
+          },
+          {
+            path: 'form-elements/select',
+            element: <Selects />
+          },
+          {
+            path: 'form-elements/checkbox',
+            element: <Checkboxes />
+          },
+          {
+            path: 'form-elements/radio',
+            element: <Radios />
+          },
+          {
+            path: 'form-elements/custom-inputs',
+            element: <CustomInputs />
+          },
+          {
+            path: 'form-elements/textarea',
+            element: <Textareas />
+          },
+          {
+            path: 'form-elements/autocomplete',
+            element: <Autocompletes />
+          },
+          {
+            path: 'form-elements/pickers',
+            element: <ReactDatePickers />
+          },
+          {
+            path: 'form-elements/switch',
+            element: <Switches />
+          },
+          {
+            path: 'form-elements/file-uploader',
+            element: <FileUploaders />
+          },
+          {
+            path: 'form-elements/editor',
+            element: <Editors />
+          },
+          {
+            path: 'form-elements/slider',
+            element: <Sliders />
+          },
+          {
+            path: 'form-elements/input-mask',
+            element: <InputMasks />
+          },
+          {
+            path: 'form-layouts',
+            element: <FormLayouts />
+          },
+          {
+            path: 'form-validation',
+            element: <FormValidations />
+          },
+          {
+            path: 'form-wizard',
+            element: <FormWizards />
+          }
+        ]
+      },
+      {
+        path: 'tables/',
+        children: [
+          {
+            path: 'mui',
+            element: <MUITable />
+          },
+          {
+            path: 'material-react-table',
+            element: <MaterialReactTables />
+          }
+        ]
+      },
+      {
+        path: 'ui/',
+        children: [
+          {
+            path: 'icons',
+            element: <Icons />
+          },
+          {
+            path: 'typography',
+            element: <TypographyPage />
           }
         ]
       }
