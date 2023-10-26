@@ -16,7 +16,8 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true //
     // "paths": {
     //   "apexcharts": ["./node_modules/apexcharts-clevision"],
     //   "apexcharts/*": ["./node_modules/apexcharts-clevision/*"]

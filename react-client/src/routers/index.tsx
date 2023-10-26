@@ -47,6 +47,7 @@ import MUITable from 'src/pages/tables/mui';
 import MaterialReactTables from 'src/pages/tables/material-react-table';
 import Icons from 'src/pages/ui/icons';
 import TypographyPage from 'src/pages/ui/typography';
+import DndPage from 'src/pages/dnd';
 
 export function Test2() {
   return <div>aaaaaaaaaaaaaaaaaaaaaaaaa</div>;
@@ -305,6 +306,10 @@ export const routers = createBrowserRouter([
           {
             path: 'typography',
             element: <TypographyPage />
+          },
+          {
+            path: 'dnd',
+            element: <DndPage />
           }
         ]
       }

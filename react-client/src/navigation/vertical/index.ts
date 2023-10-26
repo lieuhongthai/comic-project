@@ -275,6 +275,11 @@ const navigation = (): VerticalNavItemsType => {
       title: 'Icons',
       path: '/ui/icons',
       icon: 'mdi:google-circles-extended'
+    },
+    {
+      title: 'Icons',
+      path: '/ui/dnd',
+      icon: 'mdi:google-circles-extended'
     }
   ];
 };
