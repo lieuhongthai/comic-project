@@ -66,6 +66,8 @@ const RndTable = () => {
       arr.push({ [`${year}/${month}`]: dayList });
     }
 
+    console.log(12005, { arr });
+
     const returnData = arr.map((v, i) => {
       return {
         accessorKey: `${Object.keys(v)[0]}`,
