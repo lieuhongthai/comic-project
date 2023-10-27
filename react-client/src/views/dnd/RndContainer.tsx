@@ -1,5 +1,5 @@
 // ** React import
-import React, { CSSProperties, ComponentProps, useRef } from 'react';
+import React, { CSSProperties, ComponentProps, useRef, useState } from 'react';
 
 // ** Rnd Import
 import { DraggableData, Rnd, RndResizeCallback, RndResizeStartCallback } from 'react-rnd';
@@ -15,7 +15,7 @@ type Childrens = {
 };
 
 const style: CSSProperties = {
-  display: 'flex',
+  display: 'inline-block',
   alignItems: 'center',
   justifyContent: 'center',
   border: 'solid 1px #ddd',
@@ -41,6 +41,10 @@ const RndContainer = ({
   index: number;
 }) => {
   // ** State
+  const [collision, setCollision] = useState(false);
+  const [position, setPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+  const [size, setSize] = useState<{ width: number; height: number }>({ width: 200, height: 30 });
+
   // const [width, setW]
   // ** Ref
   const rndRef = useRef<Rnd>();
@@ -58,20 +62,62 @@ const RndContainer = ({
       //     // (rndRef.current as any).updatePosition({ x: 0, y: 0 });
       //   }, 3000);
       //   ref.updatePosition({});
-      //   console.log(12005, rndRef.current as any, position, delta);
     }
+    console.log(12005, e, dir, refToElement, delta, position);
   };
   const onResizeStop: RndResizeCallback = (e, dir, refToElement, delta, position) => {
     const { width } = delta;
 
     // if(widthRef && widthRef.current)
     widthRef.current = widthRef.current + width;
-    console.log(12005, { e, dir, refToElement, delta, position }, widthRef, rndRefs);
+
+    // console.log(12005, { e, dir, refToElement, delta, position }, widthRef, rndRefs);
   };
 
-  const _onDragStop: DraggableEventHandler = () => {};
+  const onDragStop: DraggableEventHandler = (e, d) => {
+    console.log(12005, 'onDragStop', d);
 
-  const hadnler = { onResizeStart, onResize, onResizeStop };
+    return setCollision(false);
+
+    // if (collision) setPosition({ ...d });
+  };
+
+  const onDrag = () => {};
+
+  const hadnler = { onResizeStart, onResize, onResizeStop, onDragStop };
+
+  const overlaps = (d: DraggableData) => {
+    console.log(12005, 'overlaps', d);
+
+    const elements = document.getElementsByClassName('react-draggable');
+    const element = d.node;
+
+    const draggables = Array.from(elements).filter(f => f.className !== element.className);
+
+    const result = Array.from(draggables).some(draggable => {
+      if (draggable === element) return true;
+      const rect2 = element.getBoundingClientRect();
+      const rect1 = draggable.getBoundingClientRect();
+      const isInHoriztonalBounds = rect1.x < rect2.x + rect2.width && rect1.x + rect1.width > rect2.x;
+      const isInVerticalBounds = rect1.y < rect2.y + rect2.height && rect1.y + rect1.height > rect2.y;
+
+      return isInHoriztonalBounds && isInVerticalBounds;
+    });
+
+    if (!result) {
+      setPosition({ x: position.x + d.deltaX, y: position.y + d.deltaY });
+
+      return setCollision(false);
+
+      // rndRef.current?.updatePosition({ ...d });
+    }
+
+    return setCollision(true);
+  };
+
+  const handleOverlap = (d: DraggableData) => {
+    setTimeout(() => overlaps(d), 1);
+  };
 
   return (
     <>
@@ -83,9 +129,10 @@ const RndContainer = ({
             rndRef.current = r;
             if (r) rndRefs?.current.push(r);
           }}
+          position={{ ...position }}
+          size={{ ...size }}
           style={style}
           bounds={'tbody'}
-          //   cancel='tbody'
           className='ggggggggggggggggggg'
           enableUserSelectHack
           default={{
@@ -111,13 +158,20 @@ const RndContainer = ({
             }
           }}
           allowAnyClick
-          onMouseDown={e => console.log(12005, e)}
+          onDrag={(e, d) => {
+            handleOverlap(d);
+          }}
           {...hadnler}
 
+          //   cancel='tbody'
           //   maxHeight={30}
           //   minHeight={30}
         >
-          {title || 'Rnd'}
+          <div style={{ width: '100%', zIndex: 10 }}>
+            {title || 'Rnd'}
+
+            {collision ? 'Collision' : 'NO collision'}
+          </div>
         </Rnd>
       ) : null}
     </>
