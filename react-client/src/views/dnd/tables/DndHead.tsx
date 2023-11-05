@@ -1,13 +1,16 @@
 import Grid from '@mui/material/Grid';
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import DndGrid from './DndGrid';
 
 // ** Dayjs Import
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 const DndHead = () => {
+  // ** State
+  // ** Var
+  const height = 15;
+  const width = 30;
   const arr: any[] = [{}, {}];
-
   const render = () => {
     return arr.map(v => <DndGrid width={v} height={0} content={''} />);
   };
@@ -21,8 +24,14 @@ const DndHead = () => {
 
   const diff = end.diff(start, 'month');
 
-  const columns = useMemo<any[]>(() => {
+  // ** Memo
+  const columns = useMemo<{ months: string[]; days: number[]; widths: number[]; totalWidth: number }>(() => {
     const arr: any[] = [];
+    const months: string[] = [];
+    const days: number[] = [];
+    const widths: number[] = [];
+
+    let totalWidth: number = 0;
 
     let month = Number(start.format('M')) - 1;
     let year = Number(start.format('YYYY'));
@@ -34,35 +43,31 @@ const DndHead = () => {
         year = year + 1;
       }
 
-      const dayList = [];
+      const dayList: number[] = [];
       const dayNum = dayjs(`${year}/${month}`).daysInMonth();
       for (let day = 1; day <= dayNum; day++) {
         dayList.push(day);
       }
       arr.push({ [`${year}/${month}`]: dayList });
+      months.push(`${year}/${month}`);
+      days.push(...dayList);
+      widths.push(dayList.length * width);
+      totalWidth = totalWidth + dayList.length * width;
     }
 
-    const returnData = arr.map((v, i) => {
-      return {
-        accessorKey: `${Object.keys(v)[0]}`,
-        header: `${Object.keys(v)[0]}`,
-
-        columns: (Object.values(v)[0] as any[]).map(day => ({
-          header: day,
-          accessorKey: `${Object.keys(v)[0]}-${day}-${i}-key`,
-
-          size: 50,
-          minSize: 50
-        }))
-      };
-    });
-
-    return returnData;
+    return {
+      months,
+      days,
+      widths,
+      totalWidth
+    };
   }, []);
 
   return (
     <>
-      <Grid item xs={12}></Grid>
+      <Grid item xs={12}>
+        <div style={{}}></div>
+      </Grid>
     </>
   );
 };
