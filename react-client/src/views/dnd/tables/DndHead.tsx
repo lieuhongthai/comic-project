@@ -8,7 +8,7 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 const DndHead = () => {
   // ** State
   // ** Var
-  const height = 15;
+  const height = 50;
   const width = 30;
   const arr: any[] = [{}, {}];
   const render = () => {
@@ -25,11 +25,11 @@ const DndHead = () => {
   const diff = end.diff(start, 'month');
 
   // ** Memo
-  const columns = useMemo<{ months: string[]; days: number[]; widths: number[]; totalWidth: number }>(() => {
-    const arr: any[] = [];
+  const columns = useMemo<{ date: string[]; months: string[]; days: number[]; monthWidths: number[]; totalWidth: number }>(() => {
+    const date: string[] = [];
     const months: string[] = [];
     const days: number[] = [];
-    const widths: number[] = [];
+    const monthWidths: number[] = [];
 
     let totalWidth: number = 0;
 
@@ -47,26 +47,54 @@ const DndHead = () => {
       const dayNum = dayjs(`${year}/${month}`).daysInMonth();
       for (let day = 1; day <= dayNum; day++) {
         dayList.push(day);
+        date.push(`${year}/${month}/${day}`);
       }
-      arr.push({ [`${year}/${month}`]: dayList });
       months.push(`${year}/${month}`);
       days.push(...dayList);
-      widths.push(dayList.length * width);
+      monthWidths.push(dayList.length * width);
       totalWidth = totalWidth + dayList.length * width;
     }
 
     return {
+      date,
       months,
       days,
-      widths,
+      monthWidths,
       totalWidth
     };
   }, []);
 
+  const { months, days, monthWidths, totalWidth } = columns;
+
+  console.log(12005, columns);
+
   return (
     <>
-      <Grid item xs={12}>
-        <div style={{}}></div>
+      <Grid item xs={12} style={{ overflowX: 'scroll' }}>
+        <div style={{ minWidth: totalWidth, width: totalWidth }}>
+          {months.map((month, index) => (
+            <DndGrid
+              width={monthWidths[index]}
+              height={height}
+              content={month}
+              style={{
+                display: 'inline-block',
+                textAlign: 'center',
+                borderRight: '1px solid',
+                borderBottom: '1px solid',
+                backgroundColor: '#BED9EE'
+              }}
+            />
+          ))}
+          {days.map(day => (
+            <DndGrid
+              width={width}
+              height={height}
+              content={day}
+              style={{ display: 'inline-block', textAlign: 'center', borderRight: '1px solid', borderBottom: '1px solid' }}
+            />
+          ))}
+        </div>
       </Grid>
     </>
   );

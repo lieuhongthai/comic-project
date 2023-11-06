@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 
 interface Props {
   width: number;
   height: number;
-  content: string;
+  content: string | number;
+  style?: CSSProperties;
 }
 const DndGrid = (props: Props) => {
-  const { content } = props;
+  const { width, height, content, style } = props;
 
-  return <div style={{ ...props }}>{content}</div>;
+  return (
+    <div style={{ width, height, ...style }}>
+      <p>{content}</p>
+    </div>
+  );
 };
 
 export default DndGrid;
