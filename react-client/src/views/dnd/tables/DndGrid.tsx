@@ -1,13 +1,16 @@
-import React, { CSSProperties } from 'react';
+import React, { CSSProperties, ReactNode } from 'react';
 
 interface Props {
   width: number;
-  height: number;
   content: string | number;
+  height?: number | undefined;
   style?: CSSProperties;
+  children?: ReactNode;
 }
 const DndGrid = (props: Props) => {
-  const { width, height, content, style } = props;
+  const { width, height, content, style, children } = props;
+
+  if (children) return <div style={{ width, height, ...style }}>{children}</div>;
 
   return (
     <div style={{ width, height, ...style }}>
