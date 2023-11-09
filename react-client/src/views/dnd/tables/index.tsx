@@ -14,7 +14,7 @@ import DndBody from './DndBody';
 const DndTable = () => {
   // ** Var
   const height = 50;
-  const width = 30;
+  const width = 50;
   dayjs.extend(relativeTime);
   const startDate = '2023/10';
   const endDate = '2023/12';
@@ -65,8 +65,6 @@ const DndTable = () => {
   }, []);
 
   const props = { ...columns, height, width };
-
-  console.log(12005, columns);
 
   return (
     <Grid container style={{ overflowX: 'scroll' }} spacing={6}>

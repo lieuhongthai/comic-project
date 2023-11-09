@@ -96,12 +96,13 @@ const Navigation = (props: Props) => {
       // @ts-ignore
       ref._getBoundingClientRect = ref.getBoundingClientRect;
 
-      console.log(12005, ref.getBoundingClientRect, navHover);
+      // console.log(12005, ref.getBoundingClientRect, navHover);
 
       ref.getBoundingClientRect = () => {
         // @ts-ignore
         const original = ref._getBoundingClientRect();
-        console.log(12005, Math.floor(original.height), navHover);
+
+        // console.log(12005, Math.floor(original.height), navHover);
 
         return { ...original, height: Math.floor(original.height) };
       };
