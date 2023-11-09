@@ -17,7 +17,7 @@ const style: CSSProperties = {
 
   // backgroundColor: 'white',
   // padding: '0.5rem 1rem',
-  cursor: 'move'
+  cursor: 'move',
 };
 const DndDrag = (props: DndDragProps) => {
   // ** Props
@@ -29,13 +29,11 @@ const DndDrag = (props: DndDragProps) => {
       type: dndType,
       item: { id, x, y },
       collect: monitor => ({
-        isDragging: monitor.isDragging()
-      })
+        isDragging: monitor.isDragging(),
+      }),
     }),
-    [id, x, y]
+    [id, x, y],
   );
-
-  console.log(12005, '♘aaaaaa: ', isDragging);
 
   return (
     <div
@@ -44,12 +42,14 @@ const DndDrag = (props: DndDragProps) => {
         ...style,
         opacity: isDragging ? 0.5 : 1,
         fontWeight: 'bold',
-        width: '100%'
+        width: 150,
+        height: 50,
+        backgroundColor: isDragging ? '#BED9EE' : '#9EB5C6',
 
         // display: 'flex',
       }}
     >
-      <span>♘aaaaaa</span>
+      <div>♘aaaaaa</div>
     </div>
   );
 };

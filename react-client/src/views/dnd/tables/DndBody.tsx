@@ -24,7 +24,7 @@ const DndBody = (props: Props) => {
   // ** State
   const [dataSources, setDataSource] = useState<DndDragProps[]>([
     { id: 1, x: 1, y: 1 },
-    { id: 2, x: 7, y: 2 }
+    { id: 2, x: 7, y: 2 },
   ]);
 
   const [position, setPosition] = useState<DndDragProps>({ id: 1, x: 2, y: 1 });
@@ -71,7 +71,7 @@ const DndBody = (props: Props) => {
           <div style={{ minWidth: totalWidth, width: totalWidth }}>
             {days.map((_, index) => (
               <DndDrop x={index} y={key + 1} id={dataSource.id} width={width} height={height} handle={handle}>
-                {`x:${index}-y:${key + 1}`}
+                {/* {`x:${index}-y:${key + 1}`} */}
                 <>{console.log(12005, dataSource.x === index && dataSource.y === key + 1, dataSource.x, index, dataSource.y, key + 1)}</>
                 {position.x === index && position.y === key + 1 ? <DndDrag id={position.id} x={position.x} y={position.y} /> : null}
               </DndDrop>
