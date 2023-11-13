@@ -15,13 +15,15 @@ import DndTable from 'src/views/dnd/tables';
 // import RndTable from 'src/views/dnd/RndTable';
 
 const DndPage = () => {
+  const Basic = () => <DndKit />;
+
   return (
     <>
       {/* <DndProvider backend={HTML5Backend}>
         <DndTable />
       </DndProvider> */}
 
-      <DndKit />
+      {Basic()}
     </>
   );
 };
