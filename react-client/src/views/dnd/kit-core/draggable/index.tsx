@@ -9,14 +9,10 @@ import type { DraggableSyntheticListeners } from '@dnd-kit/core';
 import styles from './Draggable.module.css';
 
 // ** classnames
-import classnames from 'classnames';
+import { Axis } from 'src/types/dnd/dndKitCoreTypes';
+import classNames from 'classnames';
+import Handle from '../Handle';
 import { draggable, draggableHorizontal, draggableVertical } from './draggable-svg';
-
-export enum Axis {
-  All,
-  Vertical,
-  Horizontal,
-}
 
 interface Props {
   axis?: Axis;
@@ -36,7 +32,7 @@ const Draggable = forwardRef<HTMLButtonElement, Props>(
     // ** Render
     return (
       <div
-        className={classnames(styles.draggable, dragOverlay && styles.dragOverlay, dragging && styles.dragging, handle && styles.handle)}
+        className={classNames(styles.Draggable, dragOverlay && styles.dragOverlay, dragging && styles.dragging, handle && styles.handle)}
         style={
           {
             ...style,
@@ -55,8 +51,9 @@ const Draggable = forwardRef<HTMLButtonElement, Props>(
           style={buttonStyle}
         >
           {axis === Axis.Vertical ? draggableVertical : axis === Axis.Horizontal ? draggableHorizontal : draggable}
-          {/* {handle ? <Handle {...(handle ? listeners : {})} /> : null} */}
+          {handle ? <Handle {...(handle ? listeners : {})} /> : null}
         </button>
+        {label ? <label>{label}</label> : null}
       </div>
     );
   },

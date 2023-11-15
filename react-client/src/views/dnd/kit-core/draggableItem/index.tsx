@@ -1,17 +1,20 @@
 import { useDraggable } from '@dnd-kit/core';
-import React from 'react';
-import Draggable, { Axis } from './draggable';
+import { CSSProperties } from 'react';
+import { Axis } from 'src/types/dnd/dndKitCoreTypes';
+import Draggable from '../draggable';
 
 interface DraggableItemProps {
   label: string;
   handle?: boolean;
-  style?: React.CSSProperties;
-  buttonStyle?: React.CSSProperties;
+  style?: CSSProperties;
+  buttonStyle?: CSSProperties;
   axis?: Axis;
   top?: number;
   left?: number;
 }
-const DraggableItem = ({ axis, label, style, top, left, handle, buttonStyle }: DraggableItemProps) => {
+
+const DraggableItem = (props: DraggableItemProps) => {
+  const { axis, label, style, top, left, handle, buttonStyle } = props;
   const { attributes, isDragging, listeners, setNodeRef, transform } = useDraggable({
     id: 'draggable',
   });

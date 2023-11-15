@@ -1,13 +1,15 @@
-// ** Mui import
-import Grid from '@mui/material/Grid';
+// // ** Mui import
+// import Grid from '@mui/material/Grid';
 
-// ** React Dnd import
-import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
-import DndKit from 'src/views/dnd/kit-core';
+import DraggableStory from 'src/views/dnd/kit-core/draggableStory';
 
-// ** Component Import
-import DndTable from 'src/views/dnd/tables';
+// // ** React Dnd import
+// import { DndProvider } from 'react-dnd';
+// import { HTML5Backend } from 'react-dnd-html5-backend';
+// import DndKit from 'src/views/dnd/kit-core';
+
+// // ** Component Import
+// import DndTable from 'src/views/dnd/tables';
 
 // import DndTable from 'src/views/dnd/DndTable';
 
@@ -15,17 +17,9 @@ import DndTable from 'src/views/dnd/tables';
 // import RndTable from 'src/views/dnd/RndTable';
 
 const DndPage = () => {
-  const Basic = () => <DndKit />;
+  const Basic = () => <DraggableStory />;
 
-  return (
-    <>
-      {/* <DndProvider backend={HTML5Backend}>
-        <DndTable />
-      </DndProvider> */}
-
-      {Basic()}
-    </>
-  );
+  return <>{Basic()}</>;
 };
 
 export default DndPage;
