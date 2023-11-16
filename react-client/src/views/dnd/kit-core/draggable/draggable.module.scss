@@ -19,8 +19,7 @@
     background-color: #181a22;
     border-radius: 5px;
     box-shadow: var(--box-shadow);
-    transform: translate3d(var(--translate-x, 0), var(--translate-y, 0), 0)
-      scale(var(--scale, 1));
+    transform: translate3d(var(--translate-x, 0), var(--translate-y, 0), 0) scale(var(--scale, 1));
     transition: box-shadow 300ms ease;
   }
 
@@ -66,7 +65,7 @@
     font-weight: 300;
     color: #8d8d8d;
     user-select: none;
-    cursor: url('/cursor.svg'), auto;
+    // cursor: url('/cursor.svg'), auto;
 
     animation-name: pulse;
     animation-duration: 1.5s;
@@ -86,8 +85,7 @@
 
     > button {
       --scale: 1.06;
-      --box-shadow: -1px 0 15px 0 rgba(34, 33, 81, 0.01),
-        0px 15px 15px 0 rgba(34, 33, 81, 0.25);
+      --box-shadow: -1px 0 15px 0 rgba(34, 33, 81, 0.01), 0px 15px 15px 0 rgba(34, 33, 81, 0.25);
 
       &:focus-visible {
         --box-shadow: 0 0px 10px 2px #4c9ffe;
@@ -112,6 +110,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -119,12 +118,11 @@
 
 @keyframes pop {
   0% {
-    transform: translate3d(var(--translate-x, 0), var(--translate-y, 0), 0)
-      scale(1);
+    transform: translate3d(var(--translate-x, 0), var(--translate-y, 0), 0) scale(1);
   }
+
   100% {
-    transform: translate3d(var(--translate-x, 0), var(--translate-y, 0), 0)
-      scale(var(--scale));
+    transform: translate3d(var(--translate-x, 0), var(--translate-y, 0), 0) scale(var(--scale));
     box-shadow: var(--box-shadow);
   }
 }

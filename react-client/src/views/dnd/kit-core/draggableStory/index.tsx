@@ -13,6 +13,7 @@ interface Props {
   buttonStyle?: React.CSSProperties;
   style?: React.CSSProperties;
   label?: string;
+  index?: any;
 }
 
 const defaultCoordinates = {
@@ -20,7 +21,7 @@ const defaultCoordinates = {
   y: 0,
 };
 
-const DraggableStory = ({ activationConstraint, axis, handle, label = 'Go ahead, drag me.', modifiers, style, buttonStyle }: Props) => {
+const DraggableStory = ({ activationConstraint, axis, handle, label = 'Go ahead, drag me.', modifiers, style, buttonStyle, index = 1 }: Props) => {
   const [{ x, y }, setCoordinates] = useState<Coordinates>(defaultCoordinates);
   const mouseSensor = useSensor(MouseSensor, {
     activationConstraint,
@@ -44,9 +45,9 @@ const DraggableStory = ({ activationConstraint, axis, handle, label = 'Go ahead,
       }}
       modifiers={modifiers}
     >
-      <Wrapper>
-        <DraggableItem axis={axis} label={label} handle={handle} top={y} left={x} style={style} buttonStyle={buttonStyle} />
-      </Wrapper>
+      {/* <Wrapper> */}
+      <DraggableItem axis={axis} label={label} handle={handle} top={y} left={x} style={style} buttonStyle={buttonStyle} index={index} />
+      {/* </Wrapper> */}
     </DndContext>
   );
 };

@@ -6,11 +6,12 @@ import type { Transform } from '@dnd-kit/utilities';
 import type { DraggableSyntheticListeners } from '@dnd-kit/core';
 
 // ** Style Dnd-kit-core Imports
-import styles from './Draggable.module.css';
+import styles from './draggable.module.scss';
 
 // ** classnames
-import { Axis } from 'src/types/dnd/dndKitCoreTypes';
 import classNames from 'classnames';
+
+import { Axis } from 'src/types/dnd/dndKitCoreTypes';
 import Handle from '../Handle';
 import { draggable, draggableHorizontal, draggableVertical } from './draggable-svg';
 
@@ -53,7 +54,6 @@ const Draggable = forwardRef<HTMLButtonElement, Props>(
           {axis === Axis.Vertical ? draggableVertical : axis === Axis.Horizontal ? draggableHorizontal : draggable}
           {handle ? <Handle {...(handle ? listeners : {})} /> : null}
         </button>
-        {label ? <label>{label}</label> : null}
       </div>
     );
   },

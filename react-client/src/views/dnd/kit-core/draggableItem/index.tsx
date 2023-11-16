@@ -11,12 +11,13 @@ interface DraggableItemProps {
   axis?: Axis;
   top?: number;
   left?: number;
+  index?: any;
 }
 
 const DraggableItem = (props: DraggableItemProps) => {
-  const { axis, label, style, top, left, handle, buttonStyle } = props;
+  const { axis, label, style, top, left, handle, buttonStyle, index } = props;
   const { attributes, isDragging, listeners, setNodeRef, transform } = useDraggable({
-    id: 'draggable',
+    id: `draggable${index}`,
   });
 
   return (
