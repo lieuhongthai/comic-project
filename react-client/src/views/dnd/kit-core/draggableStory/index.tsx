@@ -2,7 +2,6 @@ import { DndContext, KeyboardSensor, Modifiers, MouseSensor, PointerActivationCo
 import { Coordinates } from '@dnd-kit/core/dist/types';
 import React, { useState } from 'react';
 import { Axis } from 'src/types/dnd/dndKitCoreTypes';
-import Wrapper from '../wrapper';
 import DraggableItem from '../draggableItem';
 
 interface Props {
@@ -45,9 +44,7 @@ const DraggableStory = ({ activationConstraint, axis, handle, label = 'Go ahead,
       }}
       modifiers={modifiers}
     >
-      {/* <Wrapper> */}
       <DraggableItem axis={axis} label={label} handle={handle} top={y} left={x} style={style} buttonStyle={buttonStyle} index={index} />
-      {/* </Wrapper> */}
     </DndContext>
   );
 };
