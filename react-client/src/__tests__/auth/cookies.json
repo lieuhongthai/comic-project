@@ -1,0 +1,30 @@
+[
+  {
+    "name": "__auth_refresh",
+    "value": "s%3AeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcklkIjoxLCJlbWFpbCI6InZpZXRuYW0uc3lzdGVtQGdlb25ldC5jby5qcCIsImZ1bGxOYW1lIjoi44OZ44OI44OK44OgIOOCt-OCueODhuODoCIsImVtcGxveWVlTnVtYmVyIjoiMjAwNDA0NSIsImFjdGl2ZSI6MSwicm9sZXMiOlt7Im5hbWUiOiJVU0VSIn0seyJuYW1lIjoiRVZBTFVBVE9SIn0seyJuYW1lIjoiUFJPX1NLSUxMX1NFVFRJTkcifSx7Im5hbWUiOiJQUk9fU0tJTExfQVBQUk9WQUwifSx7Im5hbWUiOiJNQU5BR0VNRU5UX0JBU0lDX0JFSEFWSU9SX1NFVFRJTkcifSx7Im5hbWUiOiJNQU5BR0VNRU5UX0VWQUxVQVRJT04ifSx7Im5hbWUiOiJNQU5BR0VNRU5UX0VWQUxVQVRJT05fU0VUVElORyJ9LHsibmFtZSI6Ik1BTkFHRU1FTlRfVVNFUiJ9XSwiZGVwYXJ0bWVudElkIjoxLCJkZXBhcnRtZW50TmFtZSI6Iu--je--nu--hO--he--kemWi-eZuuiqsiIsImRpdmlzaW9uSWQiOm51bGwsImNvbXBhbnlJZCI6MSwiY29tcGFueU5hbWUiOiLmoKrlvI_kvJrnpL7jgrLjgqrjg5vjg7zjg6vjg4fjgqPjg7PjgrDjgrkiLCJsZXZlbCI6MSwiZmxhZ1NraWxsIjoxLCJpYXQiOjE3MDA1NjA2NjAsImV4cCI6MTcwMTE2NTQ2MH0._61OaAwhpLInAzhug75AS4mcnZL-7yyzchkKSJgIGQU.CQyCP%2FNdiW5foQcklB4ZJrQmpgwReI6BXr3eikx6u%2F0",
+    "domain": "localhost",
+    "path": "/",
+    "expires": 1703152660.966683,
+    "size": 942,
+    "httpOnly": false,
+    "secure": false,
+    "session": false,
+    "sameParty": false,
+    "sourceScheme": "NonSecure",
+    "sourcePort": 4200
+  },
+  {
+    "name": "__auth_",
+    "value": "s%3AeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcklkIjoxLCJlbWFpbCI6InZpZXRuYW0uc3lzdGVtQGdlb25ldC5jby5qcCIsImZ1bGxOYW1lIjoi44OZ44OI44OK44OgIOOCt-OCueODhuODoCIsImVtcGxveWVlTnVtYmVyIjoiMjAwNDA0NSIsImFjdGl2ZSI6MSwicm9sZXMiOlt7Im5hbWUiOiJVU0VSIn0seyJuYW1lIjoiRVZBTFVBVE9SIn0seyJuYW1lIjoiUFJPX1NLSUxMX1NFVFRJTkcifSx7Im5hbWUiOiJQUk9fU0tJTExfQVBQUk9WQUwifSx7Im5hbWUiOiJNQU5BR0VNRU5UX0JBU0lDX0JFSEFWSU9SX1NFVFRJTkcifSx7Im5hbWUiOiJNQU5BR0VNRU5UX0VWQUxVQVRJT04ifSx7Im5hbWUiOiJNQU5BR0VNRU5UX0VWQUxVQVRJT05fU0VUVElORyJ9LHsibmFtZSI6Ik1BTkFHRU1FTlRfVVNFUiJ9XSwiZGVwYXJ0bWVudElkIjoxLCJkZXBhcnRtZW50TmFtZSI6Iu--je--nu--hO--he--kemWi-eZuuiqsiIsImRpdmlzaW9uSWQiOm51bGwsImNvbXBhbnlJZCI6MSwiY29tcGFueU5hbWUiOiLmoKrlvI_kvJrnpL7jgrLjgqrjg5vjg7zjg6vjg4fjgqPjg7PjgrDjgrkiLCJsZXZlbCI6MSwiZmxhZ1NraWxsIjoxLCJpYXQiOjE3MDA1NjA2NjAsImV4cCI6MTcwMTE2NTQ2MH0._61OaAwhpLInAzhug75AS4mcnZL-7yyzchkKSJgIGQU.CQyCP%2FNdiW5foQcklB4ZJrQmpgwReI6BXr3eikx6u%2F0",
+    "domain": "localhost",
+    "path": "/",
+    "expires": 1703152660.96659,
+    "size": 935,
+    "httpOnly": false,
+    "secure": false,
+    "session": false,
+    "sameParty": false,
+    "sourceScheme": "NonSecure",
+    "sourcePort": 4200
+  }
+]
