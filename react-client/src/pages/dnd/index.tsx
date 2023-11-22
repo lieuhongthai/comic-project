@@ -1,9 +1,9 @@
-import DndKit from 'src/views/dnd/kit-core';
+import GranttTask from 'src/views/dnd/react-rnd/grantt-task';
 
 const DndPage = () => {
   return (
     <>
-      <DndKit />
+      <GranttTask />
     </>
   );
 };

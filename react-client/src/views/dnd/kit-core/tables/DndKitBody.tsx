@@ -79,7 +79,7 @@ const DndKitBody = (props: Props) => {
               }}
             >
               {/* {Basic(index)} */}
-              {key === 0 && index === 0 ? Basic(index) : null}
+              {index === 0 ? Basic(index) : null}
             </div>
           ))}
           {/* </div> */}

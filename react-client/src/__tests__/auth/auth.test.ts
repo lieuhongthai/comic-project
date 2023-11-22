@@ -4,12 +4,12 @@ const fs = require('fs').promises;
 import path from 'path';
 
 import 'expect-puppeteer';
-describe('Google', () => {
+describe('Evaluation Login', () => {
   beforeAll(async () => {
     await page.goto('http://localhost:4200/login');
   });
 
-  it('Case2: Should display "評価システム" text on page', async () => {
+  it('Case1: Should display "評価システム" text on page', async () => {
     await expect(page).toMatchTextContent('評価システム');
     await page.waitForSelector('#login_form', { visible: true });
     await page.screenshot({ path: path.resolve(__dirname, './screenshots/1.jpg') });
