@@ -29,7 +29,7 @@ const RndReactBody = (props: Props) => {
   ];
 
   // ** Rnd
-  const RndRender = (index: number) => <RndDraggable index={index} rndRefs={rndRefs} />;
+  const RndRender = (index: number, id: number) => <RndDraggable row={index} id={id} rndRefs={rndRefs} />;
 
   // ** Render
   return (
@@ -52,7 +52,7 @@ const RndReactBody = (props: Props) => {
               }}
             >
               {/* {Basic(index)} */}
-              {key === 0 && (index === 1 || index === 6) ? RndRender(index) : null}
+              {key === 0 && (index === 1 || index === 6) ? RndRender(key, index) : null}
             </div>
           ))}
           {/* </div> */}
