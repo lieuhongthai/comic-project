@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // ** React Import
 import Box from '@mui/material/Box';
-import { CSSProperties, useMemo, useRef, useState } from 'react';
+import { CSSProperties, useRef } from 'react';
 import { DraggableData, Rnd, RndResizeStartCallback } from 'react-rnd';
 
 const style: CSSProperties = {
@@ -17,32 +17,17 @@ interface Props {
   row: number;
   id: number;
 
-  // index: number;
   rndRefs: React.MutableRefObject<Rnd[]>;
+  rowRefs: React.MutableRefObject<HTMLDivElement[]>;
 }
-export type Direction = 'top' | 'right' | 'bottom' | 'left' | 'topRight' | 'bottomRight' | 'bottomLeft' | 'topLeft';
-export type ResizeDirection = Direction;
+type Direction = 'top' | 'right' | 'bottom' | 'left' | 'topRight' | 'bottomRight' | 'bottomLeft' | 'topLeft';
+type ResizeDirection = Direction;
 
-export type ResizableDelta = {
-  width: number;
-  height: number;
-};
+type DraggableEvent = React.MouseEvent<HTMLElement | SVGElement> | React.TouchEvent<HTMLElement | SVGElement> | MouseEvent | TouchEvent;
 
-export type Position = {
-  x: number;
-  y: number;
-};
-export type DraggableEvent = React.MouseEvent<HTMLElement | SVGElement> | React.TouchEvent<HTMLElement | SVGElement> | MouseEvent | TouchEvent;
-
-export type DraggableEventHandler = (e: DraggableEvent, data: DraggableData) => void | false;
-const RndDraggable = ({ id, row, rndRefs }: Props) => {
+type DraggableEventHandler = (e: DraggableEvent, data: DraggableData) => void | false;
+const RndDraggable = ({ id, row: indexRow, rndRefs }: Props) => {
   // ** State
-  const [position, setPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
-  const [size, setSize] = useState<{ width: number; height: number }>({ width: 200, height: 50 });
-  const [right, setRight] = useState<CSSProperties['pointerEvents']>('auto');
-  const [indexRow, setIndexRow] = useState<number>(row);
-
-  const [maxWidth, setWidth] = useState<number>();
 
   // ** Ref
   const rndRef = useRef<Rnd>(null);
@@ -50,93 +35,93 @@ const RndDraggable = ({ id, row, rndRefs }: Props) => {
   // ** Memo
 
   // ** Functional
-  const onResize = (e: MouseEvent | TouchEvent, dir: ResizeDirection, ref: HTMLElement, delta: ResizableDelta, position: Position) => {
-    //@ts-ignore
+  const onResizeStop = () => {
+    rndRef.current?.setState(dataState => ({ ...dataState, maxWidth: 10000000 }));
+  };
+
+  const onResizeStart: RndResizeStartCallback = (_, dir: ResizeDirection, ref: HTMLElement) => {
+    const xRef = ref.getBoundingClientRect().x;
+    const wRef = ref.getBoundingClientRect().width;
     const rndFilters = rndRefs.current.filter(f => {
       return (
         f.resizableElement.current?.className !== ref.className &&
         f.resizableElement.current?.className.includes(`rnd-body-table-container-${indexRow}`)
       );
     });
-    let xDeltal = 0;
-    let trans = 0;
-    if (dir === 'right') {
-      if (rndFilters) {
-        const collision = rndFilters.some(rnd => {
-          const rect1 = rnd.getSelfElement()?.getBoundingClientRect();
-          const rectIsResize = ref.getBoundingClientRect();
-          const isInHoriztonalBounds = rect1 && rect1.x <= rectIsResize.x + rectIsResize.width + delta.width;
-          if (xDeltal === 0 && isInHoriztonalBounds) xDeltal = rect1.x - rectIsResize.x;
 
-          return isInHoriztonalBounds;
-        });
-        if (collision) {
-          ref.style.maxWidth = `${Math.abs(xDeltal)}px`;
-        }
-      }
-      setSize({ height: 50, width: ref.offsetWidth });
-    }
     if (dir === 'left') {
-      if (rndFilters) {
-        const collision = rndFilters.some(rnd => {
-          const rect1 = rnd.getSelfElement()?.getBoundingClientRect() as DOMRect;
-          const rectIsResize = ref.getBoundingClientRect();
-          const isInHoriztonalBounds = rectIsResize.x > rect1.x && rect1.x + rect1.width >= rectIsResize.x;
-          if (xDeltal === 0 && isInHoriztonalBounds) {
-            xDeltal = rectIsResize.width;
-            trans = trans === 0 ? rnd.getDraggablePosition().x + rect1.width : 0;
-          }
+      const xLefts = rndFilters
+        .map(v => (v.getSelfElement()?.getBoundingClientRect().x || 0) + (v.getSelfElement()?.getBoundingClientRect().width || 0))
+        .filter(f => f !== undefined) as number[];
+      const first = xLefts.sort((a, b) => b - a).find(f => f <= xRef);
 
-          return isInHoriztonalBounds;
-        });
-
-        if (collision) {
-          ref.style.maxWidth = `${Math.abs(xDeltal)}px`;
-          if (trans !== 0) ref.style.transform = `translate(${trans}px, 0px)`;
-        } else {
-          ref.style.maxWidth = `1000000px`;
-          trans === 0;
-        }
-        console.log(12005, ref.getBoundingClientRect(), delta.width, { collision, trans, xDeltal });
+      if (first) {
+        rndRef.current?.setState(dataState => ({ ...dataState, maxWidth: Math.abs(xRef - first + wRef) }));
       }
-
-      setSize({ height: 50, width: ref.offsetWidth });
     }
+    if (dir === 'right') {
+      const xRights = (rndFilters.map(v => v.getSelfElement()?.getBoundingClientRect().x).filter(f => f !== undefined) as number[]).sort(
+        (a, b) => b - a,
+      );
+      const last = xRights.sort((a, b) => a - b).find(f => f >= xRef);
 
-    // else setSize({ height: ref.offsetHeight, width: ref.offsetWidth });
+      if (last) rndRef.current?.setState(dataState => ({ ...dataState, maxWidth: Math.abs(xRef - last) }));
+    }
   };
 
-  const onResizeEnd = (e: MouseEvent | TouchEvent, dir: ResizeDirection, ref: HTMLElement, delta: ResizableDelta, position: Position) => {
-    ref.style.maxWidth = `1000000px`;
+  const onDragStart: DraggableEventHandler = (e, data) => {
+    handleOverlap(data);
   };
 
-  const onResizeStart: RndResizeStartCallback = (e, dir: ResizeDirection, ref: HTMLElement) => {
-    // rndRef.current?.updateSize({ height: 50, width: 300 });
-    // setWidth(250);
+  const onDrag: DraggableEventHandler = _ => {};
+
+  const handleOverlap = (data: DraggableData) => {
+    const nodeRoot = document.getElementById('rnd-body-table-container') as HTMLDivElement;
+    const rectRoot = nodeRoot.getBoundingClientRect();
+    const ref = data.node;
+    const xRef = ref.getBoundingClientRect().x;
+    const wRef = ref.getBoundingClientRect().width;
+
+    const bounds: any = {};
+    const rndFilters = rndRefs.current.filter(f => {
+      return (
+        f.resizableElement.current?.className !== ref.className &&
+        f.resizableElement.current?.className.includes(`rnd-body-table-container-${indexRow}`)
+      );
+    });
+
+    if (rndFilters) {
+      const leftElement = rndFilters.map(
+        v => (v.getSelfElement()?.getBoundingClientRect().x || 0) + (v.getSelfElement()?.getBoundingClientRect().width || 0),
+      ) as number[];
+      const left = leftElement.sort((a, b) => b - a).find(f => f <= xRef);
+
+      if (left) bounds.left = left - rectRoot.x;
+
+      const rightElement = rndFilters.map(v => v.getSelfElement()?.getBoundingClientRect().x) as number[];
+      const right = rightElement.sort((a, b) => a - b).find(f => f >= xRef);
+
+      if (right) bounds.right = Math.abs(right - rectRoot.x - wRef);
+    }
+    setTimeout(() => {
+      rndRef.current?.setState(dataState => ({
+        ...dataState,
+        bounds: { ...dataState.bounds, ...bounds },
+      }));
+    }, 1);
   };
 
-  const onDragStop: DraggableEventHandler = (e, data) => {
-    console.log(12005, 'onDrag: ', data);
+  const onDragStop: DraggableEventHandler = () => {};
 
-    const { lastY } = data;
-
-    setIndexRow(lastY / 50);
-  };
-  const handler = { onResize, onResizeEnd, onDragStop, onResizeStart };
+  const handler = { onResizeStop, onDragStop, onResizeStart, onDragStart, onDrag };
 
   // ** Render
   return (
-    <Box>
+    <Box component={'div'} id={`id_${indexRow}_${id}`}>
       <Rnd
-        {...handler}
-        className={`rnd-body-table-container-${indexRow} id-${id}`}
-        maxWidth={maxWidth}
         minWidth={50}
-        resizeHandleClasses={{
-          right: 'rize-handle-right-stop',
-          left: 'rize-handle-left-stop',
-        }}
-        key={`rnd-item-${row}`}
+        key={`rnd-item-${indexRow}`}
+        className={`rnd-body-table-container-${indexRow} id-${id}`}
         ref={ref => {
           if (ref && rndRef.current === null) {
             rndRefs.current.push(ref);
@@ -146,24 +131,17 @@ const RndDraggable = ({ id, row, rndRefs }: Props) => {
           }
         }}
         bounds={'div[class="rnd-body-table-container"]'}
-        size={{ ...size }}
         style={style}
-        default={{
-          x: 0,
-          y: 0,
-          width: 200,
-          height: 50,
+        enableResizing={{
+          left: true,
+          right: true,
         }}
-        enableResizing={
-          right === 'none'
-            ? undefined
-            : {
-                left: true,
-                right: true,
-              }
-        }
-        dragGrid={[50, 50]}
         resizeGrid={[50, 1]}
+        dragGrid={[50, 50]}
+        resizeHandleClasses={{
+          right: 'rize-handle-right-stop',
+          left: 'rize-handle-left-stop',
+        }}
         resizeHandleStyles={{
           left: {
             borderRadius: 20,
@@ -172,17 +150,26 @@ const RndDraggable = ({ id, row, rndRefs }: Props) => {
           right: {
             borderRadius: 20,
             border: '1px solid rgba(81, 81, 81, 1)',
-            pointerEvents: right,
-            display: right,
+
+            // pointerEvents: right,
+            // display: right,
           },
         }}
-        allowAnyClick
+        {...handler}
+        dragAxis='x'
 
-        // disableDragging
+        // default={{
+        //   x: 0,
+        //   y: 0,
+        //   width: 200,
+        //   height: 50,
+        // }}
 
-        // position={{ ...position }}
+        // scale={1}
+
+        // allowAnyClick
       >
-        001 {row}
+        ` ` {indexRow} {id}
       </Rnd>
     </Box>
   );

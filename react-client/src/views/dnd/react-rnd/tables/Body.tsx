@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // ** React Import
-import React, { useRef } from 'react';
+import React, { createElement, useRef } from 'react';
 
 // ** Mui Import
 import Grid from '@mui/material/Grid';
 import RndDraggable from '../core/Draggable';
 import { Rnd } from 'react-rnd';
+import { GranttTaskData } from '../grantt-task';
 interface Props {
   date: string[];
   months: string[];
@@ -14,48 +15,57 @@ interface Props {
   totalWidth: number;
   height: number;
   width: number;
+  dataSources: GranttTaskData[];
 }
 const RndReactBody = (props: Props) => {
   // ** Props
-  const { months, days, monthWidths, totalWidth, height, width } = props;
+  const { months, days, date, monthWidths, totalWidth, height, width, dataSources } = props;
 
   // ** Ref
   const rndRefs = useRef<Rnd[]>([]);
+  const rowRefs = useRef<HTMLDivElement[]>([]);
 
   // ** State
-  const dataSources = [
-    { id: 1, x: 1, y: 1 },
-    { id: 2, x: 7, y: 2 },
-  ];
 
   // ** Rnd
-  const RndRender = (index: number, id: number) => <RndDraggable row={index} id={id} rndRefs={rndRefs} />;
+  const RndRender = (index: number, id: number) => (
+    <RndDraggable row={index} id={id} rndRefs={rndRefs} rowRefs={rowRefs} key={`rnd-body-table-item-${index}-${id}`} />
+  );
 
-  // ** Render
+  // ** Render // id='rnd-body-table-container'
   return (
-    <div style={{ marginLeft: '1.5rem', position: 'relative' }} id='rnd-body-table-container' className='rnd-body-table-container'>
-      {dataSources.map((_, key) => (
-        <Grid item xs={12} style={{ paddingTop: 0, display: 'flex' }} key={key}>
-          {/* <div style={{ minWidth: totalWidth, width: totalWidth, height }}> */}
+    <div style={{ marginLeft: '1.5rem' }} id='rnd-body-table-container' className='rnd-body-table-container'>
+      {dataSources.map((dataSource, rowIndex) => (
+        <Grid
+          item
+          xs={12}
+          style={{ paddingTop: 0, display: 'flex', height, position: 'relative' }}
+          key={`rnd-body-table-row-${rowIndex}`}
+          component={'div'}
+          ref={(r: HTMLDivElement) => {
+            rowRefs.current.push(r);
+          }}
+          className='rnd-body-table-container'
+        >
           {days.map((_, index) => (
             <div
               style={{
                 width,
                 minWidth: 50,
 
-                height,
+                // height,
 
                 flexBasis: totalWidth,
 
                 borderRight: '1px solid',
                 borderBottom: '1px solid',
               }}
+              key={`rnd-body-table-row-${rowIndex}-${index}`}
             >
-              {/* {Basic(index)} */}
-              {key === 0 && (index === 1 || index === 6) ? RndRender(key, index) : null}
+              {/* {createElement(RndDraggable, {row={index} id={id} rndRefs={rndRefs} rowRefs={rowRefs} key={`rnd-body-table-item-${index}-${id}`}})} */}
+              {dataSource.chilrends.some(s => s.startDate === date[index]) ? RndRender(rowIndex, index) : null}
             </div>
           ))}
-          {/* </div> */}
         </Grid>
       ))}
     </div>

@@ -52,15 +52,17 @@ const RndReactHeader = (props: Props) => {
               borderBottom: '1px solid',
               backgroundColor: '#BED9EE',
             }}
+            key={`rnd-month-head-table-${month}`}
           />
         ))}
         <div style={{ minWidth: totalWidth, width: totalWidth, backgroundColor: '#11B1C1', height: height }}>
-          {days.map(day => (
+          {days.map((day, i) => (
             <DndKitGrid
               width={width}
               content={day}
               style={{ display: 'inline-block', textAlign: 'center', borderRight: '1px solid', borderBottom: '1px solid', margin: 'auto' }}
               height={height}
+              key={`rnd-day-head-table-key-${i}-${day}`}
             />
           ))}
         </div>

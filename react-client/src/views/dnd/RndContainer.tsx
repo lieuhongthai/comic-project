@@ -20,7 +20,7 @@ const style: CSSProperties = {
   justifyContent: 'center',
   border: 'solid 1px #ddd',
   background: '#f0f0f0',
-  zIndex: 0
+  zIndex: 0,
 } as const;
 
 const RndContainer = ({
@@ -30,7 +30,7 @@ const RndContainer = ({
   startDate,
   endDate,
   rndRefs,
-  index
+  index,
 }: {
   isRender?: boolean;
   title?: string;
@@ -75,11 +75,7 @@ const RndContainer = ({
   };
 
   const onDragStop: DraggableEventHandler = (e, d) => {
-    console.log(12005, 'onDragStop', d);
-
     return setCollision(false);
-
-    // if (collision) setPosition({ ...d });
   };
 
   const onDrag = () => {};
@@ -139,23 +135,23 @@ const RndContainer = ({
             x: 0,
             y: 0,
             width: 200,
-            height: 30
+            height: 30,
           }}
           enableResizing={{
             left: true,
-            right: true
+            right: true,
           }}
           dragGrid={[50, 30]}
           resizeGrid={[50, 1]}
           resizeHandleStyles={{
             left: {
               borderRadius: 20,
-              border: '1px solid rgba(81, 81, 81, 1)'
+              border: '1px solid rgba(81, 81, 81, 1)',
             },
             right: {
               borderRadius: 20,
-              border: '1px solid rgba(81, 81, 81, 1)'
-            }
+              border: '1px solid rgba(81, 81, 81, 1)',
+            },
           }}
           allowAnyClick
           onDrag={(e, d) => {
