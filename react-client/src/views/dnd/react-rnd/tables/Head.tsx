@@ -32,10 +32,11 @@ interface Props {
   totalWidth: number;
   height: number;
   width: number;
+  isWeekend: boolean[];
 }
 
 const RndReactHeader = (props: Props) => {
-  const { months, days, monthWidths, totalWidth, height, width } = props;
+  const { months, days, monthWidths, totalWidth, height, width, isWeekend } = props;
 
   return (
     <Grid item xs={12}>
@@ -56,13 +57,20 @@ const RndReactHeader = (props: Props) => {
           />
         ))}
         <div style={{ minWidth: totalWidth, width: totalWidth, backgroundColor: '#11B1C1', height: height }}>
-          {days.map((day, i) => (
+          {days.map((day, index) => (
             <DndKitGrid
               width={width}
               content={day}
-              style={{ display: 'inline-block', textAlign: 'center', borderRight: '1px solid', borderBottom: '1px solid', margin: 'auto' }}
+              style={{
+                display: 'inline-block',
+                textAlign: 'center',
+                borderRight: '1px solid',
+                borderBottom: '1px solid',
+                margin: 'auto',
+                backgroundColor: isWeekend[index] ? '#D9D9D9' : '',
+              }}
               height={height}
-              key={`rnd-day-head-table-key-${i}-${day}`}
+              key={`rnd-day-head-table-key-${index}-${day}`}
             />
           ))}
         </div>

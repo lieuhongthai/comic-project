@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // ** React Import
 import Box from '@mui/material/Box';
-import { CSSProperties, useRef } from 'react';
+import { CSSProperties, FC, useRef } from 'react';
 import { DraggableData, Rnd, RndResizeStartCallback } from 'react-rnd';
+import { GanttType } from '../grantt-task';
 
 const style: CSSProperties = {
   display: 'inline-block',
@@ -16,9 +17,12 @@ const style: CSSProperties = {
 interface Props {
   row: number;
   id: number;
+  type: GanttType;
 
   rndRefs: React.MutableRefObject<Rnd[]>;
   rowRefs: React.MutableRefObject<HTMLDivElement[]>;
+  width?: number;
+  height?: number;
 }
 type Direction = 'top' | 'right' | 'bottom' | 'left' | 'topRight' | 'bottomRight' | 'bottomLeft' | 'topLeft';
 type ResizeDirection = Direction;
@@ -26,7 +30,13 @@ type ResizeDirection = Direction;
 type DraggableEvent = React.MouseEvent<HTMLElement | SVGElement> | React.TouchEvent<HTMLElement | SVGElement> | MouseEvent | TouchEvent;
 
 type DraggableEventHandler = (e: DraggableEvent, data: DraggableData) => void | false;
-const RndDraggable = ({ id, row: indexRow, rndRefs }: Props) => {
+
+const ganttType = {
+  code: '#CFE2F3',
+  design: '#D9EAD3',
+  all: '#FFF2CC',
+};
+const RndDraggable: FC<Props> = ({ id, row: indexRow, rndRefs, width = 50, height = 50, type }) => {
   // ** State
 
   // ** Ref
@@ -76,7 +86,7 @@ const RndDraggable = ({ id, row: indexRow, rndRefs }: Props) => {
   const onDrag: DraggableEventHandler = _ => {};
 
   const handleOverlap = (data: DraggableData) => {
-    const nodeRoot = document.getElementById('rnd-body-table-container') as HTMLDivElement;
+    const nodeRoot = document.getElementById(`rnd-bounds-id-${indexRow}`) as HTMLDivElement;
     const rectRoot = nodeRoot.getBoundingClientRect();
     const ref = data.node;
     const xRef = ref.getBoundingClientRect().x;
@@ -111,7 +121,9 @@ const RndDraggable = ({ id, row: indexRow, rndRefs }: Props) => {
     }, 1);
   };
 
-  const onDragStop: DraggableEventHandler = () => {};
+  const onDragStop: DraggableEventHandler = (e, data) => {
+    rndRef.current?.updatePosition({ y: 0, x: data.lastX });
+  };
 
   const handler = { onResizeStop, onDragStop, onResizeStart, onDragStart, onDrag };
 
@@ -130,8 +142,8 @@ const RndDraggable = ({ id, row: indexRow, rndRefs }: Props) => {
             rndRef.current = ref;
           }
         }}
-        bounds={'div[class="rnd-body-table-container"]'}
-        style={style}
+        bounds={`div[id="rnd-bounds-id-${indexRow}"]`}
+        style={{ ...style, backgroundColor: ganttType[type] }}
         enableResizing={{
           left: true,
           right: true,
@@ -150,26 +162,20 @@ const RndDraggable = ({ id, row: indexRow, rndRefs }: Props) => {
           right: {
             borderRadius: 20,
             border: '1px solid rgba(81, 81, 81, 1)',
-
-            // pointerEvents: right,
-            // display: right,
           },
         }}
-        {...handler}
         dragAxis='x'
-
-        // default={{
-        //   x: 0,
-        //   y: 0,
-        //   width: 200,
-        //   height: 50,
-        // }}
-
-        // scale={1}
-
-        // allowAnyClick
+        default={{
+          x: 0,
+          y: 0,
+          width: width,
+          height: height,
+        }}
+        {...handler}
       >
-        ` ` {indexRow} {id}
+        <span>
+          {indexRow} {id}
+        </span>
       </Rnd>
     </Box>
   );

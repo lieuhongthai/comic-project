@@ -1,13 +1,17 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // ** React Import
-import React, { createElement, useRef } from 'react';
+import React, { createElement, memo, useRef, useState } from 'react';
+
+// ** Dayjs Import
+import dayjs from 'dayjs';
 
 // ** Mui Import
 import Grid from '@mui/material/Grid';
 import RndDraggable from '../core/Draggable';
 import { Rnd } from 'react-rnd';
-import { GranttTaskData } from '../grantt-task';
-interface Props {
+import { GanttTaskData, GanttType, GranttTaskDataItem } from '../grantt-task';
+import RndDialog from '../dialog';
+export interface RndReactBodyProps {
   date: string[];
   months: string[];
   days: number[];
@@ -15,22 +19,49 @@ interface Props {
   totalWidth: number;
   height: number;
   width: number;
-  dataSources: GranttTaskData[];
+  dataSources: GanttTaskData[];
+  handleAddTask: (granttData: GanttTaskData, index: number) => void;
+  isWeekend: boolean[];
 }
-const RndReactBody = (props: Props) => {
+const RndReactBody = (props: RndReactBodyProps) => {
   // ** Props
-  const { months, days, date, monthWidths, totalWidth, height, width, dataSources } = props;
+  const { months, days, date, monthWidths, totalWidth, height, width, dataSources, handleAddTask, isWeekend } = props;
 
   // ** Ref
   const rndRefs = useRef<Rnd[]>([]);
   const rowRefs = useRef<HTMLDivElement[]>([]);
 
   // ** State
+  const [isOpen, setOpen] = useState<boolean>(false);
+
+  // ** Functional
+
+  const handleToggle = () => setOpen(!isOpen);
 
   // ** Rnd
-  const RndRender = (index: number, id: number) => (
-    <RndDraggable row={index} id={id} rndRefs={rndRefs} rowRefs={rowRefs} key={`rnd-body-table-item-${index}-${id}`} />
-  );
+  const RndRender = (index: number, id: number, itemChilren?: GranttTaskDataItem) => {
+    const { type, endDate, startDate } = itemChilren as GranttTaskDataItem;
+
+    const start = dayjs(startDate, ['YYYY/M']);
+    const end = dayjs(endDate, ['YYYY/M']);
+
+    const diff = end.diff(start, 'day') + 1;
+
+    const widthTask = diff * width;
+
+    return (
+      <RndDraggable
+        row={index}
+        id={id}
+        rndRefs={rndRefs}
+        rowRefs={rowRefs}
+        key={`rnd-body-table-item-${index}-${id}`}
+        height={height}
+        width={widthTask}
+        type={type}
+      />
+    );
+  };
 
   // ** Render // id='rnd-body-table-container'
   return (
@@ -46,30 +77,47 @@ const RndReactBody = (props: Props) => {
             rowRefs.current.push(r);
           }}
           className='rnd-body-table-container'
+          id={`rnd-bounds-id-${rowIndex}`}
         >
           {days.map((_, index) => (
             <div
               style={{
                 width,
-                minWidth: 50,
-
-                // height,
+                minWidth: width,
 
                 flexBasis: totalWidth,
 
                 borderRight: '1px solid',
                 borderBottom: '1px solid',
+                backgroundColor: isWeekend[index] ? '#D9D9D9' : '',
               }}
               key={`rnd-body-table-row-${rowIndex}-${index}`}
+              className={`${date[index]}`}
+              onClick={e => {
+                const className = (e.target as any as { className: string }).className;
+                if (!className.includes('react-draggable')) {
+                  handleToggle();
+                  console.log(12005, 'onclick', className);
+                }
+              }}
             >
-              {/* {createElement(RndDraggable, {row={index} id={id} rndRefs={rndRefs} rowRefs={rowRefs} key={`rnd-body-table-item-${index}-${id}`}})} */}
-              {dataSource.chilrends.some(s => s.startDate === date[index]) ? RndRender(rowIndex, index) : null}
+              {dataSource.chilrends.some(s => s.startDate === date[index])
+                ? RndRender(
+                    rowIndex,
+                    index,
+                    dataSource.chilrends.find(f => f.startDate === date[index]),
+                  )
+                : null}
             </div>
           ))}
         </Grid>
       ))}
+
+      <RndDialog isOpen={isOpen} handleToggle={handleToggle} />
     </div>
   );
 };
 
-export default RndReactBody;
+export default memo(RndReactBody, (pre, next) => pre.dataSources.length === next.dataSources.length);
+
+// export default RndReactBody;

@@ -8,23 +8,28 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import isoWeek from 'dayjs/plugin/isoWeek';
 
 // ** Mui Import
-import Grid from '@mui/material/Grid';
-import RndReactHeader from '../tables/Head';
-import RndReactBody from '../tables/Body';
+import { useTheme } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import GranttContent from './GranttContent';
+import SidebarLeft from './SidebarLeft';
 
 export type GranttTaskDataItem = {
   startDate: string | Date;
   endDate: string | Date;
+  type: GanttType;
   label?: string;
 };
 
-export type GranttTaskData = {
+export type GanttType = 'code' | 'design' | 'all';
+
+export type GanttTaskData = {
   [x: string]: any;
   id: string | number;
   start?: string;
   end?: string;
-  label: string;
-
+  label?: string;
+  name?: string;
+  priority?: string;
   chilrends: GranttTaskDataItem[];
 };
 
@@ -32,33 +37,39 @@ type GranttTaskType = {
   startDate?: string | Date;
   endDate?: string | Date;
   formatDate?: string | 'YYYY/M' | 'YYYY/MM';
-  heightRow?: number;
-  widthCell?: number;
-  dataSources: GranttTaskData[];
+  height?: number;
+  width?: number;
+  dataSources: GanttTaskData[];
+  handleAddTask: (granttData: GanttTaskData, index: number) => void;
 };
 const GranttTask = ({
   startDate = dayjs().format('YYYY/M'),
   endDate = dayjs().add(1, 'month').format('YYYY/M'),
-  formatDate,
-  heightRow = 50,
-  widthCell = 50,
+  formatDate = 'YYYY/M/D',
+  height = 50,
+  width = 50,
   dataSources,
-  ...props
+  handleAddTask,
 }: GranttTaskType) => {
+  // ** Hooks
+  const theme = useTheme();
+
   // ** Var
-  const height = heightRow;
-  const width = widthCell;
   dayjs.extend(relativeTime);
   dayjs.extend(isoWeek);
-
-  // const startDate = '2023/10';
-  // const endDate = '2023/12';
 
   const start = dayjs(startDate, ['YYYY/M']);
   const end = dayjs(endDate, ['YYYY/M']);
 
   const diff = end.diff(start, 'month');
-  const columns = useMemo<{ date: string[]; months: string[]; days: number[]; monthWidths: number[]; totalWidth: number }>(() => {
+  const columns = useMemo<{
+    date: string[];
+    months: string[];
+    days: number[];
+    monthWidths: number[];
+    totalWidth: number;
+    isWeekend: boolean[];
+  }>(() => {
     const date: string[] = [];
     const months: string[] = [];
     const days: number[] = [];
@@ -70,7 +81,7 @@ const GranttTask = ({
     let month = Number(start.format('M')) - 1;
     let year = Number(start.format('YYYY'));
 
-    for (let i = 0; i < diff; i++) {
+    for (let i = 0; i <= diff; i++) {
       month = month + 1;
       if (month >= 13) {
         month = 1;
@@ -96,16 +107,29 @@ const GranttTask = ({
       days,
       monthWidths,
       totalWidth,
+      isWeekend,
     };
   }, []);
 
-  const columnProps = { ...columns, height, width, dataSources };
+  const columnProps = { ...columns, height, width, dataSources, handleAddTask, formatDate };
 
   return (
-    <Grid container style={{ overflowX: 'scroll', display: 'flex' }} spacing={6}>
-      <RndReactHeader {...columnProps} />
-      <RndReactBody {...columnProps} />
-    </Grid>
+    <Box
+      className='app-grantt'
+      sx={{
+        width: '100%',
+        display: 'flex',
+        borderRadius: 1,
+        overflow: 'hidden',
+        position: 'relative',
+        backgroundColor: 'background.paper',
+        boxShadow: 0,
+        border: `1px solid ${theme.palette.primary.main}`,
+      }}
+    >
+      <SidebarLeft {...columnProps} columnLeft={['name', 'label', 'priority', 'start', 'end']} />
+      <GranttContent {...columnProps} />
+    </Box>
   );
 };
 

@@ -1,41 +1,55 @@
 import { useState } from 'react';
-import GranttTask, { GranttTaskData } from 'src/views/dnd/react-rnd/grantt-task';
+import GranttTask, { GanttTaskData } from 'src/views/dnd/react-rnd/grantt-task';
 
 const DndPage = () => {
-  const [dataSources, setDataSource] = useState<GranttTaskData[]>([
+  const [dataSources, setDataSource] = useState<GanttTaskData[]>([
     {
       id: 1,
       start: '2023/11/1',
       end: '2023/11/1',
+      name: 'Lieu HongThai',
       label: 'task 1',
+      priority: 'Super Hight',
+      type: '',
       chilrends: [
         {
           startDate: '2023/11/1',
           endDate: '2023/11/1',
+          type: 'code',
         },
         {
           startDate: '2023/11/5',
           endDate: '2023/11/6',
+          type: 'design',
         },
       ],
     },
     {
       id: 2,
       start: '2023/11/5',
-      end: '2023/11/6',
-      label: 'task 1',
+      end: '2023/12/31',
+      name: 'Nguyễn Thị Ngọc Oanh',
+      priority: 'Super Hight',
+      label: 'task 2',
       chilrends: [
         {
           startDate: '2023/11/5',
           endDate: '2023/11/6',
+          type: 'all',
         },
       ],
     },
   ]);
 
+  const handleAddTask = (granttData: GanttTaskData, index: number) => {
+    const dataSourceCoppies = [...dataSources];
+    const dataSource = dataSourceCoppies[index];
+    setDataSource(dataState => [...dataState, granttData]);
+  };
+
   return (
     <>
-      <GranttTask dataSources={dataSources} />
+      <GranttTask dataSources={dataSources} handleAddTask={handleAddTask} />
     </>
   );
 };
