@@ -87,27 +87,22 @@ const RndDialog = ({ isOpen, handleToggle }: Props) => {
   const [minDate, setMinDate] = useState<DateType>(new Date());
   const [maxDate, setMaxDate] = useState<DateType>(new Date());
 
-  const [startDate, setStartDate] = useState<DateType>(new Date());
-  const [endDate, setEndDate] = useState<DateType>(addDays(new Date(), 15));
   const [startDateRange, setStartDateRange] = useState<DateType>(new Date());
   const [endDateRange, setEndDateRange] = useState<DateType>(addDays(new Date(), 45));
-
-  const handleOnChangeRange = (dates: any) => {
-    const [start, end] = dates;
-    setStartDateRange(start);
-    setEndDateRange(end);
-  };
 
   const {
     control,
     setError,
     handleSubmit,
     formState: { errors },
+    getValues,
   } = useForm({
     defaultValues: {},
     mode: 'onBlur',
     resolver: yupResolver(schema),
   });
+
+  console.log(12005, getValues());
 
   return (
     <div>
@@ -115,7 +110,7 @@ const RndDialog = ({ isOpen, handleToggle }: Props) => {
         onClose={handleToggle}
         aria-labelledby='customized-dialog-title'
         open={isOpen}
-        maxWidth={'sm'}
+        maxWidth={'lg'}
         fullWidth
         sx={{
           height: 500,
@@ -136,7 +131,7 @@ const RndDialog = ({ isOpen, handleToggle }: Props) => {
               <Grid container spacing={6}>
                 {/* DatePicker */}
                 <Grid item xs={12}>
-                  <FormControl fullWidth>
+                  <FormControl fullWidth sx={{ display: 'block' }}>
                     <Controller
                       name='startDate'
                       rules={{ required: true }}
@@ -145,36 +140,18 @@ const RndDialog = ({ isOpen, handleToggle }: Props) => {
                         <DatePicker
                           selectsRange
                           monthsShown={2}
-                          endDate={endDateRange}
-                          selected={startDateRange}
-                          startDate={startDateRange}
+                          endDate={value ? (value as unknown as Date[])[1] : null}
+                          selected={value ? (value as unknown as Date[])[0] : null}
+                          startDate={value ? (value as unknown as Date[])[0] : null}
                           onChange={onChange}
-
-                          //   shouldCloseOnSelect={false}
-
-                          //   customInput={
-                          //     <CustomInput2 label='Multiple Months' end={endDateRange as Date | number} start={startDateRange as Date | number} />
-                          //   }
+                          shouldCloseOnSelect={false}
+                          customInput={
+                            <CustomInput2 label='Multiple Months' end={endDateRange as Date | number} start={startDateRange as Date | number} />
+                          }
                         />
                       )}
                     />
                   </FormControl>
-                </Grid>
-
-                <Grid item xs={12}>
-                  <DatePicker
-                    selectsRange
-                    monthsShown={2}
-                    endDate={endDateRange}
-                    selected={startDateRange}
-                    startDate={startDateRange}
-                    shouldCloseOnSelect={false}
-                    id='date-range-picker-months'
-                    onChange={handleOnChangeRange}
-                    popperPlacement={'bottom-end'}
-                    customInput={<CustomInput2 label='Multiple Months' end={endDateRange as Date | number} start={startDateRange as Date | number} />}
-                  />
-                  <PickersRange popperPlacement={'bottom-end'} />
                 </Grid>
               </Grid>
             </form>
