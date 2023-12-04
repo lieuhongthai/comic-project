@@ -5,21 +5,21 @@ const DndPage = () => {
   const [dataSources, setDataSource] = useState<GanttTaskData[]>([
     {
       id: 1,
-      start: '2023/11/1',
-      end: '2023/11/1',
+      start: '2023/12/1',
+      end: '2023/12/1',
       name: 'Lieu HongThai',
       label: 'task 1',
       priority: 'Super Hight',
       type: '',
       chilrends: [
         {
-          startDate: '2023/11/1',
-          endDate: '2023/11/1',
+          startDate: '2023/12/1',
+          endDate: '2023/12/1',
           type: 'code',
         },
         {
-          startDate: '2023/11/5',
-          endDate: '2023/11/6',
+          startDate: '2023/12/5',
+          endDate: '2023/12/6',
           type: 'design',
         },
       ],
@@ -33,8 +33,8 @@ const DndPage = () => {
       label: 'task 2',
       chilrends: [
         {
-          startDate: '2023/11/5',
-          endDate: '2023/11/6',
+          startDate: '2023/12/5',
+          endDate: '2023/12/6',
           type: 'all',
         },
       ],

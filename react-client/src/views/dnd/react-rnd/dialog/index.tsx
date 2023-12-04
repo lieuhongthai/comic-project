@@ -78,7 +78,7 @@ const CustomInput2 = forwardRef((props: PickerProps2, ref) => {
 
   const value = `${startDate}${endDate !== null ? endDate : ''}`;
 
-  return <TextField inputRef={ref} label={props.label || ''} {...props} value={value} />;
+  return <TextField inputRef={ref} label={props.label || ''} {...props} value={value} sx={{ width: '100%' }} />;
 });
 
 const RndDialog = ({ isOpen, handleToggle }: Props) => {
@@ -112,10 +112,12 @@ const RndDialog = ({ isOpen, handleToggle }: Props) => {
         open={isOpen}
         maxWidth={'lg'}
         fullWidth
-        sx={{
-          height: 500,
-          zIndex: 500,
-        }}
+        sx={
+          {
+            // height: 500,
+            // zIndex: 500,
+          }
+        }
       >
         <DialogTitle id='customized-dialog-title' sx={{ p: 4 }}>
           <Typography variant='h6' component='span'>

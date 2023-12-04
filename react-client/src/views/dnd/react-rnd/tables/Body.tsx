@@ -11,6 +11,8 @@ import RndDraggable from '../core/Draggable';
 import { Rnd } from 'react-rnd';
 import { GanttTaskData, GanttType, GranttTaskDataItem } from '../grantt-task';
 import RndDialog from '../dialog';
+import EventSidebar from '../dialog/EventSidebar';
+import { EventDateType } from 'src/types/apps/calendarTypes';
 export interface RndReactBodyProps {
   date: string[];
   months: string[];
@@ -32,11 +34,14 @@ const RndReactBody = (props: RndReactBodyProps) => {
   const rowRefs = useRef<HTMLDivElement[]>([]);
 
   // ** State
-  const [isOpen, setOpen] = useState<boolean>(false);
+
+  const [currentDate, setCurrentDate] = useState<EventDateType>();
+
+  const [isSidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
   // ** Functional
 
-  const handleToggle = () => setOpen(!isOpen);
+  const handleToggle = () => setSidebarOpen(!isSidebarOpen);
 
   // ** Rnd
   const RndRender = (index: number, id: number, itemChilren?: GranttTaskDataItem) => {
@@ -98,6 +103,8 @@ const RndReactBody = (props: RndReactBodyProps) => {
                 if (!className.includes('react-draggable')) {
                   handleToggle();
                   console.log(12005, 'onclick', className);
+                  const date = dayjs(className, 'YYYY/M/D').toDate();
+                  setCurrentDate(date);
                 }
               }}
             >
@@ -113,7 +120,9 @@ const RndReactBody = (props: RndReactBodyProps) => {
         </Grid>
       ))}
 
-      <RndDialog isOpen={isOpen} handleToggle={handleToggle} />
+      {/* <RndDialog isOpen={isOpen} handleToggle={handleToggle} /> */}
+
+      <EventSidebar isSidebarOpen={isSidebarOpen} drawerWidth={400} handleEventSidebarToggle={handleToggle} currentDate={currentDate} />
     </div>
   );
 };
