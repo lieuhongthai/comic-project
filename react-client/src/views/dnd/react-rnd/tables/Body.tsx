@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // ** React Import
-import React, { createElement, memo, useRef, useState } from 'react';
+import React, { createElement, memo, useCallback, useReducer, useRef, useState } from 'react';
 
 // ** Dayjs Import
 import dayjs from 'dayjs';
@@ -9,7 +9,7 @@ import dayjs from 'dayjs';
 import Grid from '@mui/material/Grid';
 import RndDraggable from '../core/Draggable';
 import { Rnd } from 'react-rnd';
-import { GanttTaskData, GanttType, GranttTaskDataItem } from '../grantt-task';
+import { GanttTaskData, GanttType, GanttTaskDataItem } from '../grantt-task';
 import RndDialog from '../dialog';
 import EventSidebar from '../dialog/EventSidebar';
 import { EventDateType } from 'src/types/apps/calendarTypes';
@@ -22,20 +22,69 @@ export interface RndReactBodyProps {
   height: number;
   width: number;
   dataSources: GanttTaskData[];
-  handleAddTask: (granttData: GanttTaskData, index: number) => void;
   isWeekend: boolean[];
+  handleAddTask: (granttData: GanttTaskDataItem, index: number) => void;
+  handleUpdateTask: (rowIndex: number, taskItem: GanttTaskDataItem) => void;
 }
+
+interface ReducerType {
+  [x: string]: any;
+  dataSource: any;
+  index: number;
+  currentDate: Date;
+  isEdit?: boolean;
+}
+
+interface ActionType {
+  type: string;
+  data: ReducerType;
+
+  // dataSource: any;
+  // index: number;
+}
+
+function reducer(state: ReducerType, action: ActionType) {
+  const { type, data } = action;
+  const { dataSource, index } = data;
+
+  switch (type) {
+    case 'INDEX':
+      return {
+        ...state,
+        index,
+      };
+
+    case 'DATA_SOURCE':
+      return {
+        ...state,
+        dataSource,
+      };
+    case 'ALL':
+      return {
+        ...data,
+      };
+    default:
+      return state;
+  }
+}
+const initialState: ReducerType = {
+  index: 0,
+  dataSource: {
+    id: '',
+    chilrends: [],
+  },
+  currentDate: new Date(),
+};
 const RndReactBody = (props: RndReactBodyProps) => {
   // ** Props
-  const { months, days, date, monthWidths, totalWidth, height, width, dataSources, handleAddTask, isWeekend } = props;
+  const { months, days, date, monthWidths, totalWidth, height, width, dataSources, isWeekend, handleAddTask, handleUpdateTask } = props;
 
   // ** Ref
   const rndRefs = useRef<Rnd[]>([]);
   const rowRefs = useRef<HTMLDivElement[]>([]);
 
-  // ** State
-
-  const [currentDate, setCurrentDate] = useState<EventDateType>();
+  // ** Reducer
+  const [reducerState, dispatch] = useReducer(reducer, initialState);
 
   const [isSidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
@@ -44,29 +93,55 @@ const RndReactBody = (props: RndReactBodyProps) => {
   const handleToggle = () => setSidebarOpen(!isSidebarOpen);
 
   // ** Rnd
-  const RndRender = (index: number, id: number, itemChilren?: GranttTaskDataItem) => {
-    const { type, endDate, startDate } = itemChilren as GranttTaskDataItem;
+  const RndRender = (rowIndex: number, id: number, itemChilren: GanttTaskDataItem | undefined, dataSource: GanttTaskData) => {
+    const { type, endDate, startDate, label } = itemChilren as GanttTaskDataItem;
 
-    const start = dayjs(startDate, ['YYYY/M']);
-    const end = dayjs(endDate, ['YYYY/M']);
+    const start = dayjs(startDate, ['YYYY/M/D']);
+    const end = dayjs(endDate, ['YYYY/M/D']);
 
     const diff = end.diff(start, 'day') + 1;
 
     const widthTask = diff * width;
 
+    const handle = (xPosition: number) => {
+      const startDateIndex = xPosition / width;
+      const endDateIndex = startDateIndex + diff - 1;
+      const startDate = date[startDateIndex];
+      const endDate = date[endDateIndex];
+
+      dispatch({
+        type: 'ALL',
+        data: {
+          index: rowIndex,
+          dataSource: dataSource,
+          isEdit: true,
+          currentDate: dayjs(startDate, ['YYYY/M/D']).toDate(),
+          label,
+          type,
+          endDate: dayjs(endDate, ['YYYY/M/D']).toDate(),
+        },
+      });
+      handleToggle();
+
+      // handleUpdateTaskCallback && handleUpdateTaskCallback(rowIndex, itemChilren as GanttTaskDataItem);
+    };
+
     return (
       <RndDraggable
-        row={index}
+        row={rowIndex}
         id={id}
         rndRefs={rndRefs}
-        rowRefs={rowRefs}
-        key={`rnd-body-table-item-${index}-${id}`}
+        key={`rnd-body-table-item-${rowIndex}-${id}`}
         height={height}
         width={widthTask}
         type={type}
+        label={label}
+        onClickHandler={handle}
       />
     );
   };
+
+  // console.log(12005, 'RndReactBody: re-render');
 
   // ** Render // id='rnd-body-table-container'
   return (
@@ -100,19 +175,24 @@ const RndReactBody = (props: RndReactBodyProps) => {
               className={`${date[index]}`}
               onClick={e => {
                 const className = (e.target as any as { className: string }).className;
-                if (!className.includes('react-draggable')) {
+
+                if (!className.includes('react-draggable') && className !== '') {
                   handleToggle();
-                  console.log(12005, 'onclick', className);
-                  const date = dayjs(className, 'YYYY/M/D').toDate();
-                  setCurrentDate(date);
+                  const current = dayjs(date[index], 'YYYY/M/D').toDate();
+                  dispatch({
+                    type: 'ALL',
+                    data: { index: rowIndex, dataSource, currentDate: current },
+                  });
                 }
               }}
+              onDoubleClick={() => {}}
             >
               {dataSource.chilrends.some(s => s.startDate === date[index])
                 ? RndRender(
                     rowIndex,
                     index,
                     dataSource.chilrends.find(f => f.startDate === date[index]),
+                    dataSource,
                   )
                 : null}
             </div>
@@ -120,9 +200,14 @@ const RndReactBody = (props: RndReactBodyProps) => {
         </Grid>
       ))}
 
-      {/* <RndDialog isOpen={isOpen} handleToggle={handleToggle} /> */}
-
-      <EventSidebar isSidebarOpen={isSidebarOpen} drawerWidth={400} handleEventSidebarToggle={handleToggle} currentDate={currentDate} />
+      <EventSidebar
+        isSidebarOpen={isSidebarOpen}
+        drawerWidth={400}
+        handleEventSidebarToggle={handleToggle}
+        handleAddTask={handleAddTask}
+        handleUpdateTask={handleUpdateTask}
+        reducerState={reducerState}
+      />
     </div>
   );
 };

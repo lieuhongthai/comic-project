@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // ** React Import
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 
 // ** Dayjs Import
 import dayjs from 'dayjs';
@@ -13,9 +13,20 @@ import Box from '@mui/material/Box';
 import GranttContent from './GranttContent';
 import SidebarLeft from './SidebarLeft';
 
-export type GranttTaskDataItem = {
-  startDate: string | Date;
-  endDate: string | Date;
+// Sử dụng generic type
+export type UniqueId<T extends Record<keyof T, any>> = T extends T
+  ? keyof T extends infer K
+    ? K extends keyof T
+      ? Record<K, T[K]> extends Record<keyof T, T[keyof T]>
+        ? never
+        : T
+      : never
+    : never
+  : never;
+export type GanttTaskDataItem = {
+  id?: number | string;
+  startDate: string;
+  endDate: string;
   type: GanttType;
   label?: string;
 };
@@ -30,7 +41,7 @@ export type GanttTaskData = {
   label?: string;
   name?: string;
   priority?: string;
-  chilrends: GranttTaskDataItem[];
+  chilrends: GanttTaskDataItem[];
 };
 
 type GranttTaskType = {
@@ -39,8 +50,9 @@ type GranttTaskType = {
   formatDate?: string | 'YYYY/M' | 'YYYY/MM';
   height?: number;
   width?: number;
-  dataSources: GanttTaskData[];
-  handleAddTask: (granttData: GanttTaskData, index: number) => void;
+  dataSources?: GanttTaskData[];
+  handleAddTask?: (granttData: GanttTaskDataItem, index: number) => void;
+  handleUpdateTaskCallback?: (rowIndex: number, taskItem: GanttTaskDataItem) => void;
 };
 const GranttTask = ({
   startDate = dayjs().format('YYYY/M'),
@@ -48,9 +60,56 @@ const GranttTask = ({
   formatDate = 'YYYY/M/D',
   height = 50,
   width = 50,
-  dataSources,
-  handleAddTask,
-}: GranttTaskType) => {
+  handleUpdateTaskCallback, // dataSources,
+} // handleAddTask,
+: GranttTaskType) => {
+  // ** State
+  const [dataSources, setDataSource] = useState<GanttTaskData[]>([
+    {
+      id: 1,
+      start: '2023/12/1',
+      end: '2023/12/1',
+      name: 'Lieu HongThai',
+      label: 'task 1',
+      priority: 'Super Hight',
+      type: '',
+      chilrends: [
+        {
+          id: 1,
+          startDate: '2023/12/1',
+          endDate: '2023/12/1',
+          type: 'code',
+          label: 'task 111111111',
+        },
+        {
+          id: 2,
+
+          startDate: '2023/12/5',
+          endDate: '2023/12/6',
+          type: 'design',
+          label: 'task 22222222',
+        },
+      ],
+    },
+    {
+      id: 2,
+      start: '2023/11/5',
+      end: '2023/12/31',
+      name: 'Nguyễn Thị Ngọc Oanh',
+      priority: 'Super Hight',
+      label: 'task 2',
+      chilrends: [
+        {
+          id: 3,
+          startDate: '2023/12/5',
+          endDate: '2023/12/6',
+          type: 'all',
+          label: 'task 3333333333',
+        },
+      ],
+    },
+  ]);
+
   // ** Hooks
   const theme = useTheme();
 
@@ -111,7 +170,25 @@ const GranttTask = ({
     };
   }, []);
 
-  const columnProps = { ...columns, height, width, dataSources, handleAddTask, formatDate };
+  const handleUpdateTask = (rowIndex: number, taskItem: GanttTaskDataItem) => {
+    const dataSourceCoppies = [...dataSources];
+    const dataSource = dataSourceCoppies[rowIndex];
+
+    console.log(12005, 'handleUpdateTask: ', dataSource);
+
+    handleUpdateTaskCallback && handleUpdateTaskCallback(rowIndex, taskItem);
+  };
+
+  const handleAddTask = (granttData: GanttTaskDataItem, index: number) => {
+    const dataSourceCoppies = [...dataSources];
+    const dataSource = dataSourceCoppies[index];
+    dataSource.chilrends.push(granttData);
+
+    // console.log(12005, dataSourceCoppies, dataSource, dataSources);
+
+    // setDataSource(dataSource);
+  };
+  const columnProps = { ...columns, height, width, dataSources, handleAddTask, formatDate, handleUpdateTask };
 
   return (
     <Box

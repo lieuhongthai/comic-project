@@ -20,7 +20,10 @@ interface Props {
   type: GanttType;
 
   rndRefs: React.MutableRefObject<Rnd[]>;
-  rowRefs: React.MutableRefObject<HTMLDivElement[]>;
+  label?: string;
+  onClickHandler?: (xPosition: number) => void;
+
+  // rowRefs: React.MutableRefObject<HTMLDivElement[]>;
   width?: number;
   height?: number;
 }
@@ -36,7 +39,7 @@ const ganttType = {
   design: '#D9EAD3',
   all: '#FFF2CC',
 };
-const RndDraggable: FC<Props> = ({ id, row: indexRow, rndRefs, width = 50, height = 50, type }) => {
+const RndDraggable: FC<Props> = ({ id, row: indexRow, rndRefs, width = 50, height = 50, type, label, onClickHandler }) => {
   // ** State
 
   // ** Ref
@@ -129,7 +132,17 @@ const RndDraggable: FC<Props> = ({ id, row: indexRow, rndRefs, width = 50, heigh
 
   // ** Render
   return (
-    <Box component={'div'} id={`id_${indexRow}_${id}`}>
+    <Box
+      component={'div'}
+      id={`id_${indexRow}_${id}`}
+      onDoubleClick={() => {
+        // ** !isDragg.current &&
+        if (rndRef.current && onClickHandler) {
+          const xPosition = rndRef.current.getDraggablePosition().x;
+          onClickHandler(xPosition);
+        }
+      }}
+    >
       <Rnd
         minWidth={50}
         key={`rnd-item-${indexRow}`}
@@ -173,9 +186,7 @@ const RndDraggable: FC<Props> = ({ id, row: indexRow, rndRefs, width = 50, heigh
         }}
         {...handler}
       >
-        <span>
-          {indexRow} {id}
-        </span>
+        <span style={{ padding: 5 }}>{label}</span>
       </Rnd>
     </Box>
   );

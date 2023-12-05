@@ -16,6 +16,7 @@ import FormHelperText from '@mui/material/FormHelperText';
 
 // ** Third Party Imports
 import DatePicker from 'react-datepicker';
+import isBetween from 'dayjs/plugin/isBetween';
 import { useForm, Controller } from 'react-hook-form';
 
 // ** Icon Imports
@@ -26,8 +27,13 @@ import DatePickerWrapper from 'src/@core/styles/libs/react-datepicker';
 
 // ** Types
 import { EventDateType } from 'src/types/apps/calendarTypes';
-import { GanttType } from '../grantt-task';
+import { GanttTaskData, GanttType, GanttTaskDataItem } from '../grantt-task';
 
+// ** Third Party Imports
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { t } from 'i18next';
+import dayjs from 'dayjs';
 interface PickerProps {
   label?: string;
   error?: boolean;
@@ -35,50 +41,134 @@ interface PickerProps {
 }
 
 type EventSidebarType = {
-  currentDate: EventDateType;
+  reducerState: {
+    [x: string]: any;
+    index: number;
+    dataSource: GanttTaskData;
+    currentDate: Date;
+    label?: string;
+    type?: GanttType;
+    endDate?: Date;
+    isEdit?: boolean;
+  };
   drawerWidth: number;
   isSidebarOpen: boolean;
   handleEventSidebarToggle: () => void;
+  handleAddTask: (granttData: GanttTaskDataItem, index: number) => void;
+  handleUpdateTask: (rowIndex: number, taskItem: GanttTaskDataItem) => void;
 };
-type IFormInput = { label: string; type: GanttType; startDate: string | Date | null; endDate: Date | null };
+type IFormInput = { label: string; type: GanttType; startDate: string | Date | null; endDate: string | Date | null | undefined };
+type RangeDateType = { minDate: EventDateType; maxDate: EventDateType };
 const defaultValues: IFormInput = {
   label: '',
-  type: 'code',
+  type: 'all',
   startDate: null,
   endDate: null,
 };
+
+// ** Yup schema
+const schema: yup.ObjectSchema<IFormInput> = yup.object().shape({
+  label: yup.string().required(t(`Label is required`)).max(100),
+  type: yup.string<GanttType>().nullable().min(1).required(),
+  startDate: yup.date().optional().required(),
+  endDate: yup.date().optional().required(),
+});
+
+dayjs.extend(isBetween);
+
 const EventSidebar = (props: EventSidebarType) => {
   // ** Props
-  const { currentDate, drawerWidth, isSidebarOpen, handleEventSidebarToggle } = props;
+  const {
+    reducerState: { index, isEdit, ...reducerState },
+    drawerWidth,
+    isSidebarOpen,
+    handleEventSidebarToggle,
+    handleAddTask,
+    handleUpdateTask,
+  } = props;
 
   // ** States
   const [values, setValues] = useState<IFormInput>(defaultValues);
+
+  const [rangeDate, setRangeDate] = useState<RangeDateType>({ minDate: null, maxDate: null });
 
   const {
     control,
     setValue,
     clearErrors,
     handleSubmit,
+    resetField,
     formState: { errors },
-  } = useForm<IFormInput>({ defaultValues: { ...defaultValues, startDate: currentDate } });
+  } = useForm<IFormInput>({ defaultValues: { ...defaultValues }, resolver: yupResolver(schema) });
 
   useEffect(() => {
-    if (currentDate) {
-      setValue('startDate', currentDate);
-      setValues({ ...values, startDate: currentDate });
+    if (isSidebarOpen) {
+      const { dataSource, currentDate, label, type, endDate } = reducerState;
+      if (currentDate) {
+        const d = !isEdit
+          ? (dataSource?.chilrends as GanttTaskDataItem[])
+          : (dataSource?.chilrends as GanttTaskDataItem[]).filter(f => f.startDate !== dayjs(currentDate).format('YYYY/M/D'));
+
+        if (d) {
+          const s = d.sort((a, b) => {
+            if (new Date(a.startDate) < new Date(b.startDate)) return 1;
+            if (new Date(a.startDate) > new Date(b.startDate)) return -1;
+
+            return 0;
+          });
+
+          const minDate = s.find(f => new Date(f.startDate) <= new Date(currentDate))?.endDate;
+
+          const maxDate = s.find(f => new Date(f.startDate) >= new Date(currentDate))?.startDate;
+
+          // console.log(12005, { minDate, maxDate, dataSource, d });
+
+          setRangeDate({
+            minDate: minDate ? dayjs(minDate, ['YYYY/M/D']).add(1, 'day').toDate() : null,
+            maxDate: maxDate ? dayjs(maxDate, ['YYYY/M/D']).subtract(1, 'day').toDate() : null,
+          });
+        }
+
+        setValue('startDate', currentDate);
+        setValue('label', label || '');
+        setValue('type', type || 'all');
+
+        setValue('startDate', currentDate);
+
+        setValue('endDate', endDate);
+
+        setValues({ ...values, startDate: currentDate });
+      }
     }
-  }, [currentDate]);
+  }, [isSidebarOpen]);
 
   const handleSidebarClose = async () => {
     setValues(defaultValues);
     clearErrors();
     handleEventSidebarToggle();
+
+    resetFields();
+  };
+
+  const resetFields = () => {
+    resetField('label');
+    resetField('type');
+    resetField('startDate');
+    resetField('endDate');
   };
 
   const onSubmit = (data: IFormInput) => {
     console.log(12005, data);
-
+    const granttData: GanttTaskDataItem = {
+      id: Math.floor(Math.random() * 100),
+      label: data.label,
+      type: data.type,
+      startDate: dayjs(data.startDate).format('YYYY/M/D'),
+      endDate: dayjs(data.endDate).format('YYYY/M/D'),
+    };
     handleSidebarClose();
+
+    isEdit ? handleUpdateTask(index, granttData) : handleAddTask(granttData, index);
   };
 
   const handleStartDate = (date: Date) => {
@@ -96,7 +186,7 @@ const EventSidebar = (props: EventSidebarType) => {
   });
 
   const RenderSidebarFooter = () => {
-    if (true) {
+    if (!isEdit) {
       return (
         <Fragment>
           <Button size='large' type='submit' variant='contained' sx={{ mr: 4 }}>
@@ -120,6 +210,8 @@ const EventSidebar = (props: EventSidebarType) => {
       );
     }
   };
+
+  // console.log(12005, 'EventSidebar: re-render');
 
   return (
     <Drawer
@@ -159,7 +251,7 @@ const EventSidebar = (props: EventSidebarType) => {
               />
               {errors.label && (
                 <FormHelperText sx={{ color: 'error.main' }} id='event-title-error'>
-                  This field is required
+                  {errors.label.message}
                 </FormHelperText>
               )}
             </FormControl>
@@ -175,14 +267,14 @@ const EventSidebar = (props: EventSidebarType) => {
                       id='select-type-event-sidebar'
                       label='Type'
                       value={value}
-                      labelId='label-type-event-sidebar'
+                      labelId='label-select-type-event-sidebar'
                       onChange={onChange}
                       placeholder='Type ...'
                       error={Boolean(errors.type)}
                     >
+                      <MenuItem value='all'>all</MenuItem>
                       <MenuItem value='code'>code</MenuItem>
                       <MenuItem value='design'>design</MenuItem>
-                      <MenuItem value='all'>all</MenuItem>
                     </Select>
                   </>
                 )}
@@ -190,7 +282,7 @@ const EventSidebar = (props: EventSidebarType) => {
 
               {errors.type && (
                 <FormHelperText sx={{ color: 'error.main' }} id='event-title-error'>
-                  This field is required
+                  {errors.type.message}
                 </FormHelperText>
               )}
             </FormControl>
@@ -208,8 +300,8 @@ const EventSidebar = (props: EventSidebarType) => {
                       endDate={value as EventDateType}
                       selected={value as EventDateType}
                       startDate={value as EventDateType}
-                      minDate={currentDate as EventDateType}
-                      maxDate={values.endDate as EventDateType}
+                      minDate={rangeDate.minDate as EventDateType}
+                      maxDate={(values.endDate as EventDateType) || (rangeDate.maxDate as EventDateType)}
                       dateFormat={'yyyy/M/d'}
                       customInput={<PickersComponent label='Start Date' registername='startDate' error={Boolean(errors.startDate)} />}
                       onChange={(date: Date) => {
@@ -224,7 +316,7 @@ const EventSidebar = (props: EventSidebarType) => {
               />
               {errors.startDate && (
                 <FormHelperText sx={{ color: 'error.main' }} id='event-title-error'>
-                  This field is required
+                  {errors.startDate.message}
                 </FormHelperText>
               )}
             </FormControl>
@@ -240,8 +332,9 @@ const EventSidebar = (props: EventSidebarType) => {
                     id='date-picker-end-date-event-sidebar'
                     endDate={value as EventDateType}
                     selected={value as EventDateType}
-                    minDate={values.startDate as EventDateType}
                     startDate={values.startDate as EventDateType}
+                    minDate={(values.startDate as EventDateType) || (rangeDate.minDate as EventDateType)}
+                    maxDate={rangeDate.maxDate as EventDateType}
                     dateFormat={'yyyy/M/d'}
                     customInput={<PickersComponent label='End Date' registername='endDate' error={Boolean(errors.endDate)} />}
                     onChange={(date: Date) => {
@@ -253,7 +346,7 @@ const EventSidebar = (props: EventSidebarType) => {
               />
               {errors.endDate && (
                 <FormHelperText sx={{ color: 'error.main' }} id='event-title-error'>
-                  This field is required
+                  {errors.endDate.message}
                 </FormHelperText>
               )}
             </FormControl>

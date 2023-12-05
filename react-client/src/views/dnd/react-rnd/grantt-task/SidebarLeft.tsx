@@ -17,7 +17,6 @@ interface Props {
   columnLeft: ColumnLeftProps[];
 }
 const SidebarLeft = ({ width = 50, height = 50, dataSources, columnLeft }: Props) => {
-  console.log(12005, { dataSources });
   const { totalWidth, columnWidthObj } = useMemo<{ totalWidth: number; columnWidthObj: any }>(() => {
     // const totalWidth = columnLeft.length * width;
     let totalWidth = 0;
