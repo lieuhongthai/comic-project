@@ -5,7 +5,6 @@ import { useState, useEffect, forwardRef, useCallback, Fragment } from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Select from '@mui/material/Select';
-import Switch from '@mui/material/Switch';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
@@ -14,7 +13,6 @@ import InputLabel from '@mui/material/InputLabel';
 import Typography from '@mui/material/Typography';
 import FormControl from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
-import FormControlLabel from '@mui/material/FormControlLabel';
 
 // ** Third Party Imports
 import DatePicker from 'react-datepicker';
@@ -36,28 +34,6 @@ interface PickerProps {
   registername?: string;
 }
 
-interface DefaultStateType {
-  url: string;
-  title: string;
-  allDay: boolean;
-  calendar: string;
-  description: string;
-  endDate: Date | string;
-  startDate: Date | string;
-  guests: string[] | string | undefined;
-}
-
-const defaultState: DefaultStateType = {
-  url: '',
-  title: '',
-  guests: [],
-  allDay: true,
-  description: '',
-  endDate: new Date(),
-  calendar: 'Business',
-  startDate: new Date(),
-};
-
 type EventSidebarType = {
   currentDate: EventDateType;
   drawerWidth: number;
@@ -68,7 +44,7 @@ type IFormInput = { label: string; type: GanttType; startDate: string | Date | n
 const defaultValues: IFormInput = {
   label: '',
   type: 'code',
-  startDate: new Date(),
+  startDate: null,
   endDate: null,
 };
 const EventSidebar = (props: EventSidebarType) => {
@@ -76,7 +52,7 @@ const EventSidebar = (props: EventSidebarType) => {
   const { currentDate, drawerWidth, isSidebarOpen, handleEventSidebarToggle } = props;
 
   // ** States
-  const [values, setValues] = useState<DefaultStateType>(defaultState);
+  const [values, setValues] = useState<IFormInput>(defaultValues);
 
   const {
     control,
@@ -86,8 +62,15 @@ const EventSidebar = (props: EventSidebarType) => {
     formState: { errors },
   } = useForm<IFormInput>({ defaultValues: { ...defaultValues, startDate: currentDate } });
 
+  useEffect(() => {
+    if (currentDate) {
+      setValue('startDate', currentDate);
+      setValues({ ...values, startDate: currentDate });
+    }
+  }, [currentDate]);
+
   const handleSidebarClose = async () => {
-    setValues(defaultState);
+    setValues(defaultValues);
     clearErrors();
     handleEventSidebarToggle();
   };
@@ -99,7 +82,7 @@ const EventSidebar = (props: EventSidebarType) => {
   };
 
   const handleStartDate = (date: Date) => {
-    if (date > values.endDate) {
+    if (values.endDate && date > values.endDate) {
       setValues({ ...values, startDate: new Date(date), endDate: new Date(date) });
     }
   };
@@ -157,11 +140,6 @@ const EventSidebar = (props: EventSidebarType) => {
       >
         <Typography variant='h6'>{true ? 'Update Event' : 'Add Event'}</Typography>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          {/* {true ? (
-            <IconButton size='small' sx={{ color: 'text.primary', mr: true !== null ? 1 : 0 }}>
-              <Icon icon='mdi:delete-outline' fontSize={20} />
-            </IconButton>
-          ) : null} */}
           <IconButton size='small' onClick={handleSidebarClose} sx={{ color: 'text.primary' }}>
             <Icon icon='mdi:close' fontSize={20} />
           </IconButton>
@@ -209,6 +187,12 @@ const EventSidebar = (props: EventSidebarType) => {
                   </>
                 )}
               />
+
+              {errors.type && (
+                <FormHelperText sx={{ color: 'error.main' }} id='event-title-error'>
+                  This field is required
+                </FormHelperText>
+              )}
             </FormControl>
 
             <FormControl fullWidth sx={{ mb: 6 }}>
@@ -217,8 +201,6 @@ const EventSidebar = (props: EventSidebarType) => {
                 control={control}
                 rules={{ required: true }}
                 render={({ field: { value, onChange } }) => {
-                  console.log(12005, 'startDate: ', value);
-
                   return (
                     <DatePicker
                       selectsStart
@@ -226,11 +208,13 @@ const EventSidebar = (props: EventSidebarType) => {
                       endDate={value as EventDateType}
                       selected={value as EventDateType}
                       startDate={value as EventDateType}
-                      showTimeSelect={!values.allDay}
-                      dateFormat={!values.allDay ? 'yyyy-MM-dd hh:mm' : 'yyyy-MM-dd'}
-                      customInput={<PickersComponent label='Start Date' registername='startDate' />}
+                      minDate={currentDate as EventDateType}
+                      maxDate={values.endDate as EventDateType}
+                      dateFormat={'yyyy/M/d'}
+                      customInput={<PickersComponent label='Start Date' registername='startDate' error={Boolean(errors.startDate)} />}
                       onChange={(date: Date) => {
                         onChange(date);
+
                         setValues({ ...values, startDate: new Date(date) });
                       }}
                       onSelect={handleStartDate}
@@ -238,6 +222,11 @@ const EventSidebar = (props: EventSidebarType) => {
                   );
                 }}
               />
+              {errors.startDate && (
+                <FormHelperText sx={{ color: 'error.main' }} id='event-title-error'>
+                  This field is required
+                </FormHelperText>
+              )}
             </FormControl>
 
             <FormControl fullWidth sx={{ mb: 6 }}>
@@ -253,9 +242,8 @@ const EventSidebar = (props: EventSidebarType) => {
                     selected={value as EventDateType}
                     minDate={values.startDate as EventDateType}
                     startDate={values.startDate as EventDateType}
-                    showTimeSelect={!values.allDay}
-                    dateFormat={!values.allDay ? 'yyyy-MM-dd hh:mm' : 'yyyy-MM-dd'}
-                    customInput={<PickersComponent label='End Date' registername='endDate' />}
+                    dateFormat={'yyyy/M/d'}
+                    customInput={<PickersComponent label='End Date' registername='endDate' error={Boolean(errors.endDate)} />}
                     onChange={(date: Date) => {
                       onChange(date);
                       setValues({ ...values, endDate: new Date(date) });
@@ -263,14 +251,12 @@ const EventSidebar = (props: EventSidebarType) => {
                   />
                 )}
               />
+              {errors.endDate && (
+                <FormHelperText sx={{ color: 'error.main' }} id='event-title-error'>
+                  This field is required
+                </FormHelperText>
+              )}
             </FormControl>
-            <FormControl sx={{ mb: 6 }}>
-              <FormControlLabel
-                label='All Day'
-                control={<Switch checked={values.allDay} onChange={e => setValues({ ...values, allDay: e.target.checked })} />}
-              />
-            </FormControl>
-
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <RenderSidebarFooter />
             </Box>
