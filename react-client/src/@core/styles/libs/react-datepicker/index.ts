@@ -149,7 +149,7 @@ const DatePickerWrapper = styled(Box)<BoxProps>(({ theme }) => {
         '&:not(.react-datepicker__day--selected):not(:empty)': {
           lineHeight: '2.125rem',
           color: theme.palette.primary.main,
-          border: `1px solid ${theme.palette.primary.main}`,
+          border: `1px dashed ${theme.palette.primary.main}`,
           '&:hover': {
             backgroundColor: hexToRGBA(theme.palette.primary.main, 0.04),
           },

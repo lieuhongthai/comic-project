@@ -1,0 +1,33 @@
+.resize_handle_right_stop {
+	opacity: 0;
+}
+
+.resize_handle_left_stop {
+	opacity: 0;
+}
+
+.body_draggable:hover .resize_handle_right_stop {
+	opacity: 1;
+}
+
+.body_draggable:hover .resize_handle_left_stop {
+	opacity: 1;
+}
+
+.hoverItem_Date:hover {
+	background-color: rgb(241, 206, 159) !important;
+	transition: 0.1s all;
+}
+
+/* resize */
+.isResize.body_draggable .resize_handle_left_stop {
+	opacity: 1;
+}
+
+.isResize.body_draggable .resize_handle_right_stop {
+	opacity: 1;
+}
+
+.isResize {
+	background-color: rgb(241, 206, 159) !important;
+}

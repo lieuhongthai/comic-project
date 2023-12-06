@@ -13,6 +13,7 @@ import { GanttTaskData, GanttType, GanttTaskDataItem } from '../grantt-task';
 import RndDialog from '../dialog';
 import EventSidebar from '../dialog/EventSidebar';
 import { EventDateType } from 'src/types/apps/calendarTypes';
+import { useGanttTask } from '../context/GanttTaskContext';
 export interface RndReactBodyProps {
   date: string[];
   months: string[];
@@ -23,8 +24,6 @@ export interface RndReactBodyProps {
   width: number;
   dataSources: GanttTaskData[];
   isWeekend: boolean[];
-  handleAddTask: (granttData: GanttTaskDataItem, index: number) => void;
-  handleUpdateTask: (rowIndex: number, taskItem: GanttTaskDataItem) => void;
 }
 
 interface ReducerType {
@@ -32,6 +31,7 @@ interface ReducerType {
   dataSource: any;
   index: number;
   currentDate: Date;
+  ganttTaskDataItem?: GanttTaskDataItem;
   isEdit?: boolean;
 }
 
@@ -71,13 +71,13 @@ const initialState: ReducerType = {
   index: 0,
   dataSource: {
     id: '',
-    chilrends: [],
+    childrens: [],
   },
   currentDate: new Date(),
 };
 const RndReactBody = (props: RndReactBodyProps) => {
   // ** Props
-  const { months, days, date, monthWidths, totalWidth, height, width, dataSources, isWeekend, handleAddTask, handleUpdateTask } = props;
+  const { months, days, date, monthWidths, totalWidth, height, width, dataSources, isWeekend } = props;
 
   // ** Ref
   const rndRefs = useRef<Rnd[]>([]);
@@ -88,12 +88,21 @@ const RndReactBody = (props: RndReactBodyProps) => {
 
   const [isSidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
+  // ** Hook
+  const { handleAddTask, handleUpdateTask, handleOnTransformTask } = useGanttTask();
+
   // ** Functional
 
   const handleToggle = () => setSidebarOpen(!isSidebarOpen);
 
   // ** Rnd
-  const RndRender = (rowIndex: number, id: number, itemChilren: GanttTaskDataItem | undefined, dataSource: GanttTaskData) => {
+  const RndRender = (
+    rowIndex: number,
+    index: number,
+    itemChilren: GanttTaskDataItem | undefined,
+    dataSource: GanttTaskData,
+    ganttIdNumber: number,
+  ) => {
     const { type, endDate, startDate, label } = itemChilren as GanttTaskDataItem;
 
     const start = dayjs(startDate, ['YYYY/M/D']);
@@ -103,7 +112,8 @@ const RndReactBody = (props: RndReactBodyProps) => {
 
     const widthTask = diff * width;
 
-    const handle = (xPosition: number) => {
+    const handleOnClick = (xPosition: number, xWidth: number) => {
+      const diff = xWidth / width;
       const startDateIndex = xPosition / width;
       const endDateIndex = startDateIndex + diff - 1;
       const startDate = date[startDateIndex];
@@ -113,35 +123,50 @@ const RndReactBody = (props: RndReactBodyProps) => {
         type: 'ALL',
         data: {
           index: rowIndex,
-          dataSource: dataSource,
+          dataSource,
           isEdit: true,
           currentDate: dayjs(startDate, ['YYYY/M/D']).toDate(),
           label,
           type,
           endDate: dayjs(endDate, ['YYYY/M/D']).toDate(),
+          ganttTaskDataItem: getChildrenDataByGanttId(dataSource, ganttIdNumber),
         },
       });
       handleToggle();
+    };
 
-      // handleUpdateTaskCallback && handleUpdateTaskCallback(rowIndex, itemChilren as GanttTaskDataItem);
+    const handleTransform = (xPosition: number, xWidth?: number) => {
+      const diffRet = xWidth ? xWidth / width : diff;
+      const startDateIndex = xPosition / width;
+      const endDateIndex = startDateIndex + diffRet - 1;
+      const startDate = date[startDateIndex];
+      const endDate = date[endDateIndex];
+
+      const ganttTaskDataItem = { ...getChildrenDataByGanttId(dataSource, ganttIdNumber), startDate, endDate };
+
+      handleOnTransformTask(ganttTaskDataItem, rowIndex);
     };
 
     return (
       <RndDraggable
         row={rowIndex}
-        id={id}
+        id={ganttIdNumber}
         rndRefs={rndRefs}
-        key={`rnd-body-table-item-${rowIndex}-${id}`}
+        key={`rnd-body-table-item-${rowIndex}-${index}-${widthTask}`}
         height={height}
         width={widthTask}
         type={type}
         label={label}
-        onClickHandler={handle}
+        onClickHandler={handleOnClick}
+        handleTransform={handleTransform}
       />
     );
   };
+  const getChildrenDataByDateIndex = (dataSource: GanttTaskData, index: number) =>
+    dataSource.childrens.find(f => f.startDate === date[index]) as GanttTaskDataItem;
 
-  // console.log(12005, 'RndReactBody: re-render');
+  const getChildrenDataByGanttId = (dataSource: GanttTaskData, ganttIdNumber: number) =>
+    dataSource.childrens.find(f => f.ganttIdNumber === ganttIdNumber) as GanttTaskDataItem;
 
   // ** Render // id='rnd-body-table-container'
   return (
@@ -178,21 +203,22 @@ const RndReactBody = (props: RndReactBodyProps) => {
 
                 if (!className.includes('react-draggable') && className !== '') {
                   handleToggle();
-                  const current = dayjs(date[index], 'YYYY/M/D').toDate();
+                  const currentDate = dayjs(date[index], 'YYYY/M/D').toDate();
                   dispatch({
                     type: 'ALL',
-                    data: { index: rowIndex, dataSource, currentDate: current },
+                    data: { index: rowIndex, dataSource, currentDate, ganttTaskDataItem: getChildrenDataByDateIndex(dataSource, index) },
                   });
                 }
               }}
               onDoubleClick={() => {}}
             >
-              {dataSource.chilrends.some(s => s.startDate === date[index])
+              {dataSource.childrens.some(s => s.startDate === date[index])
                 ? RndRender(
                     rowIndex,
                     index,
-                    dataSource.chilrends.find(f => f.startDate === date[index]),
+                    getChildrenDataByDateIndex(dataSource, index),
                     dataSource,
+                    getChildrenDataByDateIndex(dataSource, index).ganttIdNumber as number,
                   )
                 : null}
             </div>

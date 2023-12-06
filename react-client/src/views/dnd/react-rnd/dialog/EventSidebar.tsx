@@ -46,6 +46,8 @@ type EventSidebarType = {
     index: number;
     dataSource: GanttTaskData;
     currentDate: Date;
+    ganttTaskDataItem?: GanttTaskDataItem;
+
     label?: string;
     type?: GanttType;
     endDate?: Date;
@@ -55,7 +57,7 @@ type EventSidebarType = {
   isSidebarOpen: boolean;
   handleEventSidebarToggle: () => void;
   handleAddTask: (granttData: GanttTaskDataItem, index: number) => void;
-  handleUpdateTask: (rowIndex: number, taskItem: GanttTaskDataItem) => void;
+  handleUpdateTask: (dataUpdate: GanttTaskDataItem, rowIndex: number) => void;
 };
 type IFormInput = { label: string; type: GanttType; startDate: string | Date | null; endDate: string | Date | null | undefined };
 type RangeDateType = { minDate: EventDateType; maxDate: EventDateType };
@@ -79,7 +81,7 @@ dayjs.extend(isBetween);
 const EventSidebar = (props: EventSidebarType) => {
   // ** Props
   const {
-    reducerState: { index, isEdit, ...reducerState },
+    reducerState: { index, isEdit, ganttTaskDataItem, ...reducerState },
     drawerWidth,
     isSidebarOpen,
     handleEventSidebarToggle,
@@ -106,8 +108,8 @@ const EventSidebar = (props: EventSidebarType) => {
       const { dataSource, currentDate, label, type, endDate } = reducerState;
       if (currentDate) {
         const d = !isEdit
-          ? (dataSource?.chilrends as GanttTaskDataItem[])
-          : (dataSource?.chilrends as GanttTaskDataItem[]).filter(f => f.startDate !== dayjs(currentDate).format('YYYY/M/D'));
+          ? (dataSource?.childrens as GanttTaskDataItem[])
+          : (dataSource?.childrens as GanttTaskDataItem[]).filter(f => f.startDate !== dayjs(currentDate).format('YYYY/M/D'));
 
         if (d) {
           const s = d.sort((a, b) => {
@@ -117,16 +119,23 @@ const EventSidebar = (props: EventSidebarType) => {
             return 0;
           });
 
+          const s2 = d.sort((a, b) => {
+            if (new Date(a.startDate) > new Date(b.startDate)) return -1;
+            if (new Date(a.startDate) < new Date(b.startDate)) return 1;
+
+            return 0;
+          });
+
           const minDate = s.find(f => new Date(f.startDate) <= new Date(currentDate))?.endDate;
 
-          const maxDate = s.find(f => new Date(f.startDate) >= new Date(currentDate))?.startDate;
-
-          // console.log(12005, { minDate, maxDate, dataSource, d });
+          const maxDate = s2.find(f => new Date(f.startDate) >= new Date(currentDate))?.startDate;
 
           setRangeDate({
             minDate: minDate ? dayjs(minDate, ['YYYY/M/D']).add(1, 'day').toDate() : null,
             maxDate: maxDate ? dayjs(maxDate, ['YYYY/M/D']).subtract(1, 'day').toDate() : null,
           });
+
+          console.log(12005, 'setRangeDate: ', minDate, maxDate, s, s2);
         }
 
         setValue('startDate', currentDate);
@@ -137,7 +146,7 @@ const EventSidebar = (props: EventSidebarType) => {
 
         setValue('endDate', endDate);
 
-        setValues({ ...values, startDate: currentDate });
+        setValues({ ...values, startDate: currentDate, endDate });
       }
     }
   }, [isSidebarOpen]);
@@ -158,8 +167,9 @@ const EventSidebar = (props: EventSidebarType) => {
   };
 
   const onSubmit = (data: IFormInput) => {
-    console.log(12005, data);
+    // console.log(12005, data);
     const granttData: GanttTaskDataItem = {
+      ...ganttTaskDataItem,
       id: Math.floor(Math.random() * 100),
       label: data.label,
       type: data.type,
@@ -168,7 +178,7 @@ const EventSidebar = (props: EventSidebarType) => {
     };
     handleSidebarClose();
 
-    isEdit ? handleUpdateTask(index, granttData) : handleAddTask(granttData, index);
+    isEdit ? handleUpdateTask(granttData, index) : handleAddTask(granttData, index);
   };
 
   const handleStartDate = (date: Date) => {
@@ -230,7 +240,7 @@ const EventSidebar = (props: EventSidebarType) => {
           p: theme => theme.spacing(3, 3.255, 3, 5.255),
         }}
       >
-        <Typography variant='h6'>{true ? 'Update Event' : 'Add Event'}</Typography>
+        <Typography variant='h6'>{isEdit ? 'Update Event' : 'Add Event'}</Typography>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <IconButton size='small' onClick={handleSidebarClose} sx={{ color: 'text.primary' }}>
             <Icon icon='mdi:close' fontSize={20} />
@@ -300,7 +310,7 @@ const EventSidebar = (props: EventSidebarType) => {
                       endDate={value as EventDateType}
                       selected={value as EventDateType}
                       startDate={value as EventDateType}
-                      minDate={rangeDate.minDate as EventDateType}
+                      minDate={rangeDate.minDate as EventDateType} //  || (value as EventDateType)
                       maxDate={(values.endDate as EventDateType) || (rangeDate.maxDate as EventDateType)}
                       dateFormat={'yyyy/M/d'}
                       customInput={<PickersComponent label='Start Date' registername='startDate' error={Boolean(errors.startDate)} />}

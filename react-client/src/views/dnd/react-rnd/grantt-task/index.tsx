@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // ** React Import
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 // ** Dayjs Import
 import dayjs from 'dayjs';
@@ -12,6 +12,7 @@ import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import GranttContent from './GranttContent';
 import SidebarLeft from './SidebarLeft';
+import { GanttTaskProvidrer } from '../context/GanttTaskContext';
 
 // Sử dụng generic type
 export type UniqueId<T extends Record<keyof T, any>> = T extends T
@@ -25,6 +26,7 @@ export type UniqueId<T extends Record<keyof T, any>> = T extends T
   : never;
 export type GanttTaskDataItem = {
   id?: number | string;
+  ganttIdNumber?: number;
   startDate: string;
   endDate: string;
   type: GanttType;
@@ -41,7 +43,7 @@ export type GanttTaskData = {
   label?: string;
   name?: string;
   priority?: string;
-  chilrends: GanttTaskDataItem[];
+  childrens: GanttTaskDataItem[];
 };
 
 type GranttTaskType = {
@@ -50,9 +52,9 @@ type GranttTaskType = {
   formatDate?: string | 'YYYY/M' | 'YYYY/MM';
   height?: number;
   width?: number;
-  dataSources?: GanttTaskData[];
-  handleAddTask?: (granttData: GanttTaskDataItem, index: number) => void;
-  handleUpdateTaskCallback?: (rowIndex: number, taskItem: GanttTaskDataItem) => void;
+  dataSources: GanttTaskData[];
+  handleAddTaskCallback?: (dataChange: GanttTaskDataItem, index: number) => void;
+  handleUpdateTaskCallback?: (taskItem: GanttTaskDataItem, rowIndex: number) => void;
 };
 const GranttTask = ({
   startDate = dayjs().format('YYYY/M'),
@@ -60,55 +62,11 @@ const GranttTask = ({
   formatDate = 'YYYY/M/D',
   height = 50,
   width = 50,
+  dataSources: ganttTaskDataList,
   handleUpdateTaskCallback, // dataSources,
-} // handleAddTask,
-: GranttTaskType) => {
+}: GranttTaskType) => {
   // ** State
-  const [dataSources, setDataSource] = useState<GanttTaskData[]>([
-    {
-      id: 1,
-      start: '2023/12/1',
-      end: '2023/12/1',
-      name: 'Lieu HongThai',
-      label: 'task 1',
-      priority: 'Super Hight',
-      type: '',
-      chilrends: [
-        {
-          id: 1,
-          startDate: '2023/12/1',
-          endDate: '2023/12/1',
-          type: 'code',
-          label: 'task 111111111',
-        },
-        {
-          id: 2,
-
-          startDate: '2023/12/5',
-          endDate: '2023/12/6',
-          type: 'design',
-          label: 'task 22222222',
-        },
-      ],
-    },
-    {
-      id: 2,
-      start: '2023/11/5',
-      end: '2023/12/31',
-      name: 'Nguyễn Thị Ngọc Oanh',
-      priority: 'Super Hight',
-      label: 'task 2',
-      chilrends: [
-        {
-          id: 3,
-          startDate: '2023/12/5',
-          endDate: '2023/12/6',
-          type: 'all',
-          label: 'task 3333333333',
-        },
-      ],
-    },
-  ]);
+  const [dataSources, setDataSource] = useState<GanttTaskData[]>([]);
 
   // ** Hooks
   const theme = useTheme();
@@ -170,43 +128,69 @@ const GranttTask = ({
     };
   }, []);
 
-  const handleUpdateTask = (rowIndex: number, taskItem: GanttTaskDataItem) => {
+  useEffect(() => {
+    if (ganttTaskDataList.length > 0) {
+      setDataSource([
+        ...ganttTaskDataList.map((gantt, index) => ({
+          ...gantt,
+          childrens: gantt.childrens.map((children, j) => ({
+            ...children,
+            ganttIdNumber: Number(`${index}${j}`),
+          })),
+        })),
+      ]);
+    }
+  }, [ganttTaskDataList]);
+
+  const handleUpdateTask = (dataUpdate: GanttTaskDataItem, rowIndex: number) => {
     const dataSourceCoppies = [...dataSources];
     const dataSource = dataSourceCoppies[rowIndex];
 
-    console.log(12005, 'handleUpdateTask: ', dataSource);
+    const indexChildren = dataSource.childrens.findIndex(f => f.ganttIdNumber === dataUpdate.ganttIdNumber);
 
-    handleUpdateTaskCallback && handleUpdateTaskCallback(rowIndex, taskItem);
+    if (indexChildren > -1) {
+      dataSource.childrens[indexChildren] = { ...dataSource.childrens[indexChildren], ...dataUpdate };
+    }
+
+    handleUpdateTaskCallback && handleUpdateTaskCallback(dataUpdate, rowIndex);
   };
 
   const handleAddTask = (granttData: GanttTaskDataItem, index: number) => {
     const dataSourceCoppies = [...dataSources];
     const dataSource = dataSourceCoppies[index];
-    dataSource.chilrends.push(granttData);
-
-    // console.log(12005, dataSourceCoppies, dataSource, dataSources);
-
-    // setDataSource(dataSource);
+    dataSource.childrens.push(granttData);
   };
-  const columnProps = { ...columns, height, width, dataSources, handleAddTask, formatDate, handleUpdateTask };
+  const handleOnTransformTask = (ganttTaskDataItem: GanttTaskDataItem, rowIndex: number) => {
+    const dataSourceCoppies = [...dataSources];
+    const dataSource = dataSourceCoppies[rowIndex];
+
+    const indexChildren = dataSource.childrens.findIndex(f => f.ganttIdNumber === ganttTaskDataItem.ganttIdNumber);
+
+    if (indexChildren > -1) {
+      dataSource.childrens[indexChildren] = { ...dataSource.childrens[indexChildren], ...ganttTaskDataItem };
+    }
+  };
+  const columnProps = { ...columns, height, width, dataSources, formatDate };
 
   return (
-    <Box
-      className='app-grantt'
-      sx={{
-        width: '100%',
-        display: 'flex',
-        borderRadius: 1,
-        overflow: 'hidden',
-        position: 'relative',
-        backgroundColor: 'background.paper',
-        boxShadow: 0,
-        border: `1px solid ${theme.palette.primary.main}`,
-      }}
-    >
-      <SidebarLeft {...columnProps} columnLeft={['name', 'label', 'priority', 'start', 'end']} />
-      <GranttContent {...columnProps} />
-    </Box>
+    <GanttTaskProvidrer handleAddTask={handleAddTask} handleOnTransformTask={handleOnTransformTask} handleUpdateTask={handleUpdateTask}>
+      <Box
+        className='app-grantt'
+        sx={{
+          width: '100%',
+          display: 'flex',
+          borderRadius: 1,
+          overflow: 'hidden',
+          position: 'relative',
+          backgroundColor: 'background.paper',
+          boxShadow: 0,
+          border: `1px solid ${theme.palette.primary.main}`,
+        }}
+      >
+        <SidebarLeft {...columnProps} columnLeft={['name', 'label', 'priority', 'start', 'end']} />
+        <GranttContent {...columnProps} />
+      </Box>
+    </GanttTaskProvidrer>
   );
 };
 

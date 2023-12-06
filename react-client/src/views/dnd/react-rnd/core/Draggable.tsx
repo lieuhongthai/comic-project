@@ -2,7 +2,7 @@
 // ** React Import
 import Box from '@mui/material/Box';
 import { CSSProperties, FC, useRef } from 'react';
-import { DraggableData, Rnd, RndResizeStartCallback } from 'react-rnd';
+import { DraggableData, Rnd, RndResizeCallback, RndResizeStartCallback } from 'react-rnd';
 import { GanttType } from '../grantt-task';
 
 const style: CSSProperties = {
@@ -21,7 +21,8 @@ interface Props {
 
   rndRefs: React.MutableRefObject<Rnd[]>;
   label?: string;
-  onClickHandler?: (xPosition: number) => void;
+  onClickHandler?: (xPosition: number, width: number) => void;
+  handleTransform?: (xPosition: number, width?: number) => void;
 
   // rowRefs: React.MutableRefObject<HTMLDivElement[]>;
   width?: number;
@@ -39,7 +40,7 @@ const ganttType = {
   design: '#D9EAD3',
   all: '#FFF2CC',
 };
-const RndDraggable: FC<Props> = ({ id, row: indexRow, rndRefs, width = 50, height = 50, type, label, onClickHandler }) => {
+const RndDraggable: FC<Props> = ({ id, row: indexRow, rndRefs, width = 50, height = 50, type, label, onClickHandler, handleTransform }) => {
   // ** State
 
   // ** Ref
@@ -48,8 +49,11 @@ const RndDraggable: FC<Props> = ({ id, row: indexRow, rndRefs, width = 50, heigh
   // ** Memo
 
   // ** Functional
-  const onResizeStop = () => {
+  const onResizeStop: RndResizeCallback = (_e, _dir, element, _delta, position) => {
     rndRef.current?.setState(dataState => ({ ...dataState, maxWidth: 10000000 }));
+    const width = element.getBoundingClientRect().width;
+    const xPosition = position.x;
+    handleTransform && handleTransform(xPosition, width);
   };
 
   const onResizeStart: RndResizeStartCallback = (_, dir: ResizeDirection, ref: HTMLElement) => {
@@ -122,10 +126,16 @@ const RndDraggable: FC<Props> = ({ id, row: indexRow, rndRefs, width = 50, heigh
         bounds: { ...dataState.bounds, ...bounds },
       }));
     }, 1);
+    console.log(12005, bounds);
   };
 
   const onDragStop: DraggableEventHandler = (e, data) => {
     rndRef.current?.updatePosition({ y: 0, x: data.lastX });
+    const { lastX, node } = data;
+    const xWidth = node.getBoundingClientRect().width;
+    handleTransform && handleTransform(lastX, xWidth);
+
+    console.log(12005, rndRef, rndRefs.current.length);
   };
 
   const handler = { onResizeStop, onDragStop, onResizeStart, onDragStart, onDrag };
@@ -135,11 +145,13 @@ const RndDraggable: FC<Props> = ({ id, row: indexRow, rndRefs, width = 50, heigh
     <Box
       component={'div'}
       id={`id_${indexRow}_${id}`}
-      onDoubleClick={() => {
+      onDoubleClick={e => {
         // ** !isDragg.current &&
         if (rndRef.current && onClickHandler) {
           const xPosition = rndRef.current.getDraggablePosition().x;
-          onClickHandler(xPosition);
+          const xWidth = (rndRef.current.getSelfElement() as HTMLElement).getBoundingClientRect().width;
+
+          onClickHandler(xPosition, xWidth);
         }
       }}
     >
